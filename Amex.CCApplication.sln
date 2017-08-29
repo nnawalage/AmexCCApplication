@@ -3,7 +3,43 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amex.CCA.DataAccess", "Amex.CCApplication.DataAccess\Amex.CCA.DataAccess.csproj", "{4326CC9D-F3B8-458E-9261-C990972AE1F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amex.CCA.Common", "Amex.CCA.Common\Amex.CCA.Common.csproj", "{18863F8D-C7BF-439C-8213-5FBC9A9B62C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amex.CCA.BusinessServices", "Amex.CCA.BusinessServices\Amex.CCA.BusinessServices.csproj", "{9477CB63-BD8C-4546-82C0-DC484F56A893}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amex.CCA.WebApi", "Amex.CCA.WebApi\Amex.CCA.WebApi.csproj", "{F4D419C7-4761-4E71-B908-2FA9C1F08BA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amex.CCA.WebClient", "Amex.CCA.WebClient\Amex.CCA.WebClient.csproj", "{355DAF17-A9F2-4A59-AAC4-C41B2F79EDE8}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4326CC9D-F3B8-458E-9261-C990972AE1F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4326CC9D-F3B8-458E-9261-C990972AE1F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4326CC9D-F3B8-458E-9261-C990972AE1F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4326CC9D-F3B8-458E-9261-C990972AE1F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18863F8D-C7BF-439C-8213-5FBC9A9B62C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18863F8D-C7BF-439C-8213-5FBC9A9B62C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18863F8D-C7BF-439C-8213-5FBC9A9B62C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18863F8D-C7BF-439C-8213-5FBC9A9B62C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9477CB63-BD8C-4546-82C0-DC484F56A893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9477CB63-BD8C-4546-82C0-DC484F56A893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9477CB63-BD8C-4546-82C0-DC484F56A893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9477CB63-BD8C-4546-82C0-DC484F56A893}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4D419C7-4761-4E71-B908-2FA9C1F08BA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4D419C7-4761-4E71-B908-2FA9C1F08BA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4D419C7-4761-4E71-B908-2FA9C1F08BA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4D419C7-4761-4E71-B908-2FA9C1F08BA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{355DAF17-A9F2-4A59-AAC4-C41B2F79EDE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{355DAF17-A9F2-4A59-AAC4-C41B2F79EDE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{355DAF17-A9F2-4A59-AAC4-C41B2F79EDE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{355DAF17-A9F2-4A59-AAC4-C41B2F79EDE8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
