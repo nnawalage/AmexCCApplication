@@ -10,7 +10,11 @@ namespace Amex.CCA.WebApi.Controllers
     [Authorize]
     public class ValuesController : ApiController
     {
-        // GET api/values
+        // GET api/documentation
+        /// <summary>
+        /// This is how we create a documentation
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
