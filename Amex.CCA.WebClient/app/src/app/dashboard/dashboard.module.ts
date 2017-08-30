@@ -8,7 +8,7 @@ import { DashboardComponent } from './dashboard.component';
         RouterModule.forChild(dashBoardRoutes)
     ],
     declarations: [
-        DashboardComponent
+         DashboardComponent
     ],
     providers: []
 })
