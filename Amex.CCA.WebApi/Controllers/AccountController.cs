@@ -51,6 +51,156 @@ namespace Amex.CCA.WebApi.Controllers
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
+        // POST api/Account/Logout
+        [Route("Logout")]
+        public IHttpActionResult Logout()
+        {
+            Authentication.SignOut(CookieAuthenticationDefaults.AuthenticationType);
+            return Ok();
+        }
+
+        // POST api/Account/ChangePassword
+        [Route("ChangePassword")]
+        public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
+                model.NewPassword);
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            return Ok();
+        }
+
+        // POST api/Account/SetPassword
+        [Route("SetPassword")]
+        public async Task<IHttpActionResult> SetPassword(SetPasswordBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            return Ok();
+        }
+
+        // POST api/Account/RemoveLogin
+        [Route("RemoveLogin")]
+        public async Task<IHttpActionResult> RemoveLogin(RemoveLoginBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            IdentityResult result;
+
+            if (model.LoginProvider == LocalLoginProvider)
+            {
+                result = await UserManager.RemovePasswordAsync(User.Identity.GetUserId());
+            }
+            else
+            {
+                result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(),
+                    new UserLoginInfo(model.LoginProvider, model.ProviderKey));
+            }
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            return Ok();
+        }
+
+        // POST api/Account/Register
+        [AllowAnonymous]
+        [Route("Register")]
+        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+
+            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            return Ok();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && _userManager != null)
+            {
+                _userManager.Dispose();
+                _userManager = null;
+            }
+
+            base.Dispose(disposing);
+        }
+
+        #region Helpers
+
+        private IAuthenticationManager Authentication
+        {
+            get { return Request.GetOwinContext().Authentication; }
+        }
+
+        private IHttpActionResult GetErrorResult(IdentityResult result)
+        {
+            if (result == null)
+            {
+                return InternalServerError();
+            }
+
+            if (!result.Succeeded)
+            {
+                if (result.Errors != null)
+                {
+                    foreach (string error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error);
+                    }
+                }
+
+                if (ModelState.IsValid)
+                {
+                    // No ModelState errors are available to send, so just return an empty BadRequest.
+                    return BadRequest();
+                }
+
+                return BadRequest(ModelState);
+            }
+
+            return null;
+        }
+
+
+        #endregion
+
+        #region Code related to third party providers
+
         // GET api/Account/UserInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("UserInfo")]
@@ -64,14 +214,6 @@ namespace Amex.CCA.WebApi.Controllers
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
-        }
-
-        // POST api/Account/Logout
-        [Route("Logout")]
-        public IHttpActionResult Logout()
-        {
-            Authentication.SignOut(CookieAuthenticationDefaults.AuthenticationType);
-            return Ok();
         }
 
         // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
@@ -114,44 +256,6 @@ namespace Amex.CCA.WebApi.Controllers
             };
         }
 
-        // POST api/Account/ChangePassword
-        [Route("ChangePassword")]
-        public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
-                model.NewPassword);
-            
-            if (!result.Succeeded)
-            {
-                return GetErrorResult(result);
-            }
-
-            return Ok();
-        }
-
-        // POST api/Account/SetPassword
-        [Route("SetPassword")]
-        public async Task<IHttpActionResult> SetPassword(SetPasswordBindingModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
-
-            if (!result.Succeeded)
-            {
-                return GetErrorResult(result);
-            }
-
-            return Ok();
-        }
 
         // POST api/Account/AddExternalLogin
         [Route("AddExternalLogin")]
@@ -191,34 +295,6 @@ namespace Amex.CCA.WebApi.Controllers
             return Ok();
         }
 
-        // POST api/Account/RemoveLogin
-        [Route("RemoveLogin")]
-        public async Task<IHttpActionResult> RemoveLogin(RemoveLoginBindingModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            IdentityResult result;
-
-            if (model.LoginProvider == LocalLoginProvider)
-            {
-                result = await UserManager.RemovePasswordAsync(User.Identity.GetUserId());
-            }
-            else
-            {
-                result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(),
-                    new UserLoginInfo(model.LoginProvider, model.ProviderKey));
-            }
-
-            if (!result.Succeeded)
-            {
-                return GetErrorResult(result);
-            }
-
-            return Ok();
-        }
 
         // GET api/Account/ExternalLogin
         [OverrideAuthentication]
@@ -258,9 +334,9 @@ namespace Amex.CCA.WebApi.Controllers
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                   OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
@@ -318,27 +394,6 @@ namespace Amex.CCA.WebApi.Controllers
             return logins;
         }
 
-        // POST api/Account/Register
-        [AllowAnonymous]
-        [Route("Register")]
-        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
-
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-
-            if (!result.Succeeded)
-            {
-                return GetErrorResult(result);
-            }
-
-            return Ok();
-        }
 
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
@@ -368,57 +423,13 @@ namespace Amex.CCA.WebApi.Controllers
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && _userManager != null)
-            {
-                _userManager.Dispose();
-                _userManager = null;
-            }
-
-            base.Dispose(disposing);
-        }
 
         #region Helpers
-
-        private IAuthenticationManager Authentication
-        {
-            get { return Request.GetOwinContext().Authentication; }
-        }
-
-        private IHttpActionResult GetErrorResult(IdentityResult result)
-        {
-            if (result == null)
-            {
-                return InternalServerError();
-            }
-
-            if (!result.Succeeded)
-            {
-                if (result.Errors != null)
-                {
-                    foreach (string error in result.Errors)
-                    {
-                        ModelState.AddModelError("", error);
-                    }
-                }
-
-                if (ModelState.IsValid)
-                {
-                    // No ModelState errors are available to send, so just return an empty BadRequest.
-                    return BadRequest();
-                }
-
-                return BadRequest(ModelState);
-            }
-
-            return null;
-        }
 
         private class ExternalLoginData
         {
@@ -488,6 +499,9 @@ namespace Amex.CCA.WebApi.Controllers
                 return HttpServerUtility.UrlTokenEncode(data);
             }
         }
+
+        #endregion
+
 
         #endregion
     }

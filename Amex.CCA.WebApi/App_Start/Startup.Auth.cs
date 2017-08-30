@@ -37,7 +37,7 @@ namespace Amex.CCA.WebApi
             {
                 TokenEndpointPath = new PathString("/Token"),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
-                AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
+                //AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
                 // In production mode set AllowInsecureHttp = false
                 AllowInsecureHttp = true
@@ -46,6 +46,7 @@ namespace Amex.CCA.WebApi
             // Enable the application to use bearer tokens to authenticate users
             app.UseOAuthBearerTokens(OAuthOptions);
 
+            #region Code related to third party providers 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
             //    clientId: "",
@@ -64,6 +65,8 @@ namespace Amex.CCA.WebApi
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+
+            #endregion
         }
     }
 }
