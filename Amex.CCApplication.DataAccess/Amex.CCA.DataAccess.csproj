@@ -30,7 +30,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.12.2.1100\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.12.2.1100\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,7 +57,66 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AmexDbContext.cs" />
+    <Compile Include="Entities\AmexModelBase.cs" />
+    <Compile Include="Entities\Nationality.cs" />
+    <Compile Include="Migrations\201708311054194_Reset.cs" />
+    <Compile Include="Migrations\201708311054194_Reset.Designer.cs">
+      <DependentUpon>201708311054194_Reset.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708311058404_nationalitytabledrop.cs" />
+    <Compile Include="Migrations\201708311058404_nationalitytabledrop.Designer.cs">
+      <DependentUpon>201708311058404_nationalitytabledrop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708311101022_nationalitytablecreateagain.cs" />
+    <Compile Include="Migrations\201708311101022_nationalitytablecreateagain.Designer.cs">
+      <DependentUpon>201708311101022_nationalitytablecreateagain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708311103324_thirdtry.cs" />
+    <Compile Include="Migrations\201708311103324_thirdtry.Designer.cs">
+      <DependentUpon>201708311103324_thirdtry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708311104578_creatinagainwithnewprimarykey.cs" />
+    <Compile Include="Migrations\201708311104578_creatinagainwithnewprimarykey.Designer.cs">
+      <DependentUpon>201708311104578_creatinagainwithnewprimarykey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708311109170_changingbacktoprimarykey.cs" />
+    <Compile Include="Migrations\201708311109170_changingbacktoprimarykey.Designer.cs">
+      <DependentUpon>201708311109170_changingbacktoprimarykey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708311110137_changingbacktoprimarykey1.cs" />
+    <Compile Include="Migrations\201708311110137_changingbacktoprimarykey1.Designer.cs">
+      <DependentUpon>201708311110137_changingbacktoprimarykey1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201708311054194_Reset.resx">
+      <DependentUpon>201708311054194_Reset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708311058404_nationalitytabledrop.resx">
+      <DependentUpon>201708311058404_nationalitytabledrop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708311101022_nationalitytablecreateagain.resx">
+      <DependentUpon>201708311101022_nationalitytablecreateagain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708311103324_thirdtry.resx">
+      <DependentUpon>201708311103324_thirdtry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708311104578_creatinagainwithnewprimarykey.resx">
+      <DependentUpon>201708311104578_creatinagainwithnewprimarykey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708311109170_changingbacktoprimarykey.resx">
+      <DependentUpon>201708311109170_changingbacktoprimarykey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708311110137_changingbacktoprimarykey1.resx">
+      <DependentUpon>201708311110137_changingbacktoprimarykey1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
