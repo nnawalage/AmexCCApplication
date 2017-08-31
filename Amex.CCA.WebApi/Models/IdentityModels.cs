@@ -34,8 +34,17 @@ namespace Amex.CCA.WebApi.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //Configure default schema
-            modelBuilder.HasDefaultSchema("TIQRIDEV");
+            modelBuilder.HasDefaultSchema("AMEXCCDB");
+            //modelBuilder.HasDefaultSchema("TEST2");
+
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<ApplicationUser>().ToTable("Users");
+            modelBuilder.Entity<IdentityRole>().ToTable("Roles");
+            modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles");
+            modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins");
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims");
+
         }
     }
 }
