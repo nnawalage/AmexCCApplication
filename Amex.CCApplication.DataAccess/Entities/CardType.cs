@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Amex.CCA.DataAccess.Entities
 {
-    public class Nationality:AmexModelBase
+    public class CardType : AmexModelBase
     {
         [Key]
-        public int NationalityId { get; set; }
+        public int CardTypeId { get; set; }
 
         [Required]
         public string Name { get; set; }

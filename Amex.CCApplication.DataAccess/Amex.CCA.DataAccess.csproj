@@ -59,6 +59,11 @@
   <ItemGroup>
     <Compile Include="AmexDbContext.cs" />
     <Compile Include="Entities\AmexModelBase.cs" />
+    <Compile Include="Entities\Attachment.cs" />
+    <Compile Include="Entities\AttachmentType.cs" />
+    <Compile Include="Entities\CardStatus.cs" />
+    <Compile Include="Entities\CardType.cs" />
+    <Compile Include="Entities\CreditCard.cs" />
     <Compile Include="Entities\Nationality.cs" />
     <Compile Include="Migrations\201708311054194_Reset.cs" />
     <Compile Include="Migrations\201708311054194_Reset.Designer.cs">
@@ -87,6 +92,62 @@
     <Compile Include="Migrations\201708311110137_changingbacktoprimarykey1.cs" />
     <Compile Include="Migrations\201708311110137_changingbacktoprimarykey1.Designer.cs">
       <DependentUpon>201708311110137_changingbacktoprimarykey1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709010645390_InitialTableCreation.cs" />
+    <Compile Include="Migrations\201709010645390_InitialTableCreation.Designer.cs">
+      <DependentUpon>201709010645390_InitialTableCreation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709010653264_InitialTableCreationMaster.cs" />
+    <Compile Include="Migrations\201709010653264_InitialTableCreationMaster.Designer.cs">
+      <DependentUpon>201709010653264_InitialTableCreationMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709010659252_InitialCreditCardTable.cs" />
+    <Compile Include="Migrations\201709010659252_InitialCreditCardTable.Designer.cs">
+      <DependentUpon>201709010659252_InitialCreditCardTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709010714284_cardTypeFkAdded.cs" />
+    <Compile Include="Migrations\201709010714284_cardTypeFkAdded.Designer.cs">
+      <DependentUpon>201709010714284_cardTypeFkAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709010720239_nationalityFkAdded.cs" />
+    <Compile Include="Migrations\201709010720239_nationalityFkAdded.Designer.cs">
+      <DependentUpon>201709010720239_nationalityFkAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709010721463_cardStatusFkAdded.cs" />
+    <Compile Include="Migrations\201709010721463_cardStatusFkAdded.Designer.cs">
+      <DependentUpon>201709010721463_cardStatusFkAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709010723076_attachmebtsFkAdded.cs" />
+    <Compile Include="Migrations\201709010723076_attachmebtsFkAdded.Designer.cs">
+      <DependentUpon>201709010723076_attachmebtsFkAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709010736418_dataTypeConfig.cs" />
+    <Compile Include="Migrations\201709010736418_dataTypeConfig.Designer.cs">
+      <DependentUpon>201709010736418_dataTypeConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709010857025_datatypereset2-force.cs" />
+    <Compile Include="Migrations\201709010857025_datatypereset2-force.Designer.cs">
+      <DependentUpon>201709010857025_datatypereset2-force.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709010904141_datatyperesetmax.cs" />
+    <Compile Include="Migrations\201709010904141_datatyperesetmax.Designer.cs">
+      <DependentUpon>201709010904141_datatyperesetmax.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709010907218_datatyperesetmax1.cs" />
+    <Compile Include="Migrations\201709010907218_datatyperesetmax1.Designer.cs">
+      <DependentUpon>201709010907218_datatyperesetmax1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709010933001_nullabletypes.cs" />
+    <Compile Include="Migrations\201709010933001_nullabletypes.Designer.cs">
+      <DependentUpon>201709010933001_nullabletypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709010942057_requiredcc.cs" />
+    <Compile Include="Migrations\201709010942057_requiredcc.Designer.cs">
+      <DependentUpon>201709010942057_requiredcc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709010948326_requiredcc-force.cs" />
+    <Compile Include="Migrations\201709010948326_requiredcc-force.Designer.cs">
+      <DependentUpon>201709010948326_requiredcc-force.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,6 +178,54 @@
     <EmbeddedResource Include="Migrations\201708311110137_changingbacktoprimarykey1.resx">
       <DependentUpon>201708311110137_changingbacktoprimarykey1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709010645390_InitialTableCreation.resx">
+      <DependentUpon>201709010645390_InitialTableCreation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709010653264_InitialTableCreationMaster.resx">
+      <DependentUpon>201709010653264_InitialTableCreationMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709010659252_InitialCreditCardTable.resx">
+      <DependentUpon>201709010659252_InitialCreditCardTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709010714284_cardTypeFkAdded.resx">
+      <DependentUpon>201709010714284_cardTypeFkAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709010720239_nationalityFkAdded.resx">
+      <DependentUpon>201709010720239_nationalityFkAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709010721463_cardStatusFkAdded.resx">
+      <DependentUpon>201709010721463_cardStatusFkAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709010723076_attachmebtsFkAdded.resx">
+      <DependentUpon>201709010723076_attachmebtsFkAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709010736418_dataTypeConfig.resx">
+      <DependentUpon>201709010736418_dataTypeConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709010857025_datatypereset2-force.resx">
+      <DependentUpon>201709010857025_datatypereset2-force.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709010904141_datatyperesetmax.resx">
+      <DependentUpon>201709010904141_datatyperesetmax.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709010907218_datatyperesetmax1.resx">
+      <DependentUpon>201709010907218_datatyperesetmax1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709010933001_nullabletypes.resx">
+      <DependentUpon>201709010933001_nullabletypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709010942057_requiredcc.resx">
+      <DependentUpon>201709010942057_requiredcc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709010948326_requiredcc-force.resx">
+      <DependentUpon>201709010948326_requiredcc-force.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Amex.CCA.WebApi\Amex.CCA.WebApi.csproj">
+      <Project>{F4D419C7-4761-4E71-B908-2FA9C1F08BA0}</Project>
+      <Name>Amex.CCA.WebApi</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

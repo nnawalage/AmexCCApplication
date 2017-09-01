@@ -15,13 +15,28 @@ namespace Amex.CCA.DataAccess
         {
         }
 
-        public DbSet<Nationality> Nationalities { get; set; }
+        //public DbSet<Attachment> Attachments { get; set; }
 
+        public DbSet<AttachmentType> AttachmentTypes { get; set; }
+
+        public DbSet<CardStatus> CardStatuses { get; set; }
+
+        public DbSet<CardType> CardTypes { get; set; }
+
+        public DbSet<CreditCard> CreditCards { get; set; }
+
+        public DbSet<Nationality> Nationalities { get; set; }
+                
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //Configure default schema
             modelBuilder.HasDefaultSchema("AMEXCCDB");
-            
+
+            //Configure oracle data types.
+            //modelBuilder.Properties<string>().Configure(c => c.HasColumnType("varchar"));
+            modelBuilder.Properties<decimal>().Configure(c => c.HasPrecision(18, 3));
+            // modelBuilder.Properties<string>().Configure(p => p.IsMaxLength());
+
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
