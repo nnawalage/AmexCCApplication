@@ -149,6 +149,14 @@
     <Compile Include="Migrations\201709010948326_requiredcc-force.Designer.cs">
       <DependentUpon>201709010948326_requiredcc-force.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709040408540_varcharcolumn.cs" />
+    <Compile Include="Migrations\201709040408540_varcharcolumn.Designer.cs">
+      <DependentUpon>201709040408540_varcharcolumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709040626007_varcharcolumn1.cs" />
+    <Compile Include="Migrations\201709040626007_varcharcolumn1.Designer.cs">
+      <DependentUpon>201709040626007_varcharcolumn1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -219,6 +227,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709010948326_requiredcc-force.resx">
       <DependentUpon>201709010948326_requiredcc-force.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709040408540_varcharcolumn.resx">
+      <DependentUpon>201709040408540_varcharcolumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709040626007_varcharcolumn1.resx">
+      <DependentUpon>201709040626007_varcharcolumn1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
