@@ -1,0 +1,8 @@
+<form #loginForm="ngForm" (ngSubmit)="onLoginSubmit(loginForm.value)">
+    <label for="txtUserName">UserName</label>
+    <input [(ngModel)]="txtUserName" type="text" name="txtUserName"/>
+    <label for="txtPassword">Password</label>
+    <input [(ngModel)]="txtPassword" type="text" name="txtPassword" required/>
+    <!-- <lable *ngIf="loginForm.Controls.txtPassword.invalid" >Error</lable> -->
+  <button type="submit">Login</button> 
+</form>

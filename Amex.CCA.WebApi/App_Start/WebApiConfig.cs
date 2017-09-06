@@ -17,8 +17,11 @@ namespace Amex.CCA.WebApi
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-            EnableCorsAttribute attribute = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(attribute);
+            var enableCorsAttribute = new EnableCorsAttribute("*",
+                                                 "Origin, Content-Type, Accept, Authorization, Olson-Timezone",
+                                                 "GET, PUT, POST, DELETE, OPTIONS");
+
+            config.EnableCors(enableCorsAttribute);
             // Web API routes
             config.MapHttpAttributeRoutes();
 
