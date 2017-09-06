@@ -41,14 +41,26 @@ namespace Amex.CCA.WebApi.Providers
 
             ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(userManager,
                OAuthDefaults.AuthenticationType);
-            ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
-                CookieAuthenticationDefaults.AuthenticationType);
+            //ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
+            //    CookieAuthenticationDefaults.AuthenticationType);
 
             AuthenticationProperties properties = CreateProperties(user.UserName);
             AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
             context.Validated(ticket);
-            context.Request.Context.Authentication.SignIn(cookiesIdentity);
+            //context.Request.Context.Authentication.SignIn(cookiesIdentity);
         }
+
+
+        public override async Task GrantRefreshToken(OAuthGrantRefreshTokenContext context)
+        {
+            // chance to change authentication ticket for refresh token requests
+            ClaimsIdentity refreshTokenIdentity = new ClaimsIdentity(context.Ticket.Identity);
+            AuthenticationTicket newTicket = new AuthenticationTicket(refreshTokenIdentity, context.Ticket.Properties);
+            context.Validated(newTicket);
+        }
+
+
+
 
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
         {
@@ -71,20 +83,20 @@ namespace Amex.CCA.WebApi.Providers
             return Task.FromResult<object>(null);
         }
 
-        public override Task ValidateClientRedirectUri(OAuthValidateClientRedirectUriContext context)
-        {
-            if (context.ClientId == _publicClientId)
-            {
-                Uri expectedRootUri = new Uri(context.Request.Uri, "/");
+        //public override Task ValidateClientRedirectUri(OAuthValidateClientRedirectUriContext context)
+        //{
+        //    if (context.ClientId == _publicClientId)
+        //    {
+        //        Uri expectedRootUri = new Uri(context.Request.Uri, "/");
 
-                if (expectedRootUri.AbsoluteUri == context.RedirectUri)
-                {
-                    context.Validated();
-                }
-            }
+        //        if (expectedRootUri.AbsoluteUri == context.RedirectUri)
+        //        {
+        //            context.Validated();
+        //        }
+        //    }
 
-            return Task.FromResult<object>(null);
-        }
+        //    return Task.FromResult<object>(null);
+        //}
 
         public static AuthenticationProperties CreateProperties(string userName)
         {
