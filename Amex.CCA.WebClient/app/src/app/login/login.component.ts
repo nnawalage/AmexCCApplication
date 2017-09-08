@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component,ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service'
 import { User } from "../models/user";
+import { IToken } from '../models/token'
 
 @Component({
     templateUrl: './login.template.html',
     styleUrls: ['./login.styles.scss'],
-
 })
 export class LoginComponent {
 
-    constructor(private loginService: LoginService) {
+    constructor(private router: Router, private loginService: LoginService) {
 
     }
 
@@ -17,12 +18,16 @@ export class LoginComponent {
         console.log(loginFormValues);
         let user: User = {
             UserName: loginFormValues['txtUserName'],
-            PassWord: loginFormValues['txtPassWord']
+            PassWord: loginFormValues['txtPassword']
         }
 
-        this.loginService.GetUser(user).subscribe(res => {
-            console.log(res);
-        }, error => console.log(error))
+        this.loginService.GetUser(user).subscribe((res: IToken) => {
+            sessionStorage.setItem('access-token', res.AccessToken);
+            this.router.navigate(['dashboard/myWork']);
+
+        }, error => {
+            //console.log('errCame' + error);
+        });
     }
 
 

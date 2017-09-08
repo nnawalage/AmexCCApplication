@@ -1,8 +1,25 @@
+<div class="log">
+    <div class="col-md-6">
+      <label for="txtUserName">UserName</label>
+    </div>
+    <div class="col-md-6">
+      <input [(ngModel)]="txtUserName" type="text" name="txtUserName" />
+    </div>
+
+
+
 <form #loginForm="ngForm" (ngSubmit)="onLoginSubmit(loginForm.value)">
-    <label for="txtUserName">UserName</label>
-    <input [(ngModel)]="txtUserName" type="text" name="txtUserName"/>
-    <label for="txtPassword">Password</label>
-    <input [(ngModel)]="txtPassword" type="text" name="txtPassword" required/>
-    <!-- <lable *ngIf="loginForm.Controls.txtPassword.invalid" >Error</lable> -->
-  <button type="submit">Login</button> 
+  <div class="rows">
+    <div class="col-md-6">
+      <label for="txtUserName">UserName</label>
+    </div>
+    <div class="col-md-6">
+      <input [(ngModel)]="txtUserName" type="text" name="txtUserName" />
+    </div>
+  </div>
+
+  <label for="txtPassword">Password</label>
+  <input [(ngModel)]="txtPassword" type="text" name="txtPassword" required/>
+  <!-- <lable *ngIf="loginForm.Controls.txtPassword.invalid" >Error</lable> -->
+  <button type="submit">Login</button>
 </form>

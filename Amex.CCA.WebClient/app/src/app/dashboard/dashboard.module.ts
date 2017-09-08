@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { dashBoardRoutes } from './dashboard.routes';
 import { DashboardComponent } from './dashboard.component';
 
+
 @NgModule({
     imports: [
         RouterModule.forChild(dashBoardRoutes)
@@ -10,8 +11,15 @@ import { DashboardComponent } from './dashboard.component';
     declarations: [
          DashboardComponent
     ],
-    providers: []
+    providers: [
+        {provide:'Foo',useValue:Foo}
+    ]
 })
+
+
 export class DashboardModule {
 
+}
+ function Foo(){
+    return true;
 }
