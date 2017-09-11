@@ -235,12 +235,6 @@
       <DependentUpon>201709040626007_varcharcolumn1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Amex.CCA.WebApi\Amex.CCA.WebApi.csproj">
-      <Project>{F4D419C7-4761-4E71-B908-2FA9C1F08BA0}</Project>
-      <Name>Amex.CCA.WebApi</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
