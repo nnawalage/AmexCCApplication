@@ -12,7 +12,6 @@ import { DashboardComponent } from './dashboard.component';
          DashboardComponent
     ],
     providers: [
-        //{provide:'Foo',useValue:Foo}
     ]
 })
 
