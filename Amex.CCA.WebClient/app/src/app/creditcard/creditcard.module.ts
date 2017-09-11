@@ -1,6 +1,6 @@
 ﻿import { NgModule } from '@angular/core';;
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CreditCardComponent } from './creditcard.component';
 
 
@@ -10,7 +10,7 @@ const crediCardRoute: Routes = [
 
 @NgModule({
     imports: [
-        FormsModule,
+        ReactiveFormsModule,
         RouterModule.forChild(crediCardRoute)
     ],
     declarations: [CreditCardComponent],

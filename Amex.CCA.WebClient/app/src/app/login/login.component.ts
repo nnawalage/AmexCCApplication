@@ -1,4 +1,4 @@
-import { Component,ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service'
 import { User } from "../models/user";
@@ -9,6 +9,7 @@ import { IToken } from '../models/token'
     styleUrls: ['./login.styles.scss'],
 })
 export class LoginComponent {
+    loginInvalid: boolean = false;
 
     constructor(private router: Router, private loginService: LoginService) {
 
@@ -21,13 +22,26 @@ export class LoginComponent {
             PassWord: loginFormValues['txtPassword']
         }
 
-        this.loginService.GetUser(user).subscribe((res: IToken) => {
+        this.loginService.loginUser(user).subscribe((res: IToken) => {
             sessionStorage.setItem('access-token', res.AccessToken);
             this.router.navigate(['dashboard/myWork']);
 
         }, error => {
             //console.log('errCame' + error);
         });
+
+        // this.loginService.loginUser(user).subscribe((user: any) => {
+        //     if (!user) {
+        //         this.loginInvalid = true;
+        //     } else {
+        //         this.router.navigate(['dashboard/myWork']);
+        //     }
+
+        // }, error => {
+        //     //console.log('errCame' + error);
+        // });
+
+
     }
 
 

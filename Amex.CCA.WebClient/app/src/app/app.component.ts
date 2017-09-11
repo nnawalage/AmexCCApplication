@@ -1,4 +1,4 @@
-import { Component,ViewEncapsulation } from '@angular/core';
+import { Component,ViewEncapsulation,OnInit } from '@angular/core';
 import { LoginService } from "./services/login.service";
 
 @Component({

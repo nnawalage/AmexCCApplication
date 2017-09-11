@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="row"><header *ngIf="loginService.IsUserAuthorised()">></header></div>
+    <div class="row"><header *ngIf="loginService.isUserAuthorised()">></header></div>
     <div class="row">
       <div class="col-md-4">
-         <nav-bar *ngIf="loginService.IsUserAuthorised()">>
+         <nav-bar *ngIf="loginService.isUserAuthorised()">>
         </nav-bar> 
       </div>
       <div class="col-md-8">
          <router-outlet></router-outlet> 
       </div>
     </div>
-     <div  class="row"><footer *ngIf="loginService.IsUserAuthorised()"></footer></div> 
+     <div  class="row"><footer *ngIf="loginService.isUserAuthorised()"></footer></div> 
   </div>
 </div>

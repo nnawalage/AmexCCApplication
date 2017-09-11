@@ -10,24 +10,24 @@
     </div>
     <br />
     <div>
-        <form #crediCardForm="ngForm" (ngSubmit)="onSubmit(crediCardForm.value)">
+        <form  [formGroup]="ccForm"  (ngSubmit)="onSubmit(ccForm.value)">
             <div class="form-group">
                 <div class="col-md-3">
                     <label for="txtNameInFull">Name in Full</label>
                 </div>
                 <div class="col-md-3">
-                    <input [(ngModel)]="txtNameInFull" type="text" name="txtNameInFull" class="form-control" />
+                    <input id="txtNameInFull" formControlName="nameInFull" type="text" class="form-control" />
                 </div>
 
                 <div class="col-md-3">
-                    <label for="txtPassword">Display Name</label>
+                    <label for="txtDisplayName">Display Name</label>
                 </div>
 
                 <div class="col-md-3">
-                    <input [(ngModel)]="txtDisplayName" type="text" name="txtDisplayName" required class="form-control" />
+                    <input id="txtDisplayName" formControlName="displayName"  type="text" class="form-control" />
                 </div>
             </div>
-
+<!-- 
             <div class="form-group">
                 <div class="col-md-3">
                     <label for="txtNIC">NIC</label>
@@ -165,10 +165,10 @@
                 <div class="col-md-3">
                     <input [(ngModel)]="txtSalary" type="text" name="txtSalary" required class="form-control" />
                 </div>
-            </div>
+            </div> -->
 
             <div class="rows">
-                <button type="submit">Save</button>
+                <button [disabled]="!ccForm.valid" class="btn btn-primary" type="submit">Save</button>
             </div>
 
         </form>

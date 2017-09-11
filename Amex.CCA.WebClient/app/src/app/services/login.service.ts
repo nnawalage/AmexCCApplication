@@ -6,28 +6,26 @@ import { IToken } from "../models/token";
 
 @Injectable()
 export class LoginService {
+    loggedUser: User = null;
 
     constructor(private http: Http) {
 
     }
 
-    IsUserAuthorised():boolean {
+    isUserAuthorised(): boolean {
         let token = sessionStorage.getItem('access-token');
         return !!token;
     }
 
-    GetUser(user: User): Observable<IToken> {
+    loginUser(user: User): Observable<IToken> {
         let url = 'http://localhost:8947/Token';
-        //let url = 'http://localhost:8947/api/values';
         let grantType: string = 'password';
         let creds: string = `grant_type=${grantType}&userName=${user.UserName}&password=${user.PassWord}`;
         let headers: any = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        //headers.append('Content-Type', 'application/json');
         let options = new RequestOptions({ headers: headers });
 
         return this.http.post(url, creds, options).map(
-        //return this.http.post(url, "5", options).map(
             (response: Response) => {
                 let res: any = response.json();
                 let token: IToken = {
@@ -39,6 +37,32 @@ export class LoginService {
                 //console.log(response);
             }).catch(this.handleError);
     }
+    // isUserAuthorised(): boolean {
+    //     return !!this.loggedUser;
+    // }
+
+    // loginUser(user: User): Observable<any> {
+    //     let url = 'http://localhost:8947/Token';
+    //     let grantType: string = 'password';
+    //     let creds: string = `grant_type=${grantType}&userName=${user.UserName}&password=${user.PassWord}`;
+    //     let headers: any = new Headers();
+    //     headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    //     let options = new RequestOptions({ headers: headers });
+
+    //     return this.http.post(url, creds, options).map(
+    //         (response: Response) => {
+    //             let res: any = response.json();
+    //             let user: User = {
+    //                 UserName: res['userName']
+    //             };
+    //             this.loggedUser = user;
+    //             return user;
+    //             //console.log(response);
+    //         }).catch((error) => {
+    //             return Observable.of(false);
+    //         });
+    // }
+
 
     private handleError(error: Response) {
         console.log(error);

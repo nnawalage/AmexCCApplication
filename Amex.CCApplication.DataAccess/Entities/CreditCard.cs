@@ -16,7 +16,7 @@ namespace Amex.CCA.DataAccess.Entities
         [Required]
         public string FullName { get; set; }
         [Required]
-        public string DispalayName { get; set; }
+        public string DisplayName { get; set; }
         [Required]
         public string Nic { get; set; }
 
