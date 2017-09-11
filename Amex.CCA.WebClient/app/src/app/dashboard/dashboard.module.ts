@@ -12,7 +12,6 @@ import { DashboardComponent } from './dashboard.component';
          DashboardComponent
     ],
     providers: [
-        {provide:'Foo',useValue:Foo}
     ]
 })
 
@@ -20,6 +19,4 @@ import { DashboardComponent } from './dashboard.component';
 export class DashboardModule {
 
 }
- function Foo(){
-    return true;
-}
+ 
