@@ -27,9 +27,9 @@ namespace Amex.CCA.DataAccess.Entities
         public string MobilePhone { get; set; }
         [Required]
         public string HomePhone { get; set; }
-        [Required]
+
         public string OfficePhone { get; set; }
-        [Required]
+
         public string Email { get; set; }
         [Required]
         public string Employer { get; set; }
@@ -42,16 +42,16 @@ namespace Amex.CCA.DataAccess.Entities
 
         public DateTime ? CardExpiryDate { get; set; }
 
-        public int Cvv { get; set; }
+        public int ? Cvv { get; set; }
 
-        public decimal CardLimit { get; set; }
+        public decimal ? CardLimit { get; set; }
 
-        public decimal CashLimit { get; set; }
+        public decimal ? CashLimit { get; set; }
 
         [Required]
         public string RequestedBy { get; set; }
         
-        public string Note { get; set; }
+        public string Note {  get; set; }
 
         [Required]
         public virtual CardType CardType { get; set; }

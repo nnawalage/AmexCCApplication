@@ -157,6 +157,10 @@
     <Compile Include="Migrations\201709040626007_varcharcolumn1.Designer.cs">
       <DependentUpon>201709040626007_varcharcolumn1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709110946302_NullableTypesAdded.cs" />
+    <Compile Include="Migrations\201709110946302_NullableTypesAdded.Designer.cs">
+      <DependentUpon>201709110946302_NullableTypesAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -233,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709040626007_varcharcolumn1.resx">
       <DependentUpon>201709040626007_varcharcolumn1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709110946302_NullableTypesAdded.resx">
+      <DependentUpon>201709110946302_NullableTypesAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
