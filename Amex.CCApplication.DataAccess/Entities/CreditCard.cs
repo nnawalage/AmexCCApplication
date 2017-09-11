@@ -36,6 +36,8 @@ namespace Amex.CCA.DataAccess.Entities
         [Required]
         public decimal Salary { get; set; }
 
+        public string JobTitle { get; set; }
+
         public string CreditCardNumber { get; set; }
 
         public DateTime ? BillingDate { get; set; }

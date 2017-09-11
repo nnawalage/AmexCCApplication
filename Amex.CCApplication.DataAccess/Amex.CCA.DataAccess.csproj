@@ -161,6 +161,10 @@
     <Compile Include="Migrations\201709110946302_NullableTypesAdded.Designer.cs">
       <DependentUpon>201709110946302_NullableTypesAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709111137423_jobtitleAdded.cs" />
+    <Compile Include="Migrations\201709111137423_jobtitleAdded.Designer.cs">
+      <DependentUpon>201709111137423_jobtitleAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -240,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709110946302_NullableTypesAdded.resx">
       <DependentUpon>201709110946302_NullableTypesAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709111137423_jobtitleAdded.resx">
+      <DependentUpon>201709111137423_jobtitleAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
