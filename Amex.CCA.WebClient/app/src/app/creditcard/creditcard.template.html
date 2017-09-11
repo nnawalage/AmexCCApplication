@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Credit Card Here</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    Create / Update Credit Card Info
+    <div>
+        <form #crediCardForm="ngForm" (ngSubmit)="onSubmit(crediCardForm.value)">
+            <div class="rows">
+                <div class="col-md-6">
+                    <label for="txtNameInFull">Name in Full</label>
+                </div>
+                <div class="col-md-6">
+                    <input [(ngModel)]="txtNameInFull" type="text" name="txtNameInFull" />
+                </div>
+            </div>
+
+            <label for="txtPassword">Display Name</label>
+            <input [(ngModel)]="txtDisplayName" type="text" name="txtDisplayName" required />
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</body>
+</html>

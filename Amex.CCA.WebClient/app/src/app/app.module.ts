@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { appRoutes } from './routes';
 import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/shared.module';
+
 import {
   NavBarComponent,
   AuthGuard,
-  LoginService
+  LoginService,
+  CrediCardService
 } from './index';
 
 // import { LoginService } from './services/login.service';
@@ -28,7 +30,7 @@ export function Foo() {
   declarations: [
     AppComponent, NavBarComponent
   ],
-  providers: [LoginService,AuthGuard
+  providers: [LoginService, AuthGuard, CrediCardService
   ],
   bootstrap: [AppComponent]
 })

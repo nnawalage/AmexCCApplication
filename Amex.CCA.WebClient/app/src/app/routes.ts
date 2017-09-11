@@ -4,5 +4,6 @@ import { AuthGuard } from "./index";
 export const appRoutes: Routes = [
     { path: 'dashboard', canActivate: [AuthGuard], loadChildren: './dashboard/dashboard.module#DashboardModule' },
     { path: 'user', canActivate: [AuthGuard], loadChildren: './user/user.module#UserModule' },
-    { path: 'login', loadChildren: './login/login.module#LoginModule' }
+    { path: 'login', loadChildren: './login/login.module#LoginModule' },
+    { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' }
 ]
