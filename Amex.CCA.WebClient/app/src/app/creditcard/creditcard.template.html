@@ -5,21 +5,172 @@
     <meta charset="utf-8" />
 </head>
 <body>
-    Create / Update Credit Card Info
+    <div class="rows">
+        Create / Update Credit Card Info
+    </div>
+    <br />
     <div>
         <form #crediCardForm="ngForm" (ngSubmit)="onSubmit(crediCardForm.value)">
-            <div class="rows">
-                <div class="col-md-6">
+            <div class="form-group">
+                <div class="col-md-3">
                     <label for="txtNameInFull">Name in Full</label>
                 </div>
-                <div class="col-md-6">
-                    <input [(ngModel)]="txtNameInFull" type="text" name="txtNameInFull" />
+                <div class="col-md-3">
+                    <input [(ngModel)]="txtNameInFull" type="text" name="txtNameInFull" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="txtPassword">Display Name</label>
+                </div>
+
+                <div class="col-md-3">
+                    <input [(ngModel)]="txtDisplayName" type="text" name="txtDisplayName" required class="form-control" />
                 </div>
             </div>
 
-            <label for="txtPassword">Display Name</label>
-            <input [(ngModel)]="txtDisplayName" type="text" name="txtDisplayName" required />
-            <button type="submit">Save</button>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label for="txtNIC">NIC</label>
+                </div>
+                <div class="col-md-3">
+                    <input [(ngModel)]="txtNIC" type="text" name="txtNIC" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="txtPassport">Passport</label>
+                </div>
+
+                <div class="col-md-3">
+                    <input [(ngModel)]="txtPassport" type="text" name="txtPassport" required class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label for="txtAddress">Address</label>
+                </div>
+                <div class="col-md-3">
+                    <input [(ngModel)]="txtAddress" type="text" name="txtAddress" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="txtMobile">Mobile</label>
+                </div>
+
+                <div class="col-md-3">
+                    <input [(ngModel)]="txtMobile" type="text" name="txtMobile" required class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label for="txtNIC">Home Phone</label>
+                </div>
+                <div class="col-md-3">
+                    <input [(ngModel)]="txtHome" type="text" name="txtHome" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="txtOffice">Office Phone</label>
+                </div>
+
+                <div class="col-md-3">
+                    <input [(ngModel)]="txtOffice" type="text" name="txtOffice" required class="form-control" />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label for="txtEmail">Email</label>
+                </div>
+                <div class="col-md-3">
+                    <input [(ngModel)]="txtEmail" type="text" name="txtEmail" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="txtEmployer">Employer</label>
+                </div>
+
+                <div class="col-md-3">
+                    <input [(ngModel)]="txtEmployer" type="text" name="txtEmployer" required class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label for="txtSalary">Salary</label>
+                </div>
+                <div class="col-md-3">
+                    <input [(ngModel)]="txtSalary" type="text" name="txtSalary" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="txtJobTitle">Job Title</label>
+                </div>
+
+                <div class="col-md-3">
+                    <input [(ngModel)]="txtJobTitle" type="text" name="txtJobTitle" required class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label for="txtCardLimit">Card Limit</label>
+                </div>
+                <div class="col-md-3">
+                    <input [(ngModel)]="txtCardLimit" type="text" name="txtCardLimit" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="txtCashLimit">Cach Limit</label>
+                </div>
+
+                <div class="col-md-3">
+                    <input [(ngModel)]="txtCashLimit" type="text" name="txtCashLimit" required class="form-control" />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label for="ddlCardType">Card Type</label>
+                </div>
+                <div class="col-md-3">
+                    <input [(ngModel)]="ddlCardType" type="text" name="ddlCardType" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="ddlNationality">Nationality</label>
+                </div>
+
+                <div class="col-md-3">
+                    <input [(ngModel)]="ddlNationality" type="text" name="ddlNationality" required class="form-control" />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label for="txtNote">Note</label>
+                </div>
+                <div class="col-md-3">
+                    <input [(ngModel)]="txtNote" type="text" name="txtNote" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="txtSalary">Salary</label>
+                </div>
+
+                <div class="col-md-3">
+                    <input [(ngModel)]="txtSalary" type="text" name="txtSalary" required class="form-control" />
+                </div>
+            </div>
+
+            <div class="rows">
+                <button type="submit">Save</button>
+            </div>
+
         </form>
     </div>
 </body>
