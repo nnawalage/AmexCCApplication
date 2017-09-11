@@ -97,6 +97,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\src\app\creditcard\creditcard.template.html" />
     <Content Include="app\src\app\login\login.template.html" />
     <Content Include="app\src\app\shared\footer.template.html" />
     <Content Include="app\src\app\shared\header.template.html" />
@@ -168,6 +169,10 @@
     <TypeScriptCompile Include="app\src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="app\src\app\app.component.ts" />
     <TypeScriptCompile Include="app\src\app\app.module.ts" />
+    <TypeScriptCompile Include="app\src\app\creditcard\creditcard.component.ts" />
+    <TypeScriptCompile Include="app\src\app\creditcard\creditcard.module.ts" />
+    <TypeScriptCompile Include="app\src\app\creditcard\creditcard.routes.ts" />
+    <TypeScriptCompile Include="app\src\app\creditcard\index.ts" />
     <TypeScriptCompile Include="app\src\app\dashboard\dashboard.component.ts" />
     <TypeScriptCompile Include="app\src\app\dashboard\dashboard.module.ts" />
     <TypeScriptCompile Include="app\src\app\dashboard\dashboard.routes.ts" />
@@ -175,11 +180,13 @@
     <TypeScriptCompile Include="app\src\app\index.ts" />
     <TypeScriptCompile Include="app\src\app\login\login.component.ts" />
     <TypeScriptCompile Include="app\src\app\login\login.module.ts" />
+    <TypeScriptCompile Include="app\src\app\models\creditcard.ts" />
     <TypeScriptCompile Include="app\src\app\models\token.ts" />
     <TypeScriptCompile Include="app\src\app\models\user.ts" />
     <TypeScriptCompile Include="app\src\app\nav-bar\index.ts" />
     <TypeScriptCompile Include="app\src\app\nav-bar\navbar.component.ts" />
     <TypeScriptCompile Include="app\src\app\routes.ts" />
+    <TypeScriptCompile Include="app\src\app\services\creditcard.service.ts" />
     <TypeScriptCompile Include="app\src\app\services\index.ts" />
     <TypeScriptCompile Include="app\src\app\services\login.service.ts" />
     <TypeScriptCompile Include="app\src\app\services\router-guard.service.ts" />
@@ -206,6 +213,7 @@
     <Content Include="app\src\app\user\edit-profile.styles.scss" />
     <Content Include="app\src\app\login\login.styles.scss" />
     <Content Include="app\src\app\assets\css\common.styles.scss" />
+    <Content Include="app\src\app\creditcard\creditcard.styles.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

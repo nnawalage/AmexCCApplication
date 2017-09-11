@@ -18,13 +18,16 @@ export class LoginService {
 
     GetUser(user: User): Observable<IToken> {
         let url = 'http://localhost:8947/Token';
+        //let url = 'http://localhost:8947/api/values';
         let grantType: string = 'password';
         let creds: string = `grant_type=${grantType}&userName=${user.UserName}&password=${user.PassWord}`;
         let headers: any = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        //headers.append('Content-Type', 'application/json');
         let options = new RequestOptions({ headers: headers });
 
         return this.http.post(url, creds, options).map(
+        //return this.http.post(url, "5", options).map(
             (response: Response) => {
                 let res: any = response.json();
                 let token: IToken = {
@@ -33,7 +36,7 @@ export class LoginService {
                     UserName: res['userName']
                 };
                 return token;
-
+                //console.log(response);
             }).catch(this.handleError);
     }
 
