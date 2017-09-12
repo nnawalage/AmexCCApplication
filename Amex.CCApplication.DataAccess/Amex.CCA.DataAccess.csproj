@@ -166,6 +166,14 @@
     <Compile Include="Migrations\201709111137423_jobtitleAdded.Designer.cs">
       <DependentUpon>201709111137423_jobtitleAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709120733173_cctabledrop.cs" />
+    <Compile Include="Migrations\201709120733173_cctabledrop.Designer.cs">
+      <DependentUpon>201709120733173_cctabledrop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709120749120_cctabledrop1.cs" />
+    <Compile Include="Migrations\201709120749120_cctabledrop1.Designer.cs">
+      <DependentUpon>201709120749120_cctabledrop1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -248,6 +256,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709111137423_jobtitleAdded.resx">
       <DependentUpon>201709111137423_jobtitleAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709120733173_cctabledrop.resx">
+      <DependentUpon>201709120733173_cctabledrop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709120749120_cctabledrop1.resx">
+      <DependentUpon>201709120749120_cctabledrop1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -12,6 +12,8 @@ using Amex.CCA.DataAccess;
 using Amex.CCA.DataAccess.Entities;
 using System.Web.Http.Cors;
 using Amex.CCA.BusinessServices;
+using Amex.CCA.WebApi.Models;
+using Amex.CCA.BusinessServices.BusinessModels;
 
 namespace Amex.CCA.WebApi.Controllers
 {
@@ -78,24 +80,22 @@ namespace Amex.CCA.WebApi.Controllers
         }
 
         // POST: api/CreditCards
-        [ResponseType(typeof(CreditCard))]
-        public IHttpActionResult PostCreditCard(CreditCard creditCard)
+        [ResponseType(typeof(CreditCardEntity))]
+        public IHttpActionResult PostCreditCard(CreditCardEntity creditCard)
         {
             if (!ModelState.IsValid)
             {
-                return Ok();
-                //return BadRequest(ModelState);
+                //TODO:Handling Registration
+
+                //TODO:map view model to entity
+
+                //if successfully saved
+                if (creditCardBusinessService.SaveCreditCard(creditCard))
+                {
+                    return Ok("Successfully Created new credit card");
+                }
             }
 
-            //TODO:Handling Registration
-
-            //TODO:map view model to entity
-
-            //if successfully saved
-            if (creditCardBusinessService.SaveCreditCard(creditCard))
-            {
-                return Ok("Successfully Created new credit card");
-            }
             return BadRequest("Error occured while creating credit card");
         }
 

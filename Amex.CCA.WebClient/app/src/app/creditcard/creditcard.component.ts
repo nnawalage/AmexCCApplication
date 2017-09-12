@@ -46,7 +46,8 @@ export class CreditCardComponent implements OnInit {
     private onSubmit(creditCardFormValues: Object): void {
         console.log(this.ccForm.valid);
         debugger;
-        if (this.ccForm.valid) {
+       // if (this.ccForm.valid) {
+            debugger;
             let creditCard: CreditCard = {
                 FullName: creditCardFormValues['fullName'],
                 DisplayName: creditCardFormValues['displayName'],
@@ -62,8 +63,8 @@ export class CreditCardComponent implements OnInit {
                 JobTitle: creditCardFormValues['jobTitle'],
                 CardLimit: creditCardFormValues['cardLimit'],
                 CashLimit: creditCardFormValues['cashLimit'],
-                CardType: creditCardFormValues['cardType'],
-                Nationality: creditCardFormValues['nationality'],
+                CardTypeId: creditCardFormValues['cardType'],
+                NationalityId: creditCardFormValues['nationality'],
                 Note: creditCardFormValues['note']
             }
 
@@ -73,7 +74,7 @@ export class CreditCardComponent implements OnInit {
                 console.log('error when saving' + error);
             });
 
-        }
+        //}
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using Amex.CCA.DataAccess;
+﻿using Amex.CCA.BusinessServices.BusinessModels;
+using Amex.CCA.DataAccess;
 using Amex.CCA.DataAccess.Entities;
 
 namespace Amex.CCA.BusinessServices
@@ -12,8 +13,10 @@ namespace Amex.CCA.BusinessServices
         /// </summary>
         /// <param name="creditCard">credit card instance.</param>
         /// <returns></returns>
-        public bool SaveCreditCard(CreditCard creditCard)
+        public bool SaveCreditCard(CreditCardEntity creditCardEntity)
         {
+            CreditCard creditCard = new CreditCard();
+            
             //no id assigned to the new card entry
             if (creditCard.CreditCardId == 0)
             {
