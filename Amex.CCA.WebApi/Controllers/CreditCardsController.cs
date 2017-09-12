@@ -14,6 +14,10 @@ using System.Web.Http.Cors;
 using Amex.CCA.BusinessServices;
 using Amex.CCA.WebApi.Models;
 using Amex.CCA.BusinessServices.BusinessModels;
+using Microsoft.AspNet.Identity.Owin;
+using Amex.CCA.WebApi.Models;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
 
 namespace Amex.CCA.WebApi.Controllers
 {
@@ -80,22 +84,25 @@ namespace Amex.CCA.WebApi.Controllers
         }
 
         // POST: api/CreditCards
-        [ResponseType(typeof(CreditCardEntity))]
-        public IHttpActionResult PostCreditCard(CreditCardEntity creditCard)
+        [ResponseType(typeof(CreditCard))]
+        public async Task<IHttpActionResult> PostCreditCard(CreditCardEntity creditCard)
         {
             if (!ModelState.IsValid)
             {
-                //TODO:Handling Registration
-
-                //TODO:map view model to entity
-
-                //if successfully saved
-                if (creditCardBusinessService.SaveCreditCard(creditCard))
-                {
-                    return Ok("Successfully Created new credit card");
-                }
+                return Ok();
+                //return BadRequest(ModelState);
             }
 
+            //invoke method to register customer if customer is not already registered
+            if (!await RegisterNewCcUser(creditCard.Email))
+            {
+                return BadRequest("Error occured while registering user");
+            }
+            //if successfully saved
+            if (creditCardBusinessService.SaveCreditCard(creditCard))
+            {
+                return Ok("Successfully Created new credit card");
+            }
             return BadRequest("Error occured while creating credit card");
         }
 
@@ -127,6 +134,39 @@ namespace Amex.CCA.WebApi.Controllers
         private bool CreditCardExists(int id)
         {
             return db.CreditCards.Count(e => e.CreditCardId == id) > 0;
+        }
+
+
+        /// <summary>
+        /// Create new user account if the customer is a new user. 
+        /// This method will not perform any action if customer is already registered in the system.
+        /// </summary>
+        /// <param name="email">The email.</param>
+        /// <returns>[true] if customer already registered or new reistration successful.
+        /// [false] if new registration is unsuccessful</returns>
+        private async Task<bool> RegisterNewCcUser(string email)
+        {
+            bool operationResult = true;
+            var userManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            //check if user already exist
+            ApplicationUser user = await userManager.FindByEmailAsync(email);
+            //if new user 
+            if (user == null)
+            {
+                //register user with a dummy password
+                var newUser = new ApplicationUser() { UserName = email, Email = email };
+                IdentityResult result = await userManager.CreateAsync(newUser, Guid.NewGuid().ToString());
+                //if user creation unsuccessfull return error
+                if (!result.Succeeded)
+                {
+                    operationResult = false;
+                }
+                else
+                {
+                    //TODO: Send email to customer for password reset
+                }
+            }
+            return operationResult;
         }
     }
 }

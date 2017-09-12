@@ -3,7 +3,7 @@ using System.Data.Entity;
 
 namespace Amex.CCA.DataAccess
 {
-    public class AmexDataAccessHelper
+    public class CreditCardDataAccessHelper
     {
         /// <summary>
         /// Adds the credit card to the database.

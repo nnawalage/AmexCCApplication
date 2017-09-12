@@ -4,6 +4,15 @@
         <name>Amex.CCA.WebApi</name>
     </assembly>
     <members>
+        <member name="M:Amex.CCA.WebApi.Controllers.CreditCardsController.RegisterNewCcUser(System.String)">
+            <summary>
+            Create new user account if the customer is a new user. 
+            This method will not perform any action if customer is already registered in the system.
+            </summary>
+            <param name="email">The email.</param>
+            <returns>[true] if customer already registered or new reistration successful.
+            [false] if new registration is unsuccessful</returns>
+        </member>
         <member name="M:Amex.CCA.WebApi.Controllers.ValuesController.Get">
             <summary>
             This is how we create a documentation
