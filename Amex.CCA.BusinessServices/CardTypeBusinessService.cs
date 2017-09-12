@@ -12,8 +12,8 @@ namespace Amex.CCA.BusinessServices
     {
         public IList<CardTypeEntity> GetAllCardTypes()
         {
-            var nationalities = new CardTypeDataAccessHelper().GetAllActiveCardTypes();
-            return nationalities.Select(n => new CardTypeEntity()
+            var cardTypes = new CardTypeDataAccessHelper().GetAllActiveCardTypes();
+            return cardTypes.Select(n => new CardTypeEntity()
             {
                 Name = n.Name,
                 CardTypeId = n.CardTypeId
