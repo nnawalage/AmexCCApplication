@@ -22,17 +22,49 @@ export class CreditCardComponent implements OnInit {
 
     ngOnInit() {
         this.ccForm = this._fb.group({
-            nameInFull: ['', [Validators.required]],
-            displayName: ['',Validators.required]
+            fullName: ['', [Validators.required]],
+            displayName: ['', Validators.required],
+            nic: ['', Validators.required],
+            passport: ['', Validators.required],
+            address: ['', Validators.required],
+            mobilePhone: ['', Validators.required],
+            homePhone: ['', Validators.required],
+            officePhone: [''],
+            email: ['', Validators.required],
+            employer: ['', Validators.required],
+            salary: ['', Validators.required],
+            jobTitle: ['', Validators.required],
+            cardLimit: [''],
+            cashLimit: [''],
+            note: [''],
+            cardType: ['', Validators.required],
+            nationality: ['', Validators.required],
+            cardStatus: ['', Validators.required]
         });
     }
 
     private onSubmit(creditCardFormValues: Object): void {
         console.log(this.ccForm.valid);
+        debugger;
         if (this.ccForm.valid) {
             let creditCard: CreditCard = {
-                FullName: creditCardFormValues['nameInFull'],
-                DisplayName: creditCardFormValues['displayName']
+                FullName: creditCardFormValues['fullName'],
+                DisplayName: creditCardFormValues['displayName'],
+                Nic: creditCardFormValues['nic'],
+                Passport: creditCardFormValues['passport'],
+                Address: creditCardFormValues['address'],
+                MobilePhone: creditCardFormValues['mobilePhone'],
+                HomePhone: creditCardFormValues['homePhone'],
+                OfficePhone: creditCardFormValues['officePhone'],
+                Email: creditCardFormValues['email'],
+                Employer: creditCardFormValues['employer'],
+                Salary: creditCardFormValues['salary'],
+                JobTitle: creditCardFormValues['jobTitle'],
+                CardLimit: creditCardFormValues['cardLimit'],
+                CashLimit: creditCardFormValues['cashLimit'],
+                CardType: creditCardFormValues['cardType'],
+                Nationality: creditCardFormValues['nationality'],
+                Note: creditCardFormValues['note']
             }
 
             this.crediCardService.SaveCreditCard(creditCard).subscribe((res: any) => {

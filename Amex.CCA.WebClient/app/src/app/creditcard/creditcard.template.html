@@ -13,10 +13,10 @@
         <form  [formGroup]="ccForm"  (ngSubmit)="onSubmit(ccForm.value)">
             <div class="form-group">
                 <div class="col-md-3">
-                    <label for="txtNameInFull">Name in Full</label>
+                    <label for="txtFullName">Name in Full</label>
                 </div>
                 <div class="col-md-3">
-                    <input id="txtNameInFull" formControlName="nameInFull" type="text" class="form-control" />
+                    <input id="txtFullName" formControlName="fullName" type="text" class="form-control" />
                 </div>
 
                 <div class="col-md-3">
@@ -24,16 +24,16 @@
                 </div>
 
                 <div class="col-md-3">
-                    <input id="txtDisplayName" formControlName="displayName"  type="text" class="form-control" />
+                    <input id="txtDisplayName" formControlName="displayName" type="text" class="form-control" />
                 </div>
             </div>
-<!-- 
+ 
             <div class="form-group">
                 <div class="col-md-3">
-                    <label for="txtNIC">NIC</label>
+                    <label for="txtNic">NIC</label>
                 </div>
                 <div class="col-md-3">
-                    <input [(ngModel)]="txtNIC" type="text" name="txtNIC" class="form-control" />
+                    <input id="txtNic" type="text" formControlName="nic" class="form-control" />
                 </div>
 
                 <div class="col-md-3">
@@ -41,16 +41,16 @@
                 </div>
 
                 <div class="col-md-3">
-                    <input [(ngModel)]="txtPassport" type="text" name="txtPassport" required class="form-control" />
+                    <input id="txtPassport" type="text" formControlName="passport" class="form-control" />
                 </div>
             </div>
-
+            
             <div class="form-group">
                 <div class="col-md-3">
                     <label for="txtAddress">Address</label>
                 </div>
                 <div class="col-md-3">
-                    <input [(ngModel)]="txtAddress" type="text" name="txtAddress" class="form-control" />
+                    <input id="txtAddress" type="text" formControlName="address" class="form-control" />
                 </div>
 
                 <div class="col-md-3">
@@ -58,16 +58,16 @@
                 </div>
 
                 <div class="col-md-3">
-                    <input [(ngModel)]="txtMobile" type="text" name="txtMobile" required class="form-control" />
+                    <input id="txtMobile" type="text" formControlName="mobilePhone" class="form-control" />
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-3">
-                    <label for="txtNIC">Home Phone</label>
+                    <label for="txtHomePhone">Home Phone</label>
                 </div>
                 <div class="col-md-3">
-                    <input [(ngModel)]="txtHome" type="text" name="txtHome" class="form-control" />
+                    <input id="txtHomePhone" type="text" formControlName="homePhone" class="form-control" />
                 </div>
 
                 <div class="col-md-3">
@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <input [(ngModel)]="txtOffice" type="text" name="txtOffice" required class="form-control" />
+                    <input id="txtOffice" type="text" formControlName="officePhone" class="form-control" />
                 </div>
             </div>
 
@@ -85,7 +85,7 @@
                     <label for="txtEmail">Email</label>
                 </div>
                 <div class="col-md-3">
-                    <input [(ngModel)]="txtEmail" type="text" name="txtEmail" class="form-control" />
+                    <input id="txtEmail" type="text" formControlName="email" class="form-control" />
                 </div>
 
                 <div class="col-md-3">
@@ -93,7 +93,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <input [(ngModel)]="txtEmployer" type="text" name="txtEmployer" required class="form-control" />
+                    <input id="txtEmployer" type="text" formControlName="employer" class="form-control" />
                 </div>
             </div>
 
@@ -102,7 +102,7 @@
                     <label for="txtSalary">Salary</label>
                 </div>
                 <div class="col-md-3">
-                    <input [(ngModel)]="txtSalary" type="text" name="txtSalary" class="form-control" />
+                    <input id="txtSalary" type="text" formControlName="salary" class="form-control" />
                 </div>
 
                 <div class="col-md-3">
@@ -110,7 +110,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <input [(ngModel)]="txtJobTitle" type="text" name="txtJobTitle" required class="form-control" />
+                    <input id="txtJobTitle" type="text" formControlName="jobTitle" class="form-control" />
                 </div>
             </div>
 
@@ -119,7 +119,7 @@
                     <label for="txtCardLimit">Card Limit</label>
                 </div>
                 <div class="col-md-3">
-                    <input [(ngModel)]="txtCardLimit" type="text" name="txtCardLimit" class="form-control" />
+                    <input id="txtCardLimit" type="text" formControlName="cardLimit" class="form-control" />
                 </div>
 
                 <div class="col-md-3">
@@ -127,7 +127,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <input [(ngModel)]="txtCashLimit" type="text" name="txtCashLimit" required class="form-control" />
+                    <input id="txtCashLimit" type="text" formControlName="cashLimit" class="form-control" />
                 </div>
             </div>
 
@@ -137,7 +137,7 @@
                     <label for="ddlCardType">Card Type</label>
                 </div>
                 <div class="col-md-3">
-                    <input [(ngModel)]="ddlCardType" type="text" name="ddlCardType" class="form-control" />
+                    <input id="ddlCardType" type="text" formControlName="cardType" class="form-control" />
                 </div>
 
                 <div class="col-md-3">
@@ -145,7 +145,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <input [(ngModel)]="ddlNationality" type="text" name="ddlNationality" required class="form-control" />
+                    <input id="ddlNationality" type="text" formControlName="nationality" class="form-control" />
                 </div>
             </div>
 
@@ -155,20 +155,14 @@
                     <label for="txtNote">Note</label>
                 </div>
                 <div class="col-md-3">
-                    <input [(ngModel)]="txtNote" type="text" name="txtNote" class="form-control" />
+                    <input id="txtNote" type="text" formControlName="note" class="form-control" />
                 </div>
 
-                <div class="col-md-3">
-                    <label for="txtSalary">Salary</label>
-                </div>
-
-                <div class="col-md-3">
-                    <input [(ngModel)]="txtSalary" type="text" name="txtSalary" required class="form-control" />
-                </div>
-            </div> -->
+  
+            </div>
 
             <div class="rows">
-                <button [disabled]="!ccForm.valid" class="btn btn-primary" type="submit">Save</button>
+                <button [disabled]="ccForm.valid" class="btn btn-primary" type="submit">Save</button>
             </div>
 
         </form>
