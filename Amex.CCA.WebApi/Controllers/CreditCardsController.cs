@@ -12,6 +12,8 @@ using Amex.CCA.DataAccess;
 using Amex.CCA.DataAccess.Entities;
 using System.Web.Http.Cors;
 using Amex.CCA.BusinessServices;
+using Amex.CCA.WebApi.Models;
+using Amex.CCA.BusinessServices.BusinessModels;
 using Microsoft.AspNet.Identity.Owin;
 using Amex.CCA.WebApi.Models;
 using System.Threading.Tasks;

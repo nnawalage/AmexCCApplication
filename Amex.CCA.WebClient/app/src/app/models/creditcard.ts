@@ -20,7 +20,7 @@
     CashLimit: number;
     //RequestedBy: string;
     Note: string;
-    CardType: number;
-    Nationality: number;
+    CardTypeId: number;
+    NationalityId: number;
     //CardStatus: number;
 }
