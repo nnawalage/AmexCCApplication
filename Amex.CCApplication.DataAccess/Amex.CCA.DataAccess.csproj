@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AmexDataAccessHelper.cs" />
     <Compile Include="AmexDbContext.cs" />
     <Compile Include="Entities\AmexModelBase.cs" />
     <Compile Include="Entities\Attachment.cs" />

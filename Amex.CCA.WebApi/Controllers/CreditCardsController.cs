@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 using Amex.CCA.DataAccess;
 using Amex.CCA.DataAccess.Entities;
 using System.Web.Http.Cors;
+using Amex.CCA.BusinessServices;
 
 namespace Amex.CCA.WebApi.Controllers
 {
@@ -18,6 +19,8 @@ namespace Amex.CCA.WebApi.Controllers
     public class CreditCardsController : ApiController
     {
         private AmexDbContext db = new AmexDbContext();
+
+        private CreditCardBusinessService creditCardBusinessService= new CreditCardBusinessService();
 
         // GET: api/CreditCards
         public IQueryable<CreditCard> GetCreditCards()
@@ -84,10 +87,16 @@ namespace Amex.CCA.WebApi.Controllers
                 //return BadRequest(ModelState);
             }
 
-            db.CreditCards.Add(creditCard);
-            db.SaveChanges();
+            //TODO:Handling Registration
 
-            return CreatedAtRoute("DefaultApi", new { id = creditCard.CreditCardId }, creditCard);
+            //TODO:map view model to entity
+
+            //if successfully saved
+            if (creditCardBusinessService.SaveCreditCard(creditCard))
+            {
+                return Ok("Successfully Created new credit card");
+            }
+            return BadRequest("Error occured while creating credit card");
         }
 
         // DELETE: api/CreditCards/5
