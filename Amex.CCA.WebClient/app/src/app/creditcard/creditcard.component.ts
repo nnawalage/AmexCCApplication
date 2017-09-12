@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { CrediCardService } from '../services/creditcard.service'
 import { CreditCard } from "../models/creditcard";
+import { ICardType } from "../models/cardtype";
 
 
 @Component({
@@ -12,7 +13,7 @@ import { CreditCard } from "../models/creditcard";
 export class CreditCardComponent implements OnInit {
 
     private ccForm: FormGroup;
-    private cardTypes: string[];
+     cardTypes: ICardType[];
 
     constructor(private router: Router, private crediCardService: CrediCardService, private _fb: FormBuilder) {
     }
@@ -39,11 +40,13 @@ export class CreditCardComponent implements OnInit {
         });
         this.loadCardTypes();
     }
+
     private loadCardTypes(): void {
-        this.crediCardService.getCardTypes().subscribe((cardTypes:string[])=>{
-            this.cardTypes=cardTypes;
-        })
+        this.crediCardService.getCardTypes().subscribe((cardTypes: ICardType[]) => {
+            this.cardTypes = cardTypes;
+        }, error => console.log(error));
     }
+
     private onSubmit(creditCardFormValues: Object): void {
         console.log(this.ccForm.valid);
         if (this.ccForm.valid) {

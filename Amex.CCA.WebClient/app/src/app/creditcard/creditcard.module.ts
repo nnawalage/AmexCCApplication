@@ -1,4 +1,5 @@
-﻿import { NgModule } from '@angular/core';;
+﻿import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreditCardComponent } from './creditcard.component';
@@ -9,7 +10,7 @@ const crediCardRoute: Routes = [
 ]
 
 @NgModule({
-    imports: [
+    imports: [CommonModule,
         ReactiveFormsModule,
         RouterModule.forChild(crediCardRoute)
     ],

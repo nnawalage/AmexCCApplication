@@ -175,6 +175,10 @@
     <Compile Include="Migrations\201709120749120_cctabledrop1.Designer.cs">
       <DependentUpon>201709120749120_cctabledrop1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709121155420_changes.cs" />
+    <Compile Include="Migrations\201709121155420_changes.Designer.cs">
+      <DependentUpon>201709121155420_changes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NationalityDataAccessHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -264,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709120749120_cctabledrop1.resx">
       <DependentUpon>201709120749120_cctabledrop1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709121155420_changes.resx">
+      <DependentUpon>201709121155420_changes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -2,7 +2,8 @@
 import { CreditCard } from '../models/creditcard';
 import { Observable } from 'rxjs';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-//import { IToken } from "../models/token";
+import { ICardType } from "../models/cardtype";
+
 
 @Injectable()
 export class CrediCardService {
@@ -11,9 +12,13 @@ export class CrediCardService {
 
     }
 
-    getCardType(): Observable<string[]> {
-        return this.http.get('http://localhost:8947/api/getCardType').map((res: Response) => {
-            return <string[]>res.json();
+    getCardTypes(): Observable<ICardType[]> {
+        return this.http.get('http://localhost:8947/api/CardType').map((res: Response) => {
+            let xx: any = { a: 1, b: 's', Name1: 'name' };
+            // let aa: ICardType = <ICardType>xx;
+            // let aa: ICardType = xx as ICardType;
+            
+            return <ICardType[]>res.json();
         }).catch(this.handleError);
 
     }
