@@ -5,8 +5,6 @@ namespace Amex.CCA.DataAccess
 {
     public class AmexDataAccessHelper
     {
-
-
         /// <summary>
         /// Adds the credit card to the database.
         /// </summary>

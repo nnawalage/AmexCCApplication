@@ -30,6 +30,7 @@ namespace Amex.CCA.DataAccess.Entities
 
         public string OfficePhone { get; set; }
 
+        [Required]
         public string Email { get; set; }
         [Required]
         public string Employer { get; set; }
