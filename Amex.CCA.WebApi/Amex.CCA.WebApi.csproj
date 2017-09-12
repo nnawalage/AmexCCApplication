@@ -317,6 +317,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Amex.CCA.BusinessServices\Amex.CCA.BusinessServices.csproj">
+      <Project>{9477CB63-BD8C-4546-82C0-DC484F56A893}</Project>
+      <Name>Amex.CCA.BusinessServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Amex.CCApplication.DataAccess\Amex.CCA.DataAccess.csproj">
       <Project>{4326cc9d-f3b8-458e-9261-c990972ae1f4}</Project>
       <Name>Amex.CCA.DataAccess</Name>
