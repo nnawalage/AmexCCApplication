@@ -5,17 +5,14 @@ import { CrediCardService } from '../services/creditcard.service'
 import { CreditCard } from "../models/creditcard";
 
 
-
 @Component({
     templateUrl: './creditcard.template.html',
     styleUrls: ['./creditcard.styles.scss']
 })
 export class CreditCardComponent implements OnInit {
-    private ccForm: FormGroup;
-    // private nameInFull: FormControl;
-    // private displayName: FormControl;
 
-    private for
+    private ccForm: FormGroup;
+    private cardTypes: string[];
 
     constructor(private router: Router, private crediCardService: CrediCardService, private _fb: FormBuilder) {
     }
@@ -38,16 +35,18 @@ export class CreditCardComponent implements OnInit {
             cashLimit: [''],
             note: [''],
             cardType: ['', Validators.required],
-            nationality: ['', Validators.required],
-            cardStatus: ['', Validators.required]
+            nationality: ['', Validators.required]
         });
+        this.loadCardTypes();
     }
-
+    private loadCardTypes(): void {
+        this.crediCardService.getCardTypes().subscribe((cardTypes:string[])=>{
+            this.cardTypes=cardTypes;
+        })
+    }
     private onSubmit(creditCardFormValues: Object): void {
         console.log(this.ccForm.valid);
-        debugger;
-       // if (this.ccForm.valid) {
-            debugger;
+        if (this.ccForm.valid) {
             let creditCard: CreditCard = {
                 FullName: creditCardFormValues['fullName'],
                 DisplayName: creditCardFormValues['displayName'],
@@ -74,7 +73,8 @@ export class CreditCardComponent implements OnInit {
                 console.log('error when saving' + error);
             });
 
-        //}
+            //}
 
+        }
     }
 }

@@ -137,7 +137,11 @@
                     <label for="ddlCardType">Card Type</label>
                 </div>
                 <div class="col-md-3">
-                    <input id="ddlCardType" type="text" formControlName="cardType" class="form-control" />
+                    <input type="" id="ddlCardType" type="text" formControlName="cardType" class="form-control" />
+                    <select formNameControl="cardType" class="form-control" id="ddlCardType">
+                        <option *ngFor="ct of cardTypes"></option>
+                    </select>
+
                 </div>
 
                 <div class="col-md-3">
@@ -162,7 +166,7 @@
             </div>
 
             <div class="rows">
-                <button [disabled]="ccForm.valid" class="btn btn-primary" type="submit">Save</button>
+                <button [disabled]="!ccForm.valid" class="btn btn-primary" type="submit">Save</button>
             </div>
 
         </form>

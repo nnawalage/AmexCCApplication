@@ -11,6 +11,12 @@ export class CrediCardService {
 
     }
 
+    getCardType(): Observable<string[]> {
+        return this.http.get('http://localhost:8947/api/getCardType').map((res: Response) => {
+            return <string[]>res.json();
+        }).catch(this.handleError);
+
+    }
     SaveCreditCard(creditCard: CreditCard): Observable<any> {
         let url = 'http://localhost:8947/api/CreditCards';
         let headers = new Headers();
@@ -21,5 +27,10 @@ export class CrediCardService {
             .map(res => res.json());
     }
 
-  
+    private handleError(error: Response) {
+        console.log(error);
+        return Observable.throw(error.json() || 'Server error');
+    }
+
+
 }

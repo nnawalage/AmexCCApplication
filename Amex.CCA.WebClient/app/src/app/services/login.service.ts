@@ -43,5 +43,4 @@ export class LoginService {
         console.log(error);
         return Observable.throw(error.json() || 'Server error');
     }
-
 }
