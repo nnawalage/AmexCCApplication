@@ -6,7 +6,7 @@ namespace Amex.CCA.BusinessServices
 {
     public class CreditCardBusinessService
     {
-        private AmexDataAccessHelper dataAccessHelper = new AmexDataAccessHelper();
+        private CreditCardDataAccessHelper dataAccessHelper = new CreditCardDataAccessHelper();
 
         /// <summary>
         /// Create new Credit Card.

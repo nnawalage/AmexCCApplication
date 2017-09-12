@@ -57,7 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AmexDataAccessHelper.cs" />
+    <Compile Include="CardTypeDataAccessHelper.cs" />
+    <Compile Include="CreditCardDataAccessHelper.cs" />
     <Compile Include="AmexDbContext.cs" />
     <Compile Include="Entities\AmexModelBase.cs" />
     <Compile Include="Entities\Attachment.cs" />
@@ -175,6 +176,7 @@
       <DependentUpon>201709120749120_cctabledrop1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="NationalityDataAccessHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

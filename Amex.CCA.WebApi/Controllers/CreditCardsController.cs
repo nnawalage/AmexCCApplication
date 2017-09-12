@@ -85,7 +85,7 @@ namespace Amex.CCA.WebApi.Controllers
 
         // POST: api/CreditCards
         [ResponseType(typeof(CreditCard))]
-        public async Task<IHttpActionResult> PostCreditCard(CreditCard creditCard)
+        public async Task<IHttpActionResult> PostCreditCard(CreditCardEntity creditCard)
         {
             if (!ModelState.IsValid)
             {
