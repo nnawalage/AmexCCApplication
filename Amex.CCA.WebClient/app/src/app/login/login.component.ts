@@ -30,18 +30,6 @@ export class LoginComponent {
             //console.log('errCame' + error);
         });
 
-        // this.loginService.loginUser(user).subscribe((user: any) => {
-        //     if (!user) {
-        //         this.loginInvalid = true;
-        //     } else {
-        //         this.router.navigate(['dashboard/myWork']);
-        //     }
-
-        // }, error => {
-        //     //console.log('errCame' + error);
-        // });
-
-
     }
 
 
