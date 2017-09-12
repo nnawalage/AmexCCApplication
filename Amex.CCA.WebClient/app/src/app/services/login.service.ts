@@ -37,32 +37,7 @@ export class LoginService {
                 //console.log(response);
             }).catch(this.handleError);
     }
-    // isUserAuthorised(): boolean {
-    //     return !!this.loggedUser;
-    // }
-
-    // loginUser(user: User): Observable<any> {
-    //     let url = 'http://localhost:8947/Token';
-    //     let grantType: string = 'password';
-    //     let creds: string = `grant_type=${grantType}&userName=${user.UserName}&password=${user.PassWord}`;
-    //     let headers: any = new Headers();
-    //     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    //     let options = new RequestOptions({ headers: headers });
-
-    //     return this.http.post(url, creds, options).map(
-    //         (response: Response) => {
-    //             let res: any = response.json();
-    //             let user: User = {
-    //                 UserName: res['userName']
-    //             };
-    //             this.loggedUser = user;
-    //             return user;
-    //             //console.log(response);
-    //         }).catch((error) => {
-    //             return Observable.of(false);
-    //         });
-    // }
-
+   
 
     private handleError(error: Response) {
         console.log(error);
