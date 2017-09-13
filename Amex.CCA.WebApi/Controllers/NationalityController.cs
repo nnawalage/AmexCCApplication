@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace Amex.CCA.WebApi.Controllers
 {
+    //[Authorize]
     public class NationalityController : ApiController
     {
         // GET: api/Nationality

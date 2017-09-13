@@ -1,23 +1,20 @@
 ﻿using Amex.CCA.BusinessServices.BusinessModels;
 using Amex.CCA.DataAccess;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Amex.CCA.BusinessServices
 {
     public class CardTypeBusinessService
     {
+        /// <summary>
+        /// Gets all active card types.
+        /// </summary>
+        /// <returns>list of card types</returns>
         public IList<CardTypeEntity> GetAllCardTypes()
         {
             var cardTypes = new CardTypeDataAccessHelper().GetAllActiveCardTypes();
-            return cardTypes.Select(n => new CardTypeEntity()
-            {
-                Name = n.Name,
-                CardTypeId = n.CardTypeId
-            }).ToList();
+            return cardTypes.Select(cardType => BusinessModelMapper.MapToCardTypeEntity(cardType)).ToList();
         }
     }
 }

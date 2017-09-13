@@ -22,9 +22,8 @@ namespace Amex.CCA.BusinessServices
             creditCard.DisplayName = creditCardEntity.DisplayName;
             creditCard.Nic = creditCardEntity.Nic;
             creditCard.Address = creditCardEntity.Address;
-            //Todo set pending status.
             creditCard.CardStatusId = 1;//creditCardEntity.CardStatusId;
-            creditCard.CardTypeId = creditCardEntity.CardTypeId;
+            creditCard.CardTypeId = 1;//creditCardEntity.CardTypeId;
             creditCard.Email = creditCardEntity.Email;
             creditCard.Employer = creditCardEntity.Employer;
             creditCard.FullName = creditCardEntity.FullName;
@@ -34,7 +33,7 @@ namespace Amex.CCA.BusinessServices
             creditCard.OfficePhone = creditCardEntity.OfficePhone;
             creditCard.Passport = creditCardEntity.Passport;
             creditCard.Salary = creditCardEntity.Salary;
-            creditCard.CreatedBy = "pmd@tiqri.com";//creditCardEntity.CreatedBy;
+            creditCard.CreatedBy = creditCardEntity.CreatedBy;
             creditCard.CreatedTime = DateTime.Now;
            
             //no id assigned to the new card entry

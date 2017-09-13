@@ -9,6 +9,10 @@ namespace Amex.CCA.DataAccess
 {
     public class CardTypeDataAccessHelper
     {
+        /// <summary>
+        /// Gets all active card types.
+        /// </summary>
+        /// <returns>list of card types</returns>
         public IList<CardType> GetAllActiveCardTypes()
         {
             using (AmexDbContext dbContext = new AmexDbContext())
