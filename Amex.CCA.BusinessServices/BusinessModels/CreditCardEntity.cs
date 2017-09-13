@@ -41,8 +41,6 @@ namespace Amex.CCA.BusinessServices.BusinessModels
         public decimal? CardLimit { get; set; }
 
         public decimal? CashLimit { get; set; }
-        
-        public string RequestedBy { get; set; }
 
         public string Note { get; set; }
         
@@ -53,5 +51,7 @@ namespace Amex.CCA.BusinessServices.BusinessModels
         public int CardStatusId { get; set; }
 
         //public List<Attachment> Attachments { get; set; }
+
+        public string CreatedBy { get; set; }
     }
 }

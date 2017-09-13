@@ -179,6 +179,10 @@
     <Compile Include="Migrations\201709121155420_changes.Designer.cs">
       <DependentUpon>201709121155420_changes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709130535268_requestedByRemoved.cs" />
+    <Compile Include="Migrations\201709130535268_requestedByRemoved.Designer.cs">
+      <DependentUpon>201709130535268_requestedByRemoved.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NationalityDataAccessHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -271,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709121155420_changes.resx">
       <DependentUpon>201709121155420_changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709130535268_requestedByRemoved.resx">
+      <DependentUpon>201709130535268_requestedByRemoved.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

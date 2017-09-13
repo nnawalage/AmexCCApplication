@@ -51,9 +51,6 @@ namespace Amex.CCA.DataAccess.Entities
 
         public decimal? CashLimit { get; set; }
 
-        [Required]
-        public string RequestedBy { get; set; }
-
         public string Note { get; set; }
 
         public int CardTypeId { get; set; }

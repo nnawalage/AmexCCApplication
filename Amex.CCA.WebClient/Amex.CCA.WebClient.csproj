@@ -180,6 +180,7 @@
     <TypeScriptCompile Include="app\src\app\index.ts" />
     <TypeScriptCompile Include="app\src\app\login\login.component.ts" />
     <TypeScriptCompile Include="app\src\app\login\login.module.ts" />
+    <TypeScriptCompile Include="app\src\app\models\cardtype.ts" />
     <TypeScriptCompile Include="app\src\app\models\creditcard.ts" />
     <TypeScriptCompile Include="app\src\app\models\token.ts" />
     <TypeScriptCompile Include="app\src\app\models\user.ts" />

@@ -14,10 +14,10 @@ using System.Web.Http.Cors;
 using Amex.CCA.BusinessServices;
 using Amex.CCA.WebApi.Models;
 using Amex.CCA.BusinessServices.BusinessModels;
-using Microsoft.AspNet.Identity.Owin;
-using Amex.CCA.WebApi.Models;
 using System.Threading.Tasks;
+using System.Web;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace Amex.CCA.WebApi.Controllers
 {
@@ -85,24 +85,23 @@ namespace Amex.CCA.WebApi.Controllers
 
         // POST: api/CreditCards
         [ResponseType(typeof(CreditCard))]
-        public async Task<IHttpActionResult> PostCreditCard(CreditCardEntity creditCard)
+        public IHttpActionResult PostCreditCard(CreditCardEntity creditCard)
         {
             if (!ModelState.IsValid)
             {
-                return Ok();
-                //return BadRequest(ModelState);
+                creditCard.CreatedBy = HttpContext.Current.User.Identity.Name;
+                //invoke method to register customer if customer is not already registered
+                if (!RegisterNewCcUser(creditCard.Email))
+                {
+                    return BadRequest("Error occured while registering user");
+                }
+                //if successfully saved
+                if (creditCardBusinessService.SaveCreditCard(creditCard))
+                {
+                    return Ok("Successfully Created new credit card");
+                }
             }
 
-            //invoke method to register customer if customer is not already registered
-            if (!await RegisterNewCcUser(creditCard.Email))
-            {
-                return BadRequest("Error occured while registering user");
-            }
-            //if successfully saved
-            if (creditCardBusinessService.SaveCreditCard(creditCard))
-            {
-                return Ok("Successfully Created new credit card");
-            }
             return BadRequest("Error occured while creating credit card");
         }
 
@@ -144,18 +143,18 @@ namespace Amex.CCA.WebApi.Controllers
         /// <param name="email">The email.</param>
         /// <returns>[true] if customer already registered or new reistration successful.
         /// [false] if new registration is unsuccessful</returns>
-        private async Task<bool> RegisterNewCcUser(string email)
+        private bool RegisterNewCcUser(string email)
         {
             bool operationResult = true;
             var userManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
             //check if user already exist
-            ApplicationUser user = await userManager.FindByEmailAsync(email);
+            ApplicationUser user =  userManager.FindByEmail(email);
             //if new user 
             if (user == null)
             {
                 //register user with a dummy password
                 var newUser = new ApplicationUser() { UserName = email, Email = email };
-                IdentityResult result = await userManager.CreateAsync(newUser, Guid.NewGuid().ToString());
+                IdentityResult result =  userManager.Create(newUser, Guid.NewGuid().ToString());
                 //if user creation unsuccessfull return error
                 if (!result.Succeeded)
                 {
