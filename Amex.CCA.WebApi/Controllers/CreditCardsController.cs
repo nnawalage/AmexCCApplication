@@ -87,9 +87,9 @@ namespace Amex.CCA.WebApi.Controllers
         [ResponseType(typeof(CreditCard))]
         public IHttpActionResult PostCreditCard(CreditCardEntity creditCard)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                creditCard.CreatedBy = HttpContext.Current.User.Identity.Name;
+                creditCard.CreatedBy = User.Identity.GetUserId();
                 //invoke method to register customer if customer is not already registered
                 if (!RegisterNewCcUser(creditCard.Email))
                 {
@@ -154,7 +154,8 @@ namespace Amex.CCA.WebApi.Controllers
             {
                 //register user with a dummy password
                 var newUser = new ApplicationUser() { UserName = email, Email = email };
-                IdentityResult result =  userManager.Create(newUser, Guid.NewGuid().ToString());
+                //IdentityResult result =  userManager.Create(newUser, Guid.NewGuid().ToString());
+                IdentityResult result = userManager.Create(newUser, "MyCC@A123");
                 //if user creation unsuccessfull return error
                 if (!result.Succeeded)
                 {

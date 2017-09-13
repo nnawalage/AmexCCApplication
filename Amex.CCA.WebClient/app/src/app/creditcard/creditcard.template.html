@@ -104,7 +104,7 @@
                     <label for="txtSalary">Salary</label>
                 </div>
                 <div class="col-md-3">
-                    <input id="txtSalary" type="text" formControlName="salary" class="form-control"  [ngClass]="{'make-border-red':this.ccForm.controls['salary'].errors?.required && !this.ccForm.controls['salary'].pristine }"/>
+                    <input id="txtSalary" type="text" formControlName="salary" class="form-control" [ngClass]="{'make-border-red':this.ccForm.controls['salary'].errors?.required && !this.ccForm.controls['salary'].pristine }" />
                 </div>
 
                 <div class="col-md-3">
@@ -125,7 +125,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <label for="txtCashLimit">Cach Limit</label>
+                    <label for="txtCashLimit">Cash Limit</label>
                 </div>
 
                 <div class="col-md-3">
@@ -140,9 +140,7 @@
                 </div>
                 <div class="col-md-3">
 
-                    <!-- <div *ngFor="let com of cardTypes" >{{com.Name}}</div> -->
-
-                    <select formNameControl="cardType" class="form-control" id="ddlCardType">
+                    <select formControlName="cardType" class="form-control" id="ddlCardType">
                         <option *ngFor="let ct of cardTypes" [value]="ct.CardTypeId">{{ct.Name}}</option>
                     </select>
 
@@ -154,8 +152,17 @@
                 </div>
 
                 <div class="col-md-3">
-                    <input id="ddlNationality" type="text" formControlName="nationality" class="form-control" />
+
+                    <select id="ddlNationality" class="form-control" formControlName="nationality">
+                        <option [selected]="form.controls.nationality.value == null" value="">-- Select --</option>
+                        <option *ngFor="let nationality of nationalities"  [value]="nationality.NationalityId">{{nationality.Name}}</option>
+                    </select>
+
                 </div>
+
+
+
+
             </div>
 
 
@@ -172,6 +179,7 @@
 
             <div class="rows">
                 <button [disabled]="!ccForm.valid" class="btn btn-primary" type="submit">Save</button>
+                <span> {{!ccForm.valid}} </span>
             </div>
 
         </form>

@@ -4,7 +4,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { CrediCardService } from '../services/creditcard.service'
 import { CreditCard } from "../models/creditcard";
 import { ICardType } from "../models/cardtype";
-
+import { INationality } from "../models/nationality";
 
 @Component({
     templateUrl: './creditcard.template.html',
@@ -13,37 +13,46 @@ import { ICardType } from "../models/cardtype";
 export class CreditCardComponent implements OnInit {
 
     private ccForm: FormGroup;
-     cardTypes: ICardType[];
+    cardTypes: ICardType[];
+    nationalities: INationality[];
+
 
     constructor(private router: Router, private crediCardService: CrediCardService, private _fb: FormBuilder) {
     }
 
     ngOnInit() {
         this.ccForm = this._fb.group({
-            fullName: ['', [Validators.required]],
-            displayName: ['', Validators.required],
-            nic: ['', Validators.required],
-            passport: ['', Validators.required],
-            address: ['', Validators.required],
-            mobilePhone: ['', Validators.required],
-            homePhone: ['', Validators.required],
+            fullName: ['fullName', [Validators.required]],
+            displayName: ['displayName', Validators.required],
+            nic: ['nic', Validators.required],
+            passport: ['passport', Validators.required],
+            address: ['address', Validators.required],
+            mobilePhone: ['232055222', Validators.required],
+            homePhone: ['054552222', Validators.required],
             officePhone: [''],
-            email: ['', Validators.required],
-            employer: ['', Validators.required],
-            salary: ['', Validators.required],
-            jobTitle: ['', Validators.required],
-            cardLimit: [''],
-            cashLimit: [''],
-            note: [''],
-            cardType: ['', Validators.required],
-            nationality: ['', Validators.required]
+            email: ['email', Validators.required],
+            employer: ['employer', Validators.required],
+            salary: ['100.00', Validators.required],
+            jobTitle: ['jobTitle', Validators.required],
+            cardLimit: ['200.00'],
+            cashLimit: ['150.00'],
+            note: ['note'],
+            cardType: [Validators.required],
+            nationality: [Validators.required]
         });
         this.loadCardTypes();
+        this.loadNationalities();
     }
 
     private loadCardTypes(): void {
         this.crediCardService.getCardTypes().subscribe((cardTypes: ICardType[]) => {
             this.cardTypes = cardTypes;
+        }, error => console.log(error));
+    }
+
+    private loadNationalities(): void {
+        this.crediCardService.getNationalities().subscribe((nations: INationality[]) => {
+            this.nationalities = nations;
         }, error => console.log(error));
     }
 

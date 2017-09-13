@@ -3,7 +3,7 @@ import { CreditCard } from '../models/creditcard';
 import { Observable } from 'rxjs';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { ICardType } from "../models/cardtype";
-
+import { INationality } from "../models/nationality";
 
 @Injectable()
 export class CrediCardService {
@@ -22,6 +22,13 @@ export class CrediCardService {
         }).catch(this.handleError);
 
     }
+
+    getNationalities(): Observable<INationality[]> {
+        return this.http.get('http://localhost:8947/api/Nationality').map((res: Response) => {
+            return <INationality[]>res.json();
+        }).catch(this.handleError);
+    }
+
     SaveCreditCard(creditCard: CreditCard): Observable<any> {
         let url = 'http://localhost:8947/api/CreditCards';
         let headers = new Headers();
