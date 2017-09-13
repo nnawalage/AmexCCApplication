@@ -1,14 +1,15 @@
 ﻿using Amex.CCA.DataAccess.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Amex.CCA.DataAccess
 {
     public class NationalityDataAccessHelper
     {
+        /// <summary>
+        /// Gets all active nationality.
+        /// </summary>
+        /// <returns>list of nationality</returns>
         public IList<Nationality> GetAllActiveNationality()
         {
             using (AmexDbContext dbContext = new AmexDbContext())

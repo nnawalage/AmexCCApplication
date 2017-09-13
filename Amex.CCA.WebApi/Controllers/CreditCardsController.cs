@@ -21,66 +21,29 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace Amex.CCA.WebApi.Controllers
 {
-
+    //[Authorize]
     public class CreditCardsController : ApiController
     {
-        private AmexDbContext db = new AmexDbContext();
-
         private CreditCardBusinessService creditCardBusinessService= new CreditCardBusinessService();
 
         // GET: api/CreditCards
         public IQueryable<CreditCard> GetCreditCards()
         {
-            return null;
-            //return db.CreditCards;
+            throw new NotImplementedException();
         }
 
         // GET: api/CreditCards/5
         [ResponseType(typeof(CreditCard))]
         public IHttpActionResult GetCreditCard(int id)
         {
-            CreditCard creditCard = db.CreditCards.Find(id);
-            if (creditCard == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(creditCard);
+            throw new NotImplementedException();
         }
 
         // PUT: api/CreditCards/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutCreditCard(int id, CreditCard creditCard)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != creditCard.CreditCardId)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(creditCard).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CreditCardExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            throw new NotImplementedException();
         }
 
         // POST: api/CreditCards
@@ -109,32 +72,11 @@ namespace Amex.CCA.WebApi.Controllers
         [ResponseType(typeof(CreditCard))]
         public IHttpActionResult DeleteCreditCard(int id)
         {
-            CreditCard creditCard = db.CreditCards.Find(id);
-            if (creditCard == null)
-            {
-                return NotFound();
-            }
-
-            db.CreditCards.Remove(creditCard);
-            db.SaveChanges();
-
-            return Ok(creditCard);
+            throw new NotImplementedException();
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
 
-        private bool CreditCardExists(int id)
-        {
-            return db.CreditCards.Count(e => e.CreditCardId == id) > 0;
-        }
-
+        #region Private Methods
 
         /// <summary>
         /// Create new user account if the customer is a new user. 
@@ -167,5 +109,8 @@ namespace Amex.CCA.WebApi.Controllers
             }
             return operationResult;
         }
+
+        #endregion
+
     }
 }
