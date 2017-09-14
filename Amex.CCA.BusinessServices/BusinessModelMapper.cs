@@ -59,7 +59,7 @@ namespace Amex.CCA.BusinessServices
                 OfficePhone = creditCardEntity.OfficePhone,
                 Passport = creditCardEntity.Passport,
                 Salary = creditCardEntity.Salary,
-                CreatedBy = creditCardEntity.CreatedBy,
+                CreatedBy = "pmd@tiqri.com",//creditCardEntity.CreatedBy;
                 CreatedTime = DateTime.Now
             };
 
