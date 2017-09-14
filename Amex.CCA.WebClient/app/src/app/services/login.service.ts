@@ -13,7 +13,7 @@ export class LoginService {
     }
 
     isUserAuthorised(): boolean {
-        let token = sessionStorage.getItem('access-token');
+        let token = sessionStorage.getItem('authData');
         return !!token;
     }
 
@@ -29,7 +29,7 @@ export class LoginService {
             (response: Response) => {
                 let res: any = response.json();
                 let token: IToken = {
-                    AccessToken: res['access_token'],
+                    AccessToken: res['authData'],
                     Expires: res['.expires'],
                     UserName: res['userName']
                 };
