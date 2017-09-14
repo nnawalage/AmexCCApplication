@@ -189,6 +189,7 @@
     <TypeScriptCompile Include="app\src\app\nav-bar\navbar.component.ts" />
     <TypeScriptCompile Include="app\src\app\routes.ts" />
     <TypeScriptCompile Include="app\src\app\services\creditcard.service.ts" />
+    <TypeScriptCompile Include="app\src\app\services\http.service.ts" />
     <TypeScriptCompile Include="app\src\app\services\index.ts" />
     <TypeScriptCompile Include="app\src\app\services\login.service.ts" />
     <TypeScriptCompile Include="app\src\app\services\router-guard.service.ts" />
