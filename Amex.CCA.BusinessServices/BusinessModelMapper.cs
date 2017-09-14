@@ -45,7 +45,6 @@ namespace Amex.CCA.BusinessServices
         {
             return new CreditCard()
             {
-
                 DisplayName = creditCardEntity.DisplayName,
                 Nic = creditCardEntity.Nic,
                 Address = creditCardEntity.Address,
@@ -62,8 +61,6 @@ namespace Amex.CCA.BusinessServices
                 Salary = creditCardEntity.Salary,
                 CreatedBy = "pmd@tiqri.com",//creditCardEntity.CreatedBy;
                 CreatedTime = DateTime.Now
-
-
             };
 
         }

@@ -8,7 +8,7 @@ namespace Amex.CCA.BusinessServices
     public class CreditCardBusinessService
     {
         private CreditCardDataAccessHelper dataAccessHelper = new CreditCardDataAccessHelper();
-        private CardStatusDataAccessHelper cardTtpeDataAccessHelper = new CardStatusDataAccessHelper();
+        private CardStatusDataAccessHelper cardStatusDataAccessHelper = new CardStatusDataAccessHelper();
 
         /// <summary>
         /// Create new Credit Card.
@@ -21,7 +21,7 @@ namespace Amex.CCA.BusinessServices
             //no id assigned to the new card entry
             if (creditCard.CreditCardId == 0)
             {
-                creditCard.CardStatusId = cardTtpeDataAccessHelper.GetPendingCardStatusId();
+                creditCard.CardStatusId = cardStatusDataAccessHelper.GetPendingCardStatusId();
                 //save new credit card to the database
                 return dataAccessHelper.AddCreditCard(creditCard);
             }
