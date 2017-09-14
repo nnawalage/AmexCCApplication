@@ -8,6 +8,7 @@ namespace Amex.CCA.BusinessServices
     public class CreditCardBusinessService
     {
         private CreditCardDataAccessHelper dataAccessHelper = new CreditCardDataAccessHelper();
+        private CardStatusDataAccessHelper cardTtpeDataAccessHelper = new CardStatusDataAccessHelper();
 
         /// <summary>
         /// Create new Credit Card.
@@ -16,34 +17,16 @@ namespace Amex.CCA.BusinessServices
         /// <returns></returns>
         public bool SaveCreditCard(CreditCardEntity creditCardEntity)
         {
-            //TODO:: Move to mapper class.
-            CreditCard creditCard = new CreditCard();
-
-            creditCard.DisplayName = creditCardEntity.DisplayName;
-            creditCard.Nic = creditCardEntity.Nic;
-            creditCard.Address = creditCardEntity.Address;
-            creditCard.CardStatusId = 1;//creditCardEntity.CardStatusId;
-            creditCard.CardTypeId = 1;//creditCardEntity.CardTypeId;
-            creditCard.Email = creditCardEntity.Email;
-            creditCard.Employer = creditCardEntity.Employer;
-            creditCard.FullName = creditCardEntity.FullName;
-            creditCard.HomePhone = creditCardEntity.HomePhone;
-            creditCard.MobilePhone = creditCardEntity.MobilePhone;
-            creditCard.NationalityId = creditCardEntity.NationalityId;
-            creditCard.OfficePhone = creditCardEntity.OfficePhone;
-            creditCard.Passport = creditCardEntity.Passport;
-            creditCard.Salary = creditCardEntity.Salary;
-            creditCard.CreatedBy = creditCardEntity.CreatedBy;
-            creditCard.CreatedTime = DateTime.Now;
-           
+            var creditCard = BusinessModelMapper.MapToCreditCard(creditCardEntity);
             //no id assigned to the new card entry
             if (creditCard.CreditCardId == 0)
             {
+                creditCard.CardStatusId = cardTtpeDataAccessHelper.GetPendingCardStatusId();
                 //save new credit card to the database
                 return dataAccessHelper.AddCreditCard(creditCard);
             }
             //update card
             return dataAccessHelper.UpdateCreditCard(creditCard);
-        } 
+        }
     }
 }
