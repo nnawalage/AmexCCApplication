@@ -7,11 +7,13 @@ import { Http, XHRBackend, RequestOptions, Request, RequestOptionsArgs, Response
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-
-
+import { environment } from '../../environments/environment';
+export const bb = []
 @Injectable()
 // export class HttpService {
 export class HttpService extends Http {
+
+    private baseUri = environment.baseURI;
 
     get(uri: string): Observable<Response> {
         return this.request(uri, RequestMethod.Get);
@@ -22,7 +24,7 @@ export class HttpService extends Http {
     }
 
     public request(url: string | Request, method: RequestMethod, body?: any, options?: RequestOptionsArgs): Observable<Response> {
-
+        url = `${this.baseUri}${url}`;
         let token = this.getAuthToken();
         if (!options) {
             // let's make option object
@@ -47,19 +49,13 @@ export class HttpService extends Http {
         return key ? key.AccessToken : null;
     }
 
-    // private handleError(error: Response) {
-    //     console.log(error);
-    //     return Observable.throw(error.json() || 'Server error');
-    // }
-
     private catchError(self: HttpService) {
-        // we have to pass HttpService's own instance here as `self`
         return (res: Response) => {
             console.log(res);
-            if (res.status === 401 || res.status === 403) {
-                // if not authenticated
-                console.log(res);
-            }
+            // if (res.status === 401 || res.status === 403) {
+            //     // if not authenticated
+            //     console.log(res);
+            // }
             return Observable.throw(res);
         };
     }

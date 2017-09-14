@@ -44,20 +44,13 @@ export class CreditCardComponent implements OnInit {
 
         this.actRouter.data.forEach(data => {
             this.nationalities = data['nationality'];
-        })
-
-        // this.loadNationalities();
+        });
+        
     }
 
     private loadCardTypes(): void {
         this.crediCardService.getCardTypes().subscribe((cardTypes: ICardType[]) => {
             this.cardTypes = cardTypes;
-        }, error => console.log(error));
-    }
-
-    private loadNationalities(): void {
-        this.crediCardService.getNationalities().subscribe((nations: INationality[]) => {
-            this.nationalities = nations;
         }, error => console.log(error));
     }
 

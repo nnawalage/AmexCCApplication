@@ -4,15 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreditCardComponent } from './creditcard.component';
 import {NationalityResolverService} from '../services/index';
-
-const crediCardRoute: Routes = [
-    { path: '', component: CreditCardComponent, pathMatch: 'full' }
-]
+import {creditCardRoutes} from './creditcard.routes';
 
 @NgModule({
     imports: [CommonModule,
         ReactiveFormsModule,
-        RouterModule.forChild(crediCardRoute)
+        RouterModule.forChild(creditCardRoutes)
     ],
     declarations: [CreditCardComponent],
     providers: [NationalityResolverService]

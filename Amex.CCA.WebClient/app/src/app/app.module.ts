@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { appRoutes } from './routes';
 import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/shared.module';
+import { XHRBackend, RequestOptions } from '@angular/http';
 
 import {
   NavBarComponent,
@@ -30,11 +31,24 @@ export function Foo() {
     AppComponent, NavBarComponent
   ],
   providers: [
-    HttpService,
-    LoginService, 
+    
+    {
+      provide: HttpService,
+      useFactory: (backend: XHRBackend, options: RequestOptions) => {
+        return new HttpService(backend, options);
+      },
+      deps: [XHRBackend, RequestOptions]
+    },
+
+    LoginService,
     AuthGuard,
     CrediCardService,
-    
+
+    {
+      provide:CrediCardService,
+      useClass:CrediCardService
+    }
+
   ],
   bootstrap: [AppComponent]
 })
