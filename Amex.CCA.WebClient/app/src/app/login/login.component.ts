@@ -23,7 +23,9 @@ export class LoginComponent {
         }
 
         this.loginService.loginUser(user).subscribe((res: IToken) => {
-            sessionStorage.setItem('access-token', res.AccessToken);
+            // sessionStorage.setItem('access-token', res.AccessToken);
+            sessionStorage.setItem('authData',JSON.stringify(res));
+            
             this.router.navigate(['dashboard/myWork']);
 
         }, error => {

@@ -154,7 +154,7 @@
                 <div class="col-md-3">
 
                     <select id="ddlNationality" class="form-control" formControlName="nationality">
-                        <option [selected]="form.controls.nationality.value == null" value="">-- Select --</option>
+                        <option [selected]="ccForm.controls.nationality.value == null" value="">-- Select --</option>
                         <option *ngFor="let nationality of nationalities"  [value]="nationality.NationalityId">{{nationality.Name}}</option>
                     </select>
 

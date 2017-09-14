@@ -4,12 +4,20 @@ import { Observable } from 'rxjs';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { ICardType } from "../models/cardtype";
 import { INationality } from "../models/nationality";
+import { HttpService } from '../services/index';
+
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class CrediCardService {
+    private baseURI: string;
+    
+    // constructor(private http: Http) {
 
-    constructor(private http: Http) {
-
+    // }
+    
+    constructor(private http: HttpService) {
+        this.baseURI = environment.baseURI;
     }
 
     getCardTypes(): Observable<ICardType[]> {
@@ -17,7 +25,7 @@ export class CrediCardService {
             let xx: any = { a: 1, b: 's', Name1: 'name' };
             // let aa: ICardType = <ICardType>xx;
             // let aa: ICardType = xx as ICardType;
-            
+
             return <ICardType[]>res.json();
         }).catch(this.handleError);
 
@@ -38,6 +46,18 @@ export class CrediCardService {
         return this.http.post(url, creditCard)
             .map(res => res.json());
     }
+
+    // SaveCreditCard(creditCard: CreditCard): Observable<any> {
+    //     let url = `${this.baseURI}CreditCards`;
+    //     // let headers = new Headers();
+    //     // headers.append('Content-Type', 'application/json');
+    //     // let options = new RequestOptions({ headers: headers });
+
+    //     // return this.http.post(url, creditCard)
+    //     //     .map(res => res.json());
+
+    //     return this._http.post(url, creditCard);
+    // }
 
     private handleError(error: Response) {
         console.log(error);

@@ -7,4 +7,10 @@ export const appRoutes: Routes = [
     { path: 'creditcard',canActivate: [AuthGuard], loadChildren: './creditcard/creditcard.module#CreditCardModule' },
     { path: 'login', loadChildren: './login/login.module#LoginModule' },
    
+//   { path: 'dashboard', canActivate: [AuthGuard], loadChildren: './dashboard/dashboard.module#DashboardModule' },
+//     { path: 'user', canActivate: [AuthGuard], loadChildren: './user/user.module#UserModule' },
+//     { path: 'creditcard', loadChildren: './creditcard/creditcard.module#CreditCardModule' },
+//     { path: 'login', loadChildren: './login/login.module#LoginModule' },
+   
+    
 ]

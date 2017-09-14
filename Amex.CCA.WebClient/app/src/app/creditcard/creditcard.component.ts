@@ -1,5 +1,5 @@
 ﻿import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { CrediCardService } from '../services/creditcard.service'
 import { CreditCard } from "../models/creditcard";
@@ -17,7 +17,7 @@ export class CreditCardComponent implements OnInit {
     nationalities: INationality[];
 
 
-    constructor(private router: Router, private crediCardService: CrediCardService, private _fb: FormBuilder) {
+    constructor(private actRouter: ActivatedRoute, private router: Router, private crediCardService: CrediCardService, private _fb: FormBuilder) {
     }
 
     ngOnInit() {
@@ -41,7 +41,12 @@ export class CreditCardComponent implements OnInit {
             nationality: [Validators.required]
         });
         this.loadCardTypes();
-        this.loadNationalities();
+
+        this.actRouter.data.forEach(data => {
+            this.nationalities = data['nationality'];
+        })
+
+        // this.loadNationalities();
     }
 
     private loadCardTypes(): void {

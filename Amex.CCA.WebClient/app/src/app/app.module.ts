@@ -11,11 +11,10 @@ import {
   NavBarComponent,
   AuthGuard,
   LoginService,
-  CrediCardService
+  CrediCardService,
+  HttpService
 } from './index';
 
-// import { LoginService } from './services/login.service';
-// import {AuthGuard} from './services/router-guard.service';
 export function Foo() {
   return true;
 }
@@ -30,7 +29,12 @@ export function Foo() {
   declarations: [
     AppComponent, NavBarComponent
   ],
-  providers: [LoginService, AuthGuard, CrediCardService
+  providers: [
+    HttpService,
+    LoginService, 
+    AuthGuard,
+    CrediCardService,
+    
   ],
   bootstrap: [AppComponent]
 })
