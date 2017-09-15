@@ -1,23 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { appRoutes } from './routes';
 import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/shared.module';
-import { XHRBackend, RequestOptions } from '@angular/http';
+import { HttpModule, XHRBackend, RequestOptions } from '@angular/http';
+// import {
+//   NavBarComponent,
+//   AuthGuard,
+//   LoginService,
+//   CrediCardService,
+//   HttpService
+// } from './index';
+import {NavBarComponent} from './nav-bar/navbar.component';
+import {AuthGuard} from './services/router-guard.service';
+import {LoginService} from './services/login.service';
+import {CrediCardService} from './services/creditcard.service';
+import {HttpService} from './services/http.service';
 
-import {
-  NavBarComponent,
-  AuthGuard,
-  LoginService,
-  CrediCardService,
-  HttpService
-} from './index';
 
 
-@NgModule({
+ @NgModule({
   imports: [
     HttpModule,
     BrowserModule,
@@ -27,26 +31,26 @@ import {
   declarations: [
     AppComponent, NavBarComponent
   ],
-  providers: [    
+  providers: [
     {
       provide: HttpService,
-      useFactory: (backend: XHRBackend, options: RequestOptions) => {
-        return new HttpService(backend, options);
-      },
+      useFactory: httpFactory,
       deps: [XHRBackend, RequestOptions]
     },
-
-
     LoginService,
     AuthGuard,
     CrediCardService,
 
     {
-      provide:CrediCardService,
-      useClass:CrediCardService
+      provide: CrediCardService,
+      useClass: CrediCardService
     }
 
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function httpFactory(backend: XHRBackend, options: RequestOptions) {
+    return new HttpService(backend, options);
+}

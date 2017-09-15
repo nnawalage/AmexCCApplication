@@ -1,11 +1,15 @@
-import {Component } from '@angular/core';
+import { Component } from '@angular/core';
+import { LoginService } from "../services/login.service";
 
 @Component({
-    selector:'nav-bar',
-    templateUrl:'./navbar.template.html',
-    styleUrls:['./navbar.styles.scss']
+    selector: 'nav-bar',
+    templateUrl: './navbar.template.html',
+    styleUrls: ['./navbar.styles.scss']
 
 })
-export class NavBarComponent{
-
+export class NavBarComponent {
+    constructor(private loginService: LoginService) { }
+    onLogout() {
+        this.loginService.logOutUser();
+    }
 }
