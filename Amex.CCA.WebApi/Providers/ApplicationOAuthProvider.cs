@@ -44,7 +44,7 @@ namespace Amex.CCA.WebApi.Providers
             //ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
             //    CookieAuthenticationDefaults.AuthenticationType);
 
-            AuthenticationProperties properties = CreateProperties(user.UserName);
+            AuthenticationProperties properties = CreateProperties(user,userManager);
             AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
             context.Validated(ticket);
             //context.Request.Context.Authentication.SignIn(cookiesIdentity);
@@ -98,11 +98,15 @@ namespace Amex.CCA.WebApi.Providers
         //    return Task.FromResult<object>(null);
         //}
 
-        public static AuthenticationProperties CreateProperties(string userName)
+        public static AuthenticationProperties CreateProperties(ApplicationUser user,ApplicationUserManager context)
         {
+            var roles=context.GetRoles(user.Id);
             IDictionary<string, string> data = new Dictionary<string, string>
             {
-                { "userName", userName }
+                { "userName", user.UserName },
+                { "role",roles.Count>0?roles.First():""},
+                { "roleId",user.Roles.Count>0?user.Roles.First().RoleId:""}
+
             };
             return new AuthenticationProperties(data);
         }

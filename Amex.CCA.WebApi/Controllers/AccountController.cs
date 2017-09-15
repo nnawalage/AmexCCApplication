@@ -340,7 +340,7 @@ namespace Amex.CCA.WebApi.Controllers
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
-                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName);
+                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user,UserManager);
                 Authentication.SignIn(properties, oAuthIdentity, cookieIdentity);
             }
             else
