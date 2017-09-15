@@ -67,6 +67,7 @@
     <Compile Include="Entities\CardStatus.cs" />
     <Compile Include="Entities\CardType.cs" />
     <Compile Include="Entities\CreditCard.cs" />
+    <Compile Include="Entities\Log.cs" />
     <Compile Include="Entities\Nationality.cs" />
     <Compile Include="Migrations\201708311054194_Reset.cs" />
     <Compile Include="Migrations\201708311054194_Reset.Designer.cs">
@@ -188,6 +189,10 @@
     <Compile Include="Migrations\201709131048418_changes1.Designer.cs">
       <DependentUpon>201709131048418_changes1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709150519530_addinglogstable.cs" />
+    <Compile Include="Migrations\201709150519530_addinglogstable.Designer.cs">
+      <DependentUpon>201709150519530_addinglogstable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NationalityDataAccessHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -286,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709131048418_changes1.resx">
       <DependentUpon>201709131048418_changes1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709150519530_addinglogstable.resx">
+      <DependentUpon>201709150519530_addinglogstable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

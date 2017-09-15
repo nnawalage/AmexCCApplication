@@ -57,12 +57,15 @@ namespace Amex.CCA.DataAccess.Entities
         public virtual CardType CardType { get; set; }
 
         public int NationalityId { get; set; }
+
         public virtual Nationality Nationality { get; set; }
 
         public int CardStatusId { get; set; }
         public virtual CardStatus CardStatus { get; set; }
 
         public virtual List<Attachment> Attachments { get; set; }
+
+        public virtual List<Log> Logs { get; set; }
 
 
     }

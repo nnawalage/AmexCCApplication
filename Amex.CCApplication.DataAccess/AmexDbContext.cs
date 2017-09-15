@@ -26,7 +26,9 @@ namespace Amex.CCA.DataAccess
         public DbSet<CreditCard> CreditCards { get; set; }
 
         public DbSet<Nationality> Nationalities { get; set; }
-                
+
+        public DbSet<Log> Logs { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //Configure default schema
