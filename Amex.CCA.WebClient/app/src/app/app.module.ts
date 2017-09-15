@@ -16,9 +16,6 @@ import {
   HttpService
 } from './index';
 
-export function Foo() {
-  return true;
-}
 
 @NgModule({
   imports: [
@@ -30,8 +27,7 @@ export function Foo() {
   declarations: [
     AppComponent, NavBarComponent
   ],
-  providers: [
-    
+  providers: [    
     {
       provide: HttpService,
       useFactory: (backend: XHRBackend, options: RequestOptions) => {
