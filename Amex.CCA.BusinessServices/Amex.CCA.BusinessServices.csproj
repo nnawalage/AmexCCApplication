@@ -43,9 +43,11 @@
     <Compile Include="BusinessModelMapper.cs" />
     <Compile Include="BusinessModels\CardTypeEntity.cs" />
     <Compile Include="BusinessModels\CreditCardEntity.cs" />
+    <Compile Include="BusinessModels\LogEntity.cs" />
     <Compile Include="BusinessModels\NationalityEntity.cs" />
     <Compile Include="CardTypeBusinessService.cs" />
     <Compile Include="CreditCardBusinessService.cs" />
+    <Compile Include="LogBusinessService.cs" />
     <Compile Include="NationalityBusinessService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -20,9 +20,10 @@ export class LoginService {
     }
 
     loginUser(user: User): Observable<IToken> {
+        debugger;
         let url = `${this.baseUri}/Token`;
         let grantType: string = 'password';
-        let creds: string = `grant_type= ${grantType}&userName=${user.UserName} & password=${user.PassWord}`;
+        let creds: string = `grant_type=${grantType}&userName=${user.UserName}&password=${user.PassWord}`;
         let headers: any = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         let options = new RequestOptions({ headers: headers });

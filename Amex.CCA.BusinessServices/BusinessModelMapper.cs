@@ -6,6 +6,8 @@ namespace Amex.CCA.BusinessServices
 {
     public class BusinessModelMapper
     {
+        #region CardType
+
         /// <summary>
         /// Map CardType to CardTypeEntity.
         /// </summary>
@@ -18,8 +20,11 @@ namespace Amex.CCA.BusinessServices
                 CardTypeId = cardType.CardTypeId,
                 Name = cardType.Name,
             };
-        }
+        } 
 
+        #endregion
+        
+        #region Nationality
 
         /// <summary>
         /// Map Nationaity to NationalityEntity
@@ -33,8 +38,11 @@ namespace Amex.CCA.BusinessServices
                 NationalityId = nationality.NationalityId,
                 Name = nationality.Name
             };
-        }
+        } 
 
+        #endregion
+        
+        #region CreditCard
 
         /// <summary>
         /// Maps to CreditCard.
@@ -64,5 +72,47 @@ namespace Amex.CCA.BusinessServices
             };
 
         }
+
+        #endregion
+
+        #region Log
+
+        /// <summary>
+        /// Map LogEntity to Log
+        /// </summary>
+        /// <param name="logEntity">LogEntity object.</param>
+        /// <returns>LogEntity entity</returns>
+        public static Log MapLogEntityToLog(LogEntity logEntity)
+        {
+            return new Log()
+            {
+                LogId = logEntity.LogId,
+                Action = logEntity.Action,
+                Comment = logEntity.Comment,
+                CreatedBy = logEntity.CreatedBy,
+                CreatedTime = logEntity.CreatedTime,
+                CreditCardId = logEntity.CreditCardId
+            };
+        }
+
+        /// <summary>
+        /// Map Log to LogEntity
+        /// </summary>
+        /// <param name="log">Log object.</param>
+        /// <returns>Log entity</returns>
+        public static LogEntity MapLogToLogEntity(Log log)
+        {
+            return new LogEntity()
+            {
+                LogId = log.LogId,
+                Action = log.Action,
+                Comment = log.Comment,
+                CreatedBy = log.CreatedBy,
+                CreatedTime = log.CreatedTime,
+                CreditCardId = log.CreditCardId
+            };
+        }
+
+        #endregion
     }
 }

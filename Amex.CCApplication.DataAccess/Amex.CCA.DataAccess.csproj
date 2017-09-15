@@ -69,6 +69,7 @@
     <Compile Include="Entities\CreditCard.cs" />
     <Compile Include="Entities\Log.cs" />
     <Compile Include="Entities\Nationality.cs" />
+    <Compile Include="LogDataAccessHelper.cs" />
     <Compile Include="Migrations\201708311054194_Reset.cs" />
     <Compile Include="Migrations\201708311054194_Reset.Designer.cs">
       <DependentUpon>201708311054194_Reset.cs</DependentUpon>
