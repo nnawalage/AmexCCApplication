@@ -23,6 +23,7 @@ export class LoginService {
     isUserAuthorised(): boolean {
         return !!this.loggedUser
     }
+
     logOutUser() {
         this.loggedUser = null;
         sessionStorage.setItem('authData', null);
@@ -30,7 +31,6 @@ export class LoginService {
     }
 
     loginUser(user: IUser): Observable<IUser> {
-        debugger;
         let url = `${this.baseUri}/Token`;
         let grantType: string = 'password';
         let creds: string = `grant_type=${grantType}&userName=${user.UserName}&password=${user.PassWord}`;
