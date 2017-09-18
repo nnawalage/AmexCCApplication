@@ -1,4 +1,4 @@
-﻿export interface CreditCard {
+export interface CreditCard {
    // CreditCardId: number;
     FullName: string;
     DisplayName: string;
@@ -11,7 +11,7 @@
     Email: string;
     Employer: string;
     Salary: number;
-    JobTitle: number;
+    JobTitle: string;
     //CreditCardNumber: string;
     //BillingDate: string;
     //CardExpiryDate: string;

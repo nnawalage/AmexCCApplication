@@ -8,8 +8,7 @@ import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/shared.module';
 import { XHRBackend, RequestOptions } from '@angular/http';
 
-import {
-  NavBarComponent,
+import { NavBarComponent,
   AuthGuard,
   LoginService,
   CrediCardService,

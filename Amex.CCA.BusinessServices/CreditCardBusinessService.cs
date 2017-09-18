@@ -2,6 +2,7 @@
 using Amex.CCA.DataAccess;
 using Amex.CCA.DataAccess.Entities;
 using System;
+using System.Collections.Generic;
 
 namespace Amex.CCA.BusinessServices
 {
@@ -31,6 +32,13 @@ namespace Amex.CCA.BusinessServices
             }
             //update card
             return dataAccessHelper.UpdateCreditCard(creditCard);
+        }
+
+        public List<CreditCard> GetAllCreditCards()
+        {
+            List<CreditCard> cardList = new List<CreditCard>();
+            cardList=dataAccessHelper.GetAllCreditCards();
+            return cardList;
         }
     }
 }

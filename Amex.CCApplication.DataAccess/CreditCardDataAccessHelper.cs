@@ -1,5 +1,7 @@
 ﻿using Amex.CCA.DataAccess.Entities;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 namespace Amex.CCA.DataAccess
 {
@@ -36,6 +38,14 @@ namespace Amex.CCA.DataAccess
                 //change entity state to modified
                 dbContext.Entry(creditCard).State = EntityState.Modified;
                 return dbContext.SaveChanges() == 1;
+            }
+        }
+
+        public List<CreditCard> GetAllCreditCards()
+        {
+            using (AmexDbContext dbContext = new AmexDbContext())
+            {
+                return dbContext.CreditCards.ToList();
             }
         }
 
