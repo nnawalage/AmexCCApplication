@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'
+import { Injectable, EventEmitter } from '@angular/core'
 import { IUser } from '../models/user';
 import { Observable } from 'rxjs';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
@@ -30,6 +30,23 @@ export class LoginService {
         this.router.navigate(['login']);
     }
 
+    getProfile(user: IUser): Observable<IUser> {
+        // let url: string = `${this.baseUri}/GetUserProfile`;
+        // return this._http.get(url).map((res: Response) => {
+        //     return <IUser>res.json();
+        // });
+        let emitter = new EventEmitter(true);
+        let result: IUser = {
+            ProfileName: 'Test User',
+            ProfileImage: ''
+        }
+        setTimeout(() => {
+            emitter.emit(result);
+        }, 100);
+        return emitter;
+    }
+
+
     loginUser(user: IUser): Observable<IUser> {
         let url = `${this.baseUri}/Token`;
         let grantType: string = 'password';
@@ -50,9 +67,14 @@ export class LoginService {
                     Role: res['role']
                 };
                 this.loggedUser = user;
-                // sessionStorage.setItem('authData', JSON.stringify(res));
-                sessionStorage.setItem('authData', JSON.stringify(user));
+                // this.getProfile(user).subscribe((resUser: IUser) => {
+                //     this.loggedUser.ProfileName = resUser.ProfileName;
+                //     this.loggedUser.ProfileImage = resUser.ProfileImage;
+                //      sessionStorage.setItem('authData', JSON.stringify(this.loggedUser));
+                // }, error => console.log(error));
+
                 return user;
+
             }).catch(this.handleError);
     }
 
