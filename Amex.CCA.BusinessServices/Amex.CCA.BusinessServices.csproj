@@ -45,6 +45,7 @@
     <Compile Include="BusinessModels\CreditCardEntity.cs" />
     <Compile Include="BusinessModels\LogEntity.cs" />
     <Compile Include="BusinessModels\NationalityEntity.cs" />
+    <Compile Include="BusinessModels\UserProfileEntity.cs" />
     <Compile Include="CardTypeBusinessService.cs" />
     <Compile Include="CreditCardBusinessService.cs" />
     <Compile Include="LogBusinessService.cs" />

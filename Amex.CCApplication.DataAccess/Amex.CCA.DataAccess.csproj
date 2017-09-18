@@ -69,6 +69,7 @@
     <Compile Include="Entities\CreditCard.cs" />
     <Compile Include="Entities\Log.cs" />
     <Compile Include="Entities\Nationality.cs" />
+    <Compile Include="Entities\UserProfile.cs" />
     <Compile Include="LogDataAccessHelper.cs" />
     <Compile Include="Migrations\201708311054194_Reset.cs" />
     <Compile Include="Migrations\201708311054194_Reset.Designer.cs">
@@ -194,9 +195,22 @@
     <Compile Include="Migrations\201709150519530_addinglogstable.Designer.cs">
       <DependentUpon>201709150519530_addinglogstable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709181505024_createuserprofile.cs" />
+    <Compile Include="Migrations\201709181505024_createuserprofile.Designer.cs">
+      <DependentUpon>201709181505024_createuserprofile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709181509479_createuserprofile1.cs" />
+    <Compile Include="Migrations\201709181509479_createuserprofile1.Designer.cs">
+      <DependentUpon>201709181509479_createuserprofile1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709181511128_createuserprofile2.cs" />
+    <Compile Include="Migrations\201709181511128_createuserprofile2.Designer.cs">
+      <DependentUpon>201709181511128_createuserprofile2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NationalityDataAccessHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserProfileDataAccessHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -295,6 +309,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709150519530_addinglogstable.resx">
       <DependentUpon>201709150519530_addinglogstable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709181505024_createuserprofile.resx">
+      <DependentUpon>201709181505024_createuserprofile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709181509479_createuserprofile1.resx">
+      <DependentUpon>201709181509479_createuserprofile1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709181511128_createuserprofile2.resx">
+      <DependentUpon>201709181511128_createuserprofile2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

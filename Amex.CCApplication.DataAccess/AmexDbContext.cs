@@ -29,6 +29,8 @@ namespace Amex.CCA.DataAccess
 
         public DbSet<Log> Logs { get; set; }
 
+        public DbSet<UserProfile> UserProfiles { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //Configure default schema
