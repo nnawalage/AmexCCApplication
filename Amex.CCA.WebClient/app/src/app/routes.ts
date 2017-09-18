@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
-import { AuthGuard } from "./index";
+// import { AuthGuard } from "./index";
+import { AuthGuard } from "./services/router-guard.service";
+
 
 export const appRoutes: Routes = [
     { path: 'dashboard', canActivate: [AuthGuard], loadChildren: './dashboard/dashboard.module#DashboardModule' },

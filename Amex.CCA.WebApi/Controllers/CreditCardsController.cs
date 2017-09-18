@@ -82,7 +82,7 @@ namespace Amex.CCA.WebApi.Controllers
         {
             if (ModelState.IsValid)
             {
-                creditCard.CreatedBy = User.Identity.GetUserId();
+                creditCard.CreatedBy = User.Identity.Name;
                 //invoke method to register customer if customer is not already registered
                 if (!RegisterNewCcUser(creditCard.Email))
                 {

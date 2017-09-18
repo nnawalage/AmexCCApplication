@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { ICardType } from "../models/cardtype";
 import { INationality } from "../models/nationality";
-import { HttpService } from '../services/index';
+// import { HttpService } from '../services/index';
+import { HttpService } from '../services/http.service';
 
 @Injectable()
 export class CrediCardService {

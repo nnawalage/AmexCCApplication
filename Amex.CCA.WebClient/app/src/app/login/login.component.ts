@@ -1,8 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from '../services/login.service'
-import { User } from "../models/user";
-import { IToken } from '../models/token'
+import { LoginService } from '../services/login.service';
+import { IUser } from "../models/user";
 
 @Component({
     templateUrl: './login.template.html',
@@ -17,13 +16,12 @@ export class LoginComponent {
 
     private onLoginSubmit(loginFormValues: Object): void {
         console.log(loginFormValues);
-        let user: User = {
+        let user: IUser = {
             UserName: loginFormValues['txtUserName'],
             PassWord: loginFormValues['txtPassword']
         }
 
-        this.loginService.loginUser(user).subscribe((res: IToken) => {
-            sessionStorage.setItem('authData',JSON.stringify(res));
+        this.loginService.loginUser(user).subscribe((res: IUser) => {
             this.router.navigate(['dashboard/myWork']);
 
         }, error => {

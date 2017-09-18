@@ -19,16 +19,16 @@ namespace Amex.CCA.BusinessServices
         /// <returns></returns>
         public bool SaveCreditCard(CreditCardEntity creditCardEntity)
         {
-            var creditCard = BusinessModelMapper.MapToCreditCard(creditCardEntity);
+            CreditCard creditCard = BusinessModelMapper.MapToCreditCard(creditCardEntity);
             //no id assigned to the new card entry
             if (creditCard.CreditCardId == 0)
             {
                 creditCard.CardStatusId = cardStatusDataAccessHelper.GetPendingCardStatusId();
-                //Get Log model.
-                //creditCard.Logs.Add(logBusinessService.GetLog("Application created", null, creditCardEntity.CreatedBy));
+                //Add log.
+                creditCard.Logs = new List<Log>() { logBusinessService.GetLog("Application created", null, creditCardEntity.CreatedBy) };
+
                 //save new credit card to the database
                 return dataAccessHelper.AddCreditCard(creditCard);
-
             }
             //update card
             return dataAccessHelper.UpdateCreditCard(creditCard);

@@ -1,25 +1,35 @@
 import { Injectable } from '@angular/core'
-import { User } from '../models/user';
+import { IUser } from '../models/user';
 import { Observable } from 'rxjs';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import { IToken } from "../models/token";
+import { Router } from '@angular/router';
 import { HttpService } from "../services/http.service";
 import { environment } from '../../environments/environment';
 
 @Injectable()
 export class LoginService {
-    loggedUser: User = null;
     private baseUri: string = environment.baseURI;
+    loggedUser: IUser = null;
 
-    constructor(private http: Http, private _http: HttpService) {
+    constructor(private http: Http, private _http: HttpService, private router: Router) {
+    }
+
+    refreshUser() {
+        if (!this.loggedUser) {
+            this.loggedUser = <IUser>JSON.parse(sessionStorage.getItem('authData'));
+        }
     }
 
     isUserAuthorised(): boolean {
-        let token = sessionStorage.getItem('authData');
-        return !!token;
+        return !!this.loggedUser
+    }
+    logOutUser() {
+        this.loggedUser = null;
+        sessionStorage.setItem('authData', null);
+        this.router.navigate(['login']);
     }
 
-    loginUser(user: User): Observable<IToken> {
+    loginUser(user: IUser): Observable<IUser> {
         debugger;
         let url = `${this.baseUri}/Token`;
         let grantType: string = 'password';
@@ -31,12 +41,18 @@ export class LoginService {
         return this.http.post(url, creds, options).map(
             (response: Response) => {
                 let res: any = response.json();
-                let token: IToken = {
+                let user: IUser = {
+                    UserName: res['userName'],
                     AccessToken: res['access_token'],
-                    Expires: res['.expires'],
-                    UserName: res['userName']
+                    RefreshToken: res['refresh_token'],
+                    UserExpires: res['.expires'],
+                    RoleId: res['roleId'],
+                    Role: res['role']
                 };
-                return token;
+                this.loggedUser = user;
+                // sessionStorage.setItem('authData', JSON.stringify(res));
+                sessionStorage.setItem('authData', JSON.stringify(user));
+                return user;
             }).catch(this.handleError);
     }
 
