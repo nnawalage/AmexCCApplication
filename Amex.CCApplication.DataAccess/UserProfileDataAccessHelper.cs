@@ -10,9 +10,9 @@ namespace Amex.CCA.DataAccess
     public class UserProfileDataAccessHelper
     {
         /// <summary>
-        /// Gets all active nationality.
+        /// Get all active user profiles
         /// </summary>
-        /// <returns>list of nationality</returns>
+        /// <returns></returns>
         public IList<UserProfile> GetAllActiveUserProfiles()
         {
             using (AmexDbContext dbContext = new AmexDbContext())
