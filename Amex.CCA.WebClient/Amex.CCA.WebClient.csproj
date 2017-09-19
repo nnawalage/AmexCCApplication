@@ -222,6 +222,7 @@
     <Content Include="app\src\app\assets\css\common.styles.scss" />
     <Content Include="app\src\app\creditcard\creditcard.styles.scss" />
     <Content Include="app\src\app\user\user-profile.styles.scss" />
+    <Content Include="app\src\assets\css\common.styles.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
