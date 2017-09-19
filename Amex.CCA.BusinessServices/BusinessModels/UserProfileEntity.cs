@@ -14,6 +14,7 @@ namespace Amex.CCA.BusinessServices.BusinessModels
 
         public string ProfileImage { get; set; }
 
+        public string UserName { get; set; }
         public bool IsActive { get; set; }
     }
 }

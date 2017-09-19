@@ -122,13 +122,14 @@ namespace Amex.CCA.BusinessServices
        /// </summary>
        /// <param name="userProfile"></param>
        /// <returns></returns>
-        public static UserProfileEntity MapToNationalityEntity(UserProfile userProfile)
+        public static UserProfileEntity MapToUserProfileEntity(UserProfile userProfile)
         {
             return new UserProfileEntity()
             {
                 UserProfileId = userProfile.UserProfileId,
                 ProfileName = userProfile.ProfileName,
                 ProfileImage = userProfile.ProfileImage,
+                UserName = userProfile.UserName,
             };
         }
 

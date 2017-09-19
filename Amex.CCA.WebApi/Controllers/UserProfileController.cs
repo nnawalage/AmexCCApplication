@@ -80,7 +80,7 @@ namespace Amex.CCA.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.UserProfiles.Add(userProfiles);
+            //db.UserProfiles.Add(userProfiles);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = userProfiles.UserProfileId }, userProfiles);

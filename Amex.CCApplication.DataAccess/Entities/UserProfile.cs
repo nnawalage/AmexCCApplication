@@ -18,6 +18,9 @@ namespace Amex.CCA.DataAccess.Entities
         public string ProfileImage { get; set; }
 
         [Required]
+        public string UserName { get; set; }
+
+        [Required]
         public bool IsActive { get; set; }
     }
 }
