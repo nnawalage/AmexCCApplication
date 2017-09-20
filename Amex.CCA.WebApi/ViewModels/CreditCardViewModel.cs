@@ -22,8 +22,9 @@ namespace Amex.CCA.WebApi.ViewModels
        public decimal? CardLimit { get;set;}
        public decimal? CashLimit { get;set;}
        public string Note { get;set;}
-       public int CardTypeId { get;set;}
-       public int NationalityId { get;set;}
+       public int? CardTypeId { get;set;}
+       public int? NationalityId { get;set;}     
+       public bool? IsExpandable { get; set; }
      
     }
 }

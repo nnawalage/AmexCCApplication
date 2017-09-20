@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { ICardType } from "../models/cardtype";
 import { INationality } from "../models/nationality";
+import { ICreditCardView } from "../models/creditcardview";
 // import { HttpService } from '../services/index';
 import { HttpService } from '../services/http.service';
 
@@ -31,10 +32,10 @@ export class CrediCardService {
         return this.http.post(url, creditCard);
     }
 
-    getAllCardRequests(): Observable<CreditCard[]> {
+    getAllCardRequests(): Observable<ICreditCardView[]> {
         return this.http.get('/CreditCards')
             .map((res: Response) => {
-                return <CreditCard[]>res.json()
+                return <ICreditCardView[]>res.json()
             });
            // .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }

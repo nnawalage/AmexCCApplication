@@ -19,6 +19,7 @@ using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Amex.CCA.WebApi.ViewModels;
+using Amex.CCA.WebApi.Mappers;
 
 namespace Amex.CCA.WebApi.Controllers
 {
@@ -26,39 +27,25 @@ namespace Amex.CCA.WebApi.Controllers
     public class CreditCardsController : ApiController
     {
         private CreditCardBusinessService creditCardBusinessService= new CreditCardBusinessService();
+        private CreditCardMapper creditCardMapper = new CreditCardMapper();
 
         // GET: api/CreditCards
         public List<CreditCardViewModel> GetCreditCards()
         {
             List<CreditCard> cardlist = new List<CreditCard>();
             List<CreditCardViewModel> cardViewlist = new List<CreditCardViewModel>();
-            cardlist = creditCardBusinessService.GetAllCreditCards();
-            foreach(CreditCard card in cardlist)
+
+            if (User.Identity.IsAuthenticated)
             {
-                var creditCardViewModel = new CreditCardViewModel
-                {
-                    FullName = card.FullName,
-                    DisplayName = card.DisplayName,
-                    Nic   = card.Nic,
-                    Passport =card.Passport,
-                    Address = card.Address,
-                    MobilePhone = card.MobilePhone,
-                    HomePhone = card.HomePhone,
-                    OfficePhone =card.OfficePhone,
-                    Email = card.Email,
-                    Employer =card.Employer,
-                    Salary =card.Salary,
-                    JobTitle =card.JobTitle,
-                    CardLimit =card.CardLimit,
-                    CashLimit =card.CashLimit,
-                    Note=card.Note,
-                    CardTypeId =card.CardTypeId,
-                    NationalityId =card.NationalityId
-    };
-                cardViewlist.Add(creditCardViewModel);
+                cardlist = creditCardBusinessService.GetAllCreditCards();
+                cardViewlist = creditCardMapper.CreateCreditCardList(cardlist);
             }
-           
+
             return cardViewlist;
+            //else {
+            //    //return BadRequest("Error occured while creating credit card");
+            //}
+
             //throw new NotImplementedException();
         }
 

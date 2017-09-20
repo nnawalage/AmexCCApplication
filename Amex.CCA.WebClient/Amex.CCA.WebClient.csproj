@@ -27,6 +27,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -182,9 +183,10 @@
     <TypeScriptCompile Include="app\src\app\login\login.module.ts" />
     <TypeScriptCompile Include="app\src\app\models\cardtype.ts" />
     <TypeScriptCompile Include="app\src\app\models\creditcard.ts" />
+    <TypeScriptCompile Include="app\src\app\models\creditcardview.ts" />
     <TypeScriptCompile Include="app\src\app\models\nationality.ts" />
     <TypeScriptCompile Include="app\src\app\models\token.ts" />
-    <TypeScriptCompile Include="app\src\app\models\user.ts" />
+    <TypeScriptCompile Include="app\src\app\models\Iuser.ts" />
     <TypeScriptCompile Include="app\src\app\nav-bar\index.ts" />
     <TypeScriptCompile Include="app\src\app\nav-bar\navbar.component.ts" />
     <TypeScriptCompile Include="app\src\app\routes.ts" />
