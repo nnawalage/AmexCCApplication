@@ -23,14 +23,31 @@ export class LoginService {
     isUserAuthorised(): boolean {
         return !!this.loggedUser
     }
+
     logOutUser() {
         this.loggedUser = null;
         sessionStorage.setItem('authData', null);
         this.router.navigate(['login']);
     }
 
+    getProfile(user: IUser): Observable<IUser> {
+        // let url: string = `${this.baseUri}/GetUserProfile`;
+        // return this._http.get(url).map((res: Response) => {
+        //     return <IUser>res.json();
+        // });
+        let emitter = new EventEmitter(true);
+        let result: IUser = {
+            ProfileName: 'Test User',
+            ProfileImage: ''
+        }
+        setTimeout(() => {
+            emitter.emit(result);
+        }, 100);
+        return emitter;
+    }
+
+
     loginUser(user: IUser): Observable<IUser> {
-        debugger;
         let url = `${this.baseUri}/Token`;
         let grantType: string = 'password';
         let creds: string = `grant_type=${grantType}&userName=${user.UserName}&password=${user.PassWord}`;
@@ -50,9 +67,14 @@ export class LoginService {
                     Role: res['role']
                 };
                 this.loggedUser = user;
-                // sessionStorage.setItem('authData', JSON.stringify(res));
-                sessionStorage.setItem('authData', JSON.stringify(user));
+                // this.getProfile(user).subscribe((resUser: IUser) => {
+                //     this.loggedUser.ProfileName = resUser.ProfileName;
+                //     this.loggedUser.ProfileImage = resUser.ProfileImage;
+                //      sessionStorage.setItem('authData', JSON.stringify(this.loggedUser));
+                // }, error => console.log(error));
+
                 return user;
+
             }).catch(this.handleError);
     }
 

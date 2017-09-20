@@ -20,8 +20,6 @@ import {LoginService} from './services/login.service';
 import {CrediCardService} from './services/creditcard.service';
 import {HttpService} from './services/http.service';
 
-
-
  @NgModule({
   imports: [
     HttpModule,

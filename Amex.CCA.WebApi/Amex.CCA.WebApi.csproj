@@ -258,6 +258,7 @@
     <Compile Include="Controllers\CardTypeController.cs" />
     <Compile Include="Controllers\CreditCardsController.cs" />
     <Compile Include="Controllers\NationalityController.cs" />
+    <Compile Include="Controllers\UserProfilesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

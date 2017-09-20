@@ -45,11 +45,13 @@
     <Compile Include="BusinessModels\CreditCardEntity.cs" />
     <Compile Include="BusinessModels\LogEntity.cs" />
     <Compile Include="BusinessModels\NationalityEntity.cs" />
+    <Compile Include="BusinessModels\UserProfileEntity.cs" />
     <Compile Include="CardTypeBusinessService.cs" />
     <Compile Include="CreditCardBusinessService.cs" />
     <Compile Include="LogBusinessService.cs" />
     <Compile Include="NationalityBusinessService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserProfileBusinessService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Amex.CCApplication.DataAccess\Amex.CCA.DataAccess.csproj">

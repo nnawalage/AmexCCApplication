@@ -22,8 +22,12 @@ export class LoginComponent {
         }
 
         this.loginService.loginUser(user).subscribe((res: IUser) => {
-            this.router.navigate(['dashboard/myWork']);
-
+            this.loginService.getProfile(res).subscribe((resUser: IUser) => {
+                this.loginService.loggedUser.ProfileName = resUser.ProfileName;
+                this.loginService.loggedUser.ProfileImage = resUser.ProfileImage;
+                sessionStorage.setItem('authData', JSON.stringify(this.loginService.loggedUser));
+                this.router.navigate(['dashboard/myWork']);
+            }, error => console.log(error));
         }, error => {
             //console.log('errCame' + error);
         });

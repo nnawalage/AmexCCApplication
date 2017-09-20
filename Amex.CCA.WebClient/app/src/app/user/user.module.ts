@@ -7,10 +7,11 @@ import {EditProfileComponent} from './edit-profile.component';
      RouterModule.forChild(userRoutes)
     ],
     declarations:[
-        EditProfileComponent
+        EditProfileComponent,
     ],
     providers:[]
 })
 export class UserModule{
 
 }
+      

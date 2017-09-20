@@ -114,5 +114,25 @@ namespace Amex.CCA.BusinessServices
         }
 
         #endregion
+
+        #region UserProfile
+
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="userProfile"></param>
+       /// <returns></returns>
+        public static UserProfileEntity MapToUserProfileEntity(UserProfile userProfile)
+        {
+            return new UserProfileEntity()
+            {
+                UserProfileId = userProfile.UserProfileId,
+                ProfileName = userProfile.ProfileName,
+                ProfileImage = userProfile.ProfileImage,
+                UserName = userProfile.UserName,
+            };
+        }
+
+        #endregion
     }
 }
