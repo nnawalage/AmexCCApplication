@@ -13,6 +13,7 @@ import { HttpModule, XHRBackend, RequestOptions } from '@angular/http';
 //   CrediCardService,
 //   HttpService
 // } from './index';
+
 import {NavBarComponent} from './nav-bar/navbar.component';
 import {AuthGuard} from './services/router-guard.service';
 import {LoginService} from './services/login.service';

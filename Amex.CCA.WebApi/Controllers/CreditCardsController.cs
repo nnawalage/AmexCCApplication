@@ -18,6 +18,8 @@ using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Amex.CCA.WebApi.ViewModels;
+using Amex.CCA.WebApi.Mappers;
 
 namespace Amex.CCA.WebApi.Controllers
 {
@@ -25,11 +27,26 @@ namespace Amex.CCA.WebApi.Controllers
     public class CreditCardsController : ApiController
     {
         private CreditCardBusinessService creditCardBusinessService= new CreditCardBusinessService();
+        private CreditCardMapper creditCardMapper = new CreditCardMapper();
 
         // GET: api/CreditCards
-        public IQueryable<CreditCard> GetCreditCards()
+        public List<CreditCardViewModel> GetCreditCards()
         {
-            throw new NotImplementedException();
+            List<CreditCard> cardlist = new List<CreditCard>();
+            List<CreditCardViewModel> cardViewlist = new List<CreditCardViewModel>();
+
+            if (User.Identity.IsAuthenticated)
+            {
+                cardlist = creditCardBusinessService.GetAllCreditCards();
+                cardViewlist = creditCardMapper.CreateCreditCardList(cardlist);
+            }
+
+            return cardViewlist;
+            //else {
+            //    //return BadRequest("Error occured while creating credit card");
+            //}
+
+            //throw new NotImplementedException();
         }
 
         // GET: api/CreditCards/5

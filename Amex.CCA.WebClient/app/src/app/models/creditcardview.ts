@@ -1,5 +1,5 @@
-export interface CreditCard {
-   // CreditCardId: number;
+export interface ICreditCardView {
+    // CreditCardId: number;
     FullName: string;
     DisplayName: string;
     Nic: string;
@@ -22,5 +22,6 @@ export interface CreditCard {
     Note: string;
     CardTypeId: number;
     NationalityId: number;
+    IsExpandable: boolean
     //CardStatus: number;
 }
