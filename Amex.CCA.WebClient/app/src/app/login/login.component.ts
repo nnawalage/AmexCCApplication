@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
-import { IUser } from "../models/Iuser";
+import { IUser } from "../models/user";
 
 @Component({
     templateUrl: './login.template.html',

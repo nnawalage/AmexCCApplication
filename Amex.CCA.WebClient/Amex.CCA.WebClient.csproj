@@ -188,7 +188,7 @@
     <TypeScriptCompile Include="app\src\app\models\creditcardview.ts" />
     <TypeScriptCompile Include="app\src\app\models\nationality.ts" />
     <TypeScriptCompile Include="app\src\app\models\token.ts" />
-    <TypeScriptCompile Include="app\src\app\models\Iuser.ts" />
+    <TypeScriptCompile Include="app\src\app\models\user.ts" />
     <TypeScriptCompile Include="app\src\app\nav-bar\index.ts" />
     <TypeScriptCompile Include="app\src\app\nav-bar\navbar.component.ts" />
     <TypeScriptCompile Include="app\src\app\routes.ts" />
