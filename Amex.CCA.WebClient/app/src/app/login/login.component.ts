@@ -34,5 +34,10 @@ export class LoginComponent {
 
     }
 
+    private onRegisterClick()
+    {
+        this.router.navigate(['user/registration'])
+    }
+
 
 }
