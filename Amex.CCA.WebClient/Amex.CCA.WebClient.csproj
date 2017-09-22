@@ -104,6 +104,7 @@
     <Content Include="app\src\app\shared\header.template.html" />
     <Content Include="app\src\app\user\edit-profile.template.html" />
     <Content Include="app\src\app\user\user-profile.template.html" />
+    <Content Include="app\src\app\user\user-registration.template.html" />
     <Content Include="app\src\assets\images\no-image.png" />
     <Content Include="packages.config" />
     <Content Include="app\.angular-cli.json" />
@@ -203,6 +204,7 @@
     <TypeScriptCompile Include="app\src\app\shared\shared.module.ts" />
     <TypeScriptCompile Include="app\src\app\user\edit-profile.component.ts" />
     <TypeScriptCompile Include="app\src\app\user\user-profile.component.ts" />
+    <TypeScriptCompile Include="app\src\app\user\user-registration.component.ts" />
     <TypeScriptCompile Include="app\src\app\user\user.module.ts" />
     <TypeScriptCompile Include="app\src\app\user\user.routes.ts" />
     <TypeScriptCompile Include="app\src\environments\environment.prod.ts" />
@@ -225,6 +227,7 @@
     <Content Include="app\src\app\creditcard\creditcard.styles.scss" />
     <Content Include="app\src\app\user\user-profile.styles.scss" />
     <Content Include="app\src\assets\css\common.styles.scss" />
+    <Content Include="app\src\app\user\user-registration.styles.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
