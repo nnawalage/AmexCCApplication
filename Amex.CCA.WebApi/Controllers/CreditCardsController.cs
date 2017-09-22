@@ -27,21 +27,19 @@ namespace Amex.CCA.WebApi.Controllers
     public class CreditCardsController : ApiController
     {
         private CreditCardBusinessService creditCardBusinessService= new CreditCardBusinessService();
-        private CreditCardMapper creditCardMapper = new CreditCardMapper();
-
+        
         // GET: api/CreditCards
         public List<CreditCardViewModel> GetCreditCards()
         {
             List<CreditCard> cardlist = new List<CreditCard>();
-            List<CreditCardViewModel> cardViewlist = new List<CreditCardViewModel>();
+            string email = User.Identity.Name;
 
             if (User.Identity.IsAuthenticated)
             {
-                cardlist = creditCardBusinessService.GetAllCreditCards();
-                cardViewlist = creditCardMapper.CreateCreditCardList(cardlist);
+                cardlist = creditCardBusinessService.GetAllCreditCards(email);
             }
+            return new CreditCardMapper().CreateCreditCardList(cardlist);
 
-            return cardViewlist;
             //else {
             //    //return BadRequest("Error occured while creating credit card");
             //}

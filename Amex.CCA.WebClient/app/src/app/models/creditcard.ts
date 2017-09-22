@@ -1,4 +1,4 @@
-export interface CreditCard {
+export interface ICreditCard {
    // CreditCardId: number;
     FullName: string;
     DisplayName: string;

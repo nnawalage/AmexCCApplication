@@ -41,7 +41,7 @@ namespace Amex.CCA.DataAccess
             }
         }
 
-        public List<CreditCard> GetAllCreditCards()
+        public List<CreditCard> GetAllCreditCards(string email)
         {
             using (AmexDbContext dbContext = new AmexDbContext())
             {

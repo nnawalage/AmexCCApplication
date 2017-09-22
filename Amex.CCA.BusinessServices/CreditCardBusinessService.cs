@@ -34,11 +34,9 @@ namespace Amex.CCA.BusinessServices
             return dataAccessHelper.UpdateCreditCard(creditCard);
         }
 
-        public List<CreditCard> GetAllCreditCards()
+        public List<CreditCard> GetAllCreditCards(string email)
         {
-            List<CreditCard> cardList = new List<CreditCard>();
-            cardList=dataAccessHelper.GetAllCreditCards();
-            return cardList;
+            return dataAccessHelper.GetAllCreditCards(email);
         }
     }
 }
