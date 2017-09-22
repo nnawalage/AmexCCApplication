@@ -1,17 +1,22 @@
-import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {userRoutes} from './user.routes';
-import {EditProfileComponent} from './edit-profile.component';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { userRoutes } from './user.routes';
+import { EditProfileComponent } from './edit-profile.component';
+
 @NgModule({
-    imports:[
-     RouterModule.forChild(userRoutes)
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        RouterModule.forChild(userRoutes)
     ],
-    declarations:[
+    declarations: [
         EditProfileComponent,
     ],
-    providers:[]
+    providers: []
 })
-export class UserModule{
+export class UserModule {
 
 }
-      
