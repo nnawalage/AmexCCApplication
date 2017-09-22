@@ -25,53 +25,53 @@ namespace Amex.CCA.WebApi.Controllers
             return new UserProfileBusinessService().GetAllUserProfiles();
         }
 
-        //// GET: api/UserProfiles/5
-        //[ResponseType(typeof(UserProfile))]
-        //public IHttpActionResult GetUserProfile(int id)
-        //{
-        //    UserProfile userProfile = db.UserProfiles.Find(id);
-        //    if (userProfile == null)
-        //    {
-        //        return NotFound();
-        //    }
+        // GET: api/UserProfiles/5
+        [ResponseType(typeof(UserProfile))]
+        public IHttpActionResult GetUserProfile(int id)
+        {
+            UserProfile userProfile = db.UserProfiles.Find(id);
+            if (userProfile == null)
+            {
+                return NotFound();
+            }
 
-        //    return Ok(userProfile);
-        //}
+            return Ok(userProfile);
+        }
 
-        //// PUT: api/UserProfiles/5
-        //[ResponseType(typeof(void))]
-        //public IHttpActionResult PutUserProfile(int id, UserProfile userProfile)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        // PUT: api/UserProfiles/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutUserProfile(int id, UserProfile userProfile)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-        //    if (id != userProfile.UserProfileId)
-        //    {
-        //        return BadRequest();
-        //    }
+            if (id != userProfile.UserProfileId)
+            {
+                return BadRequest();
+            }
 
-        //    db.Entry(userProfile).State = EntityState.Modified;
+            db.Entry(userProfile).State = EntityState.Modified;
 
-        //    try
-        //    {
-        //        db.SaveChanges();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!UserProfileExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!UserProfileExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-        //    return StatusCode(HttpStatusCode.NoContent);
-        //}
+            return StatusCode(HttpStatusCode.NoContent);
+        }
 
         //// POST: api/UserProfiles
         //[ResponseType(typeof(UserProfile))]
@@ -113,9 +113,9 @@ namespace Amex.CCA.WebApi.Controllers
         //    base.Dispose(disposing);
         //}
 
-        //private bool UserProfileExists(int id)
-        //{
-        //    return db.UserProfiles.Count(e => e.UserProfileId == id) > 0;
-        //}
+        private bool UserProfileExists(int id)
+        {
+            return db.UserProfiles.Count(e => e.UserProfileId == id) > 0;
+        }
     }
 }

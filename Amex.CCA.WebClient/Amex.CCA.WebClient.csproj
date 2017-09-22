@@ -198,6 +198,7 @@
     <TypeScriptCompile Include="app\src\app\services\login.service.ts" />
     <TypeScriptCompile Include="app\src\app\services\nationality-resolver.service.ts" />
     <TypeScriptCompile Include="app\src\app\services\router-guard.service.ts" />
+    <TypeScriptCompile Include="app\src\app\services\userprofile.service.ts" />
     <TypeScriptCompile Include="app\src\app\shared\footer.component.ts" />
     <TypeScriptCompile Include="app\src\app\shared\header.component.ts" />
     <TypeScriptCompile Include="app\src\app\shared\shared.module.ts" />
