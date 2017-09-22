@@ -31,4 +31,11 @@ export class LoginComponent {
             //console.log('errCame' + error);
         });
     }
+
+    private onRegisterClick()
+    {
+        this.router.navigate(['user/registration'])
+    }
+
+
 }
