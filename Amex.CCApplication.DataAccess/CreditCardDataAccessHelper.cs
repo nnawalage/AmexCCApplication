@@ -45,8 +45,11 @@ namespace Amex.CCA.DataAccess
         {
             using (AmexDbContext dbContext = new AmexDbContext())
             {
-                var data = dbContext.CreditCards;
-                return data.ToList();
+                return dbContext.CreditCards
+                    .Include(c => c.CardStatus)
+                    .Include(c => c.CardType)
+                    .Include(c => c.Nationality).ToList();
+                
             }
         }
     }
