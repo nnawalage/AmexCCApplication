@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using Amex.CCA.WebApi.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using Amex.CCA.WebApi.Models;
+using System.Threading.Tasks;
 
 namespace Amex.CCA.WebApi
 {

@@ -11,7 +11,6 @@ export class LoginComponent {
     loginInvalid: boolean = false;
 
     constructor(private router: Router, private loginService: LoginService) {
-
     }
 
     private onLoginSubmit(loginFormValues: Object): void {
@@ -31,8 +30,5 @@ export class LoginComponent {
         }, error => {
             //console.log('errCame' + error);
         });
-
     }
-
-
 }

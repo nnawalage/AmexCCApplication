@@ -11,11 +11,9 @@ import { INationality } from "../models/nationality";
     styleUrls: ['./creditcard.styles.scss']
 })
 export class CreditCardComponent implements OnInit {
-
     private ccForm: FormGroup;
     cardTypes: ICardType[];
     nationalities: INationality[];
-
 
     constructor(private actRouter: ActivatedRoute, private router: Router, private crediCardService: CrediCardService, private _fb: FormBuilder) {
     }
@@ -45,7 +43,6 @@ export class CreditCardComponent implements OnInit {
         this.actRouter.data.forEach(data => {
             this.nationalities = data['nationality'];
         });
-        
     }
 
     private loadCardTypes(): void {
@@ -84,7 +81,6 @@ export class CreditCardComponent implements OnInit {
             });
 
             //}
-
         }
     }
 }

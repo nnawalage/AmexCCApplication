@@ -1,4 +1,11 @@
-﻿using System;
+﻿using Amex.CCA.BusinessServices;
+using Amex.CCA.BusinessServices.BusinessModels;
+using Amex.CCA.DataAccess;
+using Amex.CCA.DataAccess.Entities;
+using Amex.CCA.WebApi.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,39 +13,30 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
-using System.Web.Http.Description;
-using Amex.CCA.DataAccess;
-using Amex.CCA.DataAccess.Entities;
-using System.Web.Http.Cors;
-using Amex.CCA.BusinessServices;
-using Amex.CCA.WebApi.Models;
-using Amex.CCA.BusinessServices.BusinessModels;
 using System.Threading.Tasks;
 using System.Web;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Amex.CCA.WebApi.ViewModels;
-using Amex.CCA.WebApi.Mappers;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using System.Web.Http.Description;
 
 namespace Amex.CCA.WebApi.Controllers
 {
     //[Authorize]
     public class CreditCardsController : ApiController
     {
-        private CreditCardBusinessService creditCardBusinessService= new CreditCardBusinessService();
-        
+        private CreditCardBusinessService creditCardBusinessService = new CreditCardBusinessService();
+
         // GET: api/CreditCards
-        public List<CreditCardViewModel> GetCreditCards()
+        public List<CreditCardEntity> GetCreditCards()
         {
-            List<CreditCard> cardlist = new List<CreditCard>();
+            List<CreditCardEntity> cardlist = new List<CreditCardEntity>();
             string email = User.Identity.Name;
 
             if (User.Identity.IsAuthenticated)
             {
                 cardlist = creditCardBusinessService.GetAllCreditCards(email);
             }
-            return new CreditCardMapper().CreateCreditCardList(cardlist);
+            return cardlist;
 
             //else {
             //    //return BadRequest("Error occured while creating credit card");
@@ -90,11 +88,10 @@ namespace Amex.CCA.WebApi.Controllers
             throw new NotImplementedException();
         }
 
-
         #region Private Methods
 
         /// <summary>
-        /// Create new user account if the customer is a new user. 
+        /// Create new user account if the customer is a new user.
         /// This method will not perform any action if customer is already registered in the system.
         /// </summary>
         /// <param name="email">The email.</param>
@@ -105,8 +102,8 @@ namespace Amex.CCA.WebApi.Controllers
             bool operationResult = true;
             var userManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
             //check if user already exist
-            ApplicationUser user =  userManager.FindByEmail(email);
-            //if new user 
+            ApplicationUser user = userManager.FindByEmail(email);
+            //if new user
             if (user == null)
             {
                 //register user with a dummy password
@@ -126,7 +123,6 @@ namespace Amex.CCA.WebApi.Controllers
             return operationResult;
         }
 
-        #endregion
-
+        #endregion Private Methods
     }
 }

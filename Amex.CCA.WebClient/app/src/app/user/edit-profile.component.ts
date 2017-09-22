@@ -1,10 +1,8 @@
-import {Component} from '@angular/core';
-
+import { Component } from '@angular/core';
 
 @Component({
-templateUrl:'./edit-profile.template.html',
- styleUrls:['./edit-profile.styles.scss']
+    templateUrl: './edit-profile.template.html',
+    styleUrls: ['./edit-profile.styles.scss']
 })
-export class EditProfileComponent{
-
+export class EditProfileComponent {
 }

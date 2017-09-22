@@ -9,7 +9,6 @@ import { HttpService } from '../services/http.service';
 
 @Injectable()
 export class CrediCardService {
-     
     constructor(private http: HttpService) {
     }
 
@@ -17,7 +16,6 @@ export class CrediCardService {
         return this.http.get(`/CardType`).map((res: Response) => {
             return <ICardType[]>res.json();
         });
-
     }
 
     getNationalities(): Observable<INationality[]> {
@@ -36,7 +34,6 @@ export class CrediCardService {
             .map((res: Response) => {
                 return <ICreditCard[]>res.json()
             });
-           // .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+        // .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
-
 }

@@ -1,8 +1,7 @@
 namespace Amex.CCA.DataAccess.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class cctabledrop1 : DbMigration
     {
         public override void Up()
@@ -46,7 +45,7 @@ namespace Amex.CCA.DataAccess.Migrations
             AddForeignKey("AMEXCCDB.CreditCard", "CardTypeId", "AMEXCCDB.CardType", "CardTypeId", cascadeDelete: true);
             AddForeignKey("AMEXCCDB.CreditCard", "NationalityId", "AMEXCCDB.Nationality", "NationalityId", cascadeDelete: true);
         }
-        
+
         public override void Down()
         {
             DropForeignKey("AMEXCCDB.CreditCard", "NationalityId", "AMEXCCDB.Nationality");

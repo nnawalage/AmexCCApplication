@@ -1,7 +1,6 @@
 ﻿using Amex.CCA.BusinessServices.BusinessModels;
 using Amex.CCA.DataAccess;
 using Amex.CCA.DataAccess.Entities;
-using System;
 using System.Collections.Generic;
 
 namespace Amex.CCA.BusinessServices
@@ -34,9 +33,15 @@ namespace Amex.CCA.BusinessServices
             return dataAccessHelper.UpdateCreditCard(creditCard);
         }
 
-        public List<CreditCard> GetAllCreditCards(string email)
+        public List<CreditCardEntity> GetAllCreditCards(string email)
         {
-            return dataAccessHelper.GetAllCreditCards(email);
+            List<CreditCard> creditCardList = dataAccessHelper.GetAllCreditCards(email);
+            List<CreditCardEntity> creditCardEntityList = new List<CreditCardEntity>();
+            foreach (CreditCard creditCard in creditCardList)
+            {
+                creditCardEntityList.Add(BusinessModelMapper.MapToCreditCardEntity(creditCard));
+            }
+            return creditCardEntityList;
         }
     }
 }

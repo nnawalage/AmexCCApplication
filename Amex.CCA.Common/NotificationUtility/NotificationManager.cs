@@ -11,7 +11,6 @@ namespace Amex.CCA.Common.NotificationUtility
         //read the config settings
         private static NameValueCollection notificationManagerSettings =
             ConfigurationManager.GetSection("notificationManagerSettings") as NameValueCollection;
-        
 
         /// <summary>
         /// Send an mail.
@@ -27,23 +26,21 @@ namespace Amex.CCA.Common.NotificationUtility
                 client.Send(message);
                 return new NotificationResult()
                 {
-                    IsSuccess=true
+                    IsSuccess = true
                 };
             }
             catch (Exception exception)
             {
-
                 return new NotificationResult()
                 {
-                    IsSuccess=false,
-                    Message=exception.Message
+                    IsSuccess = false,
+                    Message = exception.Message
                 };
             }
-            
         }
 
-
         #region Private methods
+
         /// <summary>
         /// Gets the SMTP client.
         /// </summary>
@@ -87,6 +84,6 @@ namespace Amex.CCA.Common.NotificationUtility
             return message;
         }
 
-        #endregion
+        #endregion Private methods
     }
 }
