@@ -19,13 +19,15 @@ import {AuthGuard} from './services/router-guard.service';
 import {LoginService} from './services/login.service';
 import {CrediCardService} from './services/creditcard.service';
 import {HttpService} from './services/http.service';
+import { UserService } from './services/user.service'
 
  @NgModule({
   imports: [
     HttpModule,
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    SharedModule
+    SharedModule,
+    UserModule
   ],
   declarations: [
     AppComponent, NavBarComponent
@@ -39,6 +41,7 @@ import {HttpService} from './services/http.service';
     LoginService,
     AuthGuard,
     CrediCardService,
+    UserService,
 
     {
       provide: CrediCardService,

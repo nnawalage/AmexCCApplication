@@ -103,6 +103,7 @@
     <Content Include="app\src\app\shared\footer.template.html" />
     <Content Include="app\src\app\shared\header.template.html" />
     <Content Include="app\src\app\user\edit-profile.template.html" />
+    <Content Include="app\src\app\user\user-approve.template.html" />
     <Content Include="app\src\app\user\user-profile.template.html" />
     <Content Include="app\src\assets\images\no-image.png" />
     <Content Include="packages.config" />
@@ -189,6 +190,7 @@
     <TypeScriptCompile Include="app\src\app\models\nationality.ts" />
     <TypeScriptCompile Include="app\src\app\models\token.ts" />
     <TypeScriptCompile Include="app\src\app\models\user.ts" />
+    <TypeScriptCompile Include="app\src\app\models\userApprove.ts" />
     <TypeScriptCompile Include="app\src\app\nav-bar\index.ts" />
     <TypeScriptCompile Include="app\src\app\nav-bar\navbar.component.ts" />
     <TypeScriptCompile Include="app\src\app\routes.ts" />
@@ -198,10 +200,12 @@
     <TypeScriptCompile Include="app\src\app\services\login.service.ts" />
     <TypeScriptCompile Include="app\src\app\services\nationality-resolver.service.ts" />
     <TypeScriptCompile Include="app\src\app\services\router-guard.service.ts" />
+    <TypeScriptCompile Include="app\src\app\services\user.service.ts" />
     <TypeScriptCompile Include="app\src\app\shared\footer.component.ts" />
     <TypeScriptCompile Include="app\src\app\shared\header.component.ts" />
     <TypeScriptCompile Include="app\src\app\shared\shared.module.ts" />
     <TypeScriptCompile Include="app\src\app\user\edit-profile.component.ts" />
+    <TypeScriptCompile Include="app\src\app\user\user-approve.component.ts" />
     <TypeScriptCompile Include="app\src\app\user\user-profile.component.ts" />
     <TypeScriptCompile Include="app\src\app\user\user.module.ts" />
     <TypeScriptCompile Include="app\src\app\user\user.routes.ts" />
@@ -225,6 +229,7 @@
     <Content Include="app\src\app\creditcard\creditcard.styles.scss" />
     <Content Include="app\src\app\user\user-profile.styles.scss" />
     <Content Include="app\src\assets\css\common.styles.scss" />
+    <Content Include="app\src\app\user\user-approve.styles.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

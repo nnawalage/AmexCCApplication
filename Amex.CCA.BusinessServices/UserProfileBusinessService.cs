@@ -19,5 +19,11 @@ namespace Amex.CCA.BusinessServices
             var userProfiles = new UserProfileDataAccessHelper().GetAllActiveUserProfiles();
             return userProfiles.Select(userProfile => BusinessModelMapper.MapToUserProfileEntity(userProfile)).ToList();
         }
+        public IList<UserProfileEntity> GetAllUserProfileToApprove()
+        {
+            var userProfiles = new UserProfileDataAccessHelper().GetAllUsersForApprove();
+            return userProfiles.Select(userProfile => BusinessModelMapper.MapToUsersForApproveEntity(userProfile)).ToList();
+
+        }
     }
 }

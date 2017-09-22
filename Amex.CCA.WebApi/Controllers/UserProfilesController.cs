@@ -15,16 +15,22 @@ using Amex.CCA.BusinessServices.BusinessModels;
 
 namespace Amex.CCA.WebApi.Controllers
 {
+    [RoutePrefix("api/UserProfiles")]
     public class UserProfilesController : ApiController
     {
         private AmexDbContext db = new AmexDbContext();
 
         // GET: api/UserProfiles
+        
         public IEnumerable<UserProfileEntity> Get()
         {
             return new UserProfileBusinessService().GetAllUserProfiles();
         }
-
+        [Route("approveUser")]
+        public IEnumerable<UserProfileEntity> GetAllInActiveUsers()
+        {
+            return new UserProfileBusinessService().GetAllUserProfileToApprove();
+        }
         //// GET: api/UserProfiles/5
         //[ResponseType(typeof(UserProfile))]
         //public IHttpActionResult GetUserProfile(int id)

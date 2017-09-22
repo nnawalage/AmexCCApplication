@@ -20,6 +20,13 @@ namespace Amex.CCA.DataAccess
                 return dbContext.UserProfiles.Where(n => n.IsActive).ToList();
             }
         }
+        public IList<UserProfile> GetAllUsersForApprove()
+        {
+            using (AmexDbContext dbcontext = new AmexDbContext())
+            {
+                return dbcontext.UserProfiles.Where(n => !n.IsActive).ToList();
+            }
+        }
     }
 
 }
