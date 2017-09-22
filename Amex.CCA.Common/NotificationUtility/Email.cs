@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Amex.CCA.Common.NotificationUtility
 {
@@ -11,7 +7,7 @@ namespace Amex.CCA.Common.NotificationUtility
         /// <summary>
         /// Gets or sets From address.
         /// Set the value if the email needs to be sent using a specific from address
-        /// Otherwise do not set, value will be set to default from 
+        /// Otherwise do not set, value will be set to default from
         /// </summary>
         /// <value>
         /// From.
@@ -22,6 +18,6 @@ namespace Amex.CCA.Common.NotificationUtility
 
         public string Subject { get; set; }
 
-        public string  Body { get; set; }
+        public string Body { get; set; }
     }
 }

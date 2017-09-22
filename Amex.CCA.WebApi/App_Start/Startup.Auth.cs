@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Amex.CCA.WebApi.Models;
+using Amex.CCA.WebApi.Providers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
@@ -8,8 +7,9 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using Amex.CCA.WebApi.Providers;
-using Amex.CCA.WebApi.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Amex.CCA.WebApi
 {
@@ -39,7 +39,7 @@ namespace Amex.CCA.WebApi
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 //AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
-                RefreshTokenProvider=new RefreshTokenProvider(),
+                RefreshTokenProvider = new RefreshTokenProvider(),
                 // In production mode set AllowInsecureHttp = false
                 AllowInsecureHttp = true
             };
@@ -47,7 +47,9 @@ namespace Amex.CCA.WebApi
             // Enable the application to use bearer tokens to authenticate users
             app.UseOAuthBearerTokens(OAuthOptions);
             //app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
-            #region Code related to third party providers 
+
+            #region Code related to third party providers
+
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
             //    clientId: "",
@@ -67,7 +69,7 @@ namespace Amex.CCA.WebApi
             //    ClientSecret = ""
             //});
 
-            #endregion
+            #endregion Code related to third party providers
         }
     }
 }

@@ -12,7 +12,6 @@ export const bb = []
 @Injectable()
 // export class HttpService {
 export class HttpService extends Http {
-
     private baseUri = environment.baseURI;
 
     get(uri: string): Observable<Response> {
@@ -59,6 +58,4 @@ export class HttpService extends Http {
             return Observable.throw(res);
         };
     }
-
-
 }

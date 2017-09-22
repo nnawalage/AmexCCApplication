@@ -15,6 +15,5 @@ export class UserProfileComponent implements OnInit {
         if (this.loginService.loggedUser.ProfileImage != null && this.loginService.loggedUser.ProfileImage != '') {
             this.profileImage = this.loginService.loggedUser.ProfileImage;
         }
-
     }
 }

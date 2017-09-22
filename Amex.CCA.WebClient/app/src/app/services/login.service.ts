@@ -46,7 +46,6 @@ export class LoginService {
         return emitter;
     }
 
-
     loginUser(user: IUser): Observable<IUser> {
         let url = `${this.baseUri}/Token`;
         let grantType: string = 'password';
@@ -74,7 +73,6 @@ export class LoginService {
                 // }, error => console.log(error));
 
                 return user;
-
             }).catch(this.handleError);
     }
 

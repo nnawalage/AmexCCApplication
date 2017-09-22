@@ -17,20 +17,19 @@ namespace Amex.CCA.WebApi.Providers
         {
             var guid = Guid.NewGuid().ToString();
 
-            // copy all properties and set the desired lifetime of refresh token  
+            // copy all properties and set the desired lifetime of refresh token
             var refreshTokenProperties = new AuthenticationProperties(context.Ticket.Properties.Dictionary)
             {
                 IssuedUtc = context.Ticket.Properties.IssuedUtc,
-                ExpiresUtc = DateTime.UtcNow.AddMinutes(60)//DateTime.UtcNow.AddYears(1)  
+                ExpiresUtc = DateTime.UtcNow.AddMinutes(60)//DateTime.UtcNow.AddYears(1)
             };
             var refreshTokenTicket = new AuthenticationTicket(context.Ticket.Identity, refreshTokenProperties);
 
             refreshTokens.TryAdd(guid, refreshTokenTicket);
 
-            // consider storing only the hash of the handle  
+            // consider storing only the hash of the handle
             context.SetToken(guid);
         }
-
 
         public async Task ReceiveAsync(AuthenticationTokenReceiveContext context)
         {
@@ -43,7 +42,6 @@ namespace Amex.CCA.WebApi.Providers
             }
         }
 
-
         public void Create(AuthenticationTokenCreateContext context)
         {
             throw new NotImplementedException();
@@ -53,6 +51,5 @@ namespace Amex.CCA.WebApi.Providers
         {
             throw new NotImplementedException();
         }
-
     }
 }
