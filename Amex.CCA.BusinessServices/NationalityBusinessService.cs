@@ -13,8 +13,8 @@ namespace Amex.CCA.BusinessServices
         /// <returns>List of nationalities</returns>
         public IList<NationalityEntity> GetAllNationality()
         {
-            var nationalities= new NationalityDataAccessHelper().GetAllActiveNationality();
-            return nationalities.Select(nationality => BusinessModelMapper.MapToNationalityEntity(nationality) ).ToList();
+            var nationalities = new NationalityDataAccessHelper().GetAllActiveNationality();
+            return nationalities.Select(nationality => BusinessModelMapper.MapToNationalityEntity(nationality)).ToList();
         }
     }
 }

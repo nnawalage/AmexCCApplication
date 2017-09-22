@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Amex.CCA.BusinessServices;
+using Amex.CCA.BusinessServices.BusinessModels;
+using Amex.CCA.DataAccess;
+using Amex.CCA.DataAccess.Entities;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -8,10 +12,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Amex.CCA.DataAccess;
-using Amex.CCA.DataAccess.Entities;
-using Amex.CCA.BusinessServices;
-using Amex.CCA.BusinessServices.BusinessModels;
 
 namespace Amex.CCA.WebApi.Controllers
 {

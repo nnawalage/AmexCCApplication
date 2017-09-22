@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Amex.CCA.DataAccess.Entities
+﻿namespace Amex.CCA.DataAccess.Entities
 {
     public class Log : AmexModelBase
     {

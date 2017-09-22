@@ -1,4 +1,4 @@
-﻿export interface INationality {
+export interface INationality {
     NationalityId: number;
     Name: string;
-} 
+}

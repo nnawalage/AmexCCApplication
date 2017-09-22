@@ -1,32 +1,28 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { CrediCardService } from "../services/creditcard.service";
 import { Router } from "@angular/router";
 import { FormsModule } from '@angular/forms';
-import { ICreditCardView } from "../models/creditcardview";
-
+import { ICreditCard } from "../models/creditcard";
 
 @Component({
-templateUrl:'./dashboard.template.html',
-styleUrls:['./dashboard.styles.scss']
+    templateUrl: './dashboard.template.html',
+    styleUrls: ['./dashboard.styles.scss']
 })
-export class DashboardComponent{
-    cardRequestList: ICreditCardView[];
-    cardRequest: ICreditCardView;
- constructor(private actRouter: ActivatedRoute, private router: Router, private crediCardService: CrediCardService) {
- }
+export class DashboardComponent {
+    cardRequestList: ICreditCard[];
+    selectedIndex: number;
+    constructor(private actRouter: ActivatedRoute, private router: Router, private crediCardService: CrediCardService) {
+    }
 
- ngOnInit() {
-     this.crediCardService.getAllCardRequests().subscribe(receivedCardRequests => {
-         this.cardRequestList= receivedCardRequests;
-         console.log(this.cardRequestList)
-         }, error => console.log(error));
- }
+    ngOnInit() {
+        this.crediCardService.getAllCardRequests().subscribe(receivedCardRequests => {
+            this.cardRequestList = receivedCardRequests;
+            this.selectedIndex = 0;
+        }, error => console.log(error));
+    }
 
-
- //clickRequest() {
- //    let expandableStatus: boolean = this.cardRequest.IsExpandable;
- //    this.cardRequest.IsExpandable = !expandableStatus;
-     
- //}
+    clickRequest(index: number) {
+        this.selectedIndex = index;
+    }
 }

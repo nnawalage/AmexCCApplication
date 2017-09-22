@@ -8,7 +8,7 @@ namespace Amex.CCA.DataAccess.Entities
         public int AttachmentId { get; set; }
 
         [Required]
-        public string  FileName { get; set; }
+        public string FileName { get; set; }
 
         [Required]
         public string  FileUrl { get; set; }

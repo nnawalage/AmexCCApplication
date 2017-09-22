@@ -1,8 +1,7 @@
 namespace Amex.CCA.DataAccess.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class nullabletypes : DbMigration
     {
         public override void Up()
@@ -27,7 +26,7 @@ namespace Amex.CCA.DataAccess.Migrations
             AlterColumn("AMEXCCDB.Nationality", "ModifiedTime", c => c.DateTime());
             AlterColumn("AMEXCCDB.Nationality", "DeletedTime", c => c.DateTime());
         }
-        
+
         public override void Down()
         {
             AlterColumn("AMEXCCDB.Nationality", "DeletedTime", c => c.DateTime(nullable: false));

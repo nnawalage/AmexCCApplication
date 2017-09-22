@@ -12,13 +12,11 @@ import { CommonModule } from '@angular/common';
         CommonModule,
         ReactiveFormsModule
     ],
-    declarations:[
+    declarations: [
         EditProfileComponent,
         UserRegistrationComponent
     ],
-    providers:[]
+    providers: []
 })
-export class UserModule{
-
+export class UserModule {
 }
-      
