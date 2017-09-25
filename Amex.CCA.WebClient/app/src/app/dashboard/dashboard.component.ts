@@ -22,7 +22,39 @@ export class DashboardComponent {
         }, error => console.log(error));
     }
 
-    clickRequest(index: number) {
-        this.selectedIndex = index;
+    openCreditCardView() {
+        this.dialogService.addDialog(ViewCreditCardComponent, {
+            question: 'What is your name?: '
+        })
+            .subscribe((message) => {
+                //We get dialog result
+                this.promptMessage = message;
+            });
     }
+
+    openCreditCardEdit() {
+        this.dialogService.addDialog(EditCreditCardComponent, {
+            question: 'What is your name?: '
+        })
+            .subscribe((message) => {
+                //We get dialog result
+                this.promptMessage = message;
+            });
+    }
+
+    openCreditCardApprove() {
+        this.dialogService.addDialog(ApproveCreditCardComponent, {
+            question: 'What is your name?: '
+        })
+            .subscribe((message) => {
+                //We get dialog result
+                this.promptMessage = message;
+            });
+    }
+
+    //clickRequest() {
+    //    let expandableStatus: boolean = this.cardRequest.IsExpandable;
+    //    this.cardRequest.IsExpandable = !expandableStatus;
+
+    //}
 }

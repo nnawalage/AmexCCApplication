@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { LoginService } from '../services/login.service'
+import { UserProfileService } from '../services/userprofile.service'
 import { IUserProfile } from "../models/userprofile";
 
 @Component({
@@ -14,7 +14,7 @@ export class EditProfileComponent implements OnInit {
     //This is to load all the controls
     private profileForm: FormGroup;
 
-    constructor(private actRouter: ActivatedRoute, private router: Router, private loginService: LoginService, private _fb: FormBuilder) {
+    constructor(private actRouter: ActivatedRoute, private router: Router, private upService: UserProfileService, private _fb: FormBuilder) {
     }
 
 
@@ -34,6 +34,12 @@ export class EditProfileComponent implements OnInit {
                 ProfileImage: userProfileFormValues['profileImage'],
             }
             console.log(userProfileObj.ProfileName);
+
+            this.upService.SaveUserProfile(userProfileObj).subscribe((res: any) => {
+                console.log(res);
+            }, error => {
+                console.log('error when saving' + error);
+            });
         }
     }
 }
