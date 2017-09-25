@@ -247,6 +247,26 @@
     <Compile Include="Migrations\201709221125595_test2.Designer.cs">
       <DependentUpon>201709221125595_test2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709250700466_dropUserProfile.cs" />
+    <Compile Include="Migrations\201709250700466_dropUserProfile.Designer.cs">
+      <DependentUpon>201709250700466_dropUserProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709250727421_addUserProfile.cs" />
+    <Compile Include="Migrations\201709250727421_addUserProfile.Designer.cs">
+      <DependentUpon>201709250727421_addUserProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709250740548_initial.cs" />
+    <Compile Include="Migrations\201709250740548_initial.Designer.cs">
+      <DependentUpon>201709250740548_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709250747128_dropUserProfile1.cs" />
+    <Compile Include="Migrations\201709250747128_dropUserProfile1.Designer.cs">
+      <DependentUpon>201709250747128_dropUserProfile1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709250748477_cretaeUserProfile.cs" />
+    <Compile Include="Migrations\201709250748477_cretaeUserProfile.Designer.cs">
+      <DependentUpon>201709250748477_cretaeUserProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NationalityDataAccessHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -388,6 +408,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709221125595_test2.resx">
       <DependentUpon>201709221125595_test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709250700466_dropUserProfile.resx">
+      <DependentUpon>201709250700466_dropUserProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709250727421_addUserProfile.resx">
+      <DependentUpon>201709250727421_addUserProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709250740548_initial.resx">
+      <DependentUpon>201709250740548_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709250747128_dropUserProfile1.resx">
+      <DependentUpon>201709250747128_dropUserProfile1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709250748477_cretaeUserProfile.resx">
+      <DependentUpon>201709250748477_cretaeUserProfile.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

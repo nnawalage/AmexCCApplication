@@ -43,13 +43,33 @@ namespace Amex.CCA.DataAccess
 
         public List<CreditCard> GetAllCreditCards(string email)
         {
+            List<CreditCard> creditCardList = new List<CreditCard>();
+            using (AmexDbContext dbContext = new AmexDbContext())
+            {
+                List<CreditCard> data = dbContext.CreditCards
+                                        .Include(c => c.CardStatus)
+                                        .Include(c => c.CardType)
+                                        .Include(c => c.Nationality).ToList(); 
+                foreach(CreditCard creditcard in data)
+                {
+                    if (creditcard.Email != email)
+                    {
+                        creditCardList.Add(creditcard);
+                    }
+                }
+                return creditCardList;
+                
+            }
+        }
+
+        public CreditCard GetCreditCardById(int id)
+        {
             using (AmexDbContext dbContext = new AmexDbContext())
             {
                 return dbContext.CreditCards
                     .Include(c => c.CardStatus)
                     .Include(c => c.CardType)
-                    .Include(c => c.Nationality).ToList();
-                
+                    .Include(c => c.Nationality).FirstOrDefault(x => x.CreditCardId == id);
             }
         }
     }
