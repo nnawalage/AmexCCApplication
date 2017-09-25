@@ -1,8 +1,7 @@
 namespace Amex.CCA.DataAccess.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class cctabledrop : DbMigration
     {
         public override void Up()
@@ -43,7 +42,7 @@ namespace Amex.CCA.DataAccess.Migrations
             DropColumn("AMEXCCDB.CreditCard", "RequestedBy");
             DropColumn("AMEXCCDB.CreditCard", "Note");
         }
-        
+
         public override void Down()
         {
             AddColumn("AMEXCCDB.CreditCard", "Note", c => c.String());

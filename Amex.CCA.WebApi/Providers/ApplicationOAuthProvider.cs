@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using Amex.CCA.WebApi.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using Amex.CCA.WebApi.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Amex.CCA.WebApi.Providers
 {
@@ -44,12 +44,11 @@ namespace Amex.CCA.WebApi.Providers
             //ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
             //    CookieAuthenticationDefaults.AuthenticationType);
 
-            AuthenticationProperties properties = CreateProperties(user,userManager);
+            AuthenticationProperties properties = CreateProperties(user, userManager);
             AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
             context.Validated(ticket);
             //context.Request.Context.Authentication.SignIn(cookiesIdentity);
         }
-
 
         public override async Task GrantRefreshToken(OAuthGrantRefreshTokenContext context)
         {
@@ -58,9 +57,6 @@ namespace Amex.CCA.WebApi.Providers
             AuthenticationTicket newTicket = new AuthenticationTicket(refreshTokenIdentity, context.Ticket.Properties);
             context.Validated(newTicket);
         }
-
-
-
 
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
         {
@@ -98,15 +94,14 @@ namespace Amex.CCA.WebApi.Providers
         //    return Task.FromResult<object>(null);
         //}
 
-        public static AuthenticationProperties CreateProperties(ApplicationUser user,ApplicationUserManager context)
+        public static AuthenticationProperties CreateProperties(ApplicationUser user, ApplicationUserManager context)
         {
-            var roles=context.GetRoles(user.Id);
+            var roles = context.GetRoles(user.Id);
             IDictionary<string, string> data = new Dictionary<string, string>
             {
                 { "userName", user.UserName },
                 { "role",roles.Count>0?roles.First():""},
                 { "roleId",user.Roles.Count>0?user.Roles.First().RoleId:""}
-
             };
             return new AuthenticationProperties(data);
         }

@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login.component';
 
-
 const loginRoute: Routes = [
     { path: '', component: LoginComponent, pathMatch: 'full' }
 ]
@@ -15,8 +14,6 @@ const loginRoute: Routes = [
     ],
     declarations: [LoginComponent],
     providers: []
-
 })
 export class LoginModule {
-
 }

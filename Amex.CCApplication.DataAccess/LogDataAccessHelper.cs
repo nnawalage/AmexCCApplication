@@ -1,7 +1,6 @@
 ﻿using Amex.CCA.DataAccess.Entities;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 
 namespace Amex.CCA.DataAccess
 {

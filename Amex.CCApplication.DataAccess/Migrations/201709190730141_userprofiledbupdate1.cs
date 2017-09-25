@@ -1,8 +1,7 @@
 namespace Amex.CCA.DataAccess.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class userprofiledbupdate1 : DbMigration
     {
         public override void Up()
@@ -24,9 +23,8 @@ namespace Amex.CCA.DataAccess.Migrations
                     DeletedTime = c.DateTime(),
                 })
                 .PrimaryKey(t => t.UserProfileId);
-
         }
-        
+
         public override void Down()
         {
             DropTable("AMEXCCDB.UserProfile");
