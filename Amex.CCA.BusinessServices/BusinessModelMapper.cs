@@ -159,17 +159,6 @@ namespace Amex.CCA.BusinessServices
                 UserName = userProfile.UserName,
             };
         }
-        public static UserProfileEntity MapToUsersForApproveEntity(UserProfile usersProfile)
-        {
-            return new UserProfileEntity()
-            {
-                UserProfileId = usersProfile.UserProfileId,
-                ProfileName = usersProfile.ProfileName,
-                ProfileImage = usersProfile.ProfileImage,
-                UserName = usersProfile.UserName,
-                IsActive = usersProfile.IsActive
-            };
-        }
 
         #endregion UserProfile
     }

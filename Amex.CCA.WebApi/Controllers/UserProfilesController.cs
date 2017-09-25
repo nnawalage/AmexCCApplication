@@ -2,6 +2,8 @@
 using Amex.CCA.BusinessServices.BusinessModels;
 using Amex.CCA.DataAccess;
 using Amex.CCA.DataAccess.Entities;
+using Amex.CCA.WebApi.IdentityHelper;
+using Amex.CCA.WebApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,10 +27,16 @@ namespace Amex.CCA.WebApi.Controllers
         {
             return new UserProfileBusinessService().GetAllUserProfiles();
         }
+        // GET: api/UserProfiles/approveUser
         [Route("approveUser")]
-        public IEnumerable<UserProfileEntity> GetAllInActiveUsers()
+        public IHttpActionResult GetAllInActiveUsers()
         {
-            return new UserProfileBusinessService().GetAllUserProfileToApprove();
+            var allInActiveUsers = new IdentityUser().GetInActiveUsers();
+            if(allInActiveUsers == null)
+            {
+                return NotFound();
+            }
+            return Ok(allInActiveUsers);
         }
         // GET: api/UserProfiles/5
         [ResponseType(typeof(UserProfile))]

@@ -1,7 +1,6 @@
 export class UserApprove{
-    UserProfileId : number
-    ProfileName : string
-    ProfileImage : string
     UserName : string
+    Email : string
+    UserIdName : string
     IsActive : boolean
 }
