@@ -89,10 +89,11 @@ namespace Amex.CCA.WebApi.Controllers
             if (ModelState.IsValid)
             {
                 userProfile.IsActive = true;
-                userProfile.CreatedBy = "chana";               
+                userProfile.CreatedBy = User.Identity.Name;
+                userProfile.CreatedDate = DateTime.Now;
 
                 upBusinessService.SaveUserProfile(userProfile);
-                return Ok("Successfully Created new credit card");
+                return Ok("User Profile Created Successfully");
             }
             else
             {

@@ -23,12 +23,12 @@ namespace Amex.CCA.DataAccess
         /// </summary>
         /// <param name="userProfile">The UserProfile.</param>
         /// <returns>true if successfully created</returns>
-        public bool CreateUserProfile(UserProfile userProfile)
+        public bool SaveUserProfile(UserProfile userProfile)
         {
-            using (AmexDbContext  dbContext= new AmexDbContext())
+            using (AmexDbContext dbContext = new AmexDbContext())
             {
                 dbContext.UserProfiles.Add(userProfile);
-               return  dbContext.SaveChanges()==1;
+                return dbContext.SaveChanges() == 1;
             }
         }
     }
