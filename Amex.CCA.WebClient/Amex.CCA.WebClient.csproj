@@ -99,6 +99,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\src\app\creditcard\creditcard.template.html" />
+    <Content Include="app\src\app\creditcard\approvecreditcard.template.html" />
+    <Content Include="app\src\app\creditcard\editcreditcard.template.html" />
     <Content Include="app\src\app\login\login.template.html" />
     <Content Include="app\src\app\shared\footer.template.html" />
     <Content Include="app\src\app\shared\header.template.html" />
@@ -173,10 +175,13 @@
     <TypeScriptCompile Include="app\src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="app\src\app\app.component.ts" />
     <TypeScriptCompile Include="app\src\app\app.module.ts" />
+    <TypeScriptCompile Include="app\src\app\creditcard\approvecreditcard.component.ts" />
     <TypeScriptCompile Include="app\src\app\creditcard\creditcard.component.ts" />
     <TypeScriptCompile Include="app\src\app\creditcard\creditcard.module.ts" />
     <TypeScriptCompile Include="app\src\app\creditcard\creditcard.routes.ts" />
+    <TypeScriptCompile Include="app\src\app\creditcard\editcreditcard.component.ts" />
     <TypeScriptCompile Include="app\src\app\creditcard\index.ts" />
+    <TypeScriptCompile Include="app\src\app\creditcard\viewcreditcard.component.ts" />
     <TypeScriptCompile Include="app\src\app\dashboard\dashboard.component.ts" />
     <TypeScriptCompile Include="app\src\app\dashboard\dashboard.module.ts" />
     <TypeScriptCompile Include="app\src\app\dashboard\dashboard.routes.ts" />
@@ -228,6 +233,7 @@
     <Content Include="app\src\app\user\user-profile.styles.scss" />
     <Content Include="app\src\assets\css\common.styles.scss" />
     <Content Include="app\src\app\user\user-registration.styles.scss" />
+    <Content Include="app\src\app\creditcard\viewcreditcard.template.html" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

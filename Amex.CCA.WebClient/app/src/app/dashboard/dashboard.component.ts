@@ -5,6 +5,11 @@ import { Router } from "@angular/router";
 import { FormsModule } from '@angular/forms';
 import { ICreditCard } from "../models/creditcard";
 
+import { ViewCreditCardComponent } from '../creditcard/viewcreditcard.component';
+import { EditCreditCardComponent } from '../creditcard/editcreditcard.component';
+import { ApproveCreditCardComponent } from '../creditcard/approvecreditcard.component';
+import { DialogService } from "ng2-bootstrap-modal";
+
 @Component({
     templateUrl: './dashboard.template.html',
     styleUrls: ['./dashboard.styles.scss']
@@ -12,7 +17,8 @@ import { ICreditCard } from "../models/creditcard";
 export class DashboardComponent {
     cardRequestList: ICreditCard[];
     selectedIndex: number;
-    constructor(private actRouter: ActivatedRoute, private router: Router, private crediCardService: CrediCardService) {
+    promptMessage: string = '';
+    constructor(private actRouter: ActivatedRoute, private router: Router, private crediCardService: CrediCardService, private dialogService: DialogService) {
     }
 
     ngOnInit() {
@@ -22,7 +28,39 @@ export class DashboardComponent {
         }, error => console.log(error));
     }
 
-    clickRequest(index: number) {
-        this.selectedIndex = index;
+    openCreditCardView() {
+        this.dialogService.addDialog(ViewCreditCardComponent, {
+            question: 'What is your name?: '
+        })
+            .subscribe((message) => {
+                //We get dialog result
+                this.promptMessage = message;
+            });
     }
+
+    openCreditCardEdit() {
+        this.dialogService.addDialog(EditCreditCardComponent, {
+            question: 'What is your name?: '
+        })
+            .subscribe((message) => {
+                //We get dialog result
+                this.promptMessage = message;
+            });
+    }
+
+    openCreditCardApprove() {
+        this.dialogService.addDialog(ApproveCreditCardComponent, {
+            question: 'What is your name?: '
+        })
+            .subscribe((message) => {
+                //We get dialog result
+                this.promptMessage = message;
+            });
+    }
+
+    //clickRequest() {
+    //    let expandableStatus: boolean = this.cardRequest.IsExpandable;
+    //    this.cardRequest.IsExpandable = !expandableStatus;
+
+    //}
 }
