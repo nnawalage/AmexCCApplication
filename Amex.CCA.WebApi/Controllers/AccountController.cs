@@ -1,4 +1,7 @@
-﻿using Amex.CCA.WebApi.Models;
+﻿using Amex.CCA.BusinessServices;
+using Amex.CCA.BusinessServices.BusinessModels;
+using Amex.CCA.Common.NotificationUtility;
+using Amex.CCA.WebApi.Models;
 using Amex.CCA.WebApi.Providers;
 using Amex.CCA.WebApi.Results;
 using Microsoft.AspNet.Identity;
@@ -9,6 +12,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -130,7 +134,7 @@ namespace Amex.CCA.WebApi.Controllers
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
-        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
+        public IHttpActionResult Register(RegisterBindingModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -139,14 +143,34 @@ namespace Amex.CCA.WebApi.Controllers
 
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, IsActive = false };
 
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+            IdentityResult result =  UserManager.Create(user, model.Password);
+            if (result.Succeeded)
+            {
+                UserProfileEntity userProfile = new UserProfileEntity()
+                {
+                    UserName = model.Email,
+                    ProfileName = model.ProfileName,
+                    CreatedBy = model.Email,
+                    CreatedDate = DateTime.Now,
+                    ProfileImage = ConfigurationManager.AppSettings["defaultProfileImage"]
+                };
 
-            if (!result.Succeeded)
+                //create user Profile
+                new UserProfileBusinessService().CreateUserProfile(userProfile);
+                //send emil
+                Email email = new Email()
+                {
+                    Subject = "User Account Created",
+                    To = new List<string>() { model.Email },
+                    Body = "Your account has been created. You will be able to login to the system when Admin validates and activate your account"
+                };
+                NotificationManager.SendMail(email);
+                return Ok();
+            }
+            else
             {
                 return GetErrorResult(result);
             }
-
-            return Ok();
         }
 
         protected override void Dispose(bool disposing)
