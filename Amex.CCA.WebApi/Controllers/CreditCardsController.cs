@@ -54,7 +54,7 @@ namespace Amex.CCA.WebApi.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.OK, creditCardEntity);
             }
-            return Request.CreateResponse(HttpStatusCode.NoContent, "The file has no content or rows to process.");
+            return Request.CreateResponse(HttpStatusCode.NoContent, "No content found.");
         }
 
         // PUT: api/CreditCards/5
