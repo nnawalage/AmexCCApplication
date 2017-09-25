@@ -156,7 +156,7 @@ namespace Amex.CCA.WebApi.Controllers
                     string imgFolderPath = ConfigurationManager.AppSettings["imgPath"].ToString();
                     string fileUrl = SaveAttachment(fileName, fileContent, userId, baseUri, imgFolderPath);
                     int attTypeId = attTypeMappings.Where(c => c.FileName == fileName).ToList<AttachmentTypeEntity>()[0].AttachmentTypeID;
-                    creditCard.Attachments.Add(new Attachment() { FileName = fileName, FileUrl = fileUrl, Type = new AttachmentType() { AttachmentTypeId = attTypeId } });
+                    creditCard.Attachments.Add(new Attachment() { FileName = fileName, FileUrl = fileUrl, AttachmentTypeId = attTypeId  });
 
                 }
             }
