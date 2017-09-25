@@ -51,5 +51,16 @@ namespace Amex.CCA.DataAccess
                     .Include(c => c.Nationality);                          
             }
         }
+
+        public CreditCard GetCreditCardById(int id)
+        {
+            using (AmexDbContext dbContext = new AmexDbContext())
+            {
+                return dbContext.CreditCards
+                    .Include(c => c.CardStatus)
+                    .Include(c => c.CardType)
+                    .Include(c => c.Nationality).FirstOrDefault(x => x.CreditCardId == id);
+            }
+        }
     }
 }

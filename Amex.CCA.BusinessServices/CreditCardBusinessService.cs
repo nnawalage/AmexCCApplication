@@ -47,5 +47,12 @@ namespace Amex.CCA.BusinessServices
             }
             return creditCardEntityList;
         }
+
+        public CreditCardEntity GetCreditCardById(int id)
+        {
+            CreditCard creditCard = dataAccessHelper.GetCreditCardById(id);
+            CreditCardEntity creditCardEntity = BusinessModelMapper.MapToCreditCardEntity(creditCard);
+            return creditCardEntity;
+        }
     }
 }

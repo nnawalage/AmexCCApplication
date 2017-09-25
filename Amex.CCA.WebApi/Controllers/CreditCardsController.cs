@@ -46,10 +46,15 @@ namespace Amex.CCA.WebApi.Controllers
         }
 
         // GET: api/CreditCards/5
-        [ResponseType(typeof(CreditCard))]
-        public IHttpActionResult GetCreditCard(int id)
+        [ResponseType(typeof(CreditCardEntity))]
+        public HttpResponseMessage GetCreditCard(int id)
         {
-            throw new NotImplementedException();
+            CreditCardEntity creditCardEntity = creditCardBusinessService.GetCreditCardById(id);
+            if (creditCardEntity != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, creditCardEntity);
+            }
+            return Request.CreateResponse(HttpStatusCode.NoContent, "The file has no content or rows to process.");
         }
 
         // PUT: api/CreditCards/5
