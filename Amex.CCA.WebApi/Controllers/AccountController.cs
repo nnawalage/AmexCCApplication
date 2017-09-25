@@ -32,6 +32,7 @@ namespace Amex.CCA.WebApi.Controllers
 
         public AccountController()
         {
+            //
         }
 
         public AccountController(ApplicationUserManager userManager,
