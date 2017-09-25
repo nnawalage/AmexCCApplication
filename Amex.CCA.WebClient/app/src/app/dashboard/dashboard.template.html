@@ -1,5 +1,5 @@
 <div class="panel panel-primary">
-  <div style="height: 60px;padding:0" class="panel-heading">
+  <div style="height: 50px;padding:0" class="panel-heading">
     <div class="form-group row">
       <div class="col-xs-3" style="align-content:center">
         <h3> <label for="fname">Full Name</label></h3>
@@ -21,9 +21,9 @@
 </div>
 <div id="accordion" *ngFor="let creditcard of cardRequestList ,let index = index" (click)="clickRequest(index)">
   <div class="panel panel-primary">
-    <div style="height: 40px;padding:0" class="panel-heading">
+    <div style="height: 30px;padding:0" class="panel-heading">
       <div class="form-group row" data-toggle="collapse" data-parent="#accordion" href="#demo">
-        <div class="col-xs-3" style="align-content:space-between">
+        <div class="col-xs-3">
           <h5> <label for="fname">{{creditcard.FullName}}</label></h5>
         </div>
 
@@ -47,15 +47,15 @@
           <form>
             <div class="form-group">
               <div class="col-md-3">
-                <label>Name in Full</label>
+                <label>Name in Full </label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 lightblue">
                 <label>- {{creditcard?.FullName}}</label>
               </div>
               <div class="col-md-3">
                 <label>Display Name</label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 lightblue">
                 <label>- {{creditcard?.DisplayName}}</label>
               </div>
             </div>
@@ -64,13 +64,13 @@
               <div class="col-md-3">
                 <label for="txtNic">NIC</label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 lightblue">
                 <label>- {{creditcard?.Nic}}</label>
               </div>
               <div class="col-md-3">
                 <label for="txtPassport">Passport</label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 lightblue">
                 <label>- {{creditcard?.Passport}}</label>
               </div>
             </div>
@@ -79,13 +79,13 @@
               <div class="col-md-3">
                 <label for="txtAddress">Address</label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 lightblue">
                 <label>- {{creditcard?.Address}} </label>
               </div>
               <div class="col-md-3">
                 <label for="txtMobile">Mobile</label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 lightblue">
                 <label>- {{creditcard?.MobilePhone}} </label>
               </div>
             </div>
@@ -94,7 +94,7 @@
               <div class="col-md-3">
                 <label for="txtHomePhone">Home Phone</label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 lightblue">
                 <label>- {{creditcard?.HomePhone}}</label>
               </div>
 
@@ -102,7 +102,7 @@
                 <label for="txtOffice">Office Phone</label>
               </div>
 
-              <div class="col-md-3">
+              <div class="col-md-3 lightblue">
                 <label>- {{creditcard?.OfficePhone}}</label>
               </div>
             </div>
@@ -111,13 +111,13 @@
               <div class="col-md-3">
                 <label for="txtEmail">Email</label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 lightblue">
                 <label>- {{creditcard?.Email}}</label>
               </div>
               <div class="col-md-3">
                 <label for="txtEmployer">Employer</label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 lightblue">
                 <label>- {{creditcard?.Employer}}</label>
               </div>
             </div>
@@ -126,13 +126,13 @@
               <div class="col-md-3">
                 <label for="txtSalary">Salary</label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 lightblue">
                 <label>- {{creditcard?.Salary}}</label>
               </div>
               <div class="col-md-3">
                 <label for="txtJobTitle">Job Title</label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 lightblue">
                 <label>-{{creditcard?.JobTitle}}</label>
               </div>
             </div>
@@ -141,13 +141,13 @@
               <div class="col-md-3">
                 <label for="txtCardLimit">Card Limit</label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 lightblue">
                 <label>-Rs {{creditcard?.CardLimit}}</label>
               </div>
               <div class="col-md-3">
                 <label for="txtCashLimit">Cash Limit</label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 lightblue">
                 <label>-Rs {{creditcard?.CashLimit}} </label>
               </div>
             </div>
@@ -156,13 +156,13 @@
               <div class="col-md-3">
                 <label for="ddlCardType">Card Type</label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 lightblue">
                 <label>- {{creditcard?.CardTypeName}} Type</label>
               </div>
               <div class="col-md-3">
                 <label for="ddlNationality">Nationality</label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 lightblue">
                 <label>- {{creditcard?.NationalityName}} </label>
               </div>
             </div>
@@ -171,7 +171,7 @@
               <div class="col-md-3">
                 <label for="txtNote">Note</label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 lightblue">
                 <label>- {{creditcard?.Note}}</label>
               </div>
                 <label class="btn btn-default" (click)="openCreditCardView()"> View </label>

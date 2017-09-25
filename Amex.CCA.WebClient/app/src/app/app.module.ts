@@ -8,12 +8,12 @@ import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/shared.module';
 import { HttpModule, XHRBackend, RequestOptions } from '@angular/http';
 
-import {NavBarComponent} from './nav-bar/navbar.component';
-import {AuthGuard} from './services/router-guard.service';
-import {LoginService} from './services/login.service';
-import {CrediCardService} from './services/creditcard.service';
-import {HttpService} from './services/http.service';
-import {CreditCardModule} from './creditcard/creditcard.module';
+import { NavBarComponent } from './nav-bar/navbar.component';
+import { AuthGuard } from './services/router-guard.service';
+import { LoginService } from './services/login.service';
+import { CrediCardService } from './services/creditcard.service';
+import { HttpService } from './services/http.service';
+import { UserProfileService} from './services/userprofile.service';
 
 @NgModule({
     imports: [
@@ -33,7 +33,8 @@ import {CreditCardModule} from './creditcard/creditcard.module';
             deps: [XHRBackend, RequestOptions]
         },
         LoginService,
-        AuthGuard,
+        AuthGuard,   
+        UserProfileService,   
         CrediCardService,
         {
             provide: CrediCardService,
