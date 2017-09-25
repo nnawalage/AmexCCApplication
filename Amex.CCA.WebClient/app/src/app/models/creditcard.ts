@@ -1,5 +1,7 @@
+import { IAttachments } from "./attachments";
+
 export interface ICreditCard {
-    // CreditCardId: number;
+   // CreditCardId: number;
     FullName: string;
     DisplayName: string;
     Nic: string;
@@ -27,5 +29,5 @@ export interface ICreditCard {
     NationalityName?: string;
 
     CardStatusName?: string;
-
+Attachments?:IAttachments[];
 }

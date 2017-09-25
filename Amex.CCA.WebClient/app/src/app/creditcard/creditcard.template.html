@@ -103,7 +103,8 @@
                     <label for="txtSalary">Salary</label>
                 </div>
                 <div class="col-md-3">
-                    <input id="txtSalary" type="text" formControlName="salary" class="form-control" [ngClass]="{'make-border-red':this.ccForm.controls['salary'].errors?.required && !this.ccForm.controls['salary'].pristine }" />
+                    <input id="txtSalary" type="text" formControlName="salary" class="form-control" [ngClass]="{'make-border-red':this.ccForm.controls['salary'].errors?.required && !this.ccForm.controls['salary'].pristine }"
+                    />
                 </div>
 
                 <div class="col-md-3">
@@ -139,7 +140,7 @@
                 <div class="col-md-3">
 
                     <select formControlName="cardType" class="form-control" id="ddlCardType">
-                        <option *ngFor="let ct of cardTypes" [value]="ct.CardTypeId">{{ct.Name}}</option>
+                        <option  selected="{{first}}" *ngFor="let ct of cardTypes;let first=first" [value]="ct.CardTypeId">{{ct.Name+''+first}}</option>
                     </select>
                 </div>
 
@@ -150,8 +151,7 @@
                 <div class="col-md-3">
 
                     <select id="ddlNationality" class="form-control" formControlName="nationality">
-                        <option [selected]="ccForm.controls.nationality.value == null" value="">-- Select --</option>
-                        <option *ngFor="let nationality of nationalities"  [value]="nationality.NationalityId">{{nationality.Name}}</option>
+                        <option *ngFor="let nationality of nationalities; let first=first" selected="{{first}}"  [value]="nationality.NationalityId">{{nationality.Name}}</option>
                     </select>
                 </div>
             </div>
@@ -165,9 +165,59 @@
                 </div>
             </div>
 
-            <div class="rows">
-                <button [disabled]="!ccForm.valid" class="btn btn-primary" type="submit">Save</button>
-                <span> {{!ccForm.valid}} </span>
+            <!-- <div class="form-group">
+                <div class="col-md-3">
+                    <label for="txtNote">Note1</label>
+                </div>
+                <div class="col-md-3">
+                    <input id="txtNote" type="text" class="form-control" />
+                </div>
+            </div> -->
+            
+            <!-- <div class="row" style="clear:left">
+                <div class="col-md-4">
+                    <label>NIC Attachments</label>
+                </div>
+                <div class="col-md-8">
+                    <input id="nicAttachments" type="file" formControlName="nicAttachments" multiple="true" (change)="onFileSelect('nicAtt',$event)" />
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Salary Slips Attachments</label>
+                </div>
+                <div class="col-md-8">
+                    <input id="salSlipAttachments" type="file" formControlName="salSlipAttachments" multiple="true" (change)="onFileSelect('salSlipAtt',$event)" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Billing Proof Attachments</label>
+                </div>
+                <div class="col-md-8">
+                    <input id="billingProofAttachments" type="file" formControlName="billingProofAttachments" multiple="true" (change)="onFileSelect('billingProofAtt',$event)" />
+                </div>
+            </div> -->
+
+
+           
+<div class="row" style="clear:left" *ngFor="let c of attTypes">
+                <div class="col-md-4">
+                    <label>{{c.Name}}</label>
+                </div>
+                <div class="col-md-8">
+                    <input [id]="c.Name" type="file"  multiple="true" (change)="onFileSelect(c.AttachmentTypeId,$event)" />
+                </div>
+
+            </div>
+
+
+
+            <div class="row">
+                <button [disabled]="!ccForm.valid" class="btn btn-primary pull-right" type="submit">Save</button>
+                <!-- <span> {{!ccForm.valid}} </span> -->
             </div>
         </form>
     </div>

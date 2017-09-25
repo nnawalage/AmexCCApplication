@@ -10,7 +10,7 @@ namespace Amex.CCA.DataAccess
         {
         }
 
-        //public DbSet<Attachment> Attachments { get; set; }
+        public DbSet<Attachment> Attachments { get; set; }
 
         public DbSet<AttachmentType> AttachmentTypes { get; set; }
 
