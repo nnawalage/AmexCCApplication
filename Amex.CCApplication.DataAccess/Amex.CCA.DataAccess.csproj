@@ -267,10 +267,6 @@
     <Compile Include="Migrations\201709250748477_cretaeUserProfile.Designer.cs">
       <DependentUpon>201709250748477_cretaeUserProfile.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201709221116160_abc.cs" />
-    <Compile Include="Migrations\201709221116160_abc.Designer.cs">
-      <DependentUpon>201709221116160_abc.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NationalityDataAccessHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -427,9 +423,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709250748477_cretaeUserProfile.resx">
       <DependentUpon>201709250748477_cretaeUserProfile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709221116160_abc.resx">
-      <DependentUpon>201709221116160_abc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
