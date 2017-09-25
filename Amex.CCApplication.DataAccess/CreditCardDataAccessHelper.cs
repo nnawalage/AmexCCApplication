@@ -52,7 +52,7 @@ namespace Amex.CCA.DataAccess
                                         .Include(c => c.Nationality).ToList(); 
                 foreach(CreditCard creditcard in data)
                 {
-                    if (creditcard.Email != email)
+                    if (creditcard.Email.Equals(email))
                     {
                         creditCardList.Add(creditcard);
                     }
