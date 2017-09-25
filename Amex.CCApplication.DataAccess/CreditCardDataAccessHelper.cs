@@ -41,15 +41,14 @@ namespace Amex.CCA.DataAccess
             }
         }
 
-        public List<CreditCard> GetAllCreditCards(string email)
+        public IQueryable GetAllCreditCards(string email)
         {
             using (AmexDbContext dbContext = new AmexDbContext())
             {
                 return dbContext.CreditCards
                     .Include(c => c.CardStatus)
                     .Include(c => c.CardType)
-                    .Include(c => c.Nationality).ToList();
-                
+                    .Include(c => c.Nationality);                          
             }
         }
     }
