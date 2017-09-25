@@ -3,11 +3,11 @@
     <div class="row">
       <div class="col-md-2">
          <nav-bar *ngIf="loginService.isUserAuthorised()">>
-        </nav-bar> 
+        </nav-bar>
       </div>
       <div class="col-md-10">
-         <router-outlet></router-outlet> 
+         <router-outlet></router-outlet>
       </div>
     </div>
-     <div  class="row"><footer *ngIf="loginService.isUserAuthorised()"></footer></div> 
+     <div  class="row"><footer *ngIf="loginService.isUserAuthorised()"></footer></div>
 </div>

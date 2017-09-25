@@ -43,13 +43,13 @@ import { UserService } from './services/user.service'
     CrediCardService,
     UserService,
 
-    {
-      provide: CrediCardService,
-      useClass: CrediCardService
-    }
+        {
+            provide: CrediCardService,
+            useClass: CrediCardService
+        }
 
-  ],
-  bootstrap: [AppComponent]
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
 

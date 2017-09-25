@@ -1,4 +1,13 @@
-﻿using System;
+﻿using Amex.CCA.WebApi.Models;
+using Amex.CCA.WebApi.Providers;
+using Amex.CCA.WebApi.Results;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.OAuth;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Security.Claims;
@@ -7,15 +16,6 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.OAuth;
-using Amex.CCA.WebApi.Models;
-using Amex.CCA.WebApi.Providers;
-using Amex.CCA.WebApi.Results;
 
 namespace Amex.CCA.WebApi.Controllers
 {
@@ -196,8 +196,7 @@ namespace Amex.CCA.WebApi.Controllers
             return null;
         }
 
-
-        #endregion
+        #endregion Helpers
 
         #region Code related to third party providers
 
@@ -256,7 +255,6 @@ namespace Amex.CCA.WebApi.Controllers
             };
         }
 
-
         // POST api/Account/AddExternalLogin
         [Route("AddExternalLogin")]
         public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginBindingModel model)
@@ -294,7 +292,6 @@ namespace Amex.CCA.WebApi.Controllers
 
             return Ok();
         }
-
 
         // GET api/Account/ExternalLogin
         [OverrideAuthentication]
@@ -340,7 +337,7 @@ namespace Amex.CCA.WebApi.Controllers
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
-                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user,UserManager);
+                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user, UserManager);
                 Authentication.SignIn(properties, oAuthIdentity, cookieIdentity);
             }
             else
@@ -394,7 +391,6 @@ namespace Amex.CCA.WebApi.Controllers
             return logins;
         }
 
-
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
@@ -427,7 +423,6 @@ namespace Amex.CCA.WebApi.Controllers
             }
             return Ok();
         }
-
 
         #region Helpers
 
@@ -500,9 +495,8 @@ namespace Amex.CCA.WebApi.Controllers
             }
         }
 
-        #endregion
+        #endregion Helpers
 
-
-        #endregion
+        #endregion Code related to third party providers
     }
 }

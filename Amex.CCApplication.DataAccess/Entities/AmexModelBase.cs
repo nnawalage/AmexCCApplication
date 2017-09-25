@@ -13,11 +13,10 @@ namespace Amex.CCA.DataAccess.Entities
 
         public string ModifiedBy { get; set; }
 
-        public DateTime ? ModifiedTime { get; set; }
+        public DateTime? ModifiedTime { get; set; }
 
         public string DeletedBy { get; set; }
 
-        public DateTime ? DeletedTime { get; set; }
-
+        public DateTime? DeletedTime { get; set; }
     }
 }

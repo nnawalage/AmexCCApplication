@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.Owin.Security.OAuth;
+using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
-using Microsoft.Owin.Security.OAuth;
-using Newtonsoft.Json.Serialization;
 using System.Web.Http.Cors;
 
 namespace Amex.CCA.WebApi
@@ -23,7 +23,6 @@ namespace Amex.CCA.WebApi
             //var cors = new EnableCorsAttribute("*", "*", "*") { SupportsCredentials = true };
             //config.EnableCors(cors);
             //config.EnableCors(enableCorsAttribute);
-
 
             // Web API routes
             config.MapHttpAttributeRoutes();
