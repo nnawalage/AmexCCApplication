@@ -35,15 +35,12 @@ namespace Amex.CCA.BusinessServices
 
         public List<CreditCardEntity> GetAllCreditCards(string email)
         {
-            var creditCardList = dataAccessHelper.GetAllCreditCards(email);
-            var list = creditCardList.
-  
+            List<CreditCard> creditCardList = dataAccessHelper.GetAllCreditCards(email); 
             List<CreditCardEntity> creditCardEntityList = new List<CreditCardEntity>();
+
             foreach (CreditCard creditCard in creditCardList)
             {
-                
                     creditCardEntityList.Add(BusinessModelMapper.MapToCreditCardEntity(creditCard));
-               
             }
             return creditCardEntityList;
         }
