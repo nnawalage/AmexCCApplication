@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -327,6 +328,10 @@
     <ProjectReference Include="..\Amex.CCA.BusinessServices\Amex.CCA.BusinessServices.csproj">
       <Project>{9477CB63-BD8C-4546-82C0-DC484F56A893}</Project>
       <Name>Amex.CCA.BusinessServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Amex.CCA.Common\Amex.CCA.Common.csproj">
+      <Project>{18863F8D-C7BF-439C-8213-5FBC9A9B62C5}</Project>
+      <Name>Amex.CCA.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Amex.CCApplication.DataAccess\Amex.CCA.DataAccess.csproj">
       <Project>{4326cc9d-f3b8-458e-9261-c990972ae1f4}</Project>

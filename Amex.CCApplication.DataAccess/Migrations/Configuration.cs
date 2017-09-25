@@ -9,7 +9,7 @@ namespace Amex.CCA.DataAccess.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Amex.CCA.DataAccess.AmexDbContext context)

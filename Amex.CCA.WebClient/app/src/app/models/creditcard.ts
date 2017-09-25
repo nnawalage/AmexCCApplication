@@ -1,6 +1,6 @@
-﻿import { IAttachments } from "./attachments";
+import { IAttachments } from "./attachments";
 
-export interface CreditCard {
+export interface ICreditCard {
    // CreditCardId: number;
     FullName: string;
     DisplayName: string;
@@ -13,7 +13,7 @@ export interface CreditCard {
     Email: string;
     Employer: string;
     Salary: number;
-    JobTitle: number;
+    JobTitle: string;
     //CreditCardNumber: string;
     //BillingDate: string;
     //CardExpiryDate: string;
@@ -23,7 +23,11 @@ export interface CreditCard {
     //RequestedBy: string;
     Note: string;
     CardTypeId: number;
+    CardTypeName?: string;
+
     NationalityId: number;
-    //CardStatus: number;
-    Attachments?:IAttachments[];
+    NationalityName?: string;
+
+    CardStatusName?: string;
+Attachments?:IAttachments[];
 }

@@ -48,9 +48,14 @@ namespace Amex.CCA.BusinessServices.BusinessModels
         
         public int CardTypeId { get; set; }
 
+        public string CardTypeName { get; set; }
+
         public int NationalityId { get; set; }
+        public string NationalityName { get; set; }
 
         public int CardStatusId { get; set; }
+
+        public string CardStatusName { get; set; }
 
         public  List<Attachment> Attachments { get; set; }
 

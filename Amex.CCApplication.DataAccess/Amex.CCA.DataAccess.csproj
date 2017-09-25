@@ -239,6 +239,34 @@
     <Compile Include="Migrations\201709190934523_updatedbsomehow.Designer.cs">
       <DependentUpon>201709190934523_updatedbsomehow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709221123425_test.cs" />
+    <Compile Include="Migrations\201709221123425_test.Designer.cs">
+      <DependentUpon>201709221123425_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221125595_test2.cs" />
+    <Compile Include="Migrations\201709221125595_test2.Designer.cs">
+      <DependentUpon>201709221125595_test2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709250700466_dropUserProfile.cs" />
+    <Compile Include="Migrations\201709250700466_dropUserProfile.Designer.cs">
+      <DependentUpon>201709250700466_dropUserProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709250727421_addUserProfile.cs" />
+    <Compile Include="Migrations\201709250727421_addUserProfile.Designer.cs">
+      <DependentUpon>201709250727421_addUserProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709250740548_initial.cs" />
+    <Compile Include="Migrations\201709250740548_initial.Designer.cs">
+      <DependentUpon>201709250740548_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709250747128_dropUserProfile1.cs" />
+    <Compile Include="Migrations\201709250747128_dropUserProfile1.Designer.cs">
+      <DependentUpon>201709250747128_dropUserProfile1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709250748477_cretaeUserProfile.cs" />
+    <Compile Include="Migrations\201709250748477_cretaeUserProfile.Designer.cs">
+      <DependentUpon>201709250748477_cretaeUserProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201709221116160_abc.cs" />
     <Compile Include="Migrations\201709221116160_abc.Designer.cs">
       <DependentUpon>201709221116160_abc.cs</DependentUpon>
@@ -378,6 +406,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709190934523_updatedbsomehow.resx">
       <DependentUpon>201709190934523_updatedbsomehow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221123425_test.resx">
+      <DependentUpon>201709221123425_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221125595_test2.resx">
+      <DependentUpon>201709221125595_test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709250700466_dropUserProfile.resx">
+      <DependentUpon>201709250700466_dropUserProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709250727421_addUserProfile.resx">
+      <DependentUpon>201709250727421_addUserProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709250740548_initial.resx">
+      <DependentUpon>201709250740548_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709250747128_dropUserProfile1.resx">
+      <DependentUpon>201709250747128_dropUserProfile1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709250748477_cretaeUserProfile.resx">
+      <DependentUpon>201709250748477_cretaeUserProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709221116160_abc.resx">
       <DependentUpon>201709221116160_abc.cs</DependentUpon>

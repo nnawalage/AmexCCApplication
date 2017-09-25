@@ -1,5 +1,5 @@
-﻿import { Injectable } from '@angular/core'
-import { CreditCard } from '../models/creditcard';
+import { Injectable } from '@angular/core'
+import { ICreditCard } from '../models/creditcard';
 import { Observable } from 'rxjs';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { ICardType } from "../models/cardtype";
@@ -12,7 +12,6 @@ import { IAttachmentType } from "../models/attachment-type";
 
 @Injectable()
 export class CrediCardService {
-
     constructor(private http: HttpService) {
     }
 
@@ -27,7 +26,6 @@ export class CrediCardService {
         return this.http.get(`/CardType`).map((res: Response) => {
             return <ICardType[]>res.json();
         });
-
     }
 
     getNationalities(): Observable<INationality[]> {
@@ -105,4 +103,11 @@ export class CrediCardService {
         return Observable.throw(error.json().error || 'Server error');
     }
 
+    getAllCardRequests(): Observable<ICreditCard[]> {
+        return this.http.get('/CreditCards')
+            .map((res: Response) => {
+                return <ICreditCard[]>res.json()
+            });
+        // .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    }
 }

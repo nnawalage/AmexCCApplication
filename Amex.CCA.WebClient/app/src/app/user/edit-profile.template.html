@@ -1,1 +1,48 @@
-<div>Edit Profile Component Loaded</div>
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edit User Profile</title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <div class="rows">
+        Create / Update User Profile Info
+    </div>
+    <br />
+    <div>
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)">
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label for="txtUserName">User Name</label>
+                </div>
+                <div class="col-md-3">
+                    <input id="txtUserName" formControlName="userName" type="text" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="txtProfileName">Profile Name</label>
+                </div>
+
+                <div class="col-md-3">
+                    <input id="txtProfileName" formControlName="profileName" type="text" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="txtProfileImage">Profile Image</label>
+                </div>
+
+                <div class="col-md-3">
+                    <input id="txtProfileImage" formControlName="profileImage" type="text" class="form-control" />
+                </div>
+
+                <div class="rows">
+                    <button [disabled]="!profileForm.valid" class="btn btn-primary" type="submit">Update Info</button>
+                    <span> {{profileForm.valid}} </span>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

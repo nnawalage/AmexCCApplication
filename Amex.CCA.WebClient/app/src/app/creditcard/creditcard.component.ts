@@ -1,8 +1,8 @@
-﻿import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { CrediCardService } from '../services/creditcard.service'
-import { CreditCard } from "../models/creditcard";
+import { ICreditCard } from "../models/creditcard";
 import { ICardType } from "../models/cardtype";
 import { INationality } from "../models/nationality";
 import { IAttachments } from "../models/attachments";
@@ -13,13 +13,11 @@ import { IAttachmentType } from "../models/attachment-type";
     styleUrls: ['./creditcard.styles.scss']
 })
 export class CreditCardComponent implements OnInit {
-
     private ccForm: FormGroup;
     private attachments: IAttachments[] = [];
     private attTypes: IAttachmentType[] = [];
     cardTypes: ICardType[];
     nationalities: INationality[];
-
 
     constructor(private actRouter: ActivatedRoute, private router: Router, private crediCardService: CrediCardService, private _fb: FormBuilder) {
     }
@@ -52,7 +50,6 @@ export class CreditCardComponent implements OnInit {
         this.actRouter.data.forEach(data => {
             this.nationalities = data['nationality'];
         });
-
     }
 
     private loadAttachmentTypes(): void {
@@ -77,7 +74,7 @@ export class CreditCardComponent implements OnInit {
     private onSubmit(creditCardFormValues: Object): void {
         console.log(this.ccForm.valid);
         if (this.ccForm.valid) {
-            let creditCard: CreditCard = {
+            let creditCard: ICreditCard = {
                 FullName: creditCardFormValues['fullName'],
                 DisplayName: creditCardFormValues['displayName'],
                 Nic: creditCardFormValues['nic'],
@@ -105,7 +102,6 @@ export class CreditCardComponent implements OnInit {
             });
 
             //}
-
         }
     }
 }

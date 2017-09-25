@@ -1,5 +1,7 @@
 ﻿using Amex.CCA.DataAccess.Entities;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 namespace Amex.CCA.DataAccess
 {
@@ -39,5 +41,27 @@ namespace Amex.CCA.DataAccess
             }
         }
 
+        public List<CreditCard> GetAllCreditCards(string email)
+        {
+            using (AmexDbContext dbContext = new AmexDbContext())
+            {
+                return dbContext.CreditCards
+                    .Include(c => c.CardStatus)
+                    .Include(c => c.CardType)
+                    .Include(c => c.Nationality).ToList();
+                
+            }
+        }
+
+        public CreditCard GetCreditCardById(int id)
+        {
+            using (AmexDbContext dbContext = new AmexDbContext())
+            {
+                return dbContext.CreditCards
+                    .Include(c => c.CardStatus)
+                    .Include(c => c.CardType)
+                    .Include(c => c.Nationality).FirstOrDefault(x => x.CreditCardId == id);
+            }
+        }
     }
 }

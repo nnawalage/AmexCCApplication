@@ -5,7 +5,6 @@ import { LoginService } from "../services/login.service";
     selector: 'nav-bar',
     templateUrl: './navbar.template.html',
     styleUrls: ['./navbar.styles.scss']
-
 })
 export class NavBarComponent {
     constructor(private loginService: LoginService) { }

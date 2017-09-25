@@ -14,7 +14,7 @@ namespace Amex.CCA.DataAccess
         {
             using (AmexDbContext dbContext = new AmexDbContext())
             {
-              return  dbContext.Nationalities.Where(n=>n.IsActive).ToList();
+                return dbContext.Nationalities.Where(n => n.IsActive).ToList();
             }
         }
     }

@@ -1,1 +1,187 @@
-<div>Dashboard Loaded111</div>
+<div class="panel panel-primary">
+  <div style="height: 60px;padding:0" class="panel-heading">
+    <div class="form-group row">
+      <div class="col-xs-3" style="align-content:center">
+        <h3> <label for="fname">Full Name</label></h3>
+      </div>
+
+      <div class="col-xs-3">
+        <h3><label for="displayname">Display Name</label></h3>
+      </div>
+
+      <div class="col-xs-3">
+        <h3><label for="cardtype">Card Type</label></h3>
+      </div>
+
+      <div class="col-xs-3">
+        <h3><label for="cardlimit">Card Limit</label></h3>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="accordion" *ngFor="let creditcard of cardRequestList ,let index = index" (click)="clickRequest(index)">
+  <div class="panel panel-primary">
+    <div style="height: 40px;padding:0" class="panel-heading">
+      <div class="form-group row" data-toggle="collapse" data-parent="#accordion" href="#demo">
+        <div class="col-xs-3" style="align-content:space-between">
+          <h5> <label for="fname">{{creditcard.FullName}}</label></h5>
+        </div>
+
+        <div class="col-xs-3">
+          <h5><label for="displayname">{{creditcard.DisplayName}}</label></h5>
+        </div>
+
+        <div class="col-xs-3">
+          <h5><label for="cardtype">{{creditcard.CardTypeName}}</label></h5>
+        </div>
+
+        <div class="col-xs-3">
+          <h5><label for="cardlimit">{{creditcard.Cardlimit}}</label></h5>
+        </div>
+      </div>
+    </div>
+    <div id="#demo" class="collapse in" *ngIf="index==selectedIndex">
+      <div class="panel-body panel-collapse">
+
+        <div>
+          <form>
+            <div class="form-group">
+              <div class="col-md-3">
+                <label>Name in Full</label>
+              </div>
+              <div class="col-md-3">
+                <label>- {{creditcard?.FullName}}</label>
+              </div>
+              <div class="col-md-3">
+                <label>Display Name</label>
+              </div>
+              <div class="col-md-3">
+                <label>- {{creditcard?.DisplayName}}</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-3">
+                <label for="txtNic">NIC</label>
+              </div>
+              <div class="col-md-3">
+                <label>- {{creditcard?.Nic}}</label>
+              </div>
+              <div class="col-md-3">
+                <label for="txtPassport">Passport</label>
+              </div>
+              <div class="col-md-3">
+                <label>- {{creditcard?.Passport}}</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-3">
+                <label for="txtAddress">Address</label>
+              </div>
+              <div class="col-md-3">
+                <label>- {{creditcard?.Address}} </label>
+              </div>
+              <div class="col-md-3">
+                <label for="txtMobile">Mobile</label>
+              </div>
+              <div class="col-md-3">
+                <label>- {{creditcard?.MobilePhone}} </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-3">
+                <label for="txtHomePhone">Home Phone</label>
+              </div>
+              <div class="col-md-3">
+                <label>- {{creditcard?.HomePhone}}</label>
+              </div>
+
+              <div class="col-md-3">
+                <label for="txtOffice">Office Phone</label>
+              </div>
+
+              <div class="col-md-3">
+                <label>- {{creditcard?.OfficePhone}}</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-3">
+                <label for="txtEmail">Email</label>
+              </div>
+              <div class="col-md-3">
+                <label>- {{creditcard?.Email}}</label>
+              </div>
+              <div class="col-md-3">
+                <label for="txtEmployer">Employer</label>
+              </div>
+              <div class="col-md-3">
+                <label>- {{creditcard?.Employer}}</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-3">
+                <label for="txtSalary">Salary</label>
+              </div>
+              <div class="col-md-3">
+                <label>- {{creditcard?.Salary}}</label>
+              </div>
+              <div class="col-md-3">
+                <label for="txtJobTitle">Job Title</label>
+              </div>
+              <div class="col-md-3">
+                <label>-{{creditcard?.JobTitle}}</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-3">
+                <label for="txtCardLimit">Card Limit</label>
+              </div>
+              <div class="col-md-3">
+                <label>-Rs {{creditcard?.CardLimit}}</label>
+              </div>
+              <div class="col-md-3">
+                <label for="txtCashLimit">Cash Limit</label>
+              </div>
+              <div class="col-md-3">
+                <label>-Rs {{creditcard?.CashLimit}} </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-3">
+                <label for="ddlCardType">Card Type</label>
+              </div>
+              <div class="col-md-3">
+                <label>- {{creditcard?.CardTypeName}} Type</label>
+              </div>
+              <div class="col-md-3">
+                <label for="ddlNationality">Nationality</label>
+              </div>
+              <div class="col-md-3">
+                <label>- {{creditcard?.NationalityName}} </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-3">
+                <label for="txtNote">Note</label>
+              </div>
+              <div class="col-md-3">
+                <label>- {{creditcard?.Note}}</label>
+              </div>
+                <label class="btn btn-default" (click)="openCreditCardView()"> View </label>
+                <label class="btn btn-default" (click)="openCreditCardEdit()"> Edit </label>
+                <label class="btn btn-default" (click)="openCreditCardApprove()"> Approve </label>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>

@@ -1,8 +1,7 @@
 namespace Amex.CCA.DataAccess.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class cardStatusFkAdded : DbMigration
     {
         public override void Up()
@@ -11,7 +10,7 @@ namespace Amex.CCA.DataAccess.Migrations
             CreateIndex("AMEXCCDB.CreditCard", "CardStatus_CardStatusId");
             AddForeignKey("AMEXCCDB.CreditCard", "CardStatus_CardStatusId", "AMEXCCDB.CardStatus", "CardStatusId");
         }
-        
+
         public override void Down()
         {
             DropForeignKey("AMEXCCDB.CreditCard", "CardStatus_CardStatusId", "AMEXCCDB.CardStatus");

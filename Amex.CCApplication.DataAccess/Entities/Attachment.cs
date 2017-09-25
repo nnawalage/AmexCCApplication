@@ -11,7 +11,7 @@ namespace Amex.CCA.DataAccess.Entities
         public string FileName { get; set; }
 
         [Required]
-        public string FileUrl { get; set; }
+        public string  FileUrl { get; set; }
 
         [Required]
         public virtual AttachmentType Type { get; set; }

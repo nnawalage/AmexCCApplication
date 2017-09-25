@@ -1,5 +1,18 @@
-﻿using System;
+﻿using Amex.CCA.BusinessServices;
+using Amex.CCA.BusinessServices.BusinessModels;
+using Amex.CCA.Common.NotificationUtility;
+using Amex.CCA.WebApi.Models;
+using Amex.CCA.WebApi.Providers;
+using Amex.CCA.WebApi.Results;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.OAuth;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -7,15 +20,6 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.OAuth;
-using Amex.CCA.WebApi.Models;
-using Amex.CCA.WebApi.Providers;
-using Amex.CCA.WebApi.Results;
 
 namespace Amex.CCA.WebApi.Controllers
 {
@@ -130,23 +134,43 @@ namespace Amex.CCA.WebApi.Controllers
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
-        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
+        public IHttpActionResult Register(RegisterBindingModel model)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, IsActive = false };
 
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+            IdentityResult result =  UserManager.Create(user, model.Password);
+            if (result.Succeeded)
+            {
+                UserProfileEntity userProfile = new UserProfileEntity()
+                {
+                    UserName = model.Email,
+                    ProfileName = model.ProfileName,
+                    CreatedBy = model.Email,
+                    CreatedDate = DateTime.Now,
+                    ProfileImage = ConfigurationManager.AppSettings["defaultProfileImage"]
+                };
 
-            if (!result.Succeeded)
+                //create user Profile
+                new UserProfileBusinessService().CreateUserProfile(userProfile);
+                //send emil
+                Email email = new Email()
+                {
+                    Subject = "User Account Created",
+                    To = new List<string>() { model.Email },
+                    Body = "Your account has been created. You will be able to login to the system when Admin validates and activate your account"
+                };
+                NotificationManager.SendMail(email);
+                return Ok();
+            }
+            else
             {
                 return GetErrorResult(result);
             }
-
-            return Ok();
         }
 
         protected override void Dispose(bool disposing)
@@ -196,8 +220,7 @@ namespace Amex.CCA.WebApi.Controllers
             return null;
         }
 
-
-        #endregion
+        #endregion Helpers
 
         #region Code related to third party providers
 
@@ -256,7 +279,6 @@ namespace Amex.CCA.WebApi.Controllers
             };
         }
 
-
         // POST api/Account/AddExternalLogin
         [Route("AddExternalLogin")]
         public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginBindingModel model)
@@ -294,7 +316,6 @@ namespace Amex.CCA.WebApi.Controllers
 
             return Ok();
         }
-
 
         // GET api/Account/ExternalLogin
         [OverrideAuthentication]
@@ -340,7 +361,7 @@ namespace Amex.CCA.WebApi.Controllers
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
-                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user,UserManager);
+                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user, UserManager);
                 Authentication.SignIn(properties, oAuthIdentity, cookieIdentity);
             }
             else
@@ -394,7 +415,6 @@ namespace Amex.CCA.WebApi.Controllers
             return logins;
         }
 
-
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
@@ -427,7 +447,6 @@ namespace Amex.CCA.WebApi.Controllers
             }
             return Ok();
         }
-
 
         #region Helpers
 
@@ -500,9 +519,8 @@ namespace Amex.CCA.WebApi.Controllers
             }
         }
 
-        #endregion
+        #endregion Helpers
 
-
-        #endregion
+        #endregion Code related to third party providers
     }
 }

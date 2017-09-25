@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Amex.CCA.Common.NotificationUtility;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -17,6 +18,11 @@ namespace Amex.CCA.WebApi.Controllers
         /// <returns></returns>
         public IEnumerable<string> Get()
         {
+            //Email email = new Email();
+            //email.Subject = "Test";
+            //email.Body = "<html><body><p>This is a test email</p></body></html>";
+            //email.To = new List<string>() { "ndn@tiqri.com"};
+            //NotificationManager.SendMail(email);
             return new string[] { "value1", "value2" };
         }
 

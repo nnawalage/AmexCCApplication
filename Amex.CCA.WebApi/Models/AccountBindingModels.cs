@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
 
 namespace Amex.CCA.WebApi.Models
 {
@@ -48,6 +48,9 @@ namespace Amex.CCA.WebApi.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        public string ProfileName { get; set; }
     }
 
     public class RegisterExternalBindingModel

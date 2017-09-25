@@ -1,9 +1,6 @@
 ﻿using Amex.CCA.DataAccess.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Amex.CCA.DataAccess
 {
@@ -20,6 +17,19 @@ namespace Amex.CCA.DataAccess
                 return dbContext.UserProfiles.Where(n => n.IsActive).ToList();
             }
         }
-    }
 
+        /// <summary>
+        /// Creates the user profile.
+        /// </summary>
+        /// <param name="userProfile">The UserProfile.</param>
+        /// <returns>true if successfully created</returns>
+        public bool CreateUserProfile(UserProfile userProfile)
+        {
+            using (AmexDbContext  dbContext= new AmexDbContext())
+            {
+                dbContext.UserProfiles.Add(userProfile);
+               return  dbContext.SaveChanges()==1;
+            }
+        }
+    }
 }

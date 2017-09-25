@@ -1,4 +1,11 @@
-﻿using System;
+﻿using Amex.CCA.BusinessServices;
+using Amex.CCA.BusinessServices.BusinessModels;
+using Amex.CCA.DataAccess;
+using Amex.CCA.DataAccess.Entities;
+using Amex.CCA.WebApi.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,16 +13,11 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
-using System.Web.Http.Description;
-using Amex.CCA.DataAccess;
-using Amex.CCA.DataAccess.Entities;
-using System.Web.Http.Cors;
-using Amex.CCA.BusinessServices;
-using Amex.CCA.WebApi.Models;
-using Amex.CCA.BusinessServices.BusinessModels;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using System.Web.Http.Description;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System.IO;
@@ -33,16 +35,34 @@ namespace Amex.CCA.WebApi.Controllers
         private CreditCardBusinessService creditCardBusinessService = new CreditCardBusinessService();
 
         // GET: api/CreditCards
-        public IQueryable<CreditCard> GetCreditCards()
+        public List<CreditCardEntity> GetCreditCards()
         {
-            throw new NotImplementedException();
+            List<CreditCardEntity> cardlist = new List<CreditCardEntity>();
+            string email = User.Identity.Name;
+
+            if (User.Identity.IsAuthenticated)
+        {
+                cardlist = creditCardBusinessService.GetAllCreditCards(email);
+            }
+            return cardlist;
+
+            //else {
+            //    //return BadRequest("Error occured while creating credit card");
+            //}
+
+            //throw new NotImplementedException();
         }
 
         // GET: api/CreditCards/5
-        [ResponseType(typeof(CreditCard))]
-        public IHttpActionResult GetCreditCard(int id)
+        [ResponseType(typeof(CreditCardEntity))]
+        public HttpResponseMessage GetCreditCard(int id)
         {
-            throw new NotImplementedException();
+            CreditCardEntity creditCardEntity = creditCardBusinessService.GetCreditCardById(id);
+            if (creditCardEntity != null)
+        {
+                return Request.CreateResponse(HttpStatusCode.OK, creditCardEntity);
+            }
+            return Request.CreateResponse(HttpStatusCode.NoContent, "No content found.");
         }
 
         // PUT: api/CreditCards/5
@@ -170,7 +190,6 @@ namespace Amex.CCA.WebApi.Controllers
             throw new NotImplementedException();
         }
 
-
         #region Private Methods
 
         private static byte[] GetBytesFromFile(string fullFilePath)
@@ -227,7 +246,6 @@ namespace Amex.CCA.WebApi.Controllers
             return operationResult;
         }
 
-        #endregion
-
+        #endregion Private Methods
     }
 }

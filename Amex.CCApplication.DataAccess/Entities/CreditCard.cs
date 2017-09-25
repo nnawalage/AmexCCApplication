@@ -2,10 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Amex.CCA.DataAccess.Entities
 {
@@ -13,18 +9,24 @@ namespace Amex.CCA.DataAccess.Entities
     {
         [Key]
         public int CreditCardId { get; set; }
+
         [Required]
         public string FullName { get; set; }
+
         [Required]
         public string DisplayName { get; set; }
+
         [Required]
         public string Nic { get; set; }
 
         public string Passport { get; set; }
+
         [Required]
         public string Address { get; set; }
+
         [Required]
         public string MobilePhone { get; set; }
+
         [Required]
         public string HomePhone { get; set; }
 
@@ -32,8 +34,10 @@ namespace Amex.CCA.DataAccess.Entities
 
         [Required]
         public string Email { get; set; }
+
         [Required]
         public string Employer { get; set; }
+
         [Required]
         public decimal Salary { get; set; }
 
@@ -66,7 +70,5 @@ namespace Amex.CCA.DataAccess.Entities
         public virtual List<Attachment> Attachments { get; set; }
 
         public virtual List<Log> Logs { get; set; }
-
-
     }
 }

@@ -20,10 +20,10 @@ namespace Amex.CCA.BusinessServices
                 CardTypeId = cardType.CardTypeId,
                 Name = cardType.Name,
             };
-        } 
+        }
 
-        #endregion
-        
+        #endregion CardType
+
         #region Nationality
 
         /// <summary>
@@ -38,10 +38,10 @@ namespace Amex.CCA.BusinessServices
                 NationalityId = nationality.NationalityId,
                 Name = nationality.Name
             };
-        } 
+        }
 
-        #endregion
-        
+        #endregion Nationality
+
         #region CreditCard
 
         /// <summary>
@@ -71,10 +71,37 @@ namespace Amex.CCA.BusinessServices
                 CreatedTime = DateTime.Now,
                 Attachments=creditCardEntity.Attachments
             };
-
         }
 
-        #endregion
+        public static CreditCardEntity MapToCreditCardEntity(CreditCard creditCard)
+        {
+            return new CreditCardEntity()
+            {
+                DisplayName = creditCard.DisplayName,
+                Nic = creditCard.Nic,
+                Address = creditCard.Address,
+                CardStatusName = creditCard.CardStatus.Name,
+                CardStatusId = creditCard.CardStatusId,
+                CardTypeId = creditCard.CardTypeId,
+                CardTypeName = creditCard.CardType.Name,
+                Email = creditCard.Email,
+                Employer = creditCard.Employer,
+                FullName = creditCard.FullName,
+                HomePhone = creditCard.HomePhone,
+                MobilePhone = creditCard.MobilePhone,
+                NationalityId = creditCard.NationalityId,
+                NationalityName = creditCard.Nationality.Name,
+                OfficePhone = creditCard.OfficePhone,
+                Passport = creditCard.Passport,
+                Salary = creditCard.Salary,
+                JobTitle = creditCard.JobTitle,
+                CardLimit = creditCard.CardLimit,
+                CashLimit = creditCard.CashLimit,
+                Note = creditCard.Note
+            };
+        }
+
+        #endregion CreditCard
 
         #region Log
 
@@ -114,15 +141,15 @@ namespace Amex.CCA.BusinessServices
             };
         }
 
-        #endregion
+        #endregion Log
 
         #region UserProfile
 
-       /// <summary>
-       /// 
-       /// </summary>
-       /// <param name="userProfile"></param>
-       /// <returns></returns>
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="userProfile"></param>
+        /// <returns></returns>
         public static UserProfileEntity MapToUserProfileEntity(UserProfile userProfile)
         {
             return new UserProfileEntity()
@@ -134,6 +161,23 @@ namespace Amex.CCA.BusinessServices
             };
         }
 
-        #endregion
+        /// <summary>
+        /// Maps UserProfileEntity to UserProfile.
+        /// </summary>
+        /// <param name="userProfileEntity">UserProfileEntity instance</param>
+        /// <returns>UserProfile instance</returns>
+        public static UserProfile MapToUserProfile(UserProfileEntity userProfileEntity)
+        {
+            return new UserProfile()
+            {
+                UserProfileId = userProfileEntity.UserProfileId,
+                ProfileName = userProfileEntity.ProfileName,
+                ProfileImage = userProfileEntity.ProfileImage,
+                UserName = userProfileEntity.UserName,
+                CreatedBy=userProfileEntity.CreatedBy,
+                CreatedTime=userProfileEntity.CreatedDate
+            };
+        }
+        #endregion UserProfile
     }
 }
