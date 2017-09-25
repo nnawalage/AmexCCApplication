@@ -1,4 +1,6 @@
-﻿export interface CreditCard {
+﻿import { IAttachments } from "./attachments";
+
+export interface CreditCard {
    // CreditCardId: number;
     FullName: string;
     DisplayName: string;
@@ -23,4 +25,5 @@
     CardTypeId: number;
     NationalityId: number;
     //CardStatus: number;
+    Attachments?:IAttachments[];
 }

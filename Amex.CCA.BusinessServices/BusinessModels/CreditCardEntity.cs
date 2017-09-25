@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Amex.CCA.DataAccess.Entities;
+using System;
+using System.Collections.Generic;
 
 namespace Amex.CCA.BusinessServices.BusinessModels
 {
@@ -50,7 +52,7 @@ namespace Amex.CCA.BusinessServices.BusinessModels
 
         public int CardStatusId { get; set; }
 
-        //public List<Attachment> Attachments { get; set; }
+        public  List<Attachment> Attachments { get; set; }
 
         public string CreatedBy { get; set; }
     }

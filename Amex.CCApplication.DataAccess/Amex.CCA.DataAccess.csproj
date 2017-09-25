@@ -239,6 +239,10 @@
     <Compile Include="Migrations\201709190934523_updatedbsomehow.Designer.cs">
       <DependentUpon>201709190934523_updatedbsomehow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709221116160_abc.cs" />
+    <Compile Include="Migrations\201709221116160_abc.Designer.cs">
+      <DependentUpon>201709221116160_abc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NationalityDataAccessHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -374,6 +378,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709190934523_updatedbsomehow.resx">
       <DependentUpon>201709190934523_updatedbsomehow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221116160_abc.resx">
+      <DependentUpon>201709221116160_abc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
