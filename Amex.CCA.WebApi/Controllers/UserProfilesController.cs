@@ -30,15 +30,15 @@ namespace Amex.CCA.WebApi.Controllers
         {
             return new UserProfileBusinessService().GetAllUserProfileToApprove();
         }
-        //// GET: api/UserProfiles/5
-        //[ResponseType(typeof(UserProfile))]
-        //public IHttpActionResult GetUserProfile(int id)
-        //{
-        //    UserProfile userProfile = db.UserProfiles.Find(id);
-        //    if (userProfile == null)
-        //    {
-        //        return NotFound();
-        //    }
+        // GET: api/UserProfiles/5
+        [ResponseType(typeof(UserProfile))]
+        public IHttpActionResult GetUserProfile(int id)
+        {
+            UserProfile userProfile = db.UserProfiles.Find(id);
+            if (userProfile == null)
+            {
+                return NotFound();
+            }
 
             return Ok(userProfile);
         }

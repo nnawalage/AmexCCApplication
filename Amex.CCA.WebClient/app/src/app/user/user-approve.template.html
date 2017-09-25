@@ -4,27 +4,31 @@
             <span><i class="fa fa-search" aria-hidden="true"></i></span>
             <div class="pull-right action-buttons">
                 <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                      Select All:  <input type="checkbox" id="selectAll" />
+                    <!-- <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
                                     <span class="glyphicon glyphicon-cog" style="margin-right: 0px;"></span>
                                 </button>
                     <ul class="dropdown-menu slidedown">
-                        <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-pencil"></span>Edit</a></li>
-                        <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-trash"></span>Delete</a></li>
-                        <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-flag"></span>Flag</a></li>
-                    </ul>
+                        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                    </ul> -->
                 </div>
             </div>
         </div>
         <div class="col-xs-12 approve_list" >
             <div class="" *ngFor="let userApprove of usersToApprove">
-                <div class="col-xs-12 col-md-11 "> 
+                <div class="col-xs-12 col-md-10 "> 
                    <span class="text_capitalize"> {{userApprove.ProfileName}} &nbsp;</span>
                     <i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp; 
                     {{userApprove.UserName}}&nbsp;
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
                 </div>
-                <div class="col-xs-12 col-md-1 action-buttons">
+                <div class="col-xs-12 col-md-2 action-buttons">
                     <input type="checkbox" id="checkbox" />
+                    <select>
+                        <option value="volvo">User</option>
+                        <option value="saab">Staff</option>
+                        <option value="opel">Admin</option>
+                    </select>
                 </div>
                 <div class="col-xs-12 data_hr">
                         <hr>  

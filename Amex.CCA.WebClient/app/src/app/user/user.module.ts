@@ -5,7 +5,6 @@ import {CommonModule} from '@angular/common';
 import {userRoutes} from './user.routes';
 import {EditProfileComponent} from './edit-profile.component';
 import {UserRegistrationComponent} from './user-registration.component'
-import { CommonModule } from '@angular/common';
 import { UserApproveComponent }    from './user-approve.component'
 
 @NgModule({
