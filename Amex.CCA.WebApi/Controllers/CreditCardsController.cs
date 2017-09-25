@@ -107,17 +107,34 @@ namespace Amex.CCA.WebApi.Controllers
                 creditCard.CreatedBy = User.Identity.Name;
                 ProcessAttachments(creditCard, loProvider,attTypeMappings);
 
+                try
+                {
+                    //invoke method to register customer if customer is not already registered
+                    if (!RegisterNewCcUser(creditCard.Email))
+                    {
+                        return BadRequest("Error occured while registering user");
+                    }
+                    //if successfully saved
+                    if (creditCardBusinessService.SaveCreditCard(creditCard))
+                    {
+                        return Ok("Successfully Created new credit card");
+                    }
+                }
+                catch (Exception e)
+                {
 
-                //invoke method to register customer if customer is not already registered
-                if (!RegisterNewCcUser(creditCard.Email))
-                {
-                    return BadRequest("Error occured while registering user");
+                    throw;
                 }
-                //if successfully saved
-                if (creditCardBusinessService.SaveCreditCard(creditCard))
-                {
-                    return Ok("Successfully Created new credit card");
-                }
+                ////invoke method to register customer if customer is not already registered
+                //if (!RegisterNewCcUser(creditCard.Email))
+                //{
+                //    return BadRequest("Error occured while registering user");
+                //}
+                ////if successfully saved
+                //if (creditCardBusinessService.SaveCreditCard(creditCard))
+                //{
+                //    return Ok("Successfully Created new credit card");
+                //}
             }
 
             return BadRequest("Error occured while creating credit card");
