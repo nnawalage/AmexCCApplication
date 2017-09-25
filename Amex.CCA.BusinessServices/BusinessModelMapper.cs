@@ -68,7 +68,8 @@ namespace Amex.CCA.BusinessServices
                 Passport = creditCardEntity.Passport,
                 Salary = creditCardEntity.Salary,
                 CreatedBy = "pmd@tiqri.com",//creditCardEntity.CreatedBy;
-                CreatedTime = DateTime.Now
+                CreatedTime = DateTime.Now,
+                Attachments=creditCardEntity.Attachments
             };
         }
 
