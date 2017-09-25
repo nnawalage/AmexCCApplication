@@ -267,9 +267,13 @@
     <Compile Include="Migrations\201709250748477_cretaeUserProfile.Designer.cs">
       <DependentUpon>201709250748477_cretaeUserProfile.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201709221116160_abc.cs" />
-    <Compile Include="Migrations\201709221116160_abc.Designer.cs">
-      <DependentUpon>201709221116160_abc.cs</DependentUpon>
+    <Compile Include="Migrations\201709250949020_attachmentTypeChangesA.cs" />
+    <Compile Include="Migrations\201709250949020_attachmentTypeChangesA.Designer.cs">
+      <DependentUpon>201709250949020_attachmentTypeChangesA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709251003076_attachmentTypeChangesB.cs" />
+    <Compile Include="Migrations\201709251003076_attachmentTypeChangesB.Designer.cs">
+      <DependentUpon>201709251003076_attachmentTypeChangesB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NationalityDataAccessHelper.cs" />
@@ -428,8 +432,11 @@
     <EmbeddedResource Include="Migrations\201709250748477_cretaeUserProfile.resx">
       <DependentUpon>201709250748477_cretaeUserProfile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709221116160_abc.resx">
-      <DependentUpon>201709221116160_abc.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709250949020_attachmentTypeChangesA.resx">
+      <DependentUpon>201709250949020_attachmentTypeChangesA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709251003076_attachmentTypeChangesB.resx">
+      <DependentUpon>201709251003076_attachmentTypeChangesB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
