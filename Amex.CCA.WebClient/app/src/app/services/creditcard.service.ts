@@ -39,7 +39,7 @@ export class CrediCardService {
     //     return this.http.post(url, creditCard);
     // }
 
-    SaveCreditCard(creditCard: CreditCard): Observable<any> {
+    SaveCreditCard(creditCard: ICreditCard): Observable<any> {
 
         //let apiUrl = environment.baseURI + '/CreditCards/UploadFiles';
         let apiUrl = environment.baseURI + '/CreditCards';
