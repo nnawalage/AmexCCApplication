@@ -13,44 +13,44 @@ using Amex.CCA.DataAccess.Entities;
 
 namespace Amex.CCA.WebApi.Controllers
 {
-    public class UserProfileController : ApiController
+    public class AttachmentTypesController : ApiController
     {
         private AmexDbContext db = new AmexDbContext();
 
-        // GET: api/UserProfile
-        public IQueryable<UserProfile> GetUserProfiles()
+        // GET: api/AttachmentTypes
+        public IQueryable<AttachmentType> GetAttachmentTypes()
         {
-            return db.UserProfiles;
+            return db.AttachmentTypes;
         }
 
-        // GET: api/UserProfile/5
-        [ResponseType(typeof(UserProfile))]
-        public IHttpActionResult GetUserProfiles(int id)
+        // GET: api/AttachmentTypes/5
+        [ResponseType(typeof(AttachmentType))]
+        public IHttpActionResult GetAttachmentType(int id)
         {
-            UserProfile userProfiles = db.UserProfiles.Find(id);
-            if (userProfiles == null)
+            AttachmentType attachmentType = db.AttachmentTypes.Find(id);
+            if (attachmentType == null)
             {
                 return NotFound();
             }
 
-            return Ok(userProfiles);
+            return Ok(attachmentType);
         }
 
-        // PUT: api/UserProfile/5
+        // PUT: api/AttachmentTypes/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUserProfiles(int id, UserProfile userProfiles)
+        public IHttpActionResult PutAttachmentType(int id, AttachmentType attachmentType)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != userProfiles.UserProfileId)
+            if (id != attachmentType.AttachmentTypeId)
             {
                 return BadRequest();
             }
 
-            db.Entry(userProfiles).State = EntityState.Modified;
+            db.Entry(attachmentType).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace Amex.CCA.WebApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserProfilesExists(id))
+                if (!AttachmentTypeExists(id))
                 {
                     return NotFound();
                 }
@@ -71,35 +71,35 @@ namespace Amex.CCA.WebApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/UserProfile
-        [ResponseType(typeof(UserProfile))]
-        public IHttpActionResult PostUserProfiles(UserProfile userProfiles)
+        // POST: api/AttachmentTypes
+        [ResponseType(typeof(AttachmentType))]
+        public IHttpActionResult PostAttachmentType(AttachmentType attachmentType)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            //db.UserProfiles.Add(userProfiles);
+            db.AttachmentTypes.Add(attachmentType);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = userProfiles.UserProfileId }, userProfiles);
+            return CreatedAtRoute("DefaultApi", new { id = attachmentType.AttachmentTypeId }, attachmentType);
         }
 
-        // DELETE: api/UserProfile/5
-        [ResponseType(typeof(UserProfile))]
-        public IHttpActionResult DeleteUserProfiles(int id)
+        // DELETE: api/AttachmentTypes/5
+        [ResponseType(typeof(AttachmentType))]
+        public IHttpActionResult DeleteAttachmentType(int id)
         {
-            UserProfile userProfiles = db.UserProfiles.Find(id);
-            if (userProfiles == null)
+            AttachmentType attachmentType = db.AttachmentTypes.Find(id);
+            if (attachmentType == null)
             {
                 return NotFound();
             }
 
-            db.UserProfiles.Remove(userProfiles);
+            db.AttachmentTypes.Remove(attachmentType);
             db.SaveChanges();
 
-            return Ok(userProfiles);
+            return Ok(attachmentType);
         }
 
         protected override void Dispose(bool disposing)
@@ -111,9 +111,9 @@ namespace Amex.CCA.WebApi.Controllers
             base.Dispose(disposing);
         }
 
-        private bool UserProfilesExists(int id)
+        private bool AttachmentTypeExists(int id)
         {
-            return db.UserProfiles.Count(e => e.UserProfileId == id) > 0;
+            return db.AttachmentTypes.Count(e => e.AttachmentTypeId == id) > 0;
         }
     }
 }

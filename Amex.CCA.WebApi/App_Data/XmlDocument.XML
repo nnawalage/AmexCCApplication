@@ -6,7 +6,7 @@
     <members>
         <member name="M:Amex.CCA.WebApi.Controllers.CreditCardsController.RegisterNewCcUser(System.String)">
             <summary>
-            Create new user account if the customer is a new user.
+            Create new user account if the customer is a new user. 
             This method will not perform any action if customer is already registered in the system.
             </summary>
             <param name="email">The email.</param>

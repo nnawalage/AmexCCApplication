@@ -3,7 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { CrediCardService } from "../services/creditcard.service";
 import { Router } from "@angular/router";
 import { FormsModule } from '@angular/forms';
-import { ICreditCard } from "../models/creditcard";
+import { CreditCard } from "../models/creditcard";
 
 import { ViewCreditCardComponent } from '../creditcard/viewcreditcard.component';
 import { EditCreditCardComponent } from '../creditcard/editcreditcard.component';
@@ -15,7 +15,7 @@ import { DialogService } from "ng2-bootstrap-modal";
     styleUrls: ['./dashboard.styles.scss']
 })
 export class DashboardComponent {
-    cardRequestList: ICreditCard[];
+    cardRequestList: CreditCard[];
     selectedIndex: number;
     promptMessage: string = '';
     constructor(private actRouter: ActivatedRoute, private router: Router, private crediCardService: CrediCardService, private dialogService: DialogService) {
