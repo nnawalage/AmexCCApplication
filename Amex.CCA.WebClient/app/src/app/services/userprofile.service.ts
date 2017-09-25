@@ -3,7 +3,10 @@ import { IUserProfile } from '../models/userprofile';
 import { Observable } from 'rxjs';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { HttpService } from '../services/http.service';
+import { LoginService } from '../services/login.service';
 
+
+@Injectable()
 export class UserProfileService {
     constructor(private http: HttpService) {
     }

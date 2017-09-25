@@ -28,6 +28,10 @@ export class DashboardComponent {
         }, error => console.log(error));
     }
 
+    clickRequest(index: number) {
+        this.selectedIndex = index;
+    }
+
     openCreditCardView() {
         this.dialogService.addDialog(ViewCreditCardComponent, {
             question: 'What is your name?: '
