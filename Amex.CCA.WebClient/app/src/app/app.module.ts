@@ -19,6 +19,7 @@ import { AuthGuard } from './services/router-guard.service';
 import { LoginService } from './services/login.service';
 import { CrediCardService } from './services/creditcard.service';
 import { HttpService } from './services/http.service';
+import { UserProfileService } from './services/userprofile.service';
 
 @NgModule({
     imports: [
@@ -37,9 +38,8 @@ import { HttpService } from './services/http.service';
             deps: [XHRBackend, RequestOptions]
         },
         LoginService,
-        AuthGuard,
+        AuthGuard, UserProfileService,      
         CrediCardService,
-
         {
             provide: CrediCardService,
             useClass: CrediCardService
