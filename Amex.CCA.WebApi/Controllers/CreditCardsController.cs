@@ -41,7 +41,7 @@ namespace Amex.CCA.WebApi.Controllers
             string email = User.Identity.Name;
 
             if (User.Identity.IsAuthenticated)
-        {
+            {
                 cardlist = creditCardBusinessService.GetAllCreditCards(email);
             }
             return cardlist;
@@ -53,13 +53,13 @@ namespace Amex.CCA.WebApi.Controllers
             //throw new NotImplementedException();
         }
 
-        // GET: api/CreditCards/5
+        // GET: api/CreditCard/5
         [ResponseType(typeof(CreditCardEntity))]
-        public HttpResponseMessage GetCreditCard(int id)
+        public HttpResponseMessage GetCreditCards(int id)
         {
             CreditCardEntity creditCardEntity = creditCardBusinessService.GetCreditCardById(id);
             if (creditCardEntity != null)
-        {
+            {
                 return Request.CreateResponse(HttpStatusCode.OK, creditCardEntity);
             }
             return Request.CreateResponse(HttpStatusCode.NoContent, "No content found.");
@@ -105,7 +105,7 @@ namespace Amex.CCA.WebApi.Controllers
                 creditCard.Note = loProvider.FormData.GetValues("Note")[0];
                 List<AttachmentTypeEntity> attTypeMappings = JsonConvert.DeserializeObject<List<AttachmentTypeEntity>>(loProvider.FormData.GetValues("AttTypes")[0]);
                 creditCard.CreatedBy = User.Identity.Name;
-                ProcessAttachments(creditCard, loProvider,attTypeMappings);
+                ProcessAttachments(creditCard, loProvider, attTypeMappings);
 
                 try
                 {
@@ -140,7 +140,7 @@ namespace Amex.CCA.WebApi.Controllers
             return BadRequest("Error occured while creating credit card");
         }
 
-        private void ProcessAttachments(CreditCardEntity creditCard, MultipartFormDataStreamProvider loProvider,List<AttachmentTypeEntity> attTypeMappings)
+        private void ProcessAttachments(CreditCardEntity creditCard, MultipartFormDataStreamProvider loProvider, List<AttachmentTypeEntity> attTypeMappings)
         {
             creditCard.Attachments = new List<Attachment>();
 
@@ -156,7 +156,7 @@ namespace Amex.CCA.WebApi.Controllers
                     string imgFolderPath = ConfigurationManager.AppSettings["imgPath"].ToString();
                     string fileUrl = SaveAttachment(fileName, fileContent, userId, baseUri, imgFolderPath);
                     int attTypeId = attTypeMappings.Where(c => c.FileName == fileName).ToList<AttachmentTypeEntity>()[0].AttachmentTypeID;
-                    creditCard.Attachments.Add(new Attachment() { FileName = fileName, FileUrl = fileUrl, AttachmentTypeId = attTypeId  });
+                    creditCard.Attachments.Add(new Attachment() { FileName = fileName, FileUrl = fileUrl, AttachmentTypeId = attTypeId });
 
                 }
             }

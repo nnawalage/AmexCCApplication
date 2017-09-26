@@ -34,12 +34,7 @@ export class CrediCardService {
         });
     }
 
-    // SaveCreditCard(creditCard: CreditCard): Observable<any> {
-    //     let url = `/CreditCards`;
-    //     return this.http.post(url, creditCard);
-    // }
-
-    SaveCreditCard(creditCard: ICreditCard): Observable<any> {
+   SaveCreditCard(creditCard: ICreditCard): Observable<any> {
 
         //let apiUrl = environment.baseURI + '/CreditCards/UploadFiles';
         let apiUrl = environment.baseURI + '/CreditCards';
@@ -109,5 +104,12 @@ export class CrediCardService {
                 return <ICreditCard[]>res.json()
             });
         // .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    }
+
+    getCardDetails(cardId: number): Observable<ICreditCard[]> {
+        debugger;
+        return this.http.get(`/CreditCard/GetCreditCard/22`).map((res: Response) => {
+            return <ICreditCard[]>res.json();
+        });
     }
 }
