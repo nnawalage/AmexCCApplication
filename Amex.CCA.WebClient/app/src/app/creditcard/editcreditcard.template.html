@@ -4,12 +4,30 @@
             <button type="button" class="close" (click)="close()">&times;</button>
             <h4 class="modal-title">Edit Card Details</h4>
         </div>
-        <div class="modal-body">
-            <label>{{question}}</label><input type="text" class="form-control" [(ngModel)]="message" name="name">
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary" (click)="apply()">OK</button>
-            <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+            <div class="modal-body">
+                <label>Name in Full</label><input type="text" class="form-control" [(ngModel)]="FullName" name="name">
+                <label>Display Name</label><input type="text" class="form-control" [(ngModel)]="DisplayName" name="name">
+                <label>NIC</label><input type="text" class="form-control" [(ngModel)]="Nic" name="Nic">
+                <label>Passport</label><input type="text" class="form-control" [(ngModel)]="Passport" name="Passport">
+                <label>Address</label><input type="text" class="form-control" [(ngModel)]="Address" name="Address">
+                <label>Mobile</label><input type="text" class="form-control" [(ngModel)]="MobilePhone" name="MobilePhone">
+                <label>Home Phone</label><input type="text" class="form-control" [(ngModel)]="HomePhone" name="HomePhone">
+                <label>Office Phone</label><input type="text" class="form-control" [(ngModel)]="OfficePhone" name="OfficePhone">
+                <label>Email</label><input type="text" class="form-control" [(ngModel)]="Email" name="Email">
+                <label>Employer</label><input type="text" class="form-control" [(ngModel)]="Employer" name="Employer">
+                <label>Salary</label><input type="text" class="form-control" [(ngModel)]="Salary" name="Salary">
+                <label>Job Title</label><input type="text" class="form-control" [(ngModel)]="JobTitle" name="JobTitle">
+                <label>Card Limit</label><input type="text" class="form-control" [(ngModel)]="CardLimit" name="CardLimit">
+                <label>Cash Limit</label><input type="text" class="form-control" [(ngModel)]="CashLimit" name="CashLimit">
+                <label>Card Type</label><input type="text" class="form-control" [(ngModel)]="CardTypeName" name="CardTypeName">
+                <label>Nationality</label><input type="text" class="form-control" [(ngModel)]="NationalityName" name="NationalityName">
+                <label>Card Status</label><input type="text" class="form-control" [(ngModel)]="CardStatusName" name="CardStatusName">
+                <label>Note</label><input type="text" class="form-control" [(ngModel)]="Note" name="Note">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="apply()">OK</button>
+                <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+            </div>
         </div>
     </div>
-</div>

@@ -10,9 +10,9 @@ import { CrediCardService } from "../services/creditcard.service";
 })
 export class ViewCreditCardComponent extends DialogComponent<ICreditCard, string> implements ICreditCard {
     question: string;
-    message: string = 'ddddd';
+    message: string;
     CreditCardId: number;
-    FullName: string ='ddsdsds';
+    FullName: string;
     DisplayName: string;
     Nic: string;
     Passport: string;

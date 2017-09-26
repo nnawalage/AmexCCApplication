@@ -2,23 +2,149 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" (click)="close()">&times;</button>
-            <h4 class="modal-title">Card Details</h4>
+            <h4 class="modal-title">Credit Card Details</h4>
         </div>
         <div class="modal-body">
-            <label>{{FullName}}</label><input type="text" class="form-control" [(ngModel)]="message" name="name">
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label>Name in Full </label>
+                </div>
+                <div class="col-md-3 ">
+                    <label>- {{FullName}}</label>
+                </div>
+                <div class="col-md-3">
+                    <label>Display Name</label>
+                </div>
+                <div class="col-md-3 ">
+                    <label>- {{DisplayName}}</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label for="txtNic">NIC</label>
+                </div>
+                <div class="col-md-3 ">
+                    <label>- {{Nic}}</label>
+                </div>
+                <div class="col-md-3">
+                    <label for="txtPassport">Passport</label>
+                </div>
+                <div class="col-md-3 ">
+                    <label>- {{Passport}}</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label for="txtAddress">Address</label>
+                </div>
+                <div class="col-md-3 ">
+                    <label>- {{Address}} </label>
+                </div>
+                <div class="col-md-3">
+                    <label for="txtMobile">Mobile</label>
+                </div>
+                <div class="col-md-3 ">
+                    <label>- {{MobilePhone}} </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label for="txtHomePhone">Home Phone</label>
+                </div>
+                <div class="col-md-3 ">
+                    <label>- {{HomePhone}}</label>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="txtOffice">Office Phone</label>
+                </div>
+
+                <div class="col-md-3 ">
+                    <label>- {{OfficePhone}}</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label for="txtEmail">Email</label>
+                </div>
+                <div class="col-md-3 ">
+                    <label>- {{Email}}</label>
+                </div>
+                <div class="col-md-3">
+                    <label for="txtEmployer">Employer</label>
+                </div>
+                <div class="col-md-3 ">
+                    <label>- {{Employer}}</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label for="txtSalary">Salary</label>
+                </div>
+                <div class="col-md-3 ">
+                    <label>- {{Salary}}</label>
+                </div>
+                <div class="col-md-3">
+                    <label for="txtJobTitle">Job Title</label>
+                </div>
+                <div class="col-md-3 ">
+                    <label>-{{JobTitle}}</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label for="txtCardLimit">Card Limit</label>
+                </div>
+                <div class="col-md-3 ">
+                    <label>-Rs {{CardLimit}}</label>
+                </div>
+                <div class="col-md-3">
+                    <label for="txtCashLimit">Cash Limit</label>
+                </div>
+                <div class="col-md-3 ">
+                    <label>-Rs {{CashLimit}} </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label for="ddlCardType">Card Type</label>
+                </div>
+                <div class="col-md-3 ">
+                    <label>- {{CardTypeName}} Type</label>
+                </div>
+                <div class="col-md-3">
+                    <label for="ddlNationality">Nationality</label>
+                </div>
+                <div class="col-md-3 ">
+                    <label>- {{NationalityName}} </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label for="cardstatus">Card Status</label>
+                </div>
+                <div class="col-md-3 ">
+                    <label>- {{CardStatusName}} </label>
+                </div>
+                <div class="col-md-3">
+                    <label for="txtNote">Note</label>
+                </div>
+                <div class="col-md-3 ">
+                    <label>- {{Note}}</label>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-            <label>{{Email}}</label><input type="text" class="form-control" [(ngModel)]="message" name="name">
-        </div>
-        <div class="modal-body">
-            <label>{{Nic}}</label><input type="text" class="form-control" [(ngModel)]="message" name="name">
-        </div>
-        <div class="modal-body">
-            <label>{{FullName}}</label><input type="text" class="form-control" [(ngModel)]="message" name="name">
-        </div>
+
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" (click)="apply()">OK</button>
-            <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+            <!--<button type="button" class="btn btn-default" (click)="close()">Cancel</button>-->
         </div>
     </div>
 </div>

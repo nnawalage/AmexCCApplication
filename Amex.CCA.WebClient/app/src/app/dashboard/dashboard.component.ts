@@ -47,17 +47,16 @@ export class DashboardComponent {
 
     openCreditCardView(cardId: number) {
         this.dialogService.addDialog(ViewCreditCardComponent, {
-            CreditCardId: cardId,
-            //FullName :'dsdsdsdsdsvvvv'
+            CreditCardId: cardId
         }).subscribe((message) => {
             //We get dialog result
             this.promptMessage = message;
         });
     }
 
-    openCreditCardEdit() {
+    openCreditCardEdit(cardId: number) {
         this.dialogService.addDialog(EditCreditCardComponent, {
-            question: 'What is your name?: '
+            CreditCardId: cardId
         })
             .subscribe((message) => {
                 //We get dialog result
