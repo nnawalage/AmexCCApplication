@@ -139,8 +139,8 @@
                 </div>
                 <div class="col-md-3">
 
-                    <select formControlName="cardType" class="form-control" id="ddlCardType">
-                        <option  selected="{{first}}" *ngFor="let ct of cardTypes;let first=first" [value]="ct.CardTypeId">{{ct.Name+''+first}}</option>
+                    <select formControlName="cardType" class="form-control" id="ddlCardType" [(ngModel)]="selectedCardType">
+                        <option  *ngFor="let ct of cardTypes" [ngValue]="ct">{{ct.Name}}</option>
                     </select>
                 </div>
 
@@ -150,8 +150,8 @@
 
                 <div class="col-md-3">
 
-                    <select id="ddlNationality" class="form-control" formControlName="nationality">
-                        <option *ngFor="let nationality of nationalities; let first=first" selected="{{first}}"  [value]="nationality.NationalityId">{{nationality.Name}}</option>
+                    <select id="ddlNationality" class="form-control" formControlName="nationality" [(ngModel)]="selectedNationality">
+                        <option *ngFor="let nationality of nationalities"  [ngValue]="nationality">{{nationality.Name}}</option>
                     </select>
                 </div>
             </div>
@@ -165,50 +165,13 @@
                 </div>
             </div>
 
-            <!-- <div class="form-group">
-                <div class="col-md-3">
-                    <label for="txtNote">Note1</label>
-                </div>
-                <div class="col-md-3">
-                    <input id="txtNote" type="text" class="form-control" />
-                </div>
-            </div> -->
-            
-            <!-- <div class="row" style="clear:left">
-                <div class="col-md-4">
-                    <label>NIC Attachments</label>
-                </div>
-                <div class="col-md-8">
-                    <input id="nicAttachments" type="file" formControlName="nicAttachments" multiple="true" (change)="onFileSelect('nicAtt',$event)" />
-                </div>
 
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <label>Salary Slips Attachments</label>
-                </div>
-                <div class="col-md-8">
-                    <input id="salSlipAttachments" type="file" formControlName="salSlipAttachments" multiple="true" (change)="onFileSelect('salSlipAtt',$event)" />
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4">
-                    <label>Billing Proof Attachments</label>
-                </div>
-                <div class="col-md-8">
-                    <input id="billingProofAttachments" type="file" formControlName="billingProofAttachments" multiple="true" (change)="onFileSelect('billingProofAtt',$event)" />
-                </div>
-            </div> -->
-
-
-           
-<div class="row" style="clear:left" *ngFor="let c of attTypes">
+            <div class="row" style="clear:left" *ngFor="let c of attTypes">
                 <div class="col-md-4">
                     <label>{{c.Name}}</label>
                 </div>
                 <div class="col-md-8">
-                    <input [id]="c.Name" type="file"  multiple="true" (change)="onFileSelect(c.AttachmentTypeId,$event)" />
+                    <input [id]="c.Name" type="file" multiple="true" (change)="onFileSelect(c.AttachmentTypeId,$event)" />
                 </div>
 
             </div>
@@ -222,4 +185,5 @@
         </form>
     </div>
 </body>
+
 </html>
