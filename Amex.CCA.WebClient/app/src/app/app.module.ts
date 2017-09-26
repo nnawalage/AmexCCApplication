@@ -8,11 +8,11 @@ import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/shared.module';
 import { HttpModule, XHRBackend, RequestOptions } from '@angular/http';
 
-import { NavBarComponent } from './nav-bar/navbar.component';
-import { AuthGuard } from './services/router-guard.service';
-import { LoginService } from './services/login.service';
-import { CrediCardService } from './services/creditcard.service';
-import { HttpService } from './services/http.service';
+import {NavBarComponent} from './nav-bar/navbar.component';
+import {AuthGuard} from './services/router-guard.service';
+import {LoginService} from './services/login.service';
+import {CrediCardService} from './services/creditcard.service';
+import {HttpService} from './services/http.service';
 import { UserProfileService} from './services/userprofile.service';
 
 @NgModule({
@@ -21,7 +21,8 @@ import { UserProfileService} from './services/userprofile.service';
         HttpModule,
         BrowserModule,
         RouterModule.forRoot(appRoutes),
-        SharedModule
+        SharedModule,
+        UserModule
     ],
     declarations: [
         AppComponent, NavBarComponent
@@ -33,15 +34,16 @@ import { UserProfileService} from './services/userprofile.service';
             deps: [XHRBackend, RequestOptions]
         },
         LoginService,
-        AuthGuard,   
-        UserProfileService,   
+        AuthGuard,
         CrediCardService,
+        UserProfileService,
+
         {
             provide: CrediCardService,
             useClass: CrediCardService
         }
-    ],
 
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -105,6 +105,7 @@
     <Content Include="app\src\app\shared\footer.template.html" />
     <Content Include="app\src\app\shared\header.template.html" />
     <Content Include="app\src\app\user\edit-profile.template.html" />
+    <Content Include="app\src\app\user\user-approve.template.html" />
     <Content Include="app\src\app\user\user-profile.template.html" />
     <Content Include="app\src\app\user\user-registration.template.html" />
     <Content Include="app\src\assets\images\no-image.png" />
@@ -194,6 +195,7 @@
     <TypeScriptCompile Include="app\src\app\models\creditcard.ts" />
     <TypeScriptCompile Include="app\src\app\models\nationality.ts" />
     <TypeScriptCompile Include="app\src\app\models\user.ts" />
+    <TypeScriptCompile Include="app\src\app\models\userApprove.ts" />
     <TypeScriptCompile Include="app\src\app\models\userprofile.ts" />
     <TypeScriptCompile Include="app\src\app\nav-bar\index.ts" />
     <TypeScriptCompile Include="app\src\app\nav-bar\navbar.component.ts" />
@@ -209,6 +211,7 @@
     <TypeScriptCompile Include="app\src\app\shared\header.component.ts" />
     <TypeScriptCompile Include="app\src\app\shared\shared.module.ts" />
     <TypeScriptCompile Include="app\src\app\user\edit-profile.component.ts" />
+    <TypeScriptCompile Include="app\src\app\user\user-approve.component.ts" />
     <TypeScriptCompile Include="app\src\app\user\user-profile.component.ts" />
     <TypeScriptCompile Include="app\src\app\user\user-registration.component.ts" />
     <TypeScriptCompile Include="app\src\app\user\user.module.ts" />
@@ -235,6 +238,7 @@
     <Content Include="app\src\assets\css\common.styles.scss" />
     <Content Include="app\src\app\user\user-registration.styles.scss" />
     <Content Include="app\src\app\creditcard\viewcreditcard.template.html" />
+    <Content Include="app\src\app\user\user-approve.styles.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
