@@ -20,12 +20,19 @@ namespace Amex.CCA.WebApi.Controllers
     [RoutePrefix("api/UserProfiles")]
     public class UserProfilesController : ApiController
     {
-        private AmexDbContext db = new AmexDbContext();
+        private UserProfileBusinessService upBusinessService = new UserProfileBusinessService();
 
         // GET: api/UserProfiles
-        public IEnumerable<UserProfileEntity> Get()
+        public List<UserProfileEntity> GetUserProfiles()
         {
-            return new UserProfileBusinessService().GetAllUserProfiles();
+            List<UserProfileEntity> upEntity = new List<UserProfileEntity>();
+            string email = User.Identity.Name;
+
+            if (User.Identity.IsAuthenticated)
+            {
+                upEntity = upBusinessService.GetAllUserProfiles();
+            }
+            return upEntity;
         }
         // GET: api/UserProfiles/approveUser
         [Route("approveUser")]
@@ -42,64 +49,74 @@ namespace Amex.CCA.WebApi.Controllers
         [ResponseType(typeof(UserProfile))]
         public IHttpActionResult GetUserProfile(int id)
         {
-            UserProfile userProfile = db.UserProfiles.Find(id);
-            if (userProfile == null)
-            {
-                return NotFound();
-            }
+            //UserProfile userProfile = db.UserProfiles.Find(id);
+            //if (userProfile == null)
+            //{
+            //    return NotFound();
+            //}
 
-            return Ok(userProfile);
+            //return Ok(userProfile);
+            return null;
         }
 
         // PUT: api/UserProfiles/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUserProfile(int id, UserProfile userProfile)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
-            if (id != userProfile.UserProfileId)
-            {
-                return BadRequest();
-            }
+            //if (id != userProfile.UserProfileId)
+            //{
+            //    return BadRequest();
+            //}
 
-            db.Entry(userProfile).State = EntityState.Modified;
+            //db.Entry(userProfile).State = EntityState.Modified;
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserProfileExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            //try
+            //{
+            //    db.SaveChanges();
+            //}
+            //catch (DbUpdateConcurrencyException)
+            //{
+            //    if (!UserProfileExists(id))
+            //    {
+            //        return NotFound();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
 
-            return StatusCode(HttpStatusCode.NoContent);
+            //return StatusCode(HttpStatusCode.NoContent);
+            return null;
         }
 
-        //// POST: api/UserProfiles
-        //[ResponseType(typeof(UserProfile))]
-        //public IHttpActionResult PostUserProfile(UserProfile userProfile)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        // POST: api/UserProfiles
+        [ResponseType(typeof(UserProfile))]
+        public IHttpActionResult PostUserProfile(UserProfileEntity userProfile)
+        {
+            if (ModelState.IsValid)
+            {
+                userProfile.IsActive = true;
+                userProfile.CreatedBy = User.Identity.Name;
+                userProfile.CreatedDate = DateTime.Now;
 
-        //    db.UserProfiles.Add(userProfile);
-        //    db.SaveChanges();
+                upBusinessService.SaveUserProfile(userProfile);
+                return Ok("User Profile Created Successfully");
+            }
+            else
+            {
+                return BadRequest("Error occured while creating User profile");                
+            }
 
-        //    return CreatedAtRoute("DefaultApi", new { id = userProfile.UserProfileId }, userProfile);
-        //}
+            //db.UserProfiles.Add(userProfile);
+            //db.SaveChanges();
+            //return CreatedAtRoute("DefaultApi", new { id = userProfile.UserProfileId }, userProfile);
+        }
 
         //// DELETE: api/UserProfiles/5
         //[ResponseType(typeof(UserProfile))]
@@ -128,7 +145,8 @@ namespace Amex.CCA.WebApi.Controllers
 
         private bool UserProfileExists(int id)
         {
-            return db.UserProfiles.Count(e => e.UserProfileId == id) > 0;
+            //return db.UserProfiles.Count(e => e.UserProfileId == id) > 0;
+            return false;
         }
     }
 }
