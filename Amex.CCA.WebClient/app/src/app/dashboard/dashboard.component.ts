@@ -45,14 +45,14 @@ export class DashboardComponent {
         this.selectedIndex = index;
     }
 
-    openCreditCardView() {
+    openCreditCardView(cardId: number) {
         this.dialogService.addDialog(ViewCreditCardComponent, {
-            question: 'What is your name?: '
-        })
-            .subscribe((message) => {
-                //We get dialog result
-                this.promptMessage = message;
-            });
+            CreditCardId: cardId,
+            //FullName :'dsdsdsdsdsvvvv'
+        }).subscribe((message) => {
+            //We get dialog result
+            this.promptMessage = message;
+        });
     }
 
     openCreditCardEdit() {

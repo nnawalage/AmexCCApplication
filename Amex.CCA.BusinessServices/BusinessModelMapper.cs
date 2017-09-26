@@ -77,6 +77,7 @@ namespace Amex.CCA.BusinessServices
         {
             return new CreditCardEntity()
             {
+                CreditCardId = creditCard.CreditCardId,
                 DisplayName = creditCard.DisplayName,
                 Nic = creditCard.Nic,
                 Address = creditCard.Address,
