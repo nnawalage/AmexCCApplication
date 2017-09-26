@@ -107,7 +107,6 @@ export class CrediCardService {
     }
 
     getCardDetails(cardId: number): Observable<ICreditCard[]> {
-        debugger;
         return this.http.get(`/CreditCard/GetCreditCard/22`).map((res: Response) => {
             return <ICreditCard[]>res.json();
         });

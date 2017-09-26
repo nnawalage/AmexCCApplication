@@ -36,7 +36,6 @@ export class ViewCreditCardComponent extends DialogComponent<ICreditCard, string
 
     ngOnInit() {
         this.crediCardService.getCardDetails(this.CreditCardId).subscribe(receivedCardRequests => {
-            debugger;
             //this.cardRequestList = receivedCardRequests;
             //this.selectedIndex = 0;
         }, error => console.log(error));

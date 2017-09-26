@@ -46,7 +46,6 @@ export class DashboardComponent {
     }
 
     openCreditCardView(cardId: number) {
-        debugger;
         this.dialogService.addDialog(ViewCreditCardComponent, {
             CreditCardId: cardId,
             //FullName :'dsdsdsdsdsvvvv'
