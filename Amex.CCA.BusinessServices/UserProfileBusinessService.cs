@@ -12,7 +12,7 @@ namespace Amex.CCA.BusinessServices
         /// Get all active User Profiles
         /// </summary>
         /// <returns></returns>
-        public IList<UserProfileEntity> GetAllUserProfiles()
+        public List<UserProfileEntity> GetAllUserProfiles()
         {
             var userProfiles = new UserProfileDataAccessHelper().GetAllActiveUserProfiles();
             return userProfiles.Select(userProfile => BusinessModelMapper.MapToUserProfileEntity(userProfile)).ToList();
@@ -24,10 +24,10 @@ namespace Amex.CCA.BusinessServices
         /// </summary>
         /// <param name="userProfileEntity">UserProfileEntity instance.</param>
         /// <returns>true if successfully created</returns>
-        public bool CreateUserProfile(UserProfileEntity userProfileEntity)
+        public bool SaveUserProfile(UserProfileEntity userProfileEntity)
         {
             UserProfile userProfile = BusinessModelMapper.MapToUserProfile(userProfileEntity);
-            return new UserProfileDataAccessHelper().CreateUserProfile(userProfile);
+            return new UserProfileDataAccessHelper().SaveUserProfile(userProfile);
         }
     }
 }

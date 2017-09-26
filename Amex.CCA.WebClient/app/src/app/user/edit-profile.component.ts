@@ -20,9 +20,9 @@ export class EditProfileComponent implements OnInit {
 
     ngOnInit() {
         this.profileForm = this._fb.group({
-            userName: ['un', [Validators.required]],
-            profileName: ['pn', Validators.required],
-            profileImage: ['pi'],
+            userName: ['pmd@tiqri.com', [Validators.required]],
+            profileName: ['profilename1', Validators.required],
+            profileImage: ['https://lh3.googleusercontent.com/RmjpzTM-vciDR8-B30N2Zbs3ZvVGrxkJQXirUlPMwGvZhSfmucp6D5V8MfgYNwlIqXY=w300'],
         })
     }
 
@@ -33,8 +33,13 @@ export class EditProfileComponent implements OnInit {
                 ProfileName: userProfileFormValues['profileName'],
                 ProfileImage: userProfileFormValues['profileImage'],
             }
-            console.log(userProfileObj.ProfileName);
+            //Collecting USERNAME from session
+           
 
+
+            //userProfileObj.
+            console.log(userProfileObj.ProfileName);
+            
             this.upService.SaveUserProfile(userProfileObj).subscribe((res: any) => {
                 console.log(res);
             }, error => {
