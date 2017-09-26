@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import {CommonModule} from '@angular/common';
@@ -8,7 +8,7 @@ import {UserRegistrationComponent} from './user-registration.component'
 import { UserApproveComponent }    from './user-approve.component'
 
 @NgModule({
-    imports:[
+    imports: [
         RouterModule.forChild(userRoutes),
         CommonModule,
         ReactiveFormsModule

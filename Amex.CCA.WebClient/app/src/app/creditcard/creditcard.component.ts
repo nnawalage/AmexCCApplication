@@ -5,6 +5,8 @@ import { CrediCardService } from '../services/creditcard.service'
 import { ICreditCard } from "../models/creditcard";
 import { ICardType } from "../models/cardtype";
 import { INationality } from "../models/nationality";
+import { IAttachments } from "../models/attachments";
+import { IAttachmentType } from "../models/attachment-type";
 
 @Component({
     templateUrl: './creditcard.template.html',
@@ -12,6 +14,8 @@ import { INationality } from "../models/nationality";
 })
 export class CreditCardComponent implements OnInit {
     private ccForm: FormGroup;
+    private attachments: IAttachments[] = [];
+    private attTypes: IAttachmentType[] = [];
     cardTypes: ICardType[];
     nationalities: INationality[];
 
@@ -36,15 +40,31 @@ export class CreditCardComponent implements OnInit {
             cashLimit: ['150.00'],
             note: ['note'],
             cardType: [Validators.required],
-            nationality: [Validators.required]
+            nationality: [Validators.required],
+            nicAttachments: [],
+            salSlipAttachments: [],
+            billingProofAttachments: []
         });
         this.loadCardTypes();
-
+        this.loadAttachmentTypes();
         this.actRouter.data.forEach(data => {
             this.nationalities = data['nationality'];
         });
     }
 
+    private loadAttachmentTypes(): void {
+        this.crediCardService.getAttachmentTypes().subscribe((attTypes: IAttachmentType[]) => {
+            this.attTypes = attTypes;
+            console.log(this.attTypes);
+
+        }, error => console.log(error));
+    }
+
+    private onFileSelect(key, event: Event) {
+        let fileList: FileList = event.target['files'];
+        this.attachments.push({ key: key, fileList: fileList });
+        console.log(this.attachments);
+    }
     private loadCardTypes(): void {
         this.crediCardService.getCardTypes().subscribe((cardTypes: ICardType[]) => {
             this.cardTypes = cardTypes;
@@ -71,7 +91,8 @@ export class CreditCardComponent implements OnInit {
                 CashLimit: creditCardFormValues['cashLimit'],
                 CardTypeId: creditCardFormValues['cardType'],
                 NationalityId: creditCardFormValues['nationality'],
-                Note: creditCardFormValues['note']
+                Note: creditCardFormValues['note'],
+                Attachments: this.attachments
             }
 
             this.crediCardService.SaveCreditCard(creditCard).subscribe((res: any) => {

@@ -17,11 +17,18 @@ namespace Amex.CCA.DataAccess
                 return dbContext.UserProfiles.Where(n => n.IsActive).ToList();
             }
         }
-        public IList<UserProfile> GetAllUsersForApprove()
+
+        /// <summary>
+        /// Creates the user profile.
+        /// </summary>
+        /// <param name="userProfile">The UserProfile.</param>
+        /// <returns>true if successfully created</returns>
+        public bool CreateUserProfile(UserProfile userProfile)
         {
-            using (AmexDbContext dbcontext = new AmexDbContext())
+            using (AmexDbContext  dbContext= new AmexDbContext())
             {
-                return dbcontext.UserProfiles.Where(n => !n.IsActive).ToList();
+                dbContext.UserProfiles.Add(userProfile);
+               return  dbContext.SaveChanges()==1;
             }
         }
     }

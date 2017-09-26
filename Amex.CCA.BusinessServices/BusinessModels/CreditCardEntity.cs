@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Amex.CCA.DataAccess.Entities;
+using System;
+using System.Collections.Generic;
 
 namespace Amex.CCA.BusinessServices.BusinessModels
 {
@@ -43,7 +45,7 @@ namespace Amex.CCA.BusinessServices.BusinessModels
         public decimal? CashLimit { get; set; }
 
         public string Note { get; set; }
-
+        
         public int CardTypeId { get; set; }
 
         public string CardTypeName { get; set; }
@@ -55,7 +57,7 @@ namespace Amex.CCA.BusinessServices.BusinessModels
 
         public string CardStatusName { get; set; }
 
-        //public List<Attachment> Attachments { get; set; }
+        public  List<Attachment> Attachments { get; set; }
 
         public string CreatedBy { get; set; }
     }

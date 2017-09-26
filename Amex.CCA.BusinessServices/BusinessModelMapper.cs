@@ -68,7 +68,8 @@ namespace Amex.CCA.BusinessServices
                 Passport = creditCardEntity.Passport,
                 Salary = creditCardEntity.Salary,
                 CreatedBy = "pmd@tiqri.com",//creditCardEntity.CreatedBy;
-                CreatedTime = DateTime.Now
+                CreatedTime = DateTime.Now,
+                Attachments=creditCardEntity.Attachments
             };
         }
 
@@ -160,6 +161,23 @@ namespace Amex.CCA.BusinessServices
             };
         }
 
+        /// <summary>
+        /// Maps UserProfileEntity to UserProfile.
+        /// </summary>
+        /// <param name="userProfileEntity">UserProfileEntity instance</param>
+        /// <returns>UserProfile instance</returns>
+        public static UserProfile MapToUserProfile(UserProfileEntity userProfileEntity)
+        {
+            return new UserProfile()
+            {
+                UserProfileId = userProfileEntity.UserProfileId,
+                ProfileName = userProfileEntity.ProfileName,
+                ProfileImage = userProfileEntity.ProfileImage,
+                UserName = userProfileEntity.UserName,
+                CreatedBy=userProfileEntity.CreatedBy,
+                CreatedTime=userProfileEntity.CreatedDate
+            };
+        }
         #endregion UserProfile
     }
 }
