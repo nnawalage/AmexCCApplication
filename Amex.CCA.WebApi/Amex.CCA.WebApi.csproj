@@ -264,8 +264,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="IdentityHelper\IdentityUser.cs" />
-    <Compile Include="IdentityHelper\IdentityUserMapper.cs" />
+    <Compile Include="IdentityHelper\IdentityUserHelper.cs" />
     <Compile Include="IdentityHelper\IdentityUserModel.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />

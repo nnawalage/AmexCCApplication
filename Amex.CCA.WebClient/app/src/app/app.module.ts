@@ -13,7 +13,6 @@ import {AuthGuard} from './services/router-guard.service';
 import {LoginService} from './services/login.service';
 import {CrediCardService} from './services/creditcard.service';
 import {HttpService} from './services/http.service';
-import { UserService } from './services/user.service'
 import { UserProfileService} from './services/userprofile.service';
 
 @NgModule({
@@ -37,8 +36,7 @@ import { UserProfileService} from './services/userprofile.service';
         LoginService,
         AuthGuard,
         CrediCardService,
-        UserProfileService,   
-        UserService,
+        UserProfileService,
 
         {
             provide: CrediCardService,

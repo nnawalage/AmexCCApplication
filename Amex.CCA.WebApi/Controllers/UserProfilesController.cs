@@ -31,7 +31,7 @@ namespace Amex.CCA.WebApi.Controllers
         [Route("approveUser")]
         public IHttpActionResult GetAllInActiveUsers()
         {
-            var allInActiveUsers = new IdentityUser().GetInActiveUsers();
+            var allInActiveUsers = new IdentityUserHelper().GetInActiveUsers();
             if(allInActiveUsers == null)
             {
                 return NotFound();

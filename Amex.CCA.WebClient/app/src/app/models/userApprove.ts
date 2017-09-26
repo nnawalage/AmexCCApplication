@@ -1,6 +1,8 @@
 export class UserApprove{
-    UserName : string
+    ProfileName : string
     Email : string
-    UserIdName : string
     IsActive : boolean
+    Image:string
+    Id:string
+    RoleId:string
 }

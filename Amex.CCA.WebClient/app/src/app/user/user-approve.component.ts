@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service'
+import { UserProfileService } from '../services/userprofile.service';
 import { UserApprove } from '../models/userApprove'
 
 @Component({
@@ -8,7 +8,7 @@ import { UserApprove } from '../models/userApprove'
     styleUrls: ['./user-approve.styles.scss']
 })
 export class UserApproveComponent implements OnInit {
-    constructor(private userService: UserService) { }
+    constructor(private userService: UserProfileService) { }
     private profileImage: string;
     usersToApprove: UserApprove[] = []
 
@@ -16,7 +16,7 @@ export class UserApproveComponent implements OnInit {
             this.userService.getUsersToApprove()
                             .subscribe(users=>{
                                 this.usersToApprove = users
-                                console.log(this.usersToApprove);
+                               // console.log(this.usersToApprove);
                             });
     }
     ngOnInit(): void {

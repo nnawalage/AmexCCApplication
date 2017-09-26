@@ -8,16 +8,11 @@ namespace Amex.CCA.WebApi.IdentityHelper
     public class IdentityUserModel
     {
         public string  Email { get; set;}
-        public string UserName { get; set; }
-
-        public bool isActive { get; set; }
+        public string ProfileName { get; set; }
+        public string Image { get; set; }
+        public bool IsActive { get; set; }
         public string Id { get; set; }
-        public List<Role>  Role { get; set; }
+        public string RoleId { get; set; }
 
-    }
-    public class Role
-    {
-        public string UserId { get; set; }
-        public string  RoleId { get; set; }
     }
 }
