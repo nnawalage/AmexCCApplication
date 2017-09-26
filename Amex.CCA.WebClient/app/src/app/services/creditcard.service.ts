@@ -106,9 +106,9 @@ export class CrediCardService {
         // .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
-    getCardDetails(cardId: number): Observable<ICreditCard[]> {
-        return this.http.get(`/CreditCard/GetCreditCard/22`).map((res: Response) => {
-            return <ICreditCard[]>res.json();
+    getCardDetails(cardId: number): Observable<ICreditCard> {
+        return this.http.get(`/CreditCards/GetCreditCard/${cardId}`).map((res: Response) => {
+            return <ICreditCard>res.json();
         });
     }
 }

@@ -35,9 +35,27 @@ export class ViewCreditCardComponent extends DialogComponent<ICreditCard, string
     }
 
     ngOnInit() {
-        this.crediCardService.getCardDetails(this.CreditCardId).subscribe(receivedCardRequests => {
-            //this.cardRequestList = receivedCardRequests;
-            //this.selectedIndex = 0;
+        this.crediCardService.getCardDetails(this.CreditCardId).subscribe((creditCard: ICreditCard) => {
+            console.log(creditCard);
+            this.CreditCardId = creditCard.CreditCardId;
+            this.FullName = creditCard.FullName;
+            this.DisplayName = creditCard.DisplayName;
+            this.Nic = creditCard.Nic;
+            this.Passport = creditCard.Passport;
+            this.Address = creditCard.Address;
+            this.MobilePhone = creditCard.MobilePhone;
+            this.HomePhone = creditCard.HomePhone;
+            this.OfficePhone = creditCard.OfficePhone;
+            this.Email = creditCard.Email;
+            this.Employer = creditCard.Employer;
+            this.Salary = creditCard.Salary;
+            this.JobTitle = creditCard.JobTitle;
+            this.CardLimit = creditCard.CardLimit;
+            this.CashLimit = creditCard.CashLimit;
+            this.Note = creditCard.Note;
+            this.CardTypeId = creditCard.CardTypeId;
+            this.NationalityId = creditCard.NationalityId;
+
         }, error => console.log(error));
     }
 
