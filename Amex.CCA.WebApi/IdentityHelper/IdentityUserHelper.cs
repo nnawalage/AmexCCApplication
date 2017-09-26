@@ -1,6 +1,7 @@
 ﻿using Amex.CCA.DataAccess;
 using Amex.CCA.DataAccess.Entities;
 using Amex.CCA.WebApi.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace Amex.CCA.WebApi.IdentityHelper
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         private AmexDbContext dbContext = new AmexDbContext();
+        private IdentityRole rmdb = new IdentityRole();
         public List<IdentityUserModel> GetInActiveUsers()
         {
             var users = db.Users.Where(u => !u.IsActive).Include(us => us.Roles).ToList()
@@ -36,6 +38,23 @@ namespace Amex.CCA.WebApi.IdentityHelper
         {
             return role.RoleId;
             
+        }
+        public dynamic getRoles()
+        {
+            HashSet<string> userRoles = new HashSet<string>();
+            var users = db.Users.Where(u => !u.IsActive).Include(us => us.Roles)
+                .Select(user => db.Roles.Where(r => user.Roles.Select(ur => ur.RoleId).Contains(r.Id)).Select(r => r.Name))
+                .ToList();
+            foreach (var role in users)
+            {
+                foreach(var data in role)
+                {
+                    userRoles.Add(data);
+                }
+                
+            }
+
+            return userRoles;
         }
 
     }

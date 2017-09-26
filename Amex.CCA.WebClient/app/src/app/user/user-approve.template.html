@@ -1,10 +1,13 @@
 <div class="row">
+    <div *ngIf="!usersToApprove">
+           loading...
+    </div>
     <div *ngIf="usersToApprove" class="">
         <div class="col-xs-12 panel-heading approve_panel">
             <span><i class="fa fa-search" aria-hidden="true"></i></span>
             <div class="pull-right action-buttons">
                 <div class="btn-group pull-right">
-                      Select All:  <input type="checkbox" id="selectAll" />
+                      Select All:  <input type="checkbox" id="ApproveAll" (change)="addAllUsersToApprove(usersToApprove,$event.target.checked)"/>
                     <!-- <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
                                     <span class="glyphicon glyphicon-cog" style="margin-right: 0px;"></span>
                                 </button>
@@ -23,11 +26,9 @@
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
                 </div>
                 <div class="col-xs-12 col-md-2 action-buttons">
-                    <input type="checkbox" id="checkbox" />
-                    <select>
-                        <option value="volvo">User</option>
-                        <option value="saab">Staff</option>
-                        <option value="opel">Admin</option>
+                    <input type="checkbox" id="approveUser" (change)="addUsersToApprove(userApprove.Id,$event.target.checked)"/>
+                    <select >
+                        <option *ngFor="let role of Roles" value="role">{{role}}</option>
                     </select>
                 </div>
                 <div class="col-xs-12 data_hr">
@@ -39,7 +40,7 @@
                 <div class="pull-right ">
                     <div class="pull-right">
                         <button class="btn btn-default">Reject</button>
-                        <button class="btn btn-primary">Approve</button>
+                        <button class="btn btn-primary" (click)="saveApproved()">Approve</button>
                     </div>
                 </div>
             </div>

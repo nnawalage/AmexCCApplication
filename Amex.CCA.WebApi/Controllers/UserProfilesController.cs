@@ -45,6 +45,16 @@ namespace Amex.CCA.WebApi.Controllers
             }
             return Ok(allInActiveUsers);
         }
+        [Route("roles")]
+        public IHttpActionResult GetRoles()
+        {
+            var roles = new IdentityUserHelper().getRoles();
+            if(roles == null)
+            {
+                return NotFound();
+            }
+            return Ok(roles);
+        }
         // GET: api/UserProfiles/5
         [ResponseType(typeof(UserProfile))]
         public IHttpActionResult GetUserProfile(int id)
