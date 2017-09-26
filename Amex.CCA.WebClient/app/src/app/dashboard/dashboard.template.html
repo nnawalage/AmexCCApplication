@@ -1,26 +1,47 @@
+
 <div class="panel panel-primary">
   <div style="height: 50px;padding:0" class="panel-heading">
     <div class="form-group row">
       <div class="col-xs-3" style="align-content:center">
-        <h3> <label for="fname">Full Name</label></h3>
-      </div>
+        <div class="dropdown">
+          <h3> <label for="fname">Full Name</label></h3>
+          <div class="dropdown-content">
+           <a  *ngFor="let fullName of fullNameList" (click)="filterByFullName(fullName)">{{fullName}}</a> 
+          </div>
+          </div>
+        </div>
 
       <div class="col-xs-3">
-        <h3><label for="displayname">Display Name</label></h3>
+        <div class="dropdown">
+          <h3><label for="displayname">Display Name</label></h3>
+          <div class="dropdown-content">
+            <a *ngFor="let displayName of displayNameList" (click)="filterByDisplayName(displayName)">{{displayName}}</a>
+          </div>
+        </div>
       </div>
 
-      <div class="col-xs-3">
+    <div class="col-xs-3">
+      <div class="dropdown">
         <h3><label for="cardtype">Card Type</label></h3>
+        <div class="dropdown-content">
+          <a *ngFor="let cardType of cardTypeList" (click)="filterByCardType(cardType)">{{cardType}}</a>
+        </div>
+      </div>
       </div>
 
-      <div class="col-xs-3">
-        <h3><label for="cardlimit">Card Limit</label></h3>
+  <div class="col-xs-3">
+    <div class="dropdown">
+      <h3><label for="cardlimit">Card Status</label></h3>
+      <div class="dropdown-content">
+        <a *ngFor="let cardStatus of cardStatusList" (click)="filterByCardStatusName(cardStatus)">{{cardStatus}}</a>
+      </div>
+    </div>
       </div>
     </div>
   </div>
 </div>
 <div id="accordion" *ngFor="let creditcard of cardRequestList ,let index = index" (click)="clickRequest(index)">
-  <div class="panel panel-primary">
+  <div class="panel panel-primary">    
     <div style="height: 30px;padding:0" class="panel-heading">
       <div class="form-group row" data-toggle="collapse" data-parent="#accordion" href="#demo">
         <div class="col-xs-3">
@@ -36,15 +57,12 @@
         </div>
 
         <div class="col-xs-3">
-          <h5><label for="cardlimit">{{creditcard.Cardlimit}}</label></h5>
+          <h5><label for="cardlimit">{{creditcard.CardStatusName}}</label></h5>
         </div>
       </div>
     </div>
     <div id="#demo" class="collapse in" *ngIf="index==selectedIndex">
       <div class="panel-body panel-collapse">
-
-        <div>
-          <form>
             <div class="form-group">
               <div class="col-md-3">
                 <label>Name in Full </label>
@@ -165,23 +183,30 @@
               <div class="col-md-3 lightblue">
                 <label>- {{creditcard?.NationalityName}} </label>
               </div>
-            </div>
+            </div> 
 
-            <div class="form-group">
-              <div class="col-md-3">
-                <label for="txtNote">Note</label>
-              </div>
-              <div class="col-md-3 lightblue">
-                <label>- {{creditcard?.Note}}</label>
-              </div>
-                <label class="btn btn-default" (click)="openCreditCardView(creditcard?.CreditCardId)"> View </label>
-                <label class="btn btn-default" (click)="openCreditCardEdit()"> Edit </label>
-                <label class="btn btn-default" (click)="openCreditCardApprove()"> Approve </label>
-
-            </div>
-          </form>
+        <div class="form-group">
+          <div class="col-md-3">
+            <label for="cardstatus">Card Status</label>
+          </div>
+          <div class="col-md-3 lightblue">
+            <label>- {{creditcard?.CardStatusName}} </label>
+          </div>
+          <div class="col-md-3">
+            <label for="txtNote">Note</label>
+          </div>
+          <div class="col-md-3 lightblue">
+            <label>- {{creditcard?.Note}}</label>
+          </div>
         </div>
+
+          <label class="btn btn-default" (click)="openCreditCardView(creditcard?.CreditCardId)"> View </label>
+          <label class="btn btn-default" (click)="openCreditCardEdit()"> Edit </label>
+          <label class="btn btn-default" (click)="openCreditCardApprove()"> Approve </label>
+
+        </div>
+
+      </div>
       </div>
     </div>
-    </div>
-  </div>
+   

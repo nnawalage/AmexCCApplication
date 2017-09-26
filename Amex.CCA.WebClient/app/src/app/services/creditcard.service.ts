@@ -19,7 +19,7 @@ export class CrediCardService {
       let attTypes:IAttachmentType[]=[];
         return this.http.get('/AttachmentTypes').map((response: Response) => {
             return <IAttachmentType[]>response.json();
-        })
+        });
     }
 
     getCardTypes(): Observable<ICardType[]> {
@@ -33,10 +33,10 @@ export class CrediCardService {
             return <INationality[]>res.json();
         });
     }
+    
 
-   SaveCreditCard(creditCard: ICreditCard): Observable<any> {
+    SaveCreditCard(creditCard: ICreditCard): Observable<any> {
 
-        //let apiUrl = environment.baseURI + '/CreditCards/UploadFiles';
         let apiUrl = environment.baseURI + '/CreditCards';
         let token = this.getAuthToken();
         return Observable.create(observer => {

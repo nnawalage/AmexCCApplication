@@ -2,4 +2,5 @@
     UserName: string;
     ProfileName: string;
     ProfileImage?: string;
+    userProfileId: number;
 }
