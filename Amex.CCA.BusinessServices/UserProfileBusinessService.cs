@@ -27,7 +27,7 @@ namespace Amex.CCA.BusinessServices
         public bool SaveUserProfile(UserProfileEntity userProfileEntity)
         {
             UserProfile userProfile = BusinessModelMapper.MapToUserProfile(userProfileEntity);
-            return new UserProfileDataAccessHelper().CreateUserProfile(userProfile);
+            return new UserProfileDataAccessHelper().SaveUserProfile(userProfile);
         }
     }
 }

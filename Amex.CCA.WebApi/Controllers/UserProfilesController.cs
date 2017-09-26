@@ -2,6 +2,8 @@
 using Amex.CCA.BusinessServices.BusinessModels;
 using Amex.CCA.DataAccess;
 using Amex.CCA.DataAccess.Entities;
+using Amex.CCA.WebApi.IdentityHelper;
+using Amex.CCA.WebApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,6 +17,7 @@ using System.Web.Http.Description;
 
 namespace Amex.CCA.WebApi.Controllers
 {
+    [RoutePrefix("api/UserProfiles")]
     public class UserProfilesController : ApiController
     {
         private UserProfileBusinessService upBusinessService = new UserProfileBusinessService();
@@ -31,7 +34,17 @@ namespace Amex.CCA.WebApi.Controllers
             }
             return upEntity;
         }
-
+        // GET: api/UserProfiles/approveUser
+        [Route("approveUser")]
+        public IHttpActionResult GetAllInActiveUsers()
+        {
+            var allInActiveUsers = new IdentityUserHelper().GetInActiveUsers();
+            if(allInActiveUsers == null)
+            {
+                return NotFound();
+            }
+            return Ok(allInActiveUsers);
+        }
         // GET: api/UserProfiles/5
         [ResponseType(typeof(UserProfile))]
         public IHttpActionResult GetUserProfile(int id)
@@ -89,10 +102,11 @@ namespace Amex.CCA.WebApi.Controllers
             if (ModelState.IsValid)
             {
                 userProfile.IsActive = true;
-                userProfile.CreatedBy = "chana";               
+                userProfile.CreatedBy = User.Identity.Name;
+                userProfile.CreatedDate = DateTime.Now;
 
                 upBusinessService.SaveUserProfile(userProfile);
-                return Ok("Successfully Created new credit card");
+                return Ok("User Profile Created Successfully");
             }
             else
             {
