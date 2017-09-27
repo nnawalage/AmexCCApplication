@@ -28,7 +28,7 @@ namespace Amex.CCA.WebApi.Controllers
 {
 
 
-
+    [RoutePrefix("api/CreditCards")]
     //[Authorize]
     public class CreditCardsController : ApiController
     {
@@ -42,7 +42,7 @@ namespace Amex.CCA.WebApi.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-                cardlist = creditCardBusinessService.GetAllCreditCards(email);
+                cardlist = User.IsInRole("User")?creditCardBusinessService.GetAllCreditCards(email): creditCardBusinessService.GetAllCreditCards();
             }
             return cardlist;
 
@@ -54,7 +54,7 @@ namespace Amex.CCA.WebApi.Controllers
         }
 
         // GET: api/CreditCards/5
-        [ResponseType(typeof(CreditCardEntity))]
+        [Route("GetCreditCard/{id}")]
         public HttpResponseMessage GetCreditCard(int id)
         {
             CreditCardEntity creditCardEntity = creditCardBusinessService.GetCreditCardById(id);
