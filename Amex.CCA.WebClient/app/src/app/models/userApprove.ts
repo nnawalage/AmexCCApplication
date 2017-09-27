@@ -5,4 +5,5 @@ export class UserApprove{
     Image:string
     Id:string
     RoleId:string
+    RoleName:string
 }
