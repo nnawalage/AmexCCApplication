@@ -186,9 +186,7 @@ namespace Amex.CCA.WebApi.Controllers
         [AllowAnonymous]
         public IHttpActionResult GetRoles()
         {
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>());
-            var roles = roleManager.Roles;
-            return null;
+           
         }
 
 
