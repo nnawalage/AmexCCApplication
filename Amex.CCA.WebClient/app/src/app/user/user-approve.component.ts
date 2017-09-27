@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import 'rxjs';
 import { UserProfileService } from '../services/userprofile.service';
 import { UserApprove } from '../models/userApprove';
-import { Role }     from'../models/Role';
+import { Role }     from'../models/role';
 
 @Component({
     selector: 'user-approve',
@@ -22,7 +22,7 @@ export class UserApproveComponent implements OnInit {
         this.userService.getRoles()
                         .subscribe(role =>{
                             this.Roles = role;
-                            console.log(this.Roles);
+                            //console.log(this.Roles);
                         });
     }
     getInActiveUsers(): void{
@@ -37,10 +37,10 @@ export class UserApproveComponent implements OnInit {
     }
     saveApproved():void{
         if(this.ApproveAll.length>0){
-            console.log("ApproveAll",this.ApproveAll);
+           // console.log("ApproveAll",this.ApproveAll);
         }
         if(this.approveUser.length>0 && !(this.ApproveAll.length>0 )){
-            console.log("approveUser",this.approveUser);
+           // console.log("approveUser",this.approveUser);
         }
     }
     addUsersToApprove(ID: string,isChecked:boolean):void{
@@ -65,9 +65,9 @@ export class UserApproveComponent implements OnInit {
         this.usersToApprove = users
         this.usersToApprove.map(user=>{
             var id= user.RoleId
-            console.log(id);
+            //console.log(id);
             user.RoleName = this.Roles[id]
         });
-        console.log(this.usersToApprove);
+        //console.log(this.usersToApprove);
     }
 }

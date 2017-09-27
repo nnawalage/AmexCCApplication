@@ -5,7 +5,7 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { HttpService } from '../services/http.service';
 import { LoginService } from '../services/login.service';
 import { UserApprove } from '../models/userApprove';
-import { Role }     from'../models/Role';
+import { Role }     from'../models/role';
 
 
 @Injectable()
