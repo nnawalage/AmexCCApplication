@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core'
 import { FormGroup, FormBuilder, FormControl, Validators, Validator, AbstractControl } from '@angular/forms'
-import { } from '@angular/common'
+import {Router } from '@angular/router'
 import { UserProfileService } from '../services/userprofile.service'
 import { Role } from '../models/Role'
 import { IRegistration } from '../models/registration'
+
 
 @Component({
     templateUrl: './user-registration.template.html',
@@ -14,7 +15,7 @@ export class UserRegistrationComponent implements OnInit {
     private roles: string[] = []
     private selectedRole: string;
 
-    constructor(private formBuilder: FormBuilder, private userProfileService: UserProfileService) { }
+    constructor(private formBuilder: FormBuilder, private userProfileService: UserProfileService, private router:Router) { }
 
 
 
@@ -99,6 +100,14 @@ export class UserRegistrationComponent implements OnInit {
                 ConfirmPassword: registrationFormValues["confirmPassword"],
                 RoleName: registrationFormValues["role"]
             };
+          this.userProfileService.registerUser(registrationModel).subscribe((res: any) => {
+            console.log(res);
+            alert("Successfully registered user");
+            this.router.navigate(['login']);
+
+        }, error => {
+            console.log('error when saving' + error);
+        });
         }
     }
 

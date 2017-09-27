@@ -6,6 +6,7 @@ import { HttpService } from '../services/http.service';
 import { LoginService } from '../services/login.service';
 import { UserApprove } from '../models/userApprove';
 import { Role }     from'../models/role';
+import {IRegistration} from '../models/registration'
 
 
 @Injectable()
@@ -39,5 +40,9 @@ export class UserProfileService {
                         }
         )};
 
+    registerUser(user:IRegistration): Observable<any> {
+        let url = `/Account/Register`;
+        return this.http.post(url, user);
+    }
 
 }
