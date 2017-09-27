@@ -44,25 +44,6 @@ namespace Amex.CCA.WebApi.IdentityHelper
             var userRoles = db.Roles.Select(rl => new { Id = rl.Id, Name = rl.Name }).ToList();
             return userRoles;
         }
-
-        public dynamic GetRoles()
-        {
-            //HashSet<string> userRoles = new HashSet<string>();
-            //var users = db.Users.Where(u => !u.IsActive)
-            //              .Select(user => db.Roles.Where(r => user.Roles.Select(ur => ur.RoleId).Contains(r.Id)).Select(r => r.Name))
-            //              .ToList();
-            //foreach (var role in users)
-            //{
-            //    foreach (var data in role)
-            //    {
-            //        userRoles.Add(data);
-            //    }
-            //}
-            //return userRoles;
-            var userRoles = db.Roles.Select(rl => new { Id = rl.Id, Name = rl.Name }).ToList();
-            return userRoles;
-        }
-
-
+        
     }
 }
