@@ -18,23 +18,27 @@ namespace Amex.CCA.WebApi.Controllers
         private AmexDbContext db = new AmexDbContext();
 
         // GET: api/AttachmentTypes
-        public IQueryable<AttachmentType> GetAttachmentTypes()
+        public IHttpActionResult Get()
         {
-            return db.AttachmentTypes;
+            List<AttachmentType> AttachmentTypes = new List<AttachmentType>();
+            //TODO :: Retrieve data through services and mappers.
+            var x = db.AttachmentTypes;
+
+            return Ok(x);
         }
 
-        // GET: api/AttachmentTypes/5
-        [ResponseType(typeof(AttachmentType))]
-        public IHttpActionResult GetAttachmentType(int id)
-        {
-            AttachmentType attachmentType = db.AttachmentTypes.Find(id);
-            if (attachmentType == null)
-            {
-                return NotFound();
-            }
+        //// GET: api/AttachmentTypes/5
+        //[ResponseType(typeof(AttachmentType))]
+        //public IHttpActionResult GetAttachmentType(int id)
+        //{
+        //    AttachmentType attachmentType = db.AttachmentTypes.Find(id);
+        //    if (attachmentType == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return Ok(attachmentType);
-        }
+        //    return Ok(attachmentType);
+        //}
 
         // PUT: api/AttachmentTypes/5
         [ResponseType(typeof(void))]
