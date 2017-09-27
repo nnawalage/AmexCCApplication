@@ -62,6 +62,19 @@ namespace Amex.CCA.DataAccess
             }
         }
 
+        public List<CreditCard> GetAllCreditCards()
+        {
+            using (AmexDbContext dbContext = new AmexDbContext())
+            {
+                List<CreditCard> creditCardList = dbContext.CreditCards
+                                        .Include(c => c.CardStatus)
+                                        .Include(c => c.CardType)
+                                        .Include(c => c.Nationality).ToList();
+                return creditCardList;
+
+            }
+        }
+
         public CreditCard GetCreditCardById(int id)
         {
             using (AmexDbContext dbContext = new AmexDbContext())
