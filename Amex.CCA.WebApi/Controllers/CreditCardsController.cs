@@ -42,7 +42,7 @@ namespace Amex.CCA.WebApi.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-                cardlist = creditCardBusinessService.GetAllCreditCards(email);
+                cardlist = User.IsInRole("User")?creditCardBusinessService.GetAllCreditCards(email): creditCardBusinessService.GetAllCreditCards();
             }
             return cardlist;
 
