@@ -165,7 +165,7 @@ namespace Amex.CCA.WebApi.Controllers
                 };
 
                 //create user Profile
-                new UserProfileBusinessService().CreateUserProfile(userProfile);
+                new UserProfileBusinessService().SaveUserProfile(userProfile);
                 //send emil
                 Email email = new Email()
                 {

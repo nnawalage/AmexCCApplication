@@ -8,6 +8,7 @@ namespace Amex.CCA.DataAccess
     {
         public AmexDbContext() : base("name=DefaultConnection")
         {
+
         }
 
         public DbSet<Attachment> Attachments { get; set; }

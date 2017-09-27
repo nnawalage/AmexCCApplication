@@ -28,7 +28,7 @@ namespace Amex.CCA.WebApi.Controllers
 {
 
 
-
+    [RoutePrefix("api/CreditCards")]
     //[Authorize]
     public class CreditCardsController : ApiController
     {
@@ -41,7 +41,7 @@ namespace Amex.CCA.WebApi.Controllers
             string email = User.Identity.Name;
 
             if (User.Identity.IsAuthenticated)
-        {
+            {
                 cardlist = creditCardBusinessService.GetAllCreditCards(email);
             }
             return cardlist;
@@ -54,12 +54,12 @@ namespace Amex.CCA.WebApi.Controllers
         }
 
         // GET: api/CreditCards/5
-        [ResponseType(typeof(CreditCardEntity))]
+        [Route("GetCreditCard/{id}")]
         public HttpResponseMessage GetCreditCard(int id)
         {
             CreditCardEntity creditCardEntity = creditCardBusinessService.GetCreditCardById(id);
             if (creditCardEntity != null)
-        {
+            {
                 return Request.CreateResponse(HttpStatusCode.OK, creditCardEntity);
             }
             return Request.CreateResponse(HttpStatusCode.NoContent, "No content found.");
@@ -105,45 +105,25 @@ namespace Amex.CCA.WebApi.Controllers
                 creditCard.Note = loProvider.FormData.GetValues("Note")[0];
                 List<AttachmentTypeEntity> attTypeMappings = JsonConvert.DeserializeObject<List<AttachmentTypeEntity>>(loProvider.FormData.GetValues("AttTypes")[0]);
                 creditCard.CreatedBy = User.Identity.Name;
-                ProcessAttachments(creditCard, loProvider,attTypeMappings);
-
-                try
+                ProcessAttachments(creditCard, loProvider, attTypeMappings);
+                //invoke method to register customer if customer is not already registered
+                if (!RegisterNewCcUser(creditCard.Email))
                 {
-                    //invoke method to register customer if customer is not already registered
-                    if (!RegisterNewCcUser(creditCard.Email))
-                    {
-                        return BadRequest("Error occured while registering user");
-                    }
-                    //if successfully saved
-                    if (creditCardBusinessService.SaveCreditCard(creditCard))
-                    {
-                        return Ok("Successfully Created new credit card");
-                    }
+                    return BadRequest("Error occured while registering user");
                 }
-                catch (Exception e)
-                {
-
-                    throw;
+                //if successfully saved
+                if (creditCardBusinessService.SaveCreditCard(creditCard))
+                { 
+                    return Ok("Successfully Created new credit card");
                 }
-                ////invoke method to register customer if customer is not already registered
-                //if (!RegisterNewCcUser(creditCard.Email))
-                //{
-                //    return BadRequest("Error occured while registering user");
-                //}
-                ////if successfully saved
-                //if (creditCardBusinessService.SaveCreditCard(creditCard))
-                //{
-                //    return Ok("Successfully Created new credit card");
-                //}
             }
-
             return BadRequest("Error occured while creating credit card");
         }
 
-        private void ProcessAttachments(CreditCardEntity creditCard, MultipartFormDataStreamProvider loProvider,List<AttachmentTypeEntity> attTypeMappings)
+        private void ProcessAttachments(CreditCardEntity creditCard, MultipartFormDataStreamProvider loProvider, List<AttachmentTypeEntity> attTypeMappings)
         {
             creditCard.Attachments = new List<Attachment>();
-
+            string reqId = Guid.NewGuid().ToString();
             if (loProvider.FileData.Count > 0)
             {
                 for (int fileCount = 0; fileCount < loProvider.FileData.Count; fileCount++)
@@ -154,51 +134,29 @@ namespace Amex.CCA.WebApi.Controllers
                     string userId = User.Identity.GetUserId();
                     string baseUri = ConfigurationManager.AppSettings["baseUri"].ToString();
                     string imgFolderPath = ConfigurationManager.AppSettings["imgPath"].ToString();
-                    string fileUrl = SaveAttachment(fileName, fileContent, userId, baseUri, imgFolderPath);
+                    string fileUrl = SaveAttachment(reqId,fileName, fileContent, userId, baseUri, imgFolderPath);
                     int attTypeId = attTypeMappings.Where(c => c.FileName == fileName).ToList<AttachmentTypeEntity>()[0].AttachmentTypeID;
-                    creditCard.Attachments.Add(new Attachment() { FileName = fileName, FileUrl = fileUrl, AttachmentTypeId = attTypeId  });
-
+                    creditCard.Attachments.Add(new Attachment() { FileName = fileName, FileUrl = fileUrl, AttachmentTypeId = attTypeId, CreatedBy = creditCard.CreatedBy, CreatedTime = DateTime.Now });
                 }
             }
 
         }
 
-        private string SaveAttachment(string fileName, byte[] fileContent, string userId, string baseUri, string imgFolderPath)
+        private string SaveAttachment(string reqId,string fileName, byte[] fileContent, string userId, string baseUri, string imgFolderPath)
         {
-
             string imgPath = HttpContext.Current.Server.MapPath($"~/{imgFolderPath}");
             if (!Directory.Exists($"{imgPath}/{userId}"))
             {
                 Directory.CreateDirectory($"{imgPath}/{User.Identity.GetUserId()}");
             }
-
-            File.WriteAllBytes($"{imgPath}/{User.Identity.GetUserId()}/{fileName}", fileContent);
-            return $"{baseUri}/{imgFolderPath}/{userId}/{fileName}";
+            if (!Directory.Exists($"{imgPath}/{userId}/{reqId}"))
+            {
+                Directory.CreateDirectory($"{imgPath}/{User.Identity.GetUserId()}/{reqId}");
+            }
+            File.WriteAllBytes($"{imgPath}/{User.Identity.GetUserId()}/{reqId}/{fileName}", fileContent);
+            return $"{baseUri}/{imgFolderPath}/{userId}/{reqId}/{fileName}";
         }
-
-
-
-        //// POST: api/CreditCards
-        //[ResponseType(typeof(CreditCard))]
-        //public IHttpActionResult PostCreditCard(CreditCardEntity creditCard)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        creditCard.CreatedBy = User.Identity.Name;
-        //        //invoke method to register customer if customer is not already registered
-        //        if (!RegisterNewCcUser(creditCard.Email))
-        //        {
-        //            return BadRequest("Error occured while registering user");
-        //        }
-        //        //if successfully saved
-        //        if (creditCardBusinessService.SaveCreditCard(creditCard))
-        //        {
-        //            return Ok("Successfully Created new credit card");
-        //        }
-        //    }
-
-        //    return BadRequest("Error occured while creating credit card");
-        //}
+        
 
         // DELETE: api/CreditCards/5
         [ResponseType(typeof(CreditCard))]

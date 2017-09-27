@@ -19,7 +19,7 @@ export class CrediCardService {
       let attTypes:IAttachmentType[]=[];
         return this.http.get('/AttachmentTypes').map((response: Response) => {
             return <IAttachmentType[]>response.json();
-        })
+        });
     }
 
     getCardTypes(): Observable<ICardType[]> {
@@ -33,15 +33,10 @@ export class CrediCardService {
             return <INationality[]>res.json();
         });
     }
-
-    // SaveCreditCard(creditCard: CreditCard): Observable<any> {
-    //     let url = `/CreditCards`;
-    //     return this.http.post(url, creditCard);
-    // }
+    
 
     SaveCreditCard(creditCard: ICreditCard): Observable<any> {
 
-        //let apiUrl = environment.baseURI + '/CreditCards/UploadFiles';
         let apiUrl = environment.baseURI + '/CreditCards';
         let token = this.getAuthToken();
         return Observable.create(observer => {
@@ -109,5 +104,11 @@ export class CrediCardService {
                 return <ICreditCard[]>res.json()
             });
         // .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    }
+
+    getCardDetails(cardId: number): Observable<ICreditCard> {
+        return this.http.get(`/CreditCards/GetCreditCard/${cardId}`).map((res: Response) => {
+            return <ICreditCard>res.json();
+        });
     }
 }
