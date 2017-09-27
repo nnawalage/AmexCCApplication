@@ -1,5 +1,5 @@
 <div class="row">
-    <h3>Register</h3>
+    <h3>Register User</h3>
     <br/>
     <div>
         <form [formGroup]="registrationForm">
@@ -18,7 +18,7 @@
             <div class="row form-group">
                 <div class="col-md-2">Role</div>
                 <div class="col-md-4">
-                    <select id="ddRole" formControlName="role" class="form-control">
+                    <select id="ddRole" formControlName="role" [(ngModel)]="selectedRole" class="form-control">
                         <option *ngFor="let rl of roles;let first=first" selected="{{first}}" [value]=rl>{{rl}}</option>
                     </select>
                 </div>

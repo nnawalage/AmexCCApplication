@@ -10,6 +10,7 @@ export class UserRegistrationComponent implements OnInit
 {
     private registrationForm:FormGroup;
     private roles:string[]=[]
+    private selectedRole:string;
 
     constructor(private formBuilder:FormBuilder) {}
 
@@ -25,8 +26,8 @@ export class UserRegistrationComponent implements OnInit
         this.loadRoles();
     }
 
-    loadRoles()
+   private loadRoles():void
     {
-
+        this.roles=["Admin","User"];
     }
 }

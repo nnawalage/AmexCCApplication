@@ -1,6 +1,7 @@
 ﻿using Amex.CCA.BusinessServices;
 using Amex.CCA.BusinessServices.BusinessModels;
 using Amex.CCA.Common.NotificationUtility;
+using Amex.CCA.WebApi.IdentityHelper;
 using Amex.CCA.WebApi.Models;
 using Amex.CCA.WebApi.Providers;
 using Amex.CCA.WebApi.Results;
@@ -181,14 +182,7 @@ namespace Amex.CCA.WebApi.Controllers
                 return GetErrorResult(result);
             }
         }
-
-        [Route("GetRoles")]
-        [AllowAnonymous]
-        public IHttpActionResult GetRoles()
-        {
-           
-        }
-
+        
 
         protected override void Dispose(bool disposing)
         {
