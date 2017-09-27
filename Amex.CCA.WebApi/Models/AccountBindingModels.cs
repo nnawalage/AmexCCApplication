@@ -53,7 +53,7 @@ namespace Amex.CCA.WebApi.Models
         public string ProfileName { get; set; }
 
         [Required]
-        public int RoleName { get; set; }
+        public string RoleName { get; set; }
     }
 
     public class RegisterExternalBindingModel

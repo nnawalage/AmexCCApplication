@@ -54,6 +54,8 @@ namespace Amex.CCA.WebApi.Controllers
             }
         }
 
+        
+
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
         // POST api/Account/Logout
@@ -147,9 +149,12 @@ namespace Amex.CCA.WebApi.Controllers
             IdentityResult result =  UserManager.Create(user, model.Password);
             if (result.Succeeded)
             {
+                //get userId
+                var registeredUser = UserManager.FindByEmail(model.Email);
+                //add role
+                UserManager.AddToRole(registeredUser.Id, model.RoleName);
 
-
-
+                //add to user profile
                 UserProfileEntity userProfile = new UserProfileEntity()
                 {
                     UserName = model.Email,
@@ -176,6 +181,16 @@ namespace Amex.CCA.WebApi.Controllers
                 return GetErrorResult(result);
             }
         }
+
+        [Route("GetRoles")]
+        [AllowAnonymous]
+        public IHttpActionResult GetRoles()
+        {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>());
+            var roles = roleManager.Roles;
+            return null;
+        }
+
 
         protected override void Dispose(bool disposing)
         {
