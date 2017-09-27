@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import 'rxjs';
 import { UserProfileService } from '../services/userprofile.service';
 import { UserApprove } from '../models/userApprove';
 import { Role }     from'../models/Role';
@@ -16,22 +17,23 @@ export class UserApproveComponent implements OnInit {
     ApproveAll: any=[]
     Roles: Role[] =[]
 
-    getInActiveUsers(): void{
-            this.userService.getUsersToApprove()
-                            .subscribe(users=>{
-                                this.usersToApprove = users
-                               console.log(this.usersToApprove);
-                            });
-    }
+    
     getRoles():void{
         this.userService.getRoles()
                         .subscribe(role =>{
                             this.Roles = role;
+                            console.log(this.Roles);
                         });
     }
+    getInActiveUsers(): void{
+            this.userService.getUsersToApprove()
+                            .subscribe(users=>{
+                                this.assignRolesTORoleIds(users);
+                            });
+    }
     ngOnInit(): void {
-        this.getInActiveUsers();
         this.getRoles();
+        this.getInActiveUsers();  
     }
     saveApproved():void{
         if(this.ApproveAll.length>0){
@@ -58,5 +60,14 @@ export class UserApproveComponent implements OnInit {
         else{
             this.ApproveAll=[]
         }
+    }
+    assignRolesTORoleIds(users:UserApprove[]): void{
+        this.usersToApprove = users
+        this.usersToApprove.map(user=>{
+            var id= user.RoleId
+            console.log(id);
+            user.RoleName = this.Roles[id]
+        });
+        console.log(this.usersToApprove);
     }
 }

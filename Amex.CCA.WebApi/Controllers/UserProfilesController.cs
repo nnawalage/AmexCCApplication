@@ -48,7 +48,7 @@ namespace Amex.CCA.WebApi.Controllers
         [Route("roles")]
         public IHttpActionResult GetRoles()
         {
-            var roles = new IdentityUserHelper().getRoles();
+            var roles = new IdentityUserHelper().GetRoles();
             if(roles == null)
             {
                 return NotFound();

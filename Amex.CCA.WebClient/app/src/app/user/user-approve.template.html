@@ -28,7 +28,8 @@
                 <div class="col-xs-12 col-md-2 action-buttons">
                     <input type="checkbox" id="approveUser" (change)="addUsersToApprove(userApprove.Id,$event.target.checked)"/>
                     <select >
-                        <option *ngFor="let role of Roles" value="role">{{role}}</option>
+                        <!-- <option value="role">{{userApprove.RoleName.Name}}</option> -->
+                        <option *ngFor="let role of Roles" value="role">{{role.Name}}</option>
                     </select>
                 </div>
                 <div class="col-xs-12 data_hr">
