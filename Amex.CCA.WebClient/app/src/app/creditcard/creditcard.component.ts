@@ -18,7 +18,8 @@ export class CreditCardComponent implements OnInit {
     private attTypes: IAttachmentType[] = [];
     cardTypes: ICardType[];
     nationalities: INationality[];
-
+    selectedCardType: ICardType;
+    selectedNationality:INationality;
     constructor(private actRouter: ActivatedRoute, private router: Router, private crediCardService: CrediCardService, private _fb: FormBuilder) {
     }
 
@@ -32,7 +33,7 @@ export class CreditCardComponent implements OnInit {
             mobilePhone: ['232055222', Validators.required],
             homePhone: ['054552222', Validators.required],
             officePhone: [''],
-            email: ['email', Validators.required],
+            email: ['pmd@tiqri.com', Validators.required],
             employer: ['employer', Validators.required],
             salary: ['100.00', Validators.required],
             jobTitle: ['jobTitle', Validators.required],
@@ -49,6 +50,7 @@ export class CreditCardComponent implements OnInit {
         this.loadAttachmentTypes();
         this.actRouter.data.forEach(data => {
             this.nationalities = data['nationality'];
+            this.selectedNationality=this.nationalities[0];
         });
     }
 
@@ -68,6 +70,7 @@ export class CreditCardComponent implements OnInit {
     private loadCardTypes(): void {
         this.crediCardService.getCardTypes().subscribe((cardTypes: ICardType[]) => {
             this.cardTypes = cardTypes;
+            this.selectedCardType=cardTypes[0];
         }, error => console.log(error));
     }
 
@@ -89,10 +92,11 @@ export class CreditCardComponent implements OnInit {
                 JobTitle: creditCardFormValues['jobTitle'],
                 CardLimit: creditCardFormValues['cardLimit'],
                 CashLimit: creditCardFormValues['cashLimit'],
-                CardTypeId: creditCardFormValues['cardType'],
-                NationalityId: creditCardFormValues['nationality'],
+                CardTypeId: creditCardFormValues['cardType']['CardTypeId'],
+                NationalityId: creditCardFormValues['nationality']['NationalityId'],
                 Note: creditCardFormValues['note'],
-                Attachments: this.attachments
+                Attachments: this.attachments,
+                CreditCardId: 0
             }
 
             this.crediCardService.SaveCreditCard(creditCard).subscribe((res: any) => {
