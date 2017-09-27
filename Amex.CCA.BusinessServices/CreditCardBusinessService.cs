@@ -45,6 +45,18 @@ namespace Amex.CCA.BusinessServices
             return creditCardEntityList;
         }
 
+        public List<CreditCardEntity> GetAllCreditCards()
+        {
+            List<CreditCard> creditCardList = dataAccessHelper.GetAllCreditCards();
+            List<CreditCardEntity> creditCardEntityList = new List<CreditCardEntity>();
+
+            foreach (CreditCard creditCard in creditCardList)
+            {
+                creditCardEntityList.Add(BusinessModelMapper.MapToCreditCardEntity(creditCard));
+            }
+            return creditCardEntityList;
+        }
+
         public CreditCardEntity GetCreditCardById(int id)
         {
             CreditCard creditCard = dataAccessHelper.GetCreditCardById(id);
