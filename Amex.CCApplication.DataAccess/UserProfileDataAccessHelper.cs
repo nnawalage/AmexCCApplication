@@ -1,4 +1,5 @@
 ﻿using Amex.CCA.DataAccess.Entities;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -35,16 +36,24 @@ namespace Amex.CCA.DataAccess
 
         public bool UpdateUserProfile(UserProfile userProfile)
         {
-            using (AmexDbContext dbContext = new AmexDbContext())
+            try
             {
-                //if detached attach again
-                if (dbContext.Entry(userProfile).State == EntityState.Detached)
+                using (AmexDbContext dbContext = new AmexDbContext())
                 {
-                    dbContext.UserProfiles.Attach(userProfile);
+                    //if detached attach again
+                    if (dbContext.Entry(userProfile).State == EntityState.Detached)
+                    {
+                        dbContext.UserProfiles.Attach(userProfile);
+                    }
+                    //change entity state to modified
+                    dbContext.Entry(userProfile).State = EntityState.Modified;
+                    return dbContext.SaveChanges() == 1;
                 }
-                //change entity state to modified
-                dbContext.Entry(userProfile).State = EntityState.Modified;
-                return dbContext.SaveChanges() == 1;
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                return false;
             }
         }
     }

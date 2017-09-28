@@ -44,9 +44,10 @@ export class EditProfileComponent implements OnInit {
                 //userProfileId: null,
                 Attachments: this.attachments
             }
-
+            console.log("1");
             //Collecting USERNAME, UserProfileID from session store
             userProfileObj.UserName = this.loginService.loggedUser.UserName;
+            console.log(userProfileObj.UserName );
             userProfileObj.userProfileId = 13;//this.loginService.loggedUser.RoleId; //TESTING
 
             if (userProfileObj.Attachments.length > 0) {
@@ -55,6 +56,9 @@ export class EditProfileComponent implements OnInit {
                 }, error => {
                     console.log('error when saving' + error);
                 });
+            }
+            else {
+
             }
         }
     }
