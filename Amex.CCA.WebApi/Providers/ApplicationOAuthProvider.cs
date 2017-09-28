@@ -38,7 +38,11 @@ namespace Amex.CCA.WebApi.Providers
                 context.SetError("invalid_grant", "The user name or password is incorrect.");
                 return;
             }
-
+            else if (!user.IsActive)
+            {
+                context.SetError("Inactive account", "User Account has not been activated yet.");
+                return;
+            }
             ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(userManager,
                OAuthDefaults.AuthenticationType);
             //ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
