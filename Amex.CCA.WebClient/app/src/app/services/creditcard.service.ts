@@ -9,6 +9,7 @@ import { HttpService } from '../services/http.service';
 import { environment } from '../../environments/environment';
 import { IAttachments } from "../models/attachments";
 import { IAttachmentType } from "../models/attachment-type";
+import { IReviewComment } from "../models/reviewcomment";
 
 @Injectable()
 export class CrediCardService {
@@ -112,5 +113,10 @@ export class CrediCardService {
         return this.http.get(`/CreditCards/GetCreditCard/${cardId}`).map((res: Response) => {
             return <ICreditCard>res.json();
         });
+    }
+
+    SaveReviewComment(reviewComment: IReviewComment): Observable<any> {
+        let url = `/CreditCards/ReviewCreditCard`;
+        return this.http.post(url, reviewComment);
     }
 }
