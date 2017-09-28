@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\Enums.cs" />
     <Compile Include="NotificationUtility\Email.cs" />
     <Compile Include="NotificationUtility\NotificationManager.cs" />
     <Compile Include="NotificationUtility\NotificationResult.cs" />
