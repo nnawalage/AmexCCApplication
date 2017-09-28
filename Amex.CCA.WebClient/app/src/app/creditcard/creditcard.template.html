@@ -103,8 +103,7 @@
                     <label for="txtSalary">Salary</label>
                 </div>
                 <div class="col-md-3">
-                    <input id="txtSalary" type="text" formControlName="salary" class="form-control" [ngClass]="{'make-border-red':this.ccForm.controls['salary'].errors?.required && !this.ccForm.controls['salary'].pristine }"
-                    />
+                    <input id="txtSalary" type="text" formControlName="salary" class="form-control" [ngClass]="{'make-border-red':this.ccForm.controls['salary'].errors?.required && !this.ccForm.controls['salary'].pristine }" />
                 </div>
 
                 <div class="col-md-3">
@@ -165,7 +164,6 @@
                 </div>
             </div>
 
-
             <div class="row" style="clear:left" *ngFor="let c of attTypes">
                 <div class="col-md-4">
                     <label>{{c.Name}}</label>
@@ -173,10 +171,7 @@
                 <div class="col-md-8">
                     <input [id]="c.Name" type="file" multiple="true" (change)="onFileSelect(c.AttachmentTypeId,$event)" />
                 </div>
-
             </div>
-
-
 
             <div class="row">
                 <button [disabled]="!ccForm.valid" class="btn btn-primary pull-right" type="submit">Save</button>
@@ -185,5 +180,4 @@
         </form>
     </div>
 </body>
-
 </html>
