@@ -1,4 +1,6 @@
-﻿using Amex.CCA.DataAccess;
+﻿using Amex.CCA.BusinessServices;
+using Amex.CCA.BusinessServices.BusinessModels;
+using Amex.CCA.DataAccess;
 using Amex.CCA.DataAccess.Entities;
 using System;
 using System.Collections.Generic;
@@ -15,30 +17,17 @@ namespace Amex.CCA.WebApi.Controllers
 {
     public class AttachmentTypesController : ApiController
     {
+        private AttachmentTypesBusinessService attachmentTypesBusinessService = new AttachmentTypesBusinessService();
+
         private AmexDbContext db = new AmexDbContext();
 
         // GET: api/AttachmentTypes
         public IHttpActionResult Get()
         {
-            List<AttachmentType> AttachmentTypes = new List<AttachmentType>();
-            //TODO :: Retrieve data through services and mappers.
-            var x = db.AttachmentTypes;
-
-            return Ok(x);
+            List<AttachmentTypeEntity> attachmentTypes = new List<AttachmentTypeEntity>();
+            attachmentTypes = attachmentTypesBusinessService.GetAttachmentTypes();
+            return Ok(attachmentTypes);
         }
-
-        //// GET: api/AttachmentTypes/5
-        //[ResponseType(typeof(AttachmentType))]
-        //public IHttpActionResult GetAttachmentType(int id)
-        //{
-        //    AttachmentType attachmentType = db.AttachmentTypes.Find(id);
-        //    if (attachmentType == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(attachmentType);
-        //}
 
         // PUT: api/AttachmentTypes/5
         [ResponseType(typeof(void))]

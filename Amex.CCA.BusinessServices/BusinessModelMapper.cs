@@ -22,6 +22,15 @@ namespace Amex.CCA.BusinessServices
             };
         }
 
+        public static AttachmentTypeEntity MapToAttachmentEntity(AttachmentType attachmentType)
+        {
+            return new AttachmentTypeEntity()
+            {
+                AttachmentTypeID = attachmentType.AttachmentTypeId,
+                FileName = attachmentType.Name
+            };
+        }
+
         #endregion CardType
 
         #region Nationality

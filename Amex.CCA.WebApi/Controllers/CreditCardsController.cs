@@ -4,13 +4,7 @@ using Amex.CCA.DataAccess;
 using Amex.CCA.DataAccess.Entities;
 using Amex.CCA.WebApi.Models;
 using Microsoft.AspNet.Identity;
-
-using Microsoft.AspNet.Identity;
-
 using Microsoft.AspNet.Identity.Owin;
-
-using Microsoft.AspNet.Identity.Owin;
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
