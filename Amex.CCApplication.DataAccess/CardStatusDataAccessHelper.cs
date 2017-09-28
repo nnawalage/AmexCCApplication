@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using Amex.CCA.Common.Enums;
+using System.Linq;
 
 namespace Amex.CCA.DataAccess
 {
@@ -8,7 +9,7 @@ namespace Amex.CCA.DataAccess
         /// Gets all active card types.
         /// </summary>
         /// <returns>list of card types</returns>
-        public int GetPendingCardStatusId()
+        public int GetPendingCardStatusId(Enums.CardStatusEnum cardStatus)
         {
             using (AmexDbContext dbContext = new AmexDbContext())
             {
@@ -17,8 +18,9 @@ namespace Amex.CCA.DataAccess
                 {
                     return 0;
                 }
-                var cardStatus = cardStatuses.Where(x => x.Name == "Pending").FirstOrDefault();
-                return cardStatus != null ? cardStatus.CardStatusId : 0;
+
+                var selectedCardStatus = cardStatuses.Where(x => x.Name == cardStatus.ToString()).FirstOrDefault();
+                return selectedCardStatus != null ? selectedCardStatus.CardStatusId : 0;
             }
         }
     }

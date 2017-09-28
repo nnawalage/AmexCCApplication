@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Amex.CCA.DataAccess.Entities;
+using System;
+using System.Collections.Generic;
 
 namespace Amex.CCA.BusinessServices.BusinessModels
 {
@@ -16,5 +18,6 @@ namespace Amex.CCA.BusinessServices.BusinessModels
         public string CreatedBy { get; set; }
 
         public DateTime CreatedDate { get; set; }
+        
     }
 }

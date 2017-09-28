@@ -194,6 +194,7 @@
     <TypeScriptCompile Include="app\src\app\models\cardtype.ts" />
     <TypeScriptCompile Include="app\src\app\models\creditcard.ts" />
     <TypeScriptCompile Include="app\src\app\models\nationality.ts" />
+    <TypeScriptCompile Include="app\src\app\models\reviewcomment.ts" />
     <TypeScriptCompile Include="app\src\app\models\role.ts" />
     <TypeScriptCompile Include="app\src\app\models\user.ts" />
     <TypeScriptCompile Include="app\src\app\models\userApprove.ts" />

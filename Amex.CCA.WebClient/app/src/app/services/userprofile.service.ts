@@ -5,8 +5,10 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { HttpService } from '../services/http.service';
 import { LoginService } from '../services/login.service';
 import { UserApprove } from '../models/userApprove';
-import { Role } from '../models/role';
-import { IRegistration } from '../models/registration'
+import { Role }     from'../models/role';
+import {IRegistration} from '../models/registration'
+import { environment } from '../../environments/environment';
+import { IAttachments } from "../models/attachments";
 
 @Injectable()
 export class UserProfileService {
@@ -20,12 +22,68 @@ export class UserProfileService {
             });
     }
 
-    SaveUserProfile(userProfile: IUserProfile): Observable<any> {
-        let url = `/UserProfiles`;
-        return this.http.post(url, userProfile);
+    //THE DEFAULT METHOD IS NOT USING, BECAUSE OF IMAGE FILE ATTACHMENT
+    //SaveUserProfile(userProfile: IUserProfile): Observable<any> {
+    //    let url = `/UserProfiles`;
+    //    return this.http.post(url, userProfile);
+    //}
+
+    SaveUserProfile(userProf: IUserProfile): Observable<any> {
+
+        let apiUrl = environment.baseURI + '/UserProfiles';
+        let token = this.getAuthToken();
+        return Observable.create(observer => {
+
+            let formData: FormData = new FormData(), xhr: XMLHttpRequest = new XMLHttpRequest();
+
+            formData.append("UserName", userProf.UserName);
+            formData.append("ProfileName", userProf.ProfileName);
+            formData.append("ProfileImage", userProf.ProfileImage);
+            formData.append("UserProfileID", userProf.userProfileId.toString());
+
+           
+            ////let attTypes: Object[] = [];
+            userProf.Attachments.forEach((attCat: IAttachments) => {
+                for (let objKey in attCat.fileList) {
+                    if (objKey != 'length' && objKey != 'item') {
+                        formData.append("file", attCat.fileList[objKey]);
+                        //attTypes.push({ AttachmentTypeID: +attCat['key'], FileName: attCat.fileList[objKey]['name'] })
+                    }
+                }
+            });
+
+            //formData.append("AttTypes", JSON.stringify(attTypes));
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 201) {
+                        observer.next(JSON.parse(xhr.response));
+                        observer.complete();
+                    } else {
+                        observer.error(this.handleError);
+                    }
+                }
+            };
+
+            xhr.open('POST', apiUrl, true);
+            xhr.setRequestHeader('Accept', 'application/json; charset=utf-8');
+            xhr.setRequestHeader('Authorization', `Bearer ${token}`);
+
+            xhr.send(formData);
+        });
     }
-    getUsersToApprove(): Observable<UserApprove[]> {
-        let url = `/UserProfiles/approveUser`
+
+    private getAuthToken() {
+        let tokenObj = sessionStorage.getItem('authData');
+        let key = JSON.parse(tokenObj);
+        return key ? key.AccessToken : null;
+    }
+
+    private handleError(error: Response) {
+        return Observable.throw(error.json().error || 'Server error');
+    }
+
+    getUsersToApprove(): Observable <UserApprove[]>{
+        let url=`/UserProfiles/approveUser`
         return this.http.get(url)
             .map((res: Response) => {
                 return <UserApprove[]>res.json();

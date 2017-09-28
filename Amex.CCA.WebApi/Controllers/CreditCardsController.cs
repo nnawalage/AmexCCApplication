@@ -74,6 +74,18 @@ namespace Amex.CCA.WebApi.Controllers
             throw new NotImplementedException();
         }
 
+        // PUT: api/ReviewCreditCard
+        [Route("ReviewCreditCard")]
+        public HttpResponseMessage ReviewCreditCard(ReviewEntity reviewModel)
+        {
+            if (creditCardBusinessService.ReviewCreditCard(reviewModel))
+            {
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            return Request.CreateResponse(HttpStatusCode.BadRequest,"Error saving the approve/reject status");
+        }
+
+
         // POST: api/CreditCards
         [ResponseType(typeof(CreditCard))]
         public async Task<IHttpActionResult> PostCreditCard()
@@ -122,7 +134,7 @@ namespace Amex.CCA.WebApi.Controllers
                 //if successfully saved
                 if (creditCardBusinessService.SaveCreditCard(creditCard))
                 {
-                    return Ok("Successfully Created new credit card");
+                    return Ok();
                 }
             }
             return BadRequest("Error occured while creating credit card");

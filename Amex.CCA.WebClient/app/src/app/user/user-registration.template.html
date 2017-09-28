@@ -1,6 +1,6 @@
 <div class="row">
-    <h3>Register User</h3>
-    <br />
+    <h3>Register here to access Amex CC Application</h3>
+    <br/>
     <div>
         <form [formGroup]="registrationForm" (ngSubmit)="onRegistrationSubmit(registrationForm.value)">
             <div class=" row form-group">
@@ -47,7 +47,8 @@
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-4">
-                    <button [disabled]="!registrationForm.valid" class="btn btn-primary pull-right" type="submit">Register</button>
+                    <button [disabled]="!registrationForm.valid" class="btn btn-primary pull-left margin-right-one" type="submit">Register</button>
+                    <button class="btn btn-primary pull-left" type="button" (click)="goToLogin()">Go to Login</button>                    
                     <!-- <button  class="btn btn-primary pull-right" type="submit">Register</button> -->
                 </div>
             </div>
