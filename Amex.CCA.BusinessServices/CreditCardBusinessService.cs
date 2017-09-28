@@ -2,6 +2,9 @@
 using Amex.CCA.DataAccess;
 using Amex.CCA.DataAccess.Entities;
 using System.Collections.Generic;
+using System;
+using Amex.CCA.Common.Enums;
+using static Amex.CCA.Common.Enums.Enums;
 
 namespace Amex.CCA.BusinessServices
 {
@@ -22,7 +25,7 @@ namespace Amex.CCA.BusinessServices
             //no id assigned to the new card entry
             if (creditCard.CreditCardId == 0)
             {
-                creditCard.CardStatusId = cardStatusDataAccessHelper.GetPendingCardStatusId();
+                creditCard.CardStatusId = cardStatusDataAccessHelper.GetPendingCardStatusId(CardStatusEnum.Pending);
                 //Add log.
                 creditCard.Logs = new List<Log>() { logBusinessService.GetLog("Application created", null, creditCardEntity.CreatedBy) };
                 //save new credit card to the database
@@ -60,6 +63,26 @@ namespace Amex.CCA.BusinessServices
                 creditCardEntityList.Add(BusinessModelMapper.MapToCreditCardEntity(creditCard));
             }
             return creditCardEntityList;
+        }
+
+        public bool ReviewCreditCard(ReviewEntity reviewModel)
+        {
+            CreditCard creditCard = dataAccessHelper.GetCreditCardById(reviewModel.CreditCardId);
+            creditCard.ReviewerComment = reviewModel.ReviewerComment;
+            if (reviewModel.IsApproved==null)
+            {
+                return false;
+            }
+            else if((bool)reviewModel.IsApproved )
+            {
+                creditCard.CardStatusId = cardStatusDataAccessHelper.GetPendingCardStatusId(CardStatusEnum.Approved);
+            }
+            else
+            {
+                creditCard.CardStatusId = cardStatusDataAccessHelper.GetPendingCardStatusId(CardStatusEnum.Rejected);
+            }
+            
+            return dataAccessHelper.UpdateCreditCard(creditCard);
         }
 
         public CreditCardEntity GetCreditCardById(int id)
