@@ -25,12 +25,17 @@ namespace Amex.CCA.BusinessServices
                 creditCard.CardStatusId = cardStatusDataAccessHelper.GetPendingCardStatusId();
                 //Add log.
                 creditCard.Logs = new List<Log>() { logBusinessService.GetLog("Application created", null, creditCardEntity.CreatedBy) };
-
                 //save new credit card to the database
                 return dataAccessHelper.AddCreditCard(creditCard);
             }
-            //update card
-            return dataAccessHelper.UpdateCreditCard(creditCard);
+            else
+            {
+                //Add log.
+                //creditCard.Logs = new List<Log>() { logBusinessService.GetLog("Application edited", null, creditCardEntity.CreatedBy) };
+                //update card
+                return dataAccessHelper.UpdateCreditCard(creditCard);
+            }
+
         }
 
         public List<CreditCardEntity> GetAllCreditCards(string email)
