@@ -10,14 +10,16 @@ export class AuthGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot) {
         let isUserAuthorized = this.loginService.isUserAuthorised();
-        // let componentName: string = route.component? route.component["name"]:'';
+        let routePath: string = route["_routeConfig"]["path"];
+        let componentName=routePath && routePath=='user' ?
+                         (route.firstChild && route.firstChild.component? route.firstChild.component["name"]:''):'';
 
-        // //if component name is available and component is UserRegistration or Login
-        // //user should be navigated to the requested route only if the user is not logged in
-        // if (componentName && (componentName=='UserRegistrationComponent'||componentName=='LoginComponent')) {
-        //         return !isUserAuthorized;
-        // }
-
+        //if component name is available and component is UserRegistration or Login
+        //user should be navigated to the requested route only if the user is not logged in 
+        if ((routePath && routePath=='login') ||(componentName && (componentName=='UserRegistrationComponent'))) {
+                return !isUserAuthorized;
+        }
+        
         if (!isUserAuthorized) {
             this.router.navigate(['login']);
         }

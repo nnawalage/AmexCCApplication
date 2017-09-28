@@ -136,4 +136,8 @@ export class UserRegistrationComponent implements OnInit {
             return null;
         }
     }
+
+    private goToLogin(): void {
+        this.router.navigate(['login']);
+    }
 }
