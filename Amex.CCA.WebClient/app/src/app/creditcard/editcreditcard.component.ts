@@ -20,6 +20,8 @@ export class EditCreditCardComponent extends DialogComponent<PromptModel, string
     selectedCardType: ICardType;
     nationalities: INationality[];
     selectedNationality: INationality;
+    response: any;
+
 
     CreditCard: any;
     CreditCardId: number;
@@ -66,6 +68,7 @@ export class EditCreditCardComponent extends DialogComponent<PromptModel, string
         this.CreditCard.NationalityId = this.selectedNationality.NationalityId;
 
         this.crediCardService.SaveCreditCard(this.CreditCard).subscribe((res: any) => {
+            this.response = res;
             console.log(res);
         }, error => {
             console.log('error when saving' + error);
