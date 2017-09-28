@@ -134,7 +134,7 @@ namespace Amex.CCA.WebApi.Controllers
                 //if successfully saved
                 if (creditCardBusinessService.SaveCreditCard(creditCard))
                 {
-                    return Ok("Successfully Created new credit card");
+                    return Ok();
                 }
             }
             return BadRequest("Error occured while creating credit card");
