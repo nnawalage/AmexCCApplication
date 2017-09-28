@@ -10,14 +10,12 @@ import { LoginService } from '../services/login.service';
     styleUrls: ['./edit-profile.styles.scss']
 })
 
-
 export class EditProfileComponent implements OnInit {
     //This is to load all the controls
     private profileForm: FormGroup;
 
     constructor(private actRouter: ActivatedRoute, private router: Router, private upService: UserProfileService, private _fb: FormBuilder, private loginService: LoginService) {
     }
-
 
     ngOnInit() {
         this.profileForm = this._fb.group({
@@ -33,12 +31,12 @@ export class EditProfileComponent implements OnInit {
                 UserName: userProfileFormValues['userName'],
                 ProfileName: userProfileFormValues['profileName'],
                 ProfileImage: userProfileFormValues['profileImage'],
-                userProfileId:null
+                userProfileId: null
             }
             //Collecting USERNAME, UserProfileID from session store
             userProfileObj.UserName = this.loginService.loggedUser.UserName;
             userProfileObj.userProfileId = this.loginService.loggedUser.RoleId; //TESTING
-            
+
             console.log(userProfileObj.UserName);
 
             this.upService.SaveUserProfile(userProfileObj).subscribe((res: any) => {

@@ -143,7 +143,7 @@ namespace Amex.CCA.WebApi.Controllers
 
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, IsActive = false };
 
-            IdentityResult result =  UserManager.Create(user, model.Password);
+            IdentityResult result = UserManager.Create(user, model.Password);
             if (result.Succeeded)
             {
                 UserProfileEntity userProfile = new UserProfileEntity()

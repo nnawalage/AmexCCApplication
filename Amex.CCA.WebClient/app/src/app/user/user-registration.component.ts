@@ -1,13 +1,10 @@
-import {Component} from '@angular/core'
-
+import { Component } from '@angular/core'
 
 @Component({
-    templateUrl:'./user-registration.template.html',
-    styleUrls:['./user-registration.styles.scss']
+    templateUrl: './user-registration.template.html',
+    styleUrls: ['./user-registration.styles.scss']
 })
-export class UserRegistrationComponent
-{
-//test
- sssssdsdsdsdhkkkkkksjjj;
-
+export class UserRegistrationComponent {
+    //test
+    sssssdsdsdsdhkkkkkksjjj;
 }

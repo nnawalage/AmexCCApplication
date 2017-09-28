@@ -69,7 +69,7 @@ namespace Amex.CCA.BusinessServices
                 Salary = creditCardEntity.Salary,
                 CreatedBy = "pmd@tiqri.com",//creditCardEntity.CreatedBy;
                 CreatedTime = DateTime.Now,
-                Attachments=creditCardEntity.Attachments
+                Attachments = creditCardEntity.Attachments
             };
         }
 
@@ -175,10 +175,11 @@ namespace Amex.CCA.BusinessServices
                 ProfileName = userProfileEntity.ProfileName,
                 ProfileImage = userProfileEntity.ProfileImage,
                 UserName = userProfileEntity.UserName,
-                CreatedBy=userProfileEntity.CreatedBy,
-                CreatedTime=userProfileEntity.CreatedDate
+                CreatedBy = userProfileEntity.CreatedBy,
+                CreatedTime = userProfileEntity.CreatedDate
             };
         }
+
         #endregion UserProfile
     }
 }
