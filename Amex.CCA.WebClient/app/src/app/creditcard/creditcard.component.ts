@@ -19,7 +19,7 @@ export class CreditCardComponent implements OnInit {
     cardTypes: ICardType[];
     nationalities: INationality[];
     selectedCardType: ICardType;
-    selectedNationality:INationality;
+    selectedNationality: INationality;
     constructor(private actRouter: ActivatedRoute, private router: Router, private crediCardService: CrediCardService, private _fb: FormBuilder) {
     }
 
@@ -50,7 +50,7 @@ export class CreditCardComponent implements OnInit {
         this.loadAttachmentTypes();
         this.actRouter.data.forEach(data => {
             this.nationalities = data['nationality'];
-            this.selectedNationality=this.nationalities[0];
+            this.selectedNationality = this.nationalities[0];
         });
     }
 
@@ -70,7 +70,7 @@ export class CreditCardComponent implements OnInit {
     private loadCardTypes(): void {
         this.crediCardService.getCardTypes().subscribe((cardTypes: ICardType[]) => {
             this.cardTypes = cardTypes;
-            this.selectedCardType=cardTypes[0];
+            this.selectedCardType = cardTypes[0];
         }, error => console.log(error));
     }
 
