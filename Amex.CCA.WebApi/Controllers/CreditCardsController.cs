@@ -98,8 +98,8 @@ namespace Amex.CCA.WebApi.Controllers
                 creditCard.OfficePhone = loProvider.FormData.GetValues("OfficePhone")[0];
                 creditCard.Email = loProvider.FormData.GetValues("Email")[0];
                 creditCard.Employer = loProvider.FormData.GetValues("Employer")[0];
-                creditCard.Salary = decimal.Parse(loProvider.FormData.GetValues("Salary")[0]);
                 creditCard.JobTitle = loProvider.FormData.GetValues("JobTitle")[0];
+                creditCard.Salary = decimal.Parse(loProvider.FormData.GetValues("Salary")[0]);
                 creditCard.CardLimit = decimal.Parse(loProvider.FormData.GetValues("CardLimit")[0]);
                 creditCard.CashLimit = decimal.Parse(loProvider.FormData.GetValues("CashLimit")[0]);
                 creditCard.CardTypeId = int.Parse(loProvider.FormData.GetValues("CardTypeId")[0]);

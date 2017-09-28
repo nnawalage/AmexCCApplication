@@ -50,7 +50,7 @@ export class CrediCardService {
             formData.append("OfficePhone", creditCard.OfficePhone);
             formData.append("Email", creditCard.Email);
             formData.append("Employer", creditCard.Employer);
-            formData.append("Salary", creditCard.Salary == null ? creditCard.Salary.toString() : '0');
+            formData.append("Salary", creditCard.Salary != null ? creditCard.Salary.toString() : '0');
             formData.append("JobTitle", creditCard.JobTitle);
             formData.append("CardLimit", creditCard.CardLimit != null ? creditCard.CardLimit.toString():'0');
             formData.append("CashLimit", creditCard.CashLimit != null ? creditCard.CashLimit.toString() : '0');
