@@ -7,7 +7,7 @@
             <span><i class="fa fa-search" aria-hidden="true"></i></span>
             <div class="pull-right action-buttons">
                 <div class="btn-group pull-right">
-                      Select All:  <input type="checkbox" id="ApproveAll" (change)="addAllUsersToApprove(usersToApprove,$event.target.checked)"/>
+                      Select All:  <input type="checkbox" id="ApproveAll" (change)="addAllUsersToApprove(usersToApprove,$event.target.checked)" />
                     <!-- <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
                                     <span class="glyphicon glyphicon-cog" style="margin-right: 0px;"></span>
                                 </button>
@@ -17,23 +17,23 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 approve_list" >
+        <div class="col-xs-12 approve_list">
             <div class="" *ngFor="let userApprove of usersToApprove">
-                <div class="col-xs-12 col-md-10 "> 
+                <div class="col-xs-12 col-md-10 ">
                    <span class="text_capitalize"> {{userApprove.ProfileName}} &nbsp;</span>
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp; 
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;
                     {{userApprove.Email}}&nbsp;
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
                 </div>
                 <div class="col-xs-12 col-md-2 action-buttons">
-                    <input type="checkbox" id="approveUser" (change)="addUsersToApprove(userApprove.Id,$event.target.checked)"/>
-                    <select >
+                    <input type="checkbox" id="approveUser" (change)="addUsersToApprove(userApprove.Id,$event.target.checked)" />
+                    <select>
                         <!-- <option value="role">{{userApprove.RoleName.Name}}</option> -->
                         <option *ngFor="let role of Roles" value="role">{{role.Name}}</option>
                     </select>
                 </div>
                 <div class="col-xs-12 data_hr">
-                        <hr>  
+                        <hr>
                 </div>
             </div>
         </div>

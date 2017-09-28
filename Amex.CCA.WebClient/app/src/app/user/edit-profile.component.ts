@@ -11,7 +11,6 @@ import { IAttachments } from "../models/attachments";
     styleUrls: ['./edit-profile.styles.scss']
 })
 
-
 export class EditProfileComponent implements OnInit {
     //This is to load all the controls
     private profileForm: FormGroup;
@@ -19,7 +18,6 @@ export class EditProfileComponent implements OnInit {
 
     constructor(private actRouter: ActivatedRoute, private router: Router, private upService: UserProfileService, private _fb: FormBuilder, private loginService: LoginService) {
     }
-
 
     ngOnInit() {
         this.profileForm = this._fb.group({

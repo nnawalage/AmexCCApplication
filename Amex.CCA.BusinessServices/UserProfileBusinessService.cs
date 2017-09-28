@@ -18,7 +18,6 @@ namespace Amex.CCA.BusinessServices
             return userProfiles.Select(userProfile => BusinessModelMapper.MapToUserProfileEntity(userProfile)).ToList();
         }
 
-
         /// <summary>
         /// Creates the user profile.
         /// </summary>
@@ -35,7 +34,6 @@ namespace Amex.CCA.BusinessServices
             {
                 return new UserProfileDataAccessHelper().UpdateUserProfile(userProfile);
             }
-
         }
     }
 }

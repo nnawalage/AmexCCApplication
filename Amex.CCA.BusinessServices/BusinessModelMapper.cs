@@ -53,6 +53,7 @@ namespace Amex.CCA.BusinessServices
         {
             return new CreditCard()
             {
+                CreditCardId = creditCardEntity.CreditCardId,
                 DisplayName = creditCardEntity.DisplayName,
                 Nic = creditCardEntity.Nic,
                 Address = creditCardEntity.Address,
@@ -67,7 +68,7 @@ namespace Amex.CCA.BusinessServices
                 OfficePhone = creditCardEntity.OfficePhone,
                 Passport = creditCardEntity.Passport,
                 Salary = creditCardEntity.Salary,
-                CreatedBy = "pmd@tiqri.com",//creditCardEntity.CreatedBy;
+                CreatedBy = creditCardEntity.CreatedBy,
                 CreatedTime = DateTime.Now,
                 Attachments = creditCardEntity.Attachments
             };
@@ -179,6 +180,7 @@ namespace Amex.CCA.BusinessServices
                 CreatedTime = userProfileEntity.CreatedDate
             };
         }
+
         #endregion UserProfile
     }
 }

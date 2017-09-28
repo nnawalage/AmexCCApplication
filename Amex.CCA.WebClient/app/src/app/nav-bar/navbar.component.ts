@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { LoginService } from "../services/login.service";
 import { IUser } from "../models/user";
 
-
 @Component({
     selector: 'nav-bar',
     templateUrl: './navbar.template.html',
@@ -17,11 +16,11 @@ export class NavBarComponent {
 
     constructor(private loginService: LoginService) {
         this.loggedUser = this.loginService.loggedUser;
-        this.lsUser = this.loggedUser.Role  == 'User' ? true : false;
+        this.lsUser = this.loggedUser.Role == 'User' ? true : false;
         this.IsAdmin = this.loggedUser.Role == 'Admin' ? true : false;
         this.lsStaff = this.loggedUser.Role == 'Staff' ? true : false;
     }
-    
+
     onLogout() {
         this.loginService.logOutUser();
     }

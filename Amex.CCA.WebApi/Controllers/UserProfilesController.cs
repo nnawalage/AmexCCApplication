@@ -38,6 +38,7 @@ namespace Amex.CCA.WebApi.Controllers
             }
             return upEntity;
         }
+
         // GET: api/UserProfiles/approveUser
         [Route("approveUser")]
         public IHttpActionResult GetAllInActiveUsers()
@@ -49,6 +50,7 @@ namespace Amex.CCA.WebApi.Controllers
             }
             return Ok(allInActiveUsers);
         }
+
         [Route("roles")]
         public IHttpActionResult GetRoles()
         {
@@ -59,6 +61,7 @@ namespace Amex.CCA.WebApi.Controllers
             }
             return Ok(roles);
         }
+
         // GET: api/UserProfiles/5
         [ResponseType(typeof(UserProfile))]
         public IHttpActionResult GetUserProfile(int id)

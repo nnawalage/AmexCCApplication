@@ -16,6 +16,7 @@ namespace Amex.CCA.WebApi.IdentityHelper
         private ApplicationDbContext db = new ApplicationDbContext();
         private AmexDbContext dbContext = new AmexDbContext();
         private IdentityRole rmdb = new IdentityRole();
+
         public List<IdentityUserModel> GetInActiveUsers()
         {
             var users = db.Users.Where(u => !u.IsActive).Include(us => us.Roles).ToList()
@@ -34,16 +35,16 @@ namespace Amex.CCA.WebApi.IdentityHelper
                                     }).ToList();
             return userProfileDetails;
         }
+
         public static string GetRoleID(IdentityUserRole role)
         {
             return role.RoleId;
-
         }
+
         public dynamic GetRoles()
         {
             var userRoles = db.Roles.Select(rl => new { Id = rl.Id, Name = rl.Name }).ToList();
             return userRoles;
         }
-        
     }
 }

@@ -9,6 +9,7 @@ import { EditCreditCardComponent } from '../creditcard/editcreditcard.component'
 import { ApproveCreditCardComponent } from '../creditcard/approvecreditcard.component';
 import { DialogService } from "ng2-bootstrap-modal";
 
+
 @Component({
     templateUrl: './dashboard.template.html',
     styleUrls: ['./dashboard.styles.scss']
@@ -22,6 +23,7 @@ export class DashboardComponent {
     selectedIndex: number;
     cardRequestListTemp: ICreditCard[];
     promptMessage: string = '';
+    creditCard: ICreditCard = null;
     constructor(private actRouter: ActivatedRoute, private router: Router, private crediCardService: CrediCardService, private dialogService: DialogService) {
     }
 
@@ -29,7 +31,7 @@ export class DashboardComponent {
         this.crediCardService.getAllCardRequests().subscribe(receivedCardRequests => {
             this.cardRequestList = receivedCardRequests;
             this.cardRequestListTemp = this.cardRequestList;
-        this.selectedIndex = 0;
+            this.selectedIndex = 0;
             if (this.cardRequestList.length != 0) {
                 this.getFullNameFilterList(this.cardRequestList);
                 this.getDisplayNameFilterList(this.cardRequestList);
@@ -37,7 +39,6 @@ export class DashboardComponent {
                 this.getCardStatusFilterList(this.cardRequestList);
             }
         }, error => console.log(error));
-            
     }
 
     clickRequest(index: number) {
@@ -46,27 +47,29 @@ export class DashboardComponent {
 
     openCreditCardView(cardId: number) {
         this.dialogService.addDialog(ViewCreditCardComponent, {
-            CreditCardId: cardId,
-            //FullName :'dsdsdsdsdsvvvv'
+            CreditCard: this.creditCard,
+            CreditCardId: cardId
         }).subscribe((message) => {
             //We get dialog result
             this.promptMessage = message;
         });
     }
 
-    openCreditCardEdit() {
+    openCreditCardEdit(cardId: number) {
         this.dialogService.addDialog(EditCreditCardComponent, {
-            question: 'What is your name?: '
+            CreditCard: this.creditCard,
+            CreditCardId: cardId
         })
-            .subscribe((message) => {
-                //We get dialog result
-                this.promptMessage = message;
-            });
+        .subscribe((message) => {
+            //We get dialog result
+            this.promptMessage = message;
+        });
     }
 
-    openCreditCardApprove() {
+    openCreditCardApprove(cardId: number) {
         this.dialogService.addDialog(ApproveCreditCardComponent, {
-            question: 'What is your name?: '
+            CreditCard: this.creditCard,
+            CreditCardId: cardId
         })
             .subscribe((message) => {
                 //We get dialog result
@@ -75,14 +78,14 @@ export class DashboardComponent {
     }
 
     getFullNameFilterList(cardRequestList: ICreditCard[]) {
-        this.fullNameList=[];
+        this.fullNameList = [];
         let k: number = this.fullNameList.push(cardRequestList[0].FullName);
         for (let i: number = k; i < cardRequestList.length; i++) {
             for (let j: number = 0; j < k; j++) {
                 if (this.fullNameList[j] === cardRequestList[i].FullName) {
-                    j = k;               
+                    j = k;
                 }
-                else if (j==(k-1)) {
+                else if (j == (k - 1)) {
                     k = this.fullNameList.push(cardRequestList[i].FullName)
                 }
             }
@@ -97,7 +100,7 @@ export class DashboardComponent {
                 if (this.displayNameList[j] === cardRequestList[i].DisplayName) {
                     j = k;
                 }
-                else if (j == (k-1)) {
+                else if (j == (k - 1)) {
                     k = this.displayNameList.push(cardRequestList[i].DisplayName)
                 }
             }
@@ -112,7 +115,7 @@ export class DashboardComponent {
                 if (this.cardTypeList[j] === cardRequestList[i].CardTypeName) {
                     j = k;
                 }
-                else if (j == (k-1)) {
+                else if (j == (k - 1)) {
                     k = this.cardTypeList.push(cardRequestList[i].CardTypeName)
                 }
             }
@@ -127,7 +130,7 @@ export class DashboardComponent {
                 if (this.cardStatusList[j] === cardRequestList[i].CardStatusName) {
                     j = k;
                 }
-                else if (j == (k-1)) {
+                else if (j == (k - 1)) {
                     k = this.cardStatusList.push(cardRequestList[i].CardStatusName)
                 }
             }
@@ -137,7 +140,7 @@ export class DashboardComponent {
     filterByCardType(cardType: string) {
         this.cardRequestList = this.cardRequestListTemp;
         let filtercardRequestList: ICreditCard[] = [];
-        if(this.cardRequestList.length != 0){
+        if (this.cardRequestList.length != 0) {
             for (let i: number = 0; i < this.cardRequestList.length; i++) {
                 if (this.cardRequestList[i].CardTypeName == cardType) {
                     let k = filtercardRequestList.push(this.cardRequestList[i]);
@@ -145,7 +148,7 @@ export class DashboardComponent {
             }
             this.cardRequestListTemp = this.cardRequestList;
             this.cardRequestList = filtercardRequestList;
-        }        
+        }
     }
 
     filterByFullName(fullName: string) {

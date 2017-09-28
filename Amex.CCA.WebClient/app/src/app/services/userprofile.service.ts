@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core'
 import { IUserProfile } from '../models/userprofile';
 import { Observable } from 'rxjs';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
@@ -85,21 +85,21 @@ export class UserProfileService {
     getUsersToApprove(): Observable <UserApprove[]>{
         let url=`/UserProfiles/approveUser`
         return this.http.get(url)
-                        .map((res: Response) => {
-                              return <UserApprove[]>res.json();
-        });
+            .map((res: Response) => {
+                return <UserApprove[]>res.json();
+            });
     }
-    getRoles(): Observable<Role[]>{
-        let url='/UserProfiles/roles'
+    getRoles(): Observable<Role[]> {
+        let url = '/UserProfiles/roles'
         return this.http.get(url)
-                        .map((responce:Response) => {
-                        return   <Role[]>responce.json();
-                        }
-        )};
+            .map((responce: Response) => {
+                return <Role[]>responce.json();
+            }
+            )
+    };
 
-    registerUser(user:IRegistration): Observable<any> {
+    registerUser(user: IRegistration): Observable<any> {
         let url = `/Account/Register`;
         return this.http.post(url, user);
     }
-
 }
