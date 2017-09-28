@@ -19,21 +19,20 @@
                 <label>Job Title</label><input type="text" class="form-control" [(ngModel)]="CreditCard.JobTitle" name="JobTitle">
                 <label>Card Limit</label><input type="text" class="form-control" [(ngModel)]="CreditCard.CardLimit" name="CardLimit">
                 <label>Cash Limit</label><input type="text" class="form-control" [(ngModel)]="CreditCard.CashLimit" name="CashLimit">
-                <label>Card Type</label><input type="text" class="form-control" [(ngModel)]="CreditCard.CardTypeName" name="CardTypeName">
+    
                 <!--<label>Nationality</label><input type="text" class="form-control" [(ngModel)]="CreditCard.NationalityName" name="NationalityName">-->
                 <label for="ddlCardType">Nationality</label>
                 <select class="form-control" id="ddlNationality" [(ngModel)]="selectedNationality">
                     <option *ngFor="let nationality of nationalities" [ngValue]="nationality">{{nationality.Name}}</option>
                 </select>
-                
-                <label>Card Status</label><input type="text" class="form-control" [(ngModel)]="CreditCard.CardStatusName" name="CardStatusName">
+
                 <label for="ddlCardType">Card Type</label>
                     <select class="form-control" id="ddlCardType" [(ngModel)]="selectedCardType">
                         <option *ngFor="let ct of cardTypes" [ngValue]="ct">{{ct.Name}}</option>
                     </select>
-      
 
-                <label>Note</label><input type="text" class="form-control" [(ngModel)]="CreditCard.Note" name="Note">
+                <label>Card Status</label><input type="text" class="form-control" [(ngModel)]="CreditCard.CardStatusName" name="CardStatusName" readonly>
+                <label>Note</label><textarea class="form-control" [(ngModel)]="CreditCard.Note" name="Note"></textarea>
 
             </div>
             <div class="modal-footer">
