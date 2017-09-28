@@ -1,34 +1,41 @@
-
 <div class="row">
-<form #loginForm="ngForm" (ngSubmit)="onLoginSubmit(loginForm.value)">
-  <div class="row form-group">
-    <div class="col-md-2">
-    </div>
-    <div class="col-md-4">
-    </div>
-  </div>
-  <div class="row form-group">
-    <div class="col-md-2">
-      <label for="txtUserName">UserName<span class="required">*</span></label>
-    </div>
-    <div class="col-md-4">
-      <input class="form-control" [(ngModel)]="txtUserName" type="text" name="txtUserName" required />
-    </div>
-  </div>
-  <div class="row form-group">
-    <div class="col-md-2">
-      <label for="txtPassword">Password<span class="required">*</span></label>
-    </div>
-    <div class="col-md-4">
-      <input class="form-control" [(ngModel)]="txtPassword" type="password" name="txtPassword" required />
-    </div>
-  </div>
   <div class="row">
-      <div class="col-md-2"></div>
+    <div class="col-md-2">
+      <h3>Login</h3>
+    </div>
     <div class="col-md-4">
-      <button class="btn btn-primary pull-left margin-right-one" type="submit" [disabled]="!loginForm.valid">Login</button>
-      <button class="btn btn-primary pull-left" type="button" (click)="onRegisterClick()">Register</button>
+
     </div>
   </div>
-</form>
+  <form #loginForm="ngForm" (ngSubmit)="onLoginSubmit(loginForm.value)">
+    <div class="row form-group">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-4">
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-2">
+        <label for="txtUserName">User Name<span class="required">*</span></label>
+      </div>
+      <div class="col-md-4">
+        <input class="form-control" [(ngModel)]="txtUserName" type="text" name="txtUserName" required />
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-2">
+        <label for="txtPassword">Password<span class="required">*</span></label>
+      </div>
+      <div class="col-md-4">
+        <input class="form-control" [(ngModel)]="txtPassword" type="password" name="txtPassword" required />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-4">
+        <button class="btn btn-primary pull-left margin-right-one" type="submit" [disabled]="!loginForm.valid">Login</button>
+        <button class="btn btn-primary pull-left" type="button" (click)="onRegisterClick()">Register</button>
+      </div>
+    </div>
+  </form>
 </div>
