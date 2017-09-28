@@ -39,17 +39,17 @@ export class UserProfileService {
     )};
     saveApprovedUsers(userData:UserApprove,id:string): Observable<UserApprove[]>{
         
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        let ApproveUrl=`/UserProfiles/approveUser`;
-        let url =`${ApproveUrl}/${id}`;
+        // let headers = new Headers();
+        // headers.append('Content-Type', 'application/json');
+        // let ApproveUrl=`/UserProfiles/approveUser`;
+        // let url =`${ApproveUrl}/${id}`;
         console.log("saveApprovedUsers : ",userData);
         console.log("ID : ",id);
-        return this.http
-                    .patch(url,JSON.stringify(userData),{ headers:headers })
-                    .map((responce: Response) => responce.json())
-                    .catch(this.handleError);
-        // return null;
+        // return this.http
+        //             .patch(url,JSON.stringify(userData),{ headers:headers })
+        //             .map((responce: Response) => responce.json())
+        //             .catch(this.handleError);
+         return null;
 
     }
     private handleError(error: any) {
