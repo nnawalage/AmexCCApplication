@@ -16,12 +16,14 @@ export class UserApproveComponent implements OnInit {
     approveUser: any = []
     ApproveAll: any = []
     Roles: Role[] = []
+    UserRoles: any[] = []
+    Appplicant: any[] = []
+    selectToApprove: boolean
 
     getRoles(): void {
         this.userService.getRoles()
             .subscribe(role => {
                 this.Roles = role;
-                //console.log(this.Roles);
             });
     }
     getInActiveUsers(): void {
@@ -34,39 +36,77 @@ export class UserApproveComponent implements OnInit {
         this.getRoles();
         this.getInActiveUsers();
     }
-    saveApproved(): void {
-        if (this.ApproveAll.length > 0) {
-            // console.log("ApproveAll",this.ApproveAll);
-        }
-        if (this.approveUser.length > 0 && !(this.ApproveAll.length > 0)) {
-            // console.log("approveUser",this.approveUser);
-        }
-    }
-    addUsersToApprove(ID: string, isChecked: boolean): void {
-        if (isChecked) {
-            this.approveUser.push(ID);
-        }
-        else {
-            this.approveUser.pop(ID);
-        }
+    saveApproved(usersData: UserApprove[]): void {
+        
+        usersData.map(userData => {
+            if (this.selectToApprove) {
+                userData.IsActive=true;
+                this.Roles.map(role => {
+                    if (role.Name == userData.RoleName) {
+                        userData.RoleId = role.Id;
+                    }
+                });
+                this.approvedUsersToService(userData, userData.Id);
+            }
+            else {
+                if (userData.IsActive) {
+                    this.Roles.map(role => {
+                        if (role.Name == userData.RoleName) {
+                            userData.RoleId = role.Id;
+                        }
+                    });
+                    this.approvedUsersToService(userData, userData.Id);   
+                }
+            }
+        });
     }
     addAllUsersToApprove(usersToApprove: UserApprove[], isChecked: boolean): void {
         if (isChecked) {
-            usersToApprove.map(user => {
-                this.ApproveAll.push(user.Id);
-            });
+            this.selectToApprove = true;
         }
         else {
-            this.ApproveAll = []
+            this.selectToApprove = false;
         }
     }
     assignRolesTORoleIds(users: UserApprove[]): void {
         this.usersToApprove = users
         this.usersToApprove.map(user => {
-            var id = user.RoleId
-            //console.log(id);
-            user.RoleName = this.Roles[id]
+            this.Roles.map(role => {
+
+                if (role.Id == user.RoleId) {
+                    user.RoleName = role.Name
+                    this.UserRoles.push(role.Name);
+                }
+            });
+            this.Roles.map(role => {
+                var count = 0;
+                this.UserRoles.map(userrole => {
+                    if (userrole == role.Name) {
+                        count += 1;
+                    }
+                });
+                if (!(count > 0)) {
+                    this.UserRoles.push(role.Name);
+                }
+            });
+            user.UsersRoles = this.UserRoles;
+            this.UserRoles = [];
         });
-        //console.log(this.usersToApprove);
+    }
+    customTrackBy(index: number, obj: any): any {
+        return index;
+    }
+    approvedUsersToService(userData:UserApprove,id:string):void{
+
+        this.userService.saveApprovedUsers(userData, userData.Id)
+        .subscribe(res => {
+            if(res){
+                this.getInActiveUsers();
+            }
+            
+        });
+    }
+    removeChanges():void{
+        this.getInActiveUsers();
     }
 }
