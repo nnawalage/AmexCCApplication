@@ -34,17 +34,30 @@ namespace Amex.CCA.WebApi.Controllers
             }
             return upEntity;
         }
+
         // GET: api/UserProfiles/approveUser
         [Route("approveUser")]
         public IHttpActionResult GetAllInActiveUsers()
         {
             var allInActiveUsers = new IdentityUserHelper().GetInActiveUsers();
-            if(allInActiveUsers == null)
+            if (allInActiveUsers == null)
             {
                 return NotFound();
             }
             return Ok(allInActiveUsers);
         }
+
+        [Route("roles")]
+        public IHttpActionResult GetRoles()
+        {
+            var roles = new IdentityUserHelper().GetRoles();
+            if (roles == null)
+            {
+                return NotFound();
+            }
+            return Ok(roles);
+        }
+
         // GET: api/UserProfiles/5
         [ResponseType(typeof(UserProfile))]
         public IHttpActionResult GetUserProfile(int id)
@@ -110,7 +123,7 @@ namespace Amex.CCA.WebApi.Controllers
             }
             else
             {
-                return BadRequest("Error occured while creating User profile");                
+                return BadRequest("Error occured while creating User profile");
             }
 
             //db.UserProfiles.Add(userProfile);

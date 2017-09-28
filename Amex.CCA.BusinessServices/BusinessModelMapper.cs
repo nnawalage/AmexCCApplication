@@ -180,10 +180,11 @@ namespace Amex.CCA.BusinessServices
                 ProfileName = userProfileEntity.ProfileName,
                 ProfileImage = userProfileEntity.ProfileImage,
                 UserName = userProfileEntity.UserName,
-                CreatedBy=userProfileEntity.CreatedBy,
-                CreatedTime=userProfileEntity.CreatedDate
+                CreatedBy = userProfileEntity.CreatedBy,
+                CreatedTime = userProfileEntity.CreatedDate
             };
         }
+
         #endregion UserProfile
     }
 }

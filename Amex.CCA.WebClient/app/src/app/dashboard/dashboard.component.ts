@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { CrediCardService } from "../services/creditcard.service";
 import { Router } from "@angular/router";
-import { FormsModule } from '@angular/forms';
 import { ICreditCard } from "../models/creditcard";
 
 import { ViewCreditCardComponent } from '../creditcard/viewcreditcard.component';
@@ -40,7 +39,6 @@ export class DashboardComponent {
                 this.getCardStatusFilterList(this.cardRequestList);
             }
         }, error => console.log(error));
-
     }
 
     clickRequest(index: number) {

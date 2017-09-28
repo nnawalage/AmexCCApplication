@@ -1,4 +1,4 @@
-export interface IAttachments{
-    key:string;
-    fileList:FileList;
+export interface IAttachments {
+    key: string;
+    fileList: FileList;
 }

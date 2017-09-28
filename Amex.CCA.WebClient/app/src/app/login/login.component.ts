@@ -14,7 +14,6 @@ export class LoginComponent {
     }
 
     private onLoginSubmit(loginFormValues: Object): void {
-        console.log(loginFormValues);
         let user: IUser = {
             UserName: loginFormValues['txtUserName'],
             PassWord: loginFormValues['txtPassword']
@@ -25,17 +24,31 @@ export class LoginComponent {
                 this.loginService.loggedUser.ProfileName = resUser.ProfileName;
                 this.loginService.loggedUser.ProfileImage = resUser.ProfileImage;
                 sessionStorage.setItem('authData', JSON.stringify(this.loginService.loggedUser));
-                this.router.navigate(['dashboard/myWork']);
+                switch (this.loginService.loggedUser.Role) {
+                    case "Staff": {
+                        this.router.navigate(['dashboard/myWork']);
+                        break;
+                    }
+                    case "Admin": {
+                        this.router.navigate(['dashboard/myApproval']);
+                        break;
+                    }
+                    case "User": {
+                        this.router.navigate(['dashboard/myRequest']);
+                        break;
+                    }
+                    default: {
+                        this.router.navigate(['login']);
+                        break;
+                    }
+                }
             }, error => console.log(error));
         }, error => {
             //console.log('errCame' + error);
         });
     }
 
-    private onRegisterClick()
-    {
+    private onRegisterClick() {
         this.router.navigate(['user/registration'])
     }
-
-
 }

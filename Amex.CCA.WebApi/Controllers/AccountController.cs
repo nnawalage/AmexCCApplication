@@ -1,6 +1,7 @@
 ﻿using Amex.CCA.BusinessServices;
 using Amex.CCA.BusinessServices.BusinessModels;
 using Amex.CCA.Common.NotificationUtility;
+using Amex.CCA.WebApi.IdentityHelper;
 using Amex.CCA.WebApi.Models;
 using Amex.CCA.WebApi.Providers;
 using Amex.CCA.WebApi.Results;
@@ -32,6 +33,7 @@ namespace Amex.CCA.WebApi.Controllers
 
         public AccountController()
         {
+            //
         }
 
         public AccountController(ApplicationUserManager userManager,
@@ -143,9 +145,15 @@ namespace Amex.CCA.WebApi.Controllers
 
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, IsActive = false };
 
-            IdentityResult result =  UserManager.Create(user, model.Password);
+            IdentityResult result = UserManager.Create(user, model.Password);
             if (result.Succeeded)
             {
+                //get userId
+                var registeredUser = UserManager.FindByEmail(model.Email);
+                //add role
+                UserManager.AddToRole(registeredUser.Id, model.RoleName);
+
+                //add to user profile
                 UserProfileEntity userProfile = new UserProfileEntity()
                 {
                     UserName = model.Email,

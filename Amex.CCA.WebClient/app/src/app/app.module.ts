@@ -7,13 +7,14 @@ import { appRoutes } from './routes';
 import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/shared.module';
 import { HttpModule, XHRBackend, RequestOptions } from '@angular/http';
+import { CommonModule } from '@angular/common';
 
-import {NavBarComponent} from './nav-bar/navbar.component';
-import {AuthGuard} from './services/router-guard.service';
-import {LoginService} from './services/login.service';
-import {CrediCardService} from './services/creditcard.service';
-import {HttpService} from './services/http.service';
-import { UserProfileService} from './services/userprofile.service';
+import { NavBarComponent } from './nav-bar/navbar.component';
+import { AuthGuard } from './services/router-guard.service';
+import { LoginService } from './services/login.service';
+import { CrediCardService } from './services/creditcard.service';
+import { HttpService } from './services/http.service';
+import { UserProfileService } from './services/userprofile.service';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { UserProfileService} from './services/userprofile.service';
         BrowserModule,
         RouterModule.forRoot(appRoutes),
         SharedModule,
-        UserModule
+        UserModule,
+        CommonModule
     ],
     declarations: [
         AppComponent, NavBarComponent
