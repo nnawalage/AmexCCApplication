@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttachmentTypeDataAccessHelper.cs" />
     <Compile Include="CardStatusDataAccessHelper.cs" />
     <Compile Include="CardTypeDataAccessHelper.cs" />
     <Compile Include="CreditCardDataAccessHelper.cs" />
@@ -445,6 +446,12 @@
     <EmbeddedResource Include="Migrations\201709280711325_reviwerComment.resx">
       <DependentUpon>201709280711325_reviwerComment.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Amex.CCA.Common\Amex.CCA.Common.csproj">
+      <Project>{18863f8d-c7bf-439c-8213-5fbc9a9b62c5}</Project>
+      <Name>Amex.CCA.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

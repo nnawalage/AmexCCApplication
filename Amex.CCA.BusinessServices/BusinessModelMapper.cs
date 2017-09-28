@@ -22,6 +22,15 @@ namespace Amex.CCA.BusinessServices
             };
         }
 
+        public static AttachmentTypeEntity MapToAttachmentEntity(AttachmentType attachmentType)
+        {
+            return new AttachmentTypeEntity()
+            {
+                AttachmentTypeID = attachmentType.AttachmentTypeId,
+                FileName = attachmentType.Name
+            };
+        }
+
         #endregion CardType
 
         #region Nationality
@@ -70,7 +79,10 @@ namespace Amex.CCA.BusinessServices
                 Salary = creditCardEntity.Salary,
                 CreatedBy = creditCardEntity.CreatedBy,
                 CreatedTime = DateTime.Now,
-                Attachments = creditCardEntity.Attachments
+                Attachments = creditCardEntity.Attachments,
+                CardLimit = creditCardEntity.CardLimit,
+                CashLimit = creditCardEntity.CashLimit,
+                JobTitle = creditCardEntity.JobTitle
             };
         }
 

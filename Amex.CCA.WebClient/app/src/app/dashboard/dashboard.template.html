@@ -201,7 +201,7 @@
 
           <label class="btn btn-default" (click)="openCreditCardView(creditcard?.CreditCardId)"> View </label>
           <label class="btn btn-default" (click)="openCreditCardEdit(creditcard?.CreditCardId)"> Edit </label>
-          <label class="btn btn-default" (click)="openCreditCardApprove(creditcard?.CreditCardId)"> Approve </label>
+          <label *ngIf="IsAdmin" class="btn btn-default" (click)="openCreditCardApprove(creditcard?.CreditCardId)"> Approve </label>
 
         </div>
       </div>

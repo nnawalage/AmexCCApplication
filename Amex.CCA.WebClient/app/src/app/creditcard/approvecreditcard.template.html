@@ -152,7 +152,8 @@
         </div>
 
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" (click)="approve()">OK</button>
+            <button type="button" class="btn btn-primary" (click)="review(true)">Approve</button>
+            <button type="button" class="btn btn-primary" (click)="review(false)">Reject</button>
             <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
         </div>
     </div>

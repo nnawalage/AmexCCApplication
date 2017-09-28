@@ -40,12 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttachmentTypesBusinessService.cs" />
     <Compile Include="BusinessModelMapper.cs" />
     <Compile Include="BusinessModels\AttachmentTypeEntity.cs" />
     <Compile Include="BusinessModels\CardTypeEntity.cs" />
     <Compile Include="BusinessModels\CreditCardEntity.cs" />
     <Compile Include="BusinessModels\LogEntity.cs" />
     <Compile Include="BusinessModels\NationalityEntity.cs" />
+    <Compile Include="BusinessModels\ReviewEntity.cs" />
     <Compile Include="BusinessModels\UserProfileEntity.cs" />
     <Compile Include="CardTypeBusinessService.cs" />
     <Compile Include="CreditCardBusinessService.cs" />
@@ -55,6 +57,10 @@
     <Compile Include="UserProfileBusinessService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Amex.CCA.Common\Amex.CCA.Common.csproj">
+      <Project>{18863f8d-c7bf-439c-8213-5fbc9a9b62c5}</Project>
+      <Name>Amex.CCA.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Amex.CCApplication.DataAccess\Amex.CCA.DataAccess.csproj">
       <Project>{4326cc9d-f3b8-458e-9261-c990972ae1f4}</Project>
       <Name>Amex.CCA.DataAccess</Name>

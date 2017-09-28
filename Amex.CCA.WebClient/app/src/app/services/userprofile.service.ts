@@ -12,8 +12,8 @@ import { IAttachments } from "../models/attachments";
 
 @Injectable()
 export class UserProfileService {
-    constructor(private http: HttpService) {
-    }
+    private headers = new Headers({ 'Content-Type': 'application/json' });
+    constructor(private http: HttpService, private options: RequestOptions) { }
 
     getAllUserProfiles(): Observable<IUserProfile[]> {
         return this.http.get('/UserProfiles')
@@ -90,13 +90,28 @@ export class UserProfileService {
             });
     }
     getRoles(): Observable<Role[]> {
-        let url = '/UserProfiles/roles'
+        let url = `/UserProfiles/roles`
         return this.http.get(url)
             .map((responce: Response) => {
                 return <Role[]>responce.json();
             }
             )
     };
+    saveApprovedUsers(userData: UserApprove, id: string): Observable<UserApprove[]> {
+        let ApproveUrl = `/UserProfiles/approveUser`;
+        let url = `${ApproveUrl}/${id}`;
+        return this.http
+            .post(url, JSON.stringify(userData))
+            .map((responce: Response) => responce.json())
+            .catch(this.handleErrors);
+
+    }
+    private handleErrors(error: any) {
+        let errMsg = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error(errMsg);
+        return Observable.throw(errMsg);
+    }
 
     registerUser(user: IRegistration): Observable<any> {
         let url = `/Account/Register`;
