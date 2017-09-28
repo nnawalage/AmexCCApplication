@@ -79,7 +79,10 @@ namespace Amex.CCA.BusinessServices
                 Salary = creditCardEntity.Salary,
                 CreatedBy = creditCardEntity.CreatedBy,
                 CreatedTime = DateTime.Now,
-                Attachments = creditCardEntity.Attachments
+                Attachments = creditCardEntity.Attachments,
+                CardLimit = creditCardEntity.CardLimit,
+                CashLimit = creditCardEntity.CashLimit,
+                JobTitle = creditCardEntity.JobTitle
             };
         }
 
