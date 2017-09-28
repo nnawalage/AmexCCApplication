@@ -12,5 +12,6 @@ export class AppComponent implements OnInit {
     title = 'app';
     ngOnInit() {
         this.loginService.refreshUser();
+      
     }
 }

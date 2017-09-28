@@ -56,5 +56,22 @@ namespace Amex.CCA.DataAccess
                 return false;
             }
         }
+
+        public UserProfile GetUserProfileById(string userName)
+        {
+            try
+            {
+                using (AmexDbContext dbContext = new AmexDbContext())
+                {
+                    var profilesList = dbContext.UserProfiles.ToList();
+                    return profilesList.FirstOrDefault(x => x.UserName == userName);
+                    //.FirstOrDefault(x => x.UserName == id);
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

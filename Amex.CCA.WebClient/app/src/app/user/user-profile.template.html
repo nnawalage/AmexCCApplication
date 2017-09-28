@@ -1,5 +1,6 @@
 <div>
-    <img class="profile-img pull-left" [src]="profileImage" />
+    <img class="profile-img pull-left" [src]="loginService.loggedUser.ProfileImage" />
+            
     <div class="dropdown pull-left arrow-cont">
         <span id="dropdownMenuButton" data-toggle="dropdown" class="glyphicon glyphicon-chevron-down make-a-link"></span>
         <ul class="dropdown-menu prof-pane" aria-labelledby="dropdownMenuButton">
@@ -7,7 +8,8 @@
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <li><a href="/user/editProfile">Edit Profile</a></li>
+       
         </ul>
     </div>
 </div>

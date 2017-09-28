@@ -62,18 +62,17 @@ namespace Amex.CCA.WebApi.Controllers
             return Ok(roles);
         }
 
-        // GET: api/UserProfiles/5
+        // GET: api/UserProfiles/GetUserProfile/a@b.com
+        [Route("GetUserProfile/{username}")]
         [ResponseType(typeof(UserProfile))]
-        public IHttpActionResult GetUserProfile(int id)
+        public HttpResponseMessage GetUserProfile(string userName)
         {
-            //UserProfile userProfile = db.UserProfiles.Find(id);
-            //if (userProfile == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //return Ok(userProfile);
-            return null;
+            UserProfileEntity upEntity = upBusinessService.GetUserpProfileById(userName);
+            if (upEntity != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, upEntity);
+            }
+            return Request.CreateResponse(HttpStatusCode.NoContent, "No content found.");
         }
 
         // PUT: api/UserProfiles/5
@@ -218,7 +217,7 @@ namespace Amex.CCA.WebApi.Controllers
                     profileImagePath = fileUrl;
                 }
             }
-            return profileImagePath;        
+            return profileImagePath;
         }
 
         private static byte[] GetBytesFromFile(string fullFilePath)
