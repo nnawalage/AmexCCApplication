@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttachmentTypesBusinessService.cs" />
     <Compile Include="BusinessModelMapper.cs" />
     <Compile Include="BusinessModels\AttachmentTypeEntity.cs" />
     <Compile Include="BusinessModels\CardTypeEntity.cs" />
