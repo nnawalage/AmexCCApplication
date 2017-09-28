@@ -47,7 +47,7 @@ using System.Web.Http.ModelBinding;
 
 namespace Amex.CCA.WebApi.Controllers
 {
-    //[Authorize]
+   // [Authorize]
     [RoutePrefix("api/UserProfiles")]
     public class UserProfilesController : ApiController
     {
@@ -81,7 +81,7 @@ namespace Amex.CCA.WebApi.Controllers
         //   [ResponseType(typeof(void))]
         // [HttpPut()]
         [AllowAnonymous]
-        [HttpPatch()]
+        [HttpPost()]
         [Route("approveUser/{id}")]
         public  IHttpActionResult UpdateApprovedUsers(string id,[FromBody]IdentityUserModel userData)
         {
@@ -117,12 +117,13 @@ namespace Amex.CCA.WebApi.Controllers
                     userFromDb.Roles.Add(new IdentityUserRole() { RoleId = userData.RoleId, UserId = id });
                 }
                 usermanager.Update(userFromDb);
+                return Ok(true);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.ToString());
             }
-            return StatusCode(HttpStatusCode.NoContent);
+            //return StatusCode(HttpStatusCode.NoContent);
         }
         // Get: api/UserProfiles/roles
         [Route("roles")]

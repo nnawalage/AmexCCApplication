@@ -13,18 +13,18 @@ export class UserApproveComponent implements OnInit {
     constructor(private userService: UserProfileService) { }
     private profileImage: string;
     usersToApprove: UserApprove[] = []
-    approveUser: any =[]
-    ApproveAll: any=[]
-    Roles: Role[] =[]
-    UserRoles: any[] =[]
-    Appplicant:any[]=[]
+    approveUser: any = []
+    ApproveAll: any = []
+    Roles: Role[] = []
+    UserRoles: any[] = []
+    Appplicant: any[] = []
     selectToApprove: boolean
-    
-    getRoles():void{
+
+    getRoles(): void {
         this.userService.getRoles()
-                        .subscribe(role =>{
-                            this.Roles = role;
-                        });
+            .subscribe(role => {
+                this.Roles = role;
+            });
     }
     getInActiveUsers(): void {
         this.userService.getUsersToApprove()
@@ -36,55 +36,77 @@ export class UserApproveComponent implements OnInit {
         this.getRoles();
         this.getInActiveUsers();
     }
-    saveApproved(usersData:UserApprove[]):void{
-        usersData.map(userData =>{
-            if(userData.IsActive){
-                    this.Roles.map(role =>{
-                        if(role.Name == userData.RoleName){
+    saveApproved(usersData: UserApprove[]): void {
+        
+        usersData.map(userData => {
+            if (this.selectToApprove) {
+                userData.IsActive=true;
+                this.Roles.map(role => {
+                    if (role.Name == userData.RoleName) {
+                        userData.RoleId = role.Id;
+                    }
+                });
+                this.approvedUsersToService(userData, userData.Id);
+            }
+            else {
+                if (userData.IsActive) {
+                    this.Roles.map(role => {
+                        if (role.Name == userData.RoleName) {
                             userData.RoleId = role.Id;
                         }
                     });
-                this.userService.saveApprovedUsers(userData,userData.Id)
-                                .subscribe(users =>{
-                                    console.log(users);
-                                });
+                    this.approvedUsersToService(userData, userData.Id);   
+                }
             }
-        });  
+        });
     }
-    addAllUsersToApprove(usersToApprove:UserApprove[],isChecked:boolean):void{
-        if(isChecked){
-             this.selectToApprove=true;
+    addAllUsersToApprove(usersToApprove: UserApprove[], isChecked: boolean): void {
+        if (isChecked) {
+            this.selectToApprove = true;
         }
-        else{
-            this.selectToApprove=false;
+        else {
+            this.selectToApprove = false;
         }
     }
     assignRolesTORoleIds(users: UserApprove[]): void {
         this.usersToApprove = users
-        this.usersToApprove.map(user=>{
-            this.Roles.map(role =>{
-                
-                    if(role.Id == user.RoleId){
-                        user.RoleName = role.Name
-                        this.UserRoles.push(role.Name);
-                    } 
+        this.usersToApprove.map(user => {
+            this.Roles.map(role => {
+
+                if (role.Id == user.RoleId) {
+                    user.RoleName = role.Name
+                    this.UserRoles.push(role.Name);
+                }
             });
-            this.Roles.map(role =>{
-                var count=0;
-                this.UserRoles.map(userrole =>{
-                    if(userrole == role.Name){
-                        count+=1;
+            this.Roles.map(role => {
+                var count = 0;
+                this.UserRoles.map(userrole => {
+                    if (userrole == role.Name) {
+                        count += 1;
                     }
-                });  
-                if(!(count >0)){
+                });
+                if (!(count > 0)) {
                     this.UserRoles.push(role.Name);
                 }
             });
             user.UsersRoles = this.UserRoles;
-            this.UserRoles=[];
+            this.UserRoles = [];
         });
     }
     customTrackBy(index: number, obj: any): any {
         return index;
+    }
+    approvedUsersToService(userData:UserApprove,id:string):void{
+
+        this.userService.saveApprovedUsers(userData, userData.Id)
+        .subscribe(res => {
+            if(res){
+                this.getInActiveUsers();
+            }
+            
+        });
+    }
+    removeChanges():void{
+        this.getInActiveUsers();
     }
 }

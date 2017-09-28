@@ -10,7 +10,8 @@ import { IRegistration } from '../models/registration'
 
 @Injectable()
 export class UserProfileService {
-    constructor(private http: HttpService,private options:RequestOptions) { }
+    private headers = new Headers({ 'Content-Type': 'application/json' });
+    constructor(private http: HttpService, private options: RequestOptions) { }
 
     getAllUserProfiles(): Observable<IUserProfile[]> {
         return this.http.get('/UserProfiles')
@@ -23,33 +24,28 @@ export class UserProfileService {
         let url = `/UserProfiles`;
         return this.http.post(url, userProfile);
     }
-    getUsersToApprove(): Observable <UserApprove[]>{
-        let url=`/UserProfiles/approveUser`
+    getUsersToApprove(): Observable<UserApprove[]> {
+        let url = `/UserProfiles/approveUser`
         return this.http.get(url)
-                        .map((res: Response) => {
-                              return <UserApprove[]>res.json();
-        });
+            .map((res: Response) => {
+                return <UserApprove[]>res.json();
+            });
     }
-    getRoles(): Observable<Role[]>{
-        let url=`/UserProfiles/roles`
+    getRoles(): Observable<Role[]> {
+        let url = `/UserProfiles/roles`
         return this.http.get(url)
-                        .map((responce:Response) => {
-                        return   <Role[]>responce.json();
-                        }
-    )};
-    saveApprovedUsers(userData:UserApprove,id:string): Observable<UserApprove[]>{
-        
-        // let headers = new Headers();
-        // headers.append('Content-Type', 'application/json');
-        // let ApproveUrl=`/UserProfiles/approveUser`;
-        // let url =`${ApproveUrl}/${id}`;
-        console.log("saveApprovedUsers : ",userData);
-        console.log("ID : ",id);
-        // return this.http
-        //             .patch(url,JSON.stringify(userData),{ headers:headers })
-        //             .map((responce: Response) => responce.json())
-        //             .catch(this.handleError);
-         return null;
+            .map((responce: Response) => {
+                return <Role[]>responce.json();
+            }
+            )
+    };
+    saveApprovedUsers(userData: UserApprove, id: string): Observable<UserApprove[]> {
+        let ApproveUrl = `/UserProfiles/approveUser`;
+        let url = `${ApproveUrl}/${id}`;
+        return this.http
+            .post(url, JSON.stringify(userData))
+            .map((responce: Response) => responce.json())
+            .catch(this.handleError);
 
     }
     private handleError(error: any) {
