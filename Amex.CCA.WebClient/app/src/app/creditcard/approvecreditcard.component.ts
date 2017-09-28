@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { DialogComponent, DialogService } from "ng2-bootstrap-modal";
 import { FormsModule } from '@angular/forms';
+import {ICreditCard} from '../models/creditcard';
+import { CrediCardService } from "../services/creditcard.service";
 
 export interface PromptModel {
-    question: string;
+    CreditCard: ICreditCard;
+    CreditCardId: number;
 }
 
 @Component({
@@ -11,13 +14,29 @@ export interface PromptModel {
     templateUrl: './approvecreditcard.template.html'
 })
 export class ApproveCreditCardComponent extends DialogComponent<PromptModel, string> implements PromptModel {
-    question: string;
-    message: string = '';
-    constructor(dialogService: DialogService) {
+
+    CreditCard: any;
+    CreditCardId: number;
+
+    constructor(dialogService: DialogService, private crediCardService: CrediCardService) {
         super(dialogService);
     }
+
+    ngOnInit() {
+        this.CreditCard = new Object();
+        document.getElementsByTagName('body')[0].classList.add('modal-open');
+
+        this.crediCardService.getCardDetails(this.CreditCardId).subscribe((creditCard: ICreditCard) => {
+            console.log(creditCard);
+            this.CreditCard = creditCard;
+        }, error => console.log(error));
+    }
     apply() {
-        this.result = this.message;
+        //this.result = this.message;
         this.close();
+    }
+
+    ngOnDestroy() {
+        document.getElementsByTagName('body')[0].classList.remove('modal-open');
     }
 }

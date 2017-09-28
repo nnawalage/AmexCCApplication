@@ -200,8 +200,9 @@
         </div>
 
           <label class="btn btn-default" (click)="openCreditCardView(creditcard?.CreditCardId)"> View </label>
-          <label class="btn btn-default" (click)="openCreditCardEdit()"> Edit </label>
-          <label class="btn btn-default" (click)="openCreditCardApprove()"> Approve </label>
+          <label class="btn btn-default" (click)="openCreditCardEdit(creditcard?.CreditCardId)"> Edit </label>
+          <label class="btn btn-default" (click)="openCreditCardApprove(creditcard?.CreditCardId)"> Approve </label>
+
         </div>
       </div>
       </div>

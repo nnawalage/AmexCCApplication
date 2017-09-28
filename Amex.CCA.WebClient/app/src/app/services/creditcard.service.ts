@@ -39,7 +39,7 @@ export class CrediCardService {
         let token = this.getAuthToken();
         return Observable.create(observer => {
             let formData: FormData = new FormData(), xhr: XMLHttpRequest = new XMLHttpRequest();
-
+            formData.append("CreditCardId", creditCard.CreditCardId != null ? creditCard.CreditCardId.toString() : '0');
             formData.append("FullName", creditCard.FullName);
             formData.append("DisplayName", creditCard.DisplayName);
             formData.append("Nic", creditCard.Nic);
@@ -50,23 +50,28 @@ export class CrediCardService {
             formData.append("OfficePhone", creditCard.OfficePhone);
             formData.append("Email", creditCard.Email);
             formData.append("Employer", creditCard.Employer);
-            formData.append("Salary", creditCard.Salary.toString());
-            formData.append("JobTitle", creditCard.JobTitle.toString());
-            formData.append("CardLimit", creditCard.CardLimit.toString());
-            formData.append("CashLimit", creditCard.CashLimit.toString());
-            formData.append("CardTypeId", creditCard.CardTypeId.toString());
-            formData.append("NationalityId", creditCard.NationalityId.toString());
+            formData.append("Salary", creditCard.Salary == null ? creditCard.Salary.toString() : '0');
+            formData.append("JobTitle", creditCard.JobTitle);
+            formData.append("CardLimit", creditCard.CardLimit != null ? creditCard.CardLimit.toString():'0');
+            formData.append("CashLimit", creditCard.CashLimit != null ? creditCard.CashLimit.toString() : '0');
+            formData.append("CardTypeId", creditCard.CardTypeId != null ? creditCard.CardTypeId.toString() : '0');
+            formData.append("NationalityId", creditCard.NationalityId != null ? creditCard.NationalityId.toString() : '0');
             formData.append("Note", creditCard.Note);
+            formData.append("CardStatusId", creditCard.CardStatusId != null ? creditCard.CardStatusId.toString() : '0');
+
             let attTypes: Object[] = [];
-            creditCard.Attachments.forEach((attCat: IAttachments) => {
-                for (let objKey in attCat.fileList) {
-                    if (objKey != 'length' && objKey != 'item') {
-                        formData.append("file", attCat.fileList[objKey]);
-                        attTypes.push({ AttachmentTypeID: +attCat['key'], FileName: attCat.fileList[objKey]['name'] })
+
+            if (creditCard.Attachments) {
+                creditCard.Attachments.forEach((attCat: IAttachments) => {
+                    for (let objKey in attCat.fileList) {
+                        if (objKey != 'length' && objKey != 'item') {
+                            formData.append("file", attCat.fileList[objKey]);
+                            attTypes.push({ AttachmentTypeID: +attCat['key'], FileName: attCat.fileList[objKey]['name'] })
+                        }
                     }
-                }
-            });
-            formData.append("AttTypes", JSON.stringify(attTypes));
+                });
+                formData.append("AttTypes", JSON.stringify(attTypes));
+            }
             xhr.onreadystatechange = () => {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 201) {

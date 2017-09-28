@@ -87,6 +87,7 @@ namespace Amex.CCA.WebApi.Controllers
                 var loProvider = new MultipartFormDataStreamProvider(Path.GetTempPath());
                 await Request.Content.ReadAsMultipartAsync(loProvider);
 
+                creditCard.CreditCardId = int.Parse(loProvider.FormData.GetValues("CreditCardId")[0]);
                 creditCard.FullName = loProvider.FormData.GetValues("FullName")[0];
                 creditCard.DisplayName = loProvider.FormData.GetValues("DisplayName")[0];
                 creditCard.Nic = loProvider.FormData.GetValues("Nic")[0];
@@ -103,8 +104,14 @@ namespace Amex.CCA.WebApi.Controllers
                 creditCard.CashLimit = decimal.Parse(loProvider.FormData.GetValues("CashLimit")[0]);
                 creditCard.CardTypeId = int.Parse(loProvider.FormData.GetValues("CardTypeId")[0]);
                 creditCard.NationalityId = int.Parse(loProvider.FormData.GetValues("NationalityId")[0]);
+                creditCard.CardStatusId = int.Parse(loProvider.FormData.GetValues("CardStatusId")[0]);
                 creditCard.Note = loProvider.FormData.GetValues("Note")[0];
-                List<AttachmentTypeEntity> attTypeMappings = JsonConvert.DeserializeObject<List<AttachmentTypeEntity>>(loProvider.FormData.GetValues("AttTypes")[0]);
+                List<AttachmentTypeEntity> attTypeMappings = new List<AttachmentTypeEntity>();
+
+                if (loProvider.FormData.GetValues("AttTypes") != null)
+                {
+                    attTypeMappings = JsonConvert.DeserializeObject<List<AttachmentTypeEntity>>(loProvider.FormData.GetValues("AttTypes")[0]);
+                }
                 creditCard.CreatedBy = User.Identity.Name;
                 ProcessAttachments(creditCard, loProvider, attTypeMappings);
                 //invoke method to register customer if customer is not already registered

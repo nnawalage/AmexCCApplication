@@ -9,6 +9,7 @@ import { EditCreditCardComponent } from '../creditcard/editcreditcard.component'
 import { ApproveCreditCardComponent } from '../creditcard/approvecreditcard.component';
 import { DialogService } from "ng2-bootstrap-modal";
 
+
 @Component({
     templateUrl: './dashboard.template.html',
     styleUrls: ['./dashboard.styles.scss']
@@ -22,6 +23,7 @@ export class DashboardComponent {
     selectedIndex: number;
     cardRequestListTemp: ICreditCard[];
     promptMessage: string = '';
+    creditCard: ICreditCard = null;
     constructor(private actRouter: ActivatedRoute, private router: Router, private crediCardService: CrediCardService, private dialogService: DialogService) {
     }
 
@@ -45,27 +47,29 @@ export class DashboardComponent {
 
     openCreditCardView(cardId: number) {
         this.dialogService.addDialog(ViewCreditCardComponent, {
-            CreditCardId: cardId,
-            //FullName :'dsdsdsdsdsvvvv'
+            CreditCard: this.creditCard,
+            CreditCardId: cardId
         }).subscribe((message) => {
             //We get dialog result
             this.promptMessage = message;
         });
     }
 
-    openCreditCardEdit() {
+    openCreditCardEdit(cardId: number) {
         this.dialogService.addDialog(EditCreditCardComponent, {
-            question: 'What is your name?: '
+            CreditCard: this.creditCard,
+            CreditCardId: cardId
         })
-            .subscribe((message) => {
-                //We get dialog result
-                this.promptMessage = message;
-            });
+        .subscribe((message) => {
+            //We get dialog result
+            this.promptMessage = message;
+        });
     }
 
-    openCreditCardApprove() {
+    openCreditCardApprove(cardId: number) {
         this.dialogService.addDialog(ApproveCreditCardComponent, {
-            question: 'What is your name?: '
+            CreditCard: this.creditCard,
+            CreditCardId: cardId
         })
             .subscribe((message) => {
                 //We get dialog result
