@@ -3,11 +3,12 @@ import { ActivatedRoute } from "@angular/router";
 import { CrediCardService } from "../services/creditcard.service";
 import { Router } from "@angular/router";
 import { ICreditCard } from "../models/creditcard";
-
+import { IUser } from "../models/user";
 import { ViewCreditCardComponent } from '../creditcard/viewcreditcard.component';
 import { EditCreditCardComponent } from '../creditcard/editcreditcard.component';
 import { ApproveCreditCardComponent } from '../creditcard/approvecreditcard.component';
 import { DialogService } from "ng2-bootstrap-modal";
+import { LoginService } from "../services/login.service";
 
 
 @Component({
@@ -15,6 +16,12 @@ import { DialogService } from "ng2-bootstrap-modal";
     styleUrls: ['./dashboard.styles.scss']
 })
 export class DashboardComponent {
+
+    loggedUser: IUser;
+    lsUser: boolean = false;
+    IsAdmin: boolean = false;
+    lsStaff: boolean = false;
+
     cardRequestList: ICreditCard[];
     fullNameList: string[];
     displayNameList: string[];
@@ -24,7 +31,11 @@ export class DashboardComponent {
     cardRequestListTemp: ICreditCard[];
     promptMessage: string = '';
     creditCard: ICreditCard = null;
-    constructor(private actRouter: ActivatedRoute, private router: Router, private crediCardService: CrediCardService, private dialogService: DialogService) {
+    constructor(private actRouter: ActivatedRoute, private router: Router, private crediCardService: CrediCardService, private dialogService: DialogService, private loginService: LoginService) {
+        this.loggedUser = this.loginService.loggedUser;
+        this.lsUser = this.loggedUser.Role == 'User' ? true : false;
+        this.IsAdmin = this.loggedUser.Role == 'Admin' ? true : false;
+        this.lsStaff = this.loggedUser.Role == 'Staff' ? true : false;
     }
 
     ngOnInit() {
@@ -63,6 +74,8 @@ export class DashboardComponent {
         .subscribe((message) => {
             //We get dialog result
             this.promptMessage = message;
+            console.log(message+"pppp");
+
         });
     }
 
