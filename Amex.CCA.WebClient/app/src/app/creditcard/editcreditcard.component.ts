@@ -46,16 +46,16 @@ export class EditCreditCardComponent extends DialogComponent<PromptModel, string
     private loadCardTypes(): void {
         this.crediCardService.getCardTypes().subscribe((cardTypes: ICardType[]) => {
             this.cardTypes = cardTypes;
-            this.selectedCardType = cardTypes[this.CreditCard.CardTypeId];
+            this.selectedCardType = cardTypes.filter(
+                cardType => cardType.CardTypeId === this.CreditCard.CardTypeId)[0];
         }, error => console.log(error));
     }
 
     private loadNationalityTypes(): void {
         this.crediCardService.getNationalities().subscribe((nationalityTypes: INationality[]) => {
             this.nationalities = nationalityTypes;
-            this.selectedNationality = nationalityTypes[this.CreditCard.NationalityId];
-
-            console.log(this.nationalities);
+            this.selectedNationality = nationalityTypes.filter(
+                nation => nation.NationalityId === this.CreditCard.NationalityId)[0];
         }, error => console.log(error));
     }
 
@@ -63,6 +63,7 @@ export class EditCreditCardComponent extends DialogComponent<PromptModel, string
         //this.result = this.message;
 
         this.CreditCard.CardTypeId = this.selectedCardType.CardTypeId;
+        this.CreditCard.NationalityId = this.selectedNationality.NationalityId;
 
         this.crediCardService.SaveCreditCard(this.CreditCard).subscribe((res: any) => {
             console.log(res);
