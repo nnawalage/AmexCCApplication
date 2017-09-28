@@ -55,8 +55,6 @@ namespace Amex.CCA.WebApi.Controllers
             }
         }
 
-        
-
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
         // POST api/Account/Logout
@@ -147,7 +145,7 @@ namespace Amex.CCA.WebApi.Controllers
 
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, IsActive = false };
 
-            IdentityResult result =  UserManager.Create(user, model.Password);
+            IdentityResult result = UserManager.Create(user, model.Password);
             if (result.Succeeded)
             {
                 //get userId
@@ -182,7 +180,6 @@ namespace Amex.CCA.WebApi.Controllers
                 return GetErrorResult(result);
             }
         }
-        
 
         protected override void Dispose(bool disposing)
         {

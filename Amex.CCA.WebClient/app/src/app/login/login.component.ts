@@ -42,18 +42,13 @@ export class LoginComponent {
                         break;
                     }
                 }
-
-
             }, error => console.log(error));
         }, error => {
             //console.log('errCame' + error);
         });
     }
 
-    private onRegisterClick()
-    {
+    private onRegisterClick() {
         this.router.navigate(['user/registration'])
     }
-
-
 }

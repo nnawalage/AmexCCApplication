@@ -58,7 +58,6 @@ export class CreditCardComponent implements OnInit {
         this.crediCardService.getAttachmentTypes().subscribe((attTypes: IAttachmentType[]) => {
             this.attTypes = attTypes;
             console.log(this.attTypes);
-
         }, error => console.log(error));
     }
 

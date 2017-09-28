@@ -4,12 +4,21 @@ using Amex.CCA.DataAccess;
 using Amex.CCA.DataAccess.Entities;
 using Amex.CCA.WebApi.Models;
 using Microsoft.AspNet.Identity;
+
+using Microsoft.AspNet.Identity;
+
 using Microsoft.AspNet.Identity.Owin;
+
+using Microsoft.AspNet.Identity.Owin;
+
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -18,16 +27,9 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using System.IO;
-using System.Configuration;
-using Newtonsoft.Json;
 
 namespace Amex.CCA.WebApi.Controllers
 {
-
-
     [RoutePrefix("api/CreditCards")]
     //[Authorize]
     public class CreditCardsController : ApiController
@@ -42,7 +44,7 @@ namespace Amex.CCA.WebApi.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-                cardlist = User.IsInRole("User")?creditCardBusinessService.GetAllCreditCards(email): creditCardBusinessService.GetAllCreditCards();
+                cardlist = User.IsInRole("User") ? creditCardBusinessService.GetAllCreditCards(email) : creditCardBusinessService.GetAllCreditCards();
             }
             return cardlist;
 
@@ -71,7 +73,6 @@ namespace Amex.CCA.WebApi.Controllers
         {
             throw new NotImplementedException();
         }
-
 
         // POST: api/CreditCards
         [ResponseType(typeof(CreditCard))]
@@ -113,7 +114,7 @@ namespace Amex.CCA.WebApi.Controllers
                 }
                 //if successfully saved
                 if (creditCardBusinessService.SaveCreditCard(creditCard))
-                { 
+                {
                     return Ok("Successfully Created new credit card");
                 }
             }
@@ -134,15 +135,14 @@ namespace Amex.CCA.WebApi.Controllers
                     string userId = User.Identity.GetUserId();
                     string baseUri = ConfigurationManager.AppSettings["baseUri"].ToString();
                     string imgFolderPath = ConfigurationManager.AppSettings["imgPath"].ToString();
-                    string fileUrl = SaveAttachment(reqId,fileName, fileContent, userId, baseUri, imgFolderPath);
+                    string fileUrl = SaveAttachment(reqId, fileName, fileContent, userId, baseUri, imgFolderPath);
                     int attTypeId = attTypeMappings.Where(c => c.FileName == fileName).ToList<AttachmentTypeEntity>()[0].AttachmentTypeID;
                     creditCard.Attachments.Add(new Attachment() { FileName = fileName, FileUrl = fileUrl, AttachmentTypeId = attTypeId, CreatedBy = creditCard.CreatedBy, CreatedTime = DateTime.Now });
                 }
             }
-
         }
 
-        private string SaveAttachment(string reqId,string fileName, byte[] fileContent, string userId, string baseUri, string imgFolderPath)
+        private string SaveAttachment(string reqId, string fileName, byte[] fileContent, string userId, string baseUri, string imgFolderPath)
         {
             string imgPath = HttpContext.Current.Server.MapPath($"~/{imgFolderPath}");
             if (!Directory.Exists($"{imgPath}/{userId}"))
@@ -156,7 +156,6 @@ namespace Amex.CCA.WebApi.Controllers
             File.WriteAllBytes($"{imgPath}/{User.Identity.GetUserId()}/{reqId}/{fileName}", fileContent);
             return $"{baseUri}/{imgFolderPath}/{userId}/{reqId}/{fileName}";
         }
-        
 
         // DELETE: api/CreditCards/5
         [ResponseType(typeof(CreditCard))]
@@ -183,13 +182,10 @@ namespace Amex.CCA.WebApi.Controllers
             {
                 fs.Close();
             }
-
         }
 
-
-
         /// <summary>
-        /// Create new user account if the customer is a new user. 
+        /// Create new user account if the customer is a new user.
         /// This method will not perform any action if customer is already registered in the system.
         /// </summary>
         /// <param name="email">The email.</param>
@@ -201,7 +197,7 @@ namespace Amex.CCA.WebApi.Controllers
             var userManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
             //check if user already exist
             ApplicationUser user = userManager.FindByEmail(email);
-            //if new user 
+            //if new user
             if (user == null)
             {
                 //register user with a dummy password

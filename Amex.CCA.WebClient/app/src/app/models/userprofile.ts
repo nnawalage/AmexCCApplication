@@ -1,6 +1,6 @@
-﻿import { IAttachments } from "./attachments";
+import { IAttachments } from "./attachments";
 
-export interface IUserProfile {   
+export interface IUserProfile {
     UserName: string;
     ProfileName: string;
     ProfileImage?: string;

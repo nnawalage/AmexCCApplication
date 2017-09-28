@@ -1,7 +1,7 @@
-﻿import { Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { DialogComponent, DialogService } from "ng2-bootstrap-modal";
 import { FormsModule } from '@angular/forms';
-import {ICreditCard} from '../models/creditcard';
+import { ICreditCard } from '../models/creditcard';
 import { CrediCardService } from "../services/creditcard.service";
 
 @Component({
@@ -12,14 +12,14 @@ export class ViewCreditCardComponent extends DialogComponent<ICreditCard, string
     question: string;
     message: string = 'ddddd';
     CreditCardId: number;
-    FullName: string ='ddsdsds';
+    FullName: string = 'ddsdsds';
     DisplayName: string;
     Nic: string;
     Passport: string;
     Address: string;
     MobilePhone: string;
     HomePhone: string;
-    OfficePhone: string; 
+    OfficePhone: string;
     Email: string;
     Employer: string;
     Salary: number;
@@ -55,7 +55,6 @@ export class ViewCreditCardComponent extends DialogComponent<ICreditCard, string
             this.Note = creditCard.Note;
             this.CardTypeId = creditCard.CardTypeId;
             this.NationalityId = creditCard.NationalityId;
-
         }, error => console.log(error));
     }
 

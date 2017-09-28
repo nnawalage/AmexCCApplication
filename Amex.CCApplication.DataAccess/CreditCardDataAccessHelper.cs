@@ -49,8 +49,8 @@ namespace Amex.CCA.DataAccess
                 List<CreditCard> data = dbContext.CreditCards
                                         .Include(c => c.CardStatus)
                                         .Include(c => c.CardType)
-                                        .Include(c => c.Nationality).ToList(); 
-                foreach(CreditCard creditcard in data)
+                                        .Include(c => c.Nationality).ToList();
+                foreach (CreditCard creditcard in data)
                 {
                     if (creditcard.Email.Equals(email))
                     {
@@ -58,7 +58,6 @@ namespace Amex.CCA.DataAccess
                     }
                 }
                 return creditCardList;
-                
             }
         }
 
@@ -71,7 +70,6 @@ namespace Amex.CCA.DataAccess
                                         .Include(c => c.CardType)
                                         .Include(c => c.Nationality).ToList();
                 return creditCardList;
-
             }
         }
 
