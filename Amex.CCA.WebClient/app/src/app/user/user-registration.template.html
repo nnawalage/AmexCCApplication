@@ -1,6 +1,6 @@
 <div class="row">
     <h3>Register User</h3>
-    <br/>
+    <br />
     <div>
         <form [formGroup]="registrationForm" (ngSubmit)="onRegistrationSubmit(registrationForm.value)">
             <div class=" row form-group">
@@ -29,11 +29,10 @@
             <div class="row form-group">
                 <div class="col-md-2">Password<span class="required">*</span></div>
                 <div class="col-md-4">
-                    <input id="txtPassword" formControlName="password" type="password" class="form-control" (keyup)="onConfirmPasswordChange(registrationForm.controls['confirmPassword'])"
-                    />
+                    <input id="txtPassword" formControlName="password" type="password" class="form-control" (keyup)="onConfirmPasswordChange(registrationForm.controls['confirmPassword'])" />
                 </div>
                 <div class="col-md-4">
-                    <span class="error" *ngIf="registrationForm.controls['password'].errors?.pattern">Enter strong password</span>                    
+                    <span class="error" *ngIf="registrationForm.controls['password'].errors?.pattern">Enter strong password</span>
                 </div>
             </div>
             <div class="row form-group">
@@ -50,7 +49,6 @@
                 <div class="col-md-4">
                     <button [disabled]="!registrationForm.valid" class="btn btn-primary pull-right" type="submit">Register</button>
                     <!-- <button  class="btn btn-primary pull-right" type="submit">Register</button> -->
-
                 </div>
             </div>
         </form>

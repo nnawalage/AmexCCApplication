@@ -55,8 +55,6 @@ namespace Amex.CCA.WebApi.Controllers
             }
         }
 
-        
-
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
         // POST api/Account/Logout
@@ -182,7 +180,6 @@ namespace Amex.CCA.WebApi.Controllers
                 return GetErrorResult(result);
             }
         }
-        
 
         protected override void Dispose(bool disposing)
         {

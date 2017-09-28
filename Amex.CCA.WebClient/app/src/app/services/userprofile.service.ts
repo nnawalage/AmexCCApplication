@@ -5,8 +5,8 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { HttpService } from '../services/http.service';
 import { LoginService } from '../services/login.service';
 import { UserApprove } from '../models/userApprove';
-import { Role }     from'../models/role';
-import { IRegistration} from '../models/registration'
+import { Role } from '../models/role';
+import { IRegistration } from '../models/registration'
 
 @Injectable()
 export class UserProfileService {
@@ -34,14 +34,14 @@ export class UserProfileService {
     getRoles(): Observable<Role[]> {
         let url = '/UserProfiles/roles'
         return this.http.get(url)
-                        .map((responce:Response) => {
-                        return   <Role[]>responce.json();
-                        }
-        )};
+            .map((responce: Response) => {
+                return <Role[]>responce.json();
+            }
+            )
+    };
 
-    registerUser(user:IRegistration): Observable<any> {
+    registerUser(user: IRegistration): Observable<any> {
         let url = `/Account/Register`;
         return this.http.post(url, user);
     }
-
 }

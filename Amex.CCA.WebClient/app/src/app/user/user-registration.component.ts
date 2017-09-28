@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { FormGroup, FormBuilder, FormControl, Validators, Validator, AbstractControl } from '@angular/forms'
-import {Router } from '@angular/router'
+import { Router } from '@angular/router'
 import { UserProfileService } from '../services/userprofile.service'
 import { Role } from '../models/Role'
 import { IRegistration } from '../models/registration'
@@ -14,9 +14,7 @@ export class UserRegistrationComponent implements OnInit {
     private roles: string[] = []
     private selectedRole: string;
 
-    constructor(private formBuilder: FormBuilder, private userProfileService: UserProfileService, private router:Router) { }
-
-
+    constructor(private formBuilder: FormBuilder, private userProfileService: UserProfileService, private router: Router) { }
 
     // ngOnInit() {
     //     let passwordPattern: string = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&]).{8,}";
@@ -30,7 +28,6 @@ export class UserRegistrationComponent implements OnInit {
     //     });
     //     this.loadRoles();
     // }
-
 
     // ngOnInit() {
     //     let passwordPattern: string = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&]).{8,}";
@@ -61,7 +58,6 @@ export class UserRegistrationComponent implements OnInit {
         this.registrationForm.controls['confirmPassword'].setValidators([Validators.required, Validators.pattern(passwordPattern), this.checkPasswordMatch(<FormControl>this.registrationForm.controls['password'])]);
         this.loadRoles();
     }
-
 
     // ngOnInit() {
     //     let passwordPattern: string = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&]).{8,}";
@@ -99,14 +95,13 @@ export class UserRegistrationComponent implements OnInit {
                 ConfirmPassword: registrationFormValues["confirmPassword"],
                 RoleName: registrationFormValues["role"]
             };
-          this.userProfileService.registerUser(registrationModel).subscribe((res: any) => {
-            console.log(res);
-            alert("Successfully registered user");
-            this.router.navigate(['login']);
-
-        }, error => {
-            console.log('error when saving' + error);
-        });
+            this.userProfileService.registerUser(registrationModel).subscribe((res: any) => {
+                console.log(res);
+                alert("Successfully registered user");
+                this.router.navigate(['login']);
+            }, error => {
+                console.log('error when saving' + error);
+            });
         }
     }
 
@@ -121,17 +116,15 @@ export class UserRegistrationComponent implements OnInit {
     //     let pass = group.controls.password.value;
     //     let confirmPass = group.controls.confirmPass.value;
 
-    //     return pass === confirmPass ? null : { notSame: true }     
+    //     return pass === confirmPass ? null : { notSame: true }
     //   }
 
     private onConfirmPasswordChange(ctrl: FormControl) {
-
         ctrl.updateValueAndValidity();
     }
 
     private checkPasswordMatch(pass: FormControl): any {
         // if (this && this.registrationForm && this.registrationForm.controls) {
-
         //     let pass = this.registrationForm.controls.password.value;
         //     let confirmPass = control.value;
         //     return pass === confirmPass ? null : { 'passwordsDoNotMatch': true };
