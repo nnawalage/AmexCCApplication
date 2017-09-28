@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import 'rxjs';
 import { UserProfileService } from '../services/userprofile.service';
 import { UserApprove } from '../models/userApprove';
-import { Role }     from'../models/role';
+import { Role } from '../models/role';
 
 @Component({
     selector: 'user-approve',
@@ -26,15 +26,15 @@ export class UserApproveComponent implements OnInit {
                             this.Roles = role;
                         });
     }
-    getInActiveUsers(): void{
-            this.userService.getUsersToApprove()
-                            .subscribe(users=>{
-                                this.assignRolesTORoleIds(users);
-                            });
+    getInActiveUsers(): void {
+        this.userService.getUsersToApprove()
+            .subscribe(users => {
+                this.assignRolesTORoleIds(users);
+            });
     }
     ngOnInit(): void {
         this.getRoles();
-        this.getInActiveUsers();  
+        this.getInActiveUsers();
     }
     saveApproved(usersData:UserApprove[]):void{
         usersData.map(userData =>{
@@ -59,7 +59,7 @@ export class UserApproveComponent implements OnInit {
             this.selectToApprove=false;
         }
     }
-    assignRolesTORoleIds(users:UserApprove[]): void{
+    assignRolesTORoleIds(users: UserApprove[]): void {
         this.usersToApprove = users
         this.usersToApprove.map(user=>{
             this.Roles.map(role =>{

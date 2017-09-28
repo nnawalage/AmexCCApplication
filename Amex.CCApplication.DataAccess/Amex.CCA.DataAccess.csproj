@@ -275,6 +275,10 @@
     <Compile Include="Migrations\201709251003076_attachmentTypeChangesB.Designer.cs">
       <DependentUpon>201709251003076_attachmentTypeChangesB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709280711325_reviwerComment.cs" />
+    <Compile Include="Migrations\201709280711325_reviwerComment.Designer.cs">
+      <DependentUpon>201709280711325_reviwerComment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NationalityDataAccessHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -437,6 +441,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709251003076_attachmentTypeChangesB.resx">
       <DependentUpon>201709251003076_attachmentTypeChangesB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709280711325_reviwerComment.resx">
+      <DependentUpon>201709280711325_reviwerComment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
