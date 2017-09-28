@@ -45,6 +45,8 @@ namespace Amex.CCA.DataAccess.Entities
 
         public string CreditCardNumber { get; set; }
 
+        public string ReviewerComment { get; set; }
+
         public DateTime? BillingDate { get; set; }
 
         public DateTime? CardExpiryDate { get; set; }
