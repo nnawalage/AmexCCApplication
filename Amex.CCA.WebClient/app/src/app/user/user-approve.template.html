@@ -7,18 +7,13 @@
             <span><i class="fa fa-search" aria-hidden="true"></i></span>
             <div class="pull-right action-buttons">
                 <div class="btn-group pull-right">
-                      Select All:  <input type="checkbox" id="ApproveAll" (change)="addAllUsersToApprove(usersToApprove,$event.target.checked)"/>
-                    <!-- <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                    <span class="glyphicon glyphicon-cog" style="margin-right: 0px;"></span>
-                                </button>
-                    <ul class="dropdown-menu slidedown">
-                        <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                    </ul> -->
+                      Select All:  <input type="checkbox" id="ApproveAll" ([ngModel])="selectToApprove"
+                      (change)="addAllUsersToApprove(userApprove,$event.target.checked)"/>
                 </div>
             </div>
         </div>
         <div class="col-xs-12 approve_list" >
-            <div class="" *ngFor="let userApprove of usersToApprove">
+            <div  *ngFor="let userApprove of usersToApprove; let i = index; trackBy: customTrackBy">
                 <div class="col-xs-12 col-md-10 "> 
                    <span class="text_capitalize"> {{userApprove.ProfileName}} &nbsp;</span>
                     <i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp; 
@@ -26,10 +21,11 @@
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
                 </div>
                 <div class="col-xs-12 col-md-2 action-buttons">
-                    <input type="checkbox" id="approveUser" (change)="addUsersToApprove(userApprove.Id,$event.target.checked)"/>
-                    <select >
-                        <!-- <option value="role">{{userApprove.RoleName.Name}}</option> -->
-                        <option *ngFor="let role of Roles" value="role">{{role.Name}}</option>
+                    <input type="checkbox" id="approveUser" [checked]="selectToApprove" [(ngModel)]="usersToApprove[i].IsActive"/>
+                    <select [(ngModel)]="usersToApprove[i].RoleName">
+                        <option  *ngFor="let role of userApprove.UsersRoles" [value]="role" >
+                            {{role}}
+                        </option>
                     </select>
                 </div>
                 <div class="col-xs-12 data_hr">
@@ -41,7 +37,7 @@
                 <div class="pull-right ">
                     <div class="pull-right">
                         <button class="btn btn-default">Reject</button>
-                        <button class="btn btn-primary" (click)="saveApproved()">Approve</button>
+                        <button class="btn btn-primary" (click)="saveApproved(usersToApprove)" >Approve</button>
                     </div>
                 </div>
             </div>

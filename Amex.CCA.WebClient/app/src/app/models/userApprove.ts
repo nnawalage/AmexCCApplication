@@ -6,4 +6,8 @@ export class UserApprove{
     Id:string
     RoleId:string
     RoleName:string
+    UsersRoles:UsersRoles[]
+}
+export class UsersRoles{
+    Name: string
 }

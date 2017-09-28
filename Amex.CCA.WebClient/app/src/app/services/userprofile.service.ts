@@ -10,8 +10,7 @@ import { Role }     from'../models/role';
 
 @Injectable()
 export class UserProfileService {
-    constructor(private http: HttpService) {
-    }
+    constructor(private http: HttpService,private options:RequestOptions) { }
 
     getAllUserProfiles(): Observable<IUserProfile[]> {
         return this.http.get('/UserProfiles')
@@ -32,12 +31,32 @@ export class UserProfileService {
         });
     }
     getRoles(): Observable<Role[]>{
-        let url='/UserProfiles/roles'
+        let url=`/UserProfiles/roles`
         return this.http.get(url)
                         .map((responce:Response) => {
                         return   <Role[]>responce.json();
                         }
-        )};
+    )};
+    saveApprovedUsers(userData:UserApprove,id:string): Observable<UserApprove[]>{
+        
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        let ApproveUrl=`/UserProfiles/approveUser`;
+        let url =`${ApproveUrl}/${id}`;
+        console.log("saveApprovedUsers : ",userData);
+        console.log("ID : ",id);
+        return this.http
+                    .patch(url,JSON.stringify(userData),{ headers:headers })
+                    .map((responce: Response) => responce.json())
+                    .catch(this.handleError);
+        // return null;
 
+    }
+    private handleError(error: any) {
+        let errMsg = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error(errMsg);
+        return Observable.throw(errMsg);
+    }
 
 }
