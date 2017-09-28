@@ -95,7 +95,8 @@ export class CreditCardComponent implements OnInit {
                 CardTypeId: creditCardFormValues['cardType']['CardTypeId'],
                 NationalityId: creditCardFormValues['nationality']['NationalityId'],
                 Note: creditCardFormValues['note'],
-                Attachments: this.attachments
+                Attachments: this.attachments,
+                CreditCardId: 0
             }
 
             this.crediCardService.SaveCreditCard(creditCard).subscribe((res: any) => {

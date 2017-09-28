@@ -1,0 +1,16 @@
+
+Softwares
+
+sqldeveloper-17.2.0.188.1159-x64 
+Oracle Database 11g Express Edition 
+
+
+Create workspace from web
+http://127.0.0.1:8080/
+
+Log in to that from Oracle Sql Developer
+User name,password as given in the workspace creation.
+
+create table from oracle sql devloper.
+
+loginto the workspace and go to sql workshop you should see the table created.
