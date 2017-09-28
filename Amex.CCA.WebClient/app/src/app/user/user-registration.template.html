@@ -1,4 +1,58 @@
-<div class="panel panel-primary">
-<div class="panel-heading">
-</div>
+<div class="row">
+    <h3>Register User</h3>
+    <br/>
+    <div>
+        <form [formGroup]="registrationForm" (ngSubmit)="onRegistrationSubmit(registrationForm.value)">
+            <div class=" row form-group">
+                <div class="col-md-2">Name<span class="required">*</span></div>
+                <div class="col-md-4">
+                    <input id="txtProfileName" formControlName="profileName" type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">Email<span class="required">*</span></div>
+                <div class="col-md-4">
+                    <input id="txtEmail" formControlName="email" type="email" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                    <span class="error" *ngIf="this.registrationForm.controls['email'].dirty && this.registrationForm.controls['email'].errors?.email">Enter valid email</span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">Role<span class="required">*</span></div>
+                <div class="col-md-4">
+                    <select id="ddRole" formControlName="role" [(ngModel)]="selectedRole" class="form-control">
+                        <option *ngFor="let rl of roles" [value]=rl>{{rl}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">Password<span class="required">*</span></div>
+                <div class="col-md-4">
+                    <input id="txtPassword" formControlName="password" type="password" class="form-control" (keyup)="onConfirmPasswordChange(registrationForm.controls['confirmPassword'])"
+                    />
+                </div>
+                <div class="col-md-4">
+                    <span class="error" *ngIf="registrationForm.controls['password'].errors?.pattern">Enter strong password</span>                    
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">Confirm Password<span class="required">*</span></div>
+                <div class="col-md-4">
+                    <input id="txtConfirmPassword" formControlName="confirmPassword" type="password" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                    <span class="error" *ngIf="registrationForm.controls['confirmPassword'].errors?.isInvalid">Passwords do not match</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <button [disabled]="!registrationForm.valid" class="btn btn-primary pull-right" type="submit">Register</button>
+                    <!-- <button  class="btn btn-primary pull-right" type="submit">Register</button> -->
+
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

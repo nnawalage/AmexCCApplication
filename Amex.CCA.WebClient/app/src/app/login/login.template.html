@@ -1,24 +1,34 @@
+
+<div class="row">
 <form #loginForm="ngForm" (ngSubmit)="onLoginSubmit(loginForm.value)">
-  <div class="row">
-    <div class="col-md-6">
-      <label for="txtUserName">UserName</label>
+  <div class="row form-group">
+    <div class="col-md-2">
     </div>
-    <div class="col-md-6">
-      <input [(ngModel)]="txtUserName" type="text" name="txtUserName" />
+    <div class="col-md-4">
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-      <label for="txtPassword">Password</label>
+  <div class="row form-group">
+    <div class="col-md-2">
+      <label for="txtUserName">UserName<span class="required">*</span></label>
+    </div>
+    <div class="col-md-4">
+      <input class="form-control" [(ngModel)]="txtUserName" type="text" name="txtUserName" required />
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-md-2">
+      <label for="txtPassword">Password<span class="required">*</span></label>
     </div>
     <div class="col-md-6">
       <input [(ngModel)]="txtPassword" type="text" name="txtPassword" required />
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
-      <button class="pull-left" type="submit">Login</button>
-      <button class="pull-left" type="button" (click)="onRegisterClick()">Register</button>
+      <div class="col-md-2"></div>
+    <div class="col-md-4">
+      <button class="btn btn-primary pull-left margin-right-one" type="submit" [disabled]="!loginForm.valid">Login</button>
+      <button class="btn btn-primary pull-left" type="button" (click)="onRegisterClick()">Register</button>
     </div>
   </div>
 </form>
+</div>
