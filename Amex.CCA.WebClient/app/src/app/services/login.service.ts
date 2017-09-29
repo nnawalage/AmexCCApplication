@@ -31,8 +31,8 @@ export class LoginService {
     }
 
     getProfile(user: IUser): Observable<IUser> {
-        //let url: string = `/UserProfiles/GetUserProfile/${user.UserName}`;
-        let url: string = `/UserProfiles/GetUserProfile/13`;
+        let url: string = `/UserProfiles/GetUserProfile/${user.UserName}/`;
+        //let url: string = `/UserProfiles/GetUserProfile/pmd@tiqri.com/`;
         return this._http.get(url).map((res: Response) => {
             return <IUser>res.json();
         });
