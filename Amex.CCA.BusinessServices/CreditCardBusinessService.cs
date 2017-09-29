@@ -50,7 +50,7 @@ namespace Amex.CCA.BusinessServices
             {
                 creditCardEntityList.Add(BusinessModelMapper.MapToCreditCardEntity(creditCard));
             }
-            return creditCardEntityList;
+            return creditCardEntityList.OrderBy(c=>c.CardStatusId).ToList();
         }
 
         public List<CreditCardEntity> GetAllCreditCards()
@@ -62,7 +62,7 @@ namespace Amex.CCA.BusinessServices
             {
                 creditCardEntityList.Add(BusinessModelMapper.MapToCreditCardEntity(creditCard));
             }
-            return creditCardEntityList;
+            return creditCardEntityList.OrderBy(c => c.CardStatusId).ToList();
         }
 
         public bool ReviewCreditCard(ReviewEntity reviewModel)
