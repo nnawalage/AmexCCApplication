@@ -23,6 +23,7 @@ export class ViewCreditCardComponent extends DialogComponent<PromptModel, string
 
     ngOnInit() {
         this.CreditCard = new Object();
+        document.getElementsByTagName('body')[0].classList.add('modal-open');
         this.crediCardService.getCardDetails(this.CreditCardId).subscribe((creditCard: ICreditCard) => {
             console.log(creditCard);
             this.CreditCard = creditCard;
@@ -32,5 +33,9 @@ export class ViewCreditCardComponent extends DialogComponent<PromptModel, string
     apply() {
         //this.result = this.message;
         this.close();
+    }
+
+    ngOnDestroy() {
+        document.getElementsByTagName('body')[0].classList.remove('modal-open');
     }
 }
