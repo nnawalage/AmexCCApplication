@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttachmentTypeDataAccessHelper.cs" />
     <Compile Include="CardStatusDataAccessHelper.cs" />
     <Compile Include="CardTypeDataAccessHelper.cs" />
     <Compile Include="CreditCardDataAccessHelper.cs" />

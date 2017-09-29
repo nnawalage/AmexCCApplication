@@ -35,5 +35,12 @@ namespace Amex.CCA.BusinessServices
                 return new UserProfileDataAccessHelper().UpdateUserProfile(userProfile);
             }
         }
+
+        public UserProfileEntity GetUserpProfileById(string userName)
+        {
+            UserProfile userProf = new UserProfileDataAccessHelper().GetUserProfileById(userName);
+            UserProfileEntity userProfileEntity = BusinessModelMapper.MapToUserProfileEntity(userProf);
+            return userProfileEntity;
+        }
     }
 }

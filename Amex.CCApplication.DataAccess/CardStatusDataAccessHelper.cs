@@ -18,7 +18,6 @@ namespace Amex.CCA.DataAccess
                 {
                     return 0;
                 }
-
                 var selectedCardStatus = cardStatuses.Where(x => x.Name == cardStatus.ToString()).FirstOrDefault();
                 return selectedCardStatus != null ? selectedCardStatus.CardStatusId : 0;
             }

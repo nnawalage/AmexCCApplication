@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row"><header *ngIf="loginService.isUserAuthorised()">></header></div>
+    <div class="row"><header [user]="this.loginService.loggedUser" *ngIf="loginService.isUserAuthorised()">></header></div>
     <div class="row">
       <div class="col-md-2">
          <nav-bar *ngIf="loginService.isUserAuthorised()">>

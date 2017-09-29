@@ -31,19 +31,20 @@ export class LoginService {
     }
 
     getProfile(user: IUser): Observable<IUser> {
-        // let url: string = `${this.baseUri}/GetUserProfile`;
-        // return this._http.get(url).map((res: Response) => {
-        //     return <IUser>res.json();
-        // });
-        let emitter = new EventEmitter(true);
-        let result: IUser = {
-            ProfileName: 'Test User',
-            ProfileImage: ''
-        }
-        setTimeout(() => {
-            emitter.emit(result);
-        }, 100);
-        return emitter;
+        //let url: string = `/UserProfiles/GetUserProfile/${user.UserName}`;
+        let url: string = `/UserProfiles/GetUserProfile/13`;
+        return this._http.get(url).map((res: Response) => {
+            return <IUser>res.json();
+        });
+        //let emitter = new EventEmitter(true);
+        //let result: IUser = {
+        //    ProfileName: 'Test User',
+        //    ProfileImage: ''
+        //}
+        //setTimeout(() => {
+        //    emitter.emit(result);
+        //}, 100);
+        //return emitter;
     }
 
     loginUser(user: IUser): Observable<IUser> {
@@ -53,7 +54,7 @@ export class LoginService {
         let headers: any = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         let options = new RequestOptions({ headers: headers });
-
+        // this.loggedUser.ProfileImage = '../../../assets/images/no-image.png';
         return this.http.post(url, creds, options).map(
             (response: Response) => {
                 let res: any = response.json();
@@ -66,11 +67,13 @@ export class LoginService {
                     Role: res['role']
                 };
                 this.loggedUser = user;
-                // this.getProfile(user).subscribe((resUser: IUser) => {
-                //     this.loggedUser.ProfileName = resUser.ProfileName;
-                //     this.loggedUser.ProfileImage = resUser.ProfileImage;
-                //      sessionStorage.setItem('authData', JSON.stringify(this.loggedUser));
-                // }, error => console.log(error));
+                this.getProfile(user).subscribe((resUser: IUser) => {
+                    this.loggedUser.ProfileName = resUser.ProfileName;
+                    this.loggedUser.ProfileImage = resUser.ProfileImage;
+                    this.loggedUser.UserProfileId = resUser.UserProfileId;
+
+                    sessionStorage.setItem('authData', JSON.stringify(this.loggedUser));
+                }, error => console.log(error));
 
                 return user;
             }).catch(this.handleError);
