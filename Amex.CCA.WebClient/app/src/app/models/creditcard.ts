@@ -29,5 +29,6 @@ export interface ICreditCard {
     NationalityName?: string;
     CardStatusId?: number;
     CardStatusName?: string;
+    ReviewerComment?: string;
     Attachments?: IAttachments[];
 }

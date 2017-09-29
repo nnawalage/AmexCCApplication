@@ -147,13 +147,14 @@
                 <label>Comment</label>
             </div>
             <div class="col-md-9">
-                <input type="text" class="form-control" [(ngModel)]="Note" name="Note">
+                <input type="text" class="form-control" [(ngModel)]="CreditCard.ReviewerComment" name="Note">
             </div>
         </div>
 
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" (click)="review(true)">Approve</button>
-            <button type="button" class="btn btn-primary" (click)="review(false)">Reject</button>
+            <button type="button" class="btn btn-primary" (click)="review('Performed')">Perform</button>
+            <button type="button" class="btn btn-primary" (click)="review('Approved')">Approve</button>
+            <button type="button" class="btn btn-primary" (click)="review('Rejected')">Reject</button>
             <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
         </div>
     </div>

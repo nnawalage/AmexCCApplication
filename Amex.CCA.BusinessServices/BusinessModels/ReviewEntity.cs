@@ -12,9 +12,10 @@ namespace Amex.CCA.BusinessServices.BusinessModels
 
         public string ReviewerComment { get; set; }
 
-        /// <summary>
-        /// If IsApproved property is false will be considered as a reject action.
-        /// </summary>
         public bool ? IsApproved { get; set; }
+
+        public bool? IsPerformed { get; set; }
+
+        public bool? IsRejected { get; set; }
     }
 }
