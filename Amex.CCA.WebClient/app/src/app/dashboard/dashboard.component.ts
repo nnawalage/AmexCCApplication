@@ -21,6 +21,7 @@ export class DashboardComponent {
     IsUser: boolean = false;
     IsAdmin: boolean = false;
     IsStaff: boolean = false;
+    IsLoaderActive: boolean = false;
 
     cardRequestList: ICreditCard[];
     fullNameList: string[];
@@ -39,6 +40,7 @@ export class DashboardComponent {
     }
 
     ngOnInit() {
+        this.IsLoaderActive = true;
         this.crediCardService.getAllCardRequests().subscribe(receivedCardRequests => {
             this.cardRequestList = receivedCardRequests;
             this.cardRequestListTemp = this.cardRequestList;
@@ -49,6 +51,7 @@ export class DashboardComponent {
                 this.getCardTypeFilterList(this.cardRequestList);
                 this.getCardStatusFilterList(this.cardRequestList);
             }
+        this.IsLoaderActive = false;
         }, error => console.log(error));
     }
 

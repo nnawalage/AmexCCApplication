@@ -13,9 +13,9 @@ import { IAttachmentType } from "../models/attachment-type";
     styleUrls: ['./creditcard.styles.scss']
 })
 export class CreditCardComponent implements OnInit {
-    private ccForm: FormGroup;
+    ccForm: FormGroup;
     private attachments: IAttachments[] = [];
-    private attTypes: IAttachmentType[] = [];
+    attTypes: IAttachmentType[] = [];
     cardTypes: ICardType[];
     nationalities: INationality[];
     selectedCardType: ICardType;
@@ -73,7 +73,7 @@ export class CreditCardComponent implements OnInit {
         }, error => console.log(error));
     }
 
-    private onSubmit(creditCardFormValues: Object): void {
+     onSubmit(creditCardFormValues: Object): void {
         console.log(this.ccForm.valid);
         if (this.ccForm.valid) {
             let creditCard: ICreditCard = {

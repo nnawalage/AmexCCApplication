@@ -8,7 +8,7 @@ import { LoginService } from "./services/login.service";
     // encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
-    constructor(private loginService: LoginService) { }
+    constructor(public loginService: LoginService) { }
     title = 'app';
     ngOnInit() {
         this.loginService.refreshUser();

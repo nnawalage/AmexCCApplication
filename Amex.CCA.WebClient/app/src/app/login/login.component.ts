@@ -9,11 +9,13 @@ import { IUser } from "../models/user";
 })
 export class LoginComponent {
     loginInvalid: boolean = false;
-
+    txtUserName: string;
+    txtPassword: string;
     constructor(private router: Router, private loginService: LoginService) {
     }
 
-    private onLoginSubmit(loginFormValues: Object): void {
+    onLoginSubmit(loginFormValues: Object): void {
+        console.log(loginFormValues);
         let user: IUser = {
             UserName: loginFormValues['txtUserName'],
             PassWord: loginFormValues['txtPassword']
@@ -48,7 +50,7 @@ export class LoginComponent {
         });
     }
 
-    private onRegisterClick() {
+    onRegisterClick() {
         this.router.navigate(['user/registration'])
     }
 }
