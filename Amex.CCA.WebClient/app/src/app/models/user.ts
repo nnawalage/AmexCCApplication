@@ -8,4 +8,5 @@ export interface IUser {
     Role?: string;
     ProfileName?: string;
     ProfileImage?: string;
+    UserProfileId?: number;
 }

@@ -22,7 +22,7 @@ export class EditProfileComponent implements OnInit {
     ngOnInit() {
         this.profileForm = this._fb.group({
             userName: ['cpk@tiqri.com', [Validators.required]],
-            profileName: ['profilename1', Validators.required],
+            profileName: ['this is profile name', Validators.required],
             profileImage: [''],
         })
     }
@@ -42,11 +42,11 @@ export class EditProfileComponent implements OnInit {
                 //userProfileId: null,
                 Attachments: this.attachments
             }
-            console.log("1");
+
             //Collecting USERNAME, UserProfileID from session store
             userProfileObj.UserName = this.loginService.loggedUser.UserName;
-            console.log(userProfileObj.UserName );
-            userProfileObj.userProfileId = 13;//this.loginService.loggedUser.RoleId; //TESTING
+            console.log(userProfileObj.UserName);
+            userProfileObj.userProfileId = this.loginService.loggedUser.UserProfileId;
 
             if (userProfileObj.Attachments.length > 0) {
                 this.upService.SaveUserProfile(userProfileObj).subscribe((res: any) => {
