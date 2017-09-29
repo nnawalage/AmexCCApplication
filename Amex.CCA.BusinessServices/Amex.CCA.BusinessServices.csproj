@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessModelMapper.cs" />
+    <Compile Include="BusinessModels\AttachmentEntity.cs" />
     <Compile Include="BusinessModels\AttachmentTypeEntity.cs" />
     <Compile Include="BusinessModels\CardTypeEntity.cs" />
     <Compile Include="BusinessModels\CreditCardEntity.cs" />
