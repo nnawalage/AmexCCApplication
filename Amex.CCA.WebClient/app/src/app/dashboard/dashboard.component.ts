@@ -74,7 +74,6 @@ export class DashboardComponent {
         .subscribe((message) => {
             //We get dialog result
             this.promptMessage = message;
-            console.log(message+"pppp");
 
         });
     }
