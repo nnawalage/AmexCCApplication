@@ -153,9 +153,11 @@
         </div>
 
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" (click)="review('Performed')">Perform</button>
-            <button type="button" class="btn btn-primary" (click)="review('Approved')">Approve</button>
-            <button type="button" class="btn btn-primary" (click)="review('Rejected')">Reject</button>
+            <button type="button" class="btn btn-primary" (click)="review('Approved')" *ngIf="IsAdmin">Approve</button>
+            <button type="button" class="btn btn-primary" >
+              <div *ngIf="IsAdmin" (click)="review('Rejected')">Reject</div>
+              <div *ngIf="IsStaff" (click)="review('Performed')">Perform</div>            
+            </button>
             <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
         </div>
     </div>
