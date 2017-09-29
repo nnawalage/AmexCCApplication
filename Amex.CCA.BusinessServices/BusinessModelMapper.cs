@@ -90,16 +90,19 @@ namespace Amex.CCA.BusinessServices
         public static CreditCardEntity MapToCreditCardEntity(CreditCard creditCard)
         {
             List<AttachmentEntity> attachmentList = new List<AttachmentEntity>();
-            foreach (Attachment Attachment in creditCard.Attachments)
+            if (creditCard.Attachments.Count != 0)
             {
-                attachmentList.Add(new AttachmentEntity()
+                foreach (Attachment Attachment in creditCard.Attachments)
                 {
-                    AttachmentId = Attachment.AttachmentId,
-                    FileUrl = Attachment.FileUrl,
-                    FileName = Attachment.FileName,
-                    //AttachmentType=Attachment.AttachmentType,
-                    AttachmentTypeId = Attachment.AttachmentTypeId
-                });
+                    attachmentList.Add(new AttachmentEntity()
+                    {
+                        AttachmentId = Attachment.AttachmentId,
+                        FileUrl = Attachment.FileUrl,
+                        FileName = Attachment.FileName,
+                        //AttachmentType=Attachment.AttachmentType,
+                        AttachmentTypeId = Attachment.AttachmentTypeId
+                    });
+                }
             }
 
             return new CreditCardEntity()
