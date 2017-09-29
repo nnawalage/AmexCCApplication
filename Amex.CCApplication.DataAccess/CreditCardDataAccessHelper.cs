@@ -82,6 +82,7 @@ namespace Amex.CCA.DataAccess
                 return dbContext.CreditCards
                     .Include(c => c.CardStatus)
                     .Include(c => c.CardType)
+                    .Include(c => c.Attachments)
                     .Include(c => c.Nationality).FirstOrDefault(x => x.CreditCardId == id);
             }
         }
