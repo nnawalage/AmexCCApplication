@@ -13,7 +13,7 @@ import { IAttachments } from "../models/attachments";
 
 export class EditProfileComponent implements OnInit {
     //This is to load all the controls
-    private profileForm: FormGroup;
+     profileForm: FormGroup;
     private attachments: IAttachments[] = [];
 
     constructor(private actRouter: ActivatedRoute, private router: Router, private upService: UserProfileService, private _fb: FormBuilder, private loginService: LoginService) {
@@ -27,13 +27,13 @@ export class EditProfileComponent implements OnInit {
         })
     }
 
-    private onFileUpload(key, event: Event) {
+     onFileUpload(key, event: Event) {
         let fileList: FileList = event.target['files'];
         this.attachments.push({ key: key, fileList: fileList });
         console.log(this.attachments);
     }
 
-    private onSubmit(userProfileFormValues: Object): void {
+     onSubmit(userProfileFormValues: Object): void {
         if (this.profileForm.valid) {
             let userProfileObj: IUserProfile = {
                 UserName: userProfileFormValues['userName'],

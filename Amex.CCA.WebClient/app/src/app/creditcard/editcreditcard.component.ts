@@ -61,7 +61,7 @@ export class EditCreditCardComponent extends DialogComponent<PromptModel, string
         }, error => console.log(error));
     }
 
-    private save() {
+     save() {
         //this.result = this.message;
 
         this.CreditCard.CardTypeId = this.selectedCardType.CardTypeId;

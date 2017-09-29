@@ -8,7 +8,7 @@ import { IUser } from '../models/user';
     styleUrls: ['./user-profile.styles.scss']
 })
 export class UserProfileComponent implements OnInit {
-    constructor(private loginService: LoginService) { }
+    constructor(public loginService: LoginService) { }
     private profileImage: string;
     @Input() user: IUser;
     ngOnChanges() {
