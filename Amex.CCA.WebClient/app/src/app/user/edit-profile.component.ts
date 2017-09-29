@@ -14,7 +14,7 @@ import { IAttachments } from "../models/attachments";
 export class EditProfileComponent implements OnInit {
     //This is to load all the controls
     private profileForm: FormGroup;
-    private attachments: IAttachments[] = [];
+    attachments: IAttachments[] = [];
 
     constructor(private actRouter: ActivatedRoute, private router: Router, private upService: UserProfileService, private _fb: FormBuilder, private loginService: LoginService) {
     }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -42,8 +42,8 @@
 
                 <br />
                 <div class="rows">
-                    <button [disabled]="!profileForm.valid" class="btn btn-primary" type="submit">Update Info</button>
-                    <span> {{profileForm.valid}} </span>
+                    <button [disabled]="!(profileForm.valid && attachments.length>0)" class="btn btn-primary" type="submit">Update Info</button>
+                    <span></span>
                 </div>
             </div>
         </form>
