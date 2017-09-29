@@ -18,9 +18,9 @@ import { LoginService } from "../services/login.service";
 export class DashboardComponent {
 
     loggedUser: IUser;
-    lsUser: boolean = false;
+    //lsUser: boolean = false;
     IsAdmin: boolean = false;
-    lsStaff: boolean = false;
+    //lsStaff: boolean = false;
 
     cardRequestList: ICreditCard[];
     fullNameList: string[];
@@ -33,9 +33,9 @@ export class DashboardComponent {
     creditCard: ICreditCard = null;
     constructor(private actRouter: ActivatedRoute, private router: Router, private crediCardService: CrediCardService, private dialogService: DialogService, private loginService: LoginService) {
         this.loggedUser = this.loginService.loggedUser;
-        this.lsUser = this.loggedUser.Role == 'User' ? true : false;
+        //this.lsUser = this.loggedUser.Role == 'User' ? true : false;
         this.IsAdmin = this.loggedUser.Role == 'Admin' ? true : false;
-        this.lsStaff = this.loggedUser.Role == 'Staff' ? true : false;
+        //this.lsStaff = this.loggedUser.Role == 'Staff' ? true : false;
     }
 
     ngOnInit() {
@@ -74,7 +74,6 @@ export class DashboardComponent {
         .subscribe((message) => {
             //We get dialog result
             this.promptMessage = message;
-            console.log(message+"pppp");
 
         });
     }

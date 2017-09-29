@@ -69,19 +69,25 @@ namespace Amex.CCA.BusinessServices
         {
             CreditCard creditCard = dataAccessHelper.GetCreditCardById(reviewModel.CreditCardId);
             creditCard.ReviewerComment = reviewModel.ReviewerComment;
-            if (reviewModel.IsApproved==null)
+            if (reviewModel.IsApproved == null && reviewModel.IsRejected == null && reviewModel.IsPerformed == null)
             {
                 return false;
             }
-            else if((bool)reviewModel.IsApproved )
+            if (reviewModel.IsApproved != null && (bool)reviewModel.IsApproved)
             {
+                creditCard.CardStatus = null;
                 creditCard.CardStatusId = cardStatusDataAccessHelper.GetPendingCardStatusId(CardStatusEnum.Approved);
             }
-            else
+            else if (reviewModel.IsRejected != null && (bool)reviewModel.IsRejected)
             {
+                creditCard.CardStatus = null;
                 creditCard.CardStatusId = cardStatusDataAccessHelper.GetPendingCardStatusId(CardStatusEnum.Rejected);
             }
-            
+            else if (reviewModel.IsPerformed != null && (bool)reviewModel.IsPerformed)
+            {
+                creditCard.CardStatus = null;
+                creditCard.CardStatusId = cardStatusDataAccessHelper.GetPendingCardStatusId(CardStatusEnum.Performed);
+            }
             return dataAccessHelper.UpdateCreditCard(creditCard);
         }
 

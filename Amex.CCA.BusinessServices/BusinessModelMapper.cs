@@ -1,6 +1,7 @@
 ﻿using Amex.CCA.BusinessServices.BusinessModels;
 using Amex.CCA.DataAccess.Entities;
 using System;
+using System.Collections.Generic;
 
 namespace Amex.CCA.BusinessServices
 {
@@ -88,6 +89,19 @@ namespace Amex.CCA.BusinessServices
 
         public static CreditCardEntity MapToCreditCardEntity(CreditCard creditCard)
         {
+            List<AttachmentEntity> attachmentList = new List<AttachmentEntity>();
+            foreach (Attachment Attachment in creditCard.Attachments)
+            {
+                attachmentList.Add(new AttachmentEntity()
+                {
+                    AttachmentId = Attachment.AttachmentId,
+                    FileUrl = Attachment.FileUrl,
+                    FileName = Attachment.FileName,
+                    //AttachmentType=Attachment.AttachmentType,
+                    AttachmentTypeId = Attachment.AttachmentTypeId
+                });
+            }
+
             return new CreditCardEntity()
             {
                 CreditCardId = creditCard.CreditCardId,
@@ -111,7 +125,8 @@ namespace Amex.CCA.BusinessServices
                 JobTitle = creditCard.JobTitle,
                 CardLimit = creditCard.CardLimit,
                 CashLimit = creditCard.CashLimit,
-                Note = creditCard.Note
+                Note = creditCard.Note,
+                AttachmentView = attachmentList,
             };
         }
 
