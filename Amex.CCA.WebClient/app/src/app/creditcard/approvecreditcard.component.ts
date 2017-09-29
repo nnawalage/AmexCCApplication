@@ -5,6 +5,7 @@ import { ICreditCard } from '../models/creditcard';
 import { CrediCardService } from "../services/creditcard.service";
 import { IReviewComment } from "../models/reviewcomment";
 
+
 export interface PromptModel {
     CreditCard: ICreditCard;
     CreditCardId: number;
@@ -33,13 +34,15 @@ export class ApproveCreditCardComponent extends DialogComponent<PromptModel, str
             this.CreditCard = creditCard;
         }, error => console.log(error));
     }
-    review(isApproved: boolean) {
-        debugger;
+
+    review(action: string) {
         this.ReviewComment = {
             CreditCardId: this.CreditCardId,
-            ReviewerComment: "ReviewerComment",
-            IsApproved: isApproved
+            ReviewerComment: this.CreditCard.ReviewerComment
         }
+        if (action === "Approved") { this.ReviewComment.IsApproved = true; }
+        else if (action === "Performed") { this.ReviewComment.IsPerformed = true; }
+        else if (action === "Rejected") { this.ReviewComment.IsRejected = true; }
 
         this.crediCardService.SaveReviewComment(this.ReviewComment).subscribe((res: any) => {
             console.log(res);

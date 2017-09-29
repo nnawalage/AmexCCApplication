@@ -13,7 +13,8 @@ namespace Amex.CCA.Common.Enums
             Pending,
             Approved,
             Rejected,
-            Withdrawn
+            Withdrawn,
+            Performed
         };
     }
 }
