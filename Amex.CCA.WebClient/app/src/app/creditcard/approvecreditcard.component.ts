@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { ICreditCard } from '../models/creditcard';
 import { CrediCardService } from "../services/creditcard.service";
 import { IReviewComment } from "../models/reviewcomment";
-
+import { IUser } from "../models/user";
+import { LoginService } from "../services/login.service";
 
 export interface PromptModel {
     CreditCard: ICreditCard;
@@ -20,9 +21,15 @@ export class ApproveCreditCardComponent extends DialogComponent<PromptModel, str
     CreditCard: any;
     CreditCardId: number;
     ReviewComment: IReviewComment;
+    loggedUser: IUser;
+    IsAdmin: boolean = false;
+    IsStaff: boolean = false;
 
-    constructor(dialogService: DialogService, private crediCardService: CrediCardService) {
+    constructor(dialogService: DialogService, private crediCardService: CrediCardService, private loginService: LoginService) {
         super(dialogService);
+        this.loggedUser = this.loginService.loggedUser;
+        this.IsAdmin = this.loggedUser.Role == 'Admin' ? true : false;
+        this.IsStaff = this.loggedUser.Role == 'Staff' ? true : false;
     }
 
     ngOnInit() {

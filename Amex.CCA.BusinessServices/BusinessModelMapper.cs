@@ -83,7 +83,8 @@ namespace Amex.CCA.BusinessServices
                 Attachments = creditCardEntity.Attachments,
                 CardLimit = creditCardEntity.CardLimit,
                 CashLimit = creditCardEntity.CashLimit,
-                JobTitle = creditCardEntity.JobTitle
+                JobTitle = creditCardEntity.JobTitle,
+                Note= creditCardEntity.Note
             };
         }
 

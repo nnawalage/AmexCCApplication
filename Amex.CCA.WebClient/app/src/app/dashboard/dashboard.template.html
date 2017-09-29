@@ -209,9 +209,8 @@
         </div>
 
           <label class="btn btn-default" (click)="openCreditCardView(creditcard?.CreditCardId)"> View </label>
-          <label class="btn btn-default" (click)="openCreditCardEdit(creditcard?.CreditCardId)"> Edit </label>
-          <label *ngIf="IsAdmin" class="btn btn-default" (click)="openCreditCardApprove(creditcard?.CreditCardId)"> Review </label>
-
+          <label *ngIf="!IsAdmin && creditcard?.CardStatusName=='Pending'" class="btn btn-default" (click)="openCreditCardEdit(creditcard?.CreditCardId)"> Edit </label>
+          <label *ngIf="!IsUser && creditcard?.CardStatusName=='Pending'" class="btn btn-default" (click)="openCreditCardApprove(creditcard?.CreditCardId)"> Review </label>
         </div>
       </div>
       </div>

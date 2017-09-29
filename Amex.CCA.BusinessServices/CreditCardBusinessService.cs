@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System;
 using Amex.CCA.Common.Enums;
 using static Amex.CCA.Common.Enums.Enums;
+using System.Linq;
 
 namespace Amex.CCA.BusinessServices
 {
@@ -45,12 +46,11 @@ namespace Amex.CCA.BusinessServices
         {
             List<CreditCard> creditCardList = dataAccessHelper.GetAllCreditCards(email);
             List<CreditCardEntity> creditCardEntityList = new List<CreditCardEntity>();
-
             foreach (CreditCard creditCard in creditCardList)
             {
                 creditCardEntityList.Add(BusinessModelMapper.MapToCreditCardEntity(creditCard));
             }
-            return creditCardEntityList;
+            return creditCardEntityList.OrderBy(c=>c.CardStatusId).ToList();
         }
 
         public List<CreditCardEntity> GetAllCreditCards()
@@ -62,7 +62,7 @@ namespace Amex.CCA.BusinessServices
             {
                 creditCardEntityList.Add(BusinessModelMapper.MapToCreditCardEntity(creditCard));
             }
-            return creditCardEntityList;
+            return creditCardEntityList.OrderBy(c => c.CardStatusId).ToList();
         }
 
         public bool ReviewCreditCard(ReviewEntity reviewModel)
